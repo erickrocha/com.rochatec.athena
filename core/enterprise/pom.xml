@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.athena</groupId>
+		<artifactId>core</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>enterprise</artifactId>
+	<packaging>ear</packaging>
+	<name>com.athena.enterprise</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.athena</groupId>
+			<artifactId>business</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.athena</groupId>
+			<artifactId>eao</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.athena</groupId>
+			<artifactId>model</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>		
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-ear-plugin</artifactId>
+					<configuration>
+						<modules>
+							<ejbModule>
+								<groupId>com.athena</groupId>
+								<artifactId>business</artifactId>
+							</ejbModule>
+							<ejbModule>
+								<groupId>com.athena</groupId>
+								<artifactId>eao</artifactId>
+							</ejbModule>							
+							<jarModule>
+								<groupId>com.athena</groupId>
+								<artifactId>model</artifactId>
+								<bundleDir>lib</bundleDir>
+							</jarModule>
+						</modules>
+						<archive>
+							<manifest>
+								<addClasspath>false</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
