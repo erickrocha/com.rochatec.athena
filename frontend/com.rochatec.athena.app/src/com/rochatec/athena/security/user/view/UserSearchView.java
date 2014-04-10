@@ -16,7 +16,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class UserSearchView extends AbstractView implements Executable<User>{
 
-	public static final String ID = "com.rochatec.metallurgical.security.user.view.UserSearchView";
+	public static final String ID = "com.rochatec.athena.security.user.view.UserSearchView";
 	private AbstractWrapperSearchBox<User> searchBox;
 	
 	@Override

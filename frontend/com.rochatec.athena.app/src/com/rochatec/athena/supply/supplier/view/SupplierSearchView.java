@@ -18,7 +18,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class SupplierSearchView extends AbstractView implements Executable<Supplier>{
 	
-	public static final String ID = "com.rochatec.metallurgical.supply.supplier.view.SupplierSearchView";
+	public static final String ID = "com.rochatec.athena.supply.supplier.view.SupplierSearchView";
 	protected SupplyClientService supplyClientService = ServiceFactory.getInstance().getSupplyClientService();
 	private AbstractWrapperSearchBox<Supplier> searchBox;
 	

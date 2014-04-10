@@ -1122,14 +1122,6 @@
                   tooltip="%menu.register.set.label">
             </command>
             <command
-                  commandId="com.rochatec.athena.command.machine.search"
-                  icon="icons/infra/machine_16.png"
-                  id="com.rochatec.athena.menu.machine.search"
-                  label="%menu.register.machine.label"
-                  style="push"
-                  tooltip="%menu.register.machine.label">
-            </command>
-            <command
                   commandId="com.rochatec.athena.command.supplier.search"
                   icon="icons/infra/supplier_16.png"
                   id="com.rochatec.athena.menu.supplier.search"

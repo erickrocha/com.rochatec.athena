@@ -16,7 +16,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ProfileSearchView extends AbstractView implements Executable<Profile>{
 
-	public static final String ID = "com.rochatec.metallurgical.security.profile.view.ProfileSearchView";
+	public static final String ID = "com.rochatec.athena.security.profile.view.ProfileSearchView";
 	private AbstractWrapperSearchBox<Profile> searchBox;
 	
 	@Override

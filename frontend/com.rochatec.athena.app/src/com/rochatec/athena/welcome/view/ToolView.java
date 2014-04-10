@@ -6,7 +6,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ToolView extends AbstractView{
 	
-	public static final String ID = "com.rochatec.metallurgical.welcome.view.ToolView";
+	public static final String ID = "com.rochatec.athena.welcome.view.ToolView";
 
 	@Override
 	public void setFocus() {

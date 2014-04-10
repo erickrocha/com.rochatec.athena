@@ -20,7 +20,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ProfileTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.security.profile.view.ProfileTableView";
+	public static final String ID = "com.rochatec.athena.security.profile.view.ProfileTableView";
 	protected AbstractTable tableViewer;
 	
 	@Override

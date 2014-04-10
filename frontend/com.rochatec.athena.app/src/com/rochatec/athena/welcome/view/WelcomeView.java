@@ -6,7 +6,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class WelcomeView extends AbstractView{
 	
-	public static final String ID = "com.rochatec.metallurgical.welcome.view.WelcomeView";
+	public static final String ID = "com.rochatec.athena.welcome.view.WelcomeView";
 
 	@Override
 	public void setFocus() {

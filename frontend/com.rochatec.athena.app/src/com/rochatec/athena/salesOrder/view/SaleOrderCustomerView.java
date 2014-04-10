@@ -33,7 +33,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class SaleOrderCustomerView extends AbstractView implements Executable<Customer>{
 
-	public static final String ID = "com.rochatec.metallurgical.salesOrder.view.SaleOrderCustomerView";
+	public static final String ID = "com.rochatec.athena.salesOrder.view.SaleOrderCustomerView";
 	private Text txtCustomer;
 	private Button btSearch;
 	private TablePropertieViewer viewer;	

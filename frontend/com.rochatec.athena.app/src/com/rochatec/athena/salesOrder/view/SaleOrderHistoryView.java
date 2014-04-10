@@ -25,7 +25,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class SaleOrderHistoryView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.salesOrder.view.SaleOrderHistoryView";
+	public static final String ID = "com.rochatec.athena.salesOrder.view.SaleOrderHistoryView";
 	protected SalesClientService salesClientService = ServiceFactory.getInstance().getSalesClientService();
 	
 	protected TreePropertieViewer viewer;

@@ -20,7 +20,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class SupplierTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.supply.supplier.view.SupplierTableView";
+	public static final String ID = "com.rochatec.athena.supply.supplier.view.SupplierTableView";
 	protected AbstractTable tableViewer;
 	
 	@Override

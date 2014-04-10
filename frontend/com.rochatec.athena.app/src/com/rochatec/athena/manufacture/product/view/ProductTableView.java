@@ -20,7 +20,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ProductTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID ="com.rochatec.metallurgical.manufacture.product.view.ProductTableView";
+	public static final String ID ="com.rochatec.athena.manufacture.product.view.ProductTableView";
 	protected AbstractTable tableViewer;
 	
 	@Override

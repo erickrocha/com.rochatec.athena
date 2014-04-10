@@ -17,7 +17,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ShipperSearchView extends AbstractView implements Executable<Shipper>{
 
-	public static final String ID = "com.rochatec.metallurgical.supply.shipper.view.ShipperSearchView";
+	public static final String ID = "com.rochatec.athena.supply.shipper.view.ShipperSearchView";
 	private AbstractWrapperSearchBox<Shipper> searchBox;
 	
 	@Override

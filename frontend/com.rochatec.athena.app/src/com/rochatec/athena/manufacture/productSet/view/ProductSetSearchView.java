@@ -16,7 +16,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class ProductSetSearchView extends AbstractView implements Executable<ProductSet>{
 	
-	public static final String ID = "com.rochatec.metallurgical.manufacture.productSet.view.ProductSetSearchView";
+	public static final String ID = "com.rochatec.athena.manufacture.productSet.view.ProductSetSearchView";
 	private AbstractWrapperSearchBox<ProductSet> searchBox;
 	
 	@Override
