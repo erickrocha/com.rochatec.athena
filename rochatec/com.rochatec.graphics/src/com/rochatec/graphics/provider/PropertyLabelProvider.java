@@ -6,9 +6,9 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 
 import com.rochatec.framework.model.Property;
-import com.rochatec.graphics.Activator;
 
 public class PropertyLabelProvider extends LabelProvider implements ITableLabelProvider,ITableColorProvider{
 
@@ -33,7 +33,7 @@ public class PropertyLabelProvider extends LabelProvider implements ITableLabelP
 	}
 	
 	private Color getSystemColor(int SWT_KEY){
-		return Activator.getDefault().getWorkbench().getDisplay().getSystemColor(SWT_KEY);
+		return Display.getCurrent().getSystemColor(SWT_KEY);
 	}
 	
 	@Override

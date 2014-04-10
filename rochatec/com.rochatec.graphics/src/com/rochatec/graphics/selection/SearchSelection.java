@@ -1,5 +1,6 @@
 package com.rochatec.graphics.selection;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -8,6 +9,15 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 public class SearchSelection<T> implements IStructuredSelection{
 	
 	List<T> rows;
+	
+	public SearchSelection(T object) {
+		rows = new ArrayList<T>();
+		rows.add(object);
+	}
+	
+	public SearchSelection() {
+		this(new ArrayList<T>());
+	}
 	
 	public SearchSelection(List<T> rows) {
 		this.rows = rows;
@@ -41,5 +51,10 @@ public class SearchSelection<T> implements IStructuredSelection{
 	@Override
 	public List<T> toList() {
 		return rows;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public T getSingleSelection(){
+		return (T)getFirstElement();
 	}
 }

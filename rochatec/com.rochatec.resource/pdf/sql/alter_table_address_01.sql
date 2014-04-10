@@ -1,0 +1,1 @@
+alter table ADDRESS add COMPLEMENT VARCHAR2(500);

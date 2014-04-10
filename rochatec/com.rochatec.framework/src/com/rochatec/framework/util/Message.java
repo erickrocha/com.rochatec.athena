@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 public class Message {
 	
-	public static final String URL_PPOPERTIES = "com.rochatec.framework.resource.i18n";
+	public static final String URL_PPOPERTIES = "com.rochatec.framework.resource.pattern";
 	
 	private static HashMap<String,ResourceBundle> messageBundles = new HashMap<String, ResourceBundle>();
 	

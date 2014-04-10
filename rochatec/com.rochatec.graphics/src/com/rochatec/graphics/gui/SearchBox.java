@@ -1,6 +1,7 @@
 package com.rochatec.graphics.gui;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
@@ -11,6 +12,7 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.KeyAdapter;
@@ -41,8 +43,8 @@ import com.rochatec.graphics.util.WidgetUtils;
 
 public class SearchBox {
 
-	protected DateField beginCalendarCombo;
-	protected DateField endCalendarCombo;
+	protected DateChooserCombo beginCalendarCombo;
+	protected DateChooserCombo endCalendarCombo;
 	protected ComboViewer status;
 	protected ComboViewer columns;
 	protected Text txtValue;
@@ -68,8 +70,8 @@ public class SearchBox {
 	public void clear(){
 		txtValue.setText("");
 		groupValues.setText("");
-		beginCalendarCombo.clear();
-		endCalendarCombo.clear();
+		beginCalendarCombo.setValue(null);
+		endCalendarCombo.setValue(null);
 	}
 
 	private void createContents(Composite parent) {
@@ -105,8 +107,8 @@ public class SearchBox {
 		groupDate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true));
 		new Label(groupDate, SWT.NONE).setText(Message.getMessage("search.box.start.date"));
 		new Label(groupDate, SWT.NONE).setText(Message.getMessage("search.box.end.date"));
-		beginCalendarCombo = new DateField(groupDate);
-		endCalendarCombo = new DateField(groupDate);
+		beginCalendarCombo = new DateChooserCombo(groupDate,SWT.BORDER);
+		endCalendarCombo = new DateChooserCombo(groupDate,SWT.BORDER);
 
 		groupStatus = new Group(composite, SWT.NONE);
 		groupStatus.setText(Message.getMessage("search.box.status"));
@@ -226,11 +228,29 @@ public class SearchBox {
 	}
 	
 	public Calendar getStartDate(){
-		return beginCalendarCombo.getValue();
+		if (beginCalendarCombo.getValue() != null){
+			Calendar calendar = GregorianCalendar.getInstance();
+			calendar.setTime(beginCalendarCombo.getValue());
+			calendar.set(Calendar.HOUR,0);
+			calendar.set(Calendar.MINUTE,0);
+			calendar.set(Calendar.SECOND,0);
+			calendar.set(Calendar.MILLISECOND,0);
+			return calendar;
+		}
+		return null;
 	}
 	
 	public Calendar getEndDate(){
-		return endCalendarCombo.getValue();
+		if (endCalendarCombo.getValue() != null){
+			Calendar calendar = GregorianCalendar.getInstance();
+			calendar.setTime(endCalendarCombo.getValue());
+			calendar.set(Calendar.HOUR,23);
+			calendar.set(Calendar.MINUTE,59);
+			calendar.set(Calendar.SECOND,59);
+			calendar.set(Calendar.MILLISECOND,0);
+			return calendar;
+		}
+		return null;
 	}
 	
 	public String getText(){

@@ -13,4 +13,7 @@ public interface IResources {
 	public static final String ICON_DATE_16 = "icons/date_16.png";
 	
 	public static final String ICON_CALENDAR_16 = "icons/calendar_16.png";
+	
+	public static final String ICON_DIALOG_CANCEL_32 = "icons/cancel_32.png";
+	public static final String ICON_DIALOG_CONFIRM_32 = "icons/confirm_32.png";
 }

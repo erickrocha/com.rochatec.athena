@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: I18n
+Bundle-SymbolicName: com.rochatec.athena.i18n
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.rochatec.athena.i18n.Activator
+Bundle-Vendor: ROCHATEC
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: com.rochatec.athena.i18n

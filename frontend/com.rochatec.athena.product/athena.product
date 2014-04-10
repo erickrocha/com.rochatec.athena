@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Metallurgical" uid="com.rochatec.metallurgical" id="com.rochatec.metallurgical.app.Metallurgical" application="com.rochatec.metallurgical.app.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState</programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <launcher name="Metallurgical">
+      <linux icon="/com.rochatec.metallurgical.app/engine.xpm"/>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="com.rochatec.metallurgical.feature"/>
+      <feature id="com.rochatec.feature"/>
+   </features>
+
+
+</product>

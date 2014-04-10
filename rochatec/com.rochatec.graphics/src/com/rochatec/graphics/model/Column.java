@@ -2,7 +2,6 @@ package com.rochatec.graphics.model;
 
 import java.io.Serializable;
 
-@SuppressWarnings("rawtypes")
 public class Column implements IColumn,Serializable {
 
 	/**
@@ -13,18 +12,16 @@ public class Column implements IColumn,Serializable {
 	private String name;
 	private String label;
 	private ColumnType type;
-	private Class clazz;
 	
 	public Column() {
 		
 	}
 
-	public Column(String name, String label, ColumnType type, Class clazz) {
+	public Column(String name, String label, ColumnType type) {
 		super();
 		this.name = name;
 		this.label = label;
 		this.type = type;
-		this.clazz = clazz;
 	}
 
 	public String getName() {
@@ -47,18 +44,9 @@ public class Column implements IColumn,Serializable {
 		this.type = type;
 	}
 
-	public void setClazz(Class clazz) {
-		this.clazz = clazz;
-	}
-
 	@Override
 	public ColumnType getSQLType() {
 		return type;
-	}
-	
-	@Override
-	public Class getClassName() {
-		return clazz;
 	}
 
 }

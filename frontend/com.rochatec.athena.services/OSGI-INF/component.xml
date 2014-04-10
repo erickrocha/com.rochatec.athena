@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.rochatec.metallurgical.e4.client.service.HumanResourceClient">
+   <implementation class="com.rochatec.metallurgical.e4.client.service.impl.HumanResourceClientServiceImpl"/>
+   <service>
+      <provide interface="com.rochatec.metallurgical.e4.client.service.HumanResourceClientService"/>
+   </service>
+</scr:component>

@@ -7,10 +7,6 @@ public interface IColumn {
 	
 	public String getLabel();
 	
-	public ColumnType getSQLType();
-	
-	@SuppressWarnings("rawtypes")
-	public Class getClassName();
-	
+	public ColumnType getSQLType();	
 	
 }
