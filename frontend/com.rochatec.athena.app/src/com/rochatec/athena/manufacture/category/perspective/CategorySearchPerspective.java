@@ -9,7 +9,7 @@ import com.rochatec.athena.perspective.AbstractSearchPesrpective;
 
 public class CategorySearchPerspective extends AbstractSearchPesrpective{
 	
-	public static final String ID = "com.rochatec.metallurgical.manufacture.category.perspective.CategorySearchPerspective";
+	public static final String ID = "com.rochatec.athena.manufacture.category.perspective.CategorySearchPerspective";
 
 	@Override
 	public void createSearchPart(IPageLayout layout, String SEARCH_PART,String editorArea) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Metallurgical" uid="com.rochatec.metallurgical" id="com.rochatec.metallurgical.app.Metallurgical" application="com.rochatec.metallurgical.app.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="Athena" uid="com.rochatec.athena" id="com.rochatec.athena.app.Athena" application="com.rochatec.athena.app.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -26,8 +26,8 @@
    </plugins>
 
    <features>
-      <feature id="com.rochatec.metallurgical.feature"/>
       <feature id="com.rochatec.feature"/>
+      <feature id="com.rochatec.athena.feature" version="1.0.0.qualifier"/>
    </features>
 
 

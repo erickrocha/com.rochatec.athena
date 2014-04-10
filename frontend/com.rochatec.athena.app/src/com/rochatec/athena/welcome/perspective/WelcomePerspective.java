@@ -11,7 +11,7 @@ import com.rochatec.athena.welcome.view.WelcomeView;
 
 public class WelcomePerspective implements IPerspectiveFactory {
 	
-	public final static String ID = "com.rochatec.metallurgical.welcome.perspective.WelcomePerspective";
+	public final static String ID = "com.rochatec.athena.welcome.perspective.WelcomePerspective";
 	
 	private final static String VIEW_PART = "VIEW_PART";
 	

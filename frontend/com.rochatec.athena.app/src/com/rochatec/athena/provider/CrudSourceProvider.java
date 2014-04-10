@@ -8,7 +8,7 @@ import org.eclipse.ui.ISources;
 
 public class CrudSourceProvider extends AbstractSourceProvider{
 	
-	public static final String CRUD_INSTANCE = "com.rochatec.metallurgical.app.crudInstance";
+	public static final String CRUD_INSTANCE = "com.rochatec.athena.app.crudInstance";
 	private String instance;
 	
 	@Override

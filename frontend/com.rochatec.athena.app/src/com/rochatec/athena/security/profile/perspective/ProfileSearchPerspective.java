@@ -9,7 +9,7 @@ import com.rochatec.athena.security.profile.view.ProfileTableView;
 
 public class ProfileSearchPerspective extends AbstractSearchPesrpective{
 
-	public static final String ID = "com.rochatec.metallurgical.security.profile.perspective.ProfileSearchPerspective";
+	public static final String ID = "com.rochatec.athena.security.profile.perspective.ProfileSearchPerspective";
 	
 	@Override
 	public void createSearchPart(IPageLayout layout, String SEARCH_PART,String editorArea) {

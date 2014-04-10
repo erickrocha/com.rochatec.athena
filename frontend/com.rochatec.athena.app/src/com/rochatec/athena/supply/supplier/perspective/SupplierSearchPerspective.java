@@ -9,7 +9,7 @@ import com.rochatec.athena.supply.supplier.view.SupplierTableView;
 
 public class SupplierSearchPerspective extends AbstractSearchPesrpective{
 	
-	public static final String ID = "com.rochatec.metallurgical.supply.supplier.perspective.SupplierSearchPerspective";
+	public static final String ID = "com.rochatec.athena.supply.supplier.perspective.SupplierSearchPerspective";
 	
 	@Override
 	public void createSearchPart(IPageLayout layout, String SEARCH_PART,String editorArea) {		

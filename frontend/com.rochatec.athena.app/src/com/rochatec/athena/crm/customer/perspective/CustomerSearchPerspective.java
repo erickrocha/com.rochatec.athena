@@ -9,7 +9,7 @@ import com.rochatec.athena.perspective.AbstractSearchPesrpective;
 
 public class CustomerSearchPerspective extends AbstractSearchPesrpective{
 	
-	public static final String ID = "com.rochatec.metallurgical.crm.customer.perspective.CustomerSearchPerspective";
+	public static final String ID = "com.rochatec.athena.crm.customer.perspective.CustomerSearchPerspective";
 
 	@Override
 	public void createSearchPart(IPageLayout layout, String SEARCH_PART,

@@ -13,134 +13,121 @@
       </application>
    </extension>
    <extension
-         id="com.rochatec.metallurgical.app.pespectives"
-         name="com.rochatec.metallurgical.app.pespectives"
+         id="com.rochatec.athena.app.pespectives"
+         name="com.rochatec.athena.app.pespectives"
          point="org.eclipse.ui.perspectives">
       <perspective
             class="com.rochatec.athena.welcome.perspective.WelcomePerspective"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.welcome.perspective.WelcomePerspective"
+            id="com.rochatec.athena.welcome.perspective.WelcomePerspective"
             name="%perspective.welcome.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.humanresources.job.perspective.JobSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.humanresources.job.perspective.JobSearchPerspective"
+            id="com.rochatec.athena.humanresources.job.perspective.JobSearchPerspective"
             name="%perspective.job.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.humanresources.job.perspective.JobInputPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.humanresources.job.perspective.JobInputPerspective"
+            id="com.rochatec.athena.humanresources.job.perspective.JobInputPerspective"
             name="%perspective.job.input.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.humanresources.employee.perspective.EmployeeSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.humanresources.employee.perspective.EmployeeSearchPerspective"
+            id="com.rochatec.athena.humanresources.employee.perspective.EmployeeSearchPerspective"
             name="%perspective.employee.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.perspective.InputPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.perspective.InputPerspective"
+            id="com.rochatec.athena.perspective.InputPerspective"
             name="%perspective.input.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.crm.customer.perspective.CustomerSearchPerspective"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.crm.customer.perspective.CustomerSearchPerspective"
+            id="com.rochatec.athena.crm.customer.perspective.CustomerSearchPerspective"
             name="%perspective.customer.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.manufacture.category.perspective.CategorySearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.manufacture.category.perspective.CategorySearchPerspective"
+            id="com.rochatec.athena.manufacture.category.perspective.CategorySearchPerspective"
             name="%perspective.category.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.manufacture.product.perspective.ProductSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.manufacture.product.perspective.ProductSearchPerspective"
+            id="com.rochatec.athena.manufacture.product.perspective.ProductSearchPerspective"
             name="%perspective.product.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.manufacture.productSet.perspective.ProductSetSearchPerspective"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.manufacture.productSet.perspective.ProductSetSearchPerspective"
+            id="com.rochatec.athena.manufacture.productSet.perspective.ProductSetSearchPerspective"
             name="%perspective.productSet.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.manufacture.machine.perspective.MachineSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.manufacture.machine.perspective.MachineSearchPerspective"
+            id="com.rochatec.athena.manufacture.machine.perspective.MachineSearchPerspective"
             name="%perspective.machine.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.supply.supplier.perspective.SupplierSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.supply.supplier.perspective.SupplierSearchPerspective"
+            id="com.rochatec.athena.supply.supplier.perspective.SupplierSearchPerspective"
             name="%perspective.supplier.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.supply.shipper.perspective.ShipperSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.supply.shipper.perspective.ShipperSearchPerspective"
+            id="com.rochatec.athena.supply.shipper.perspective.ShipperSearchPerspective"
             name="%perspective.shipper.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.security.user.perspective.UserSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.security.user.perspective.UserSearchPerspective"
+            id="com.rochatec.athena.security.user.perspective.UserSearchPerspective"
             name="%perspective.user.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.security.profile.perspective.ProfileSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.security.profile.perspective.ProfileSearchPerspective"
+            id="com.rochatec.athena.security.profile.perspective.ProfileSearchPerspective"
             name="%perspective.profile.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.salesOrder.perspective.SaleOrderPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
-            id="com.rochatec.metallurgical.salesOrder.perspective.SaleOrderPerspective"
+            id="com.rochatec.athena.salesOrder.perspective.SaleOrderPerspective"
             name="%perspective.saleOrder.search.name">
       </perspective>
    </extension>
    <extension
-         id="Metallurgical"
-         name="Metallurgical"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="com.rochatec.metallurgical.app.application"
-            name="%product.name">
-         <property
-               name="Metallurgical"
-               value="Metallurgical">
-         </property>
-      </product>
-   </extension>
-   <extension
-         id="com.rochatec.metallurgical.app.views"
-         name="com.rochatec.metallurgical.app.views"
+         id="com.rochatec.athena.app.views"
+         name="com.rochatec.athena.app.views"
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
             class="com.rochatec.athena.welcome.view.ToolView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.welcome.view.ToolView"
+            id="com.rochatec.athena.welcome.view.ToolView"
             name="%view.tools.name"
             restorable="true">
       </view>
@@ -148,532 +135,495 @@
             allowMultiple="false"
             class="com.rochatec.athena.welcome.view.WelcomeView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.welcome.view.WelcomeView"
+            id="com.rochatec.athena.welcome.view.WelcomeView"
             name="%view.welcome.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.humanresources"
+            id="com.rochatec.athena.category.humanresources"
             name="Human Ressources">
       </category>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.humanresources"
+            category="com.rochatec.athena.category.humanresources"
             class="com.rochatec.athena.humanresources.job.view.JobSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.humanresources.job.view.JobSearchView"
+            id="com.rochatec.athena.humanresources.job.view.JobSearchView"
             name="%view.job.search.name"
             restorable="true">
       </view>
       <view
             allowMultiple="true"
-            category="com.rochatec.metallurgical.category.humanresources"
+            category="com.rochatec.athena.category.humanresources"
             class="com.rochatec.athena.humanresources.job.view.JobTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.humanresources.job.view.JobTableView"
+            id="com.rochatec.athena.humanresources.job.view.JobTableView"
             name="%view.job.table.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.humanresources"
+            category="com.rochatec.athena.category.humanresources"
             class="com.rochatec.athena.humanresources.employee.view.EmployeeSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.humanresources.employee.view.EmployeeSearchView"
+            id="com.rochatec.athena.humanresources.employee.view.EmployeeSearchView"
             name="%view.employee.search.name"
             restorable="true">
       </view>
       <view
             allowMultiple="true"
-            category="com.rochatec.metallurgical.category.humanresources"
+            category="com.rochatec.athena.category.humanresources"
             class="com.rochatec.athena.humanresources.employee.view.EmployeeTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.humanresources.employee.view.EmployeeTableView"
+            id="com.rochatec.athena.humanresources.employee.view.EmployeeTableView"
             name="%view.employee.table.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.crm"
+            id="com.rochatec.athena.category.crm"
             name="CRM">
       </category>
       <view
             allowMultiple="true"
-            category="com.rochatec.metallurgical.category.crm"
+            category="com.rochatec.athena.category.crm"
             class="com.rochatec.athena.crm.customer.view.CustomerSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.crm.customer.view.CustomerSearchView"
+            id="com.rochatec.athena.crm.customer.view.CustomerSearchView"
             name="%view.customer.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.crm"
+            category="com.rochatec.athena.category.crm"
             class="com.rochatec.athena.crm.customer.view.CustomerTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.crm.customer.view.CustomerTableView"
+            id="com.rochatec.athena.crm.customer.view.CustomerTableView"
             name="%view.customer.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.manufacture"
+            id="com.rochatec.athena.category.manufacture"
             name="manufacture">
       </category>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.category.view.CategorySearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.manufacture.category.view.CategorySearchView"
+            id="com.rochatec.athena.manufacture.category.view.CategorySearchView"
             name="%view.category.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.category.view.CategoryTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.manufacture.category.view.CategoryTableView"
+            id="com.rochatec.athena.manufacture.category.view.CategoryTableView"
             name="%view.category.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.product.view.ProductSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.manufacture.product.view.ProductSearchView"
+            id="com.rochatec.athena.manufacture.product.view.ProductSearchView"
             name="%view.product.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.product.view.ProductTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.manufacture.product.view.ProductTableView"
+            id="com.rochatec.athena.manufacture.product.view.ProductTableView"
             name="%view.product.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.productSet.view.ProductSetSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.manufacture.productSet.view.ProductSetSearchView"
+            id="com.rochatec.athena.manufacture.productSet.view.ProductSetSearchView"
             name="%view.productSet.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
+            category="com.rochatec.athena.category.manufacture"
             class="com.rochatec.athena.manufacture.productSet.view.ProductSetTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.manufacture.productSet.view.ProductSetTableView"
+            id="com.rochatec.athena.manufacture.productSet.view.ProductSetTableView"
             name="%view.productSet.name"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
-            class="com.rochatec.athena.manufacture.machine.view.MachineSearchView"
-            icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.manufacture.machine.view.MachineSearchView"
-            name="%view.machine.name"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
-            category="com.rochatec.metallurgical.category.manufacture"
-            class="com.rochatec.athena.manufacture.machine.view.MachineTableView"
-            icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.manufacture.machine.view.MachineTableView"
-            name="%view.machine.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.supply"
+            id="com.rochatec.athena.category.supply"
             name="Supply">
       </category>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.supply"
+            category="com.rochatec.athena.category.supply"
             class="com.rochatec.athena.supply.supplier.view.SupplierSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.supply.supplier.view.SupplierSearchView"
+            id="com.rochatec.athena.supply.supplier.view.SupplierSearchView"
             name="%view.supplier.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.supply"
+            category="com.rochatec.athena.category.supply"
             class="com.rochatec.athena.supply.supplier.view.SupplierTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.supply.supplier.view.SupplierTableView"
+            id="com.rochatec.athena.supply.supplier.view.SupplierTableView"
             name="%view.supplier.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.supply"
+            category="com.rochatec.athena.category.supply"
             class="com.rochatec.athena.supply.shipper.view.ShipperSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.supply.shipper.view.ShipperSearchView"
+            id="com.rochatec.athena.supply.shipper.view.ShipperSearchView"
             name="%view.shipper.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.supply"
+            category="com.rochatec.athena.category.supply"
             class="com.rochatec.athena.supply.shipper.view.ShipperTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.supply.shipper.view.ShipperTableView"
+            id="com.rochatec.athena.supply.shipper.view.ShipperTableView"
             name="%view.shipper.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.security"
+            id="com.rochatec.athena.category.security"
             name="Security">
       </category>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.security"
+            category="com.rochatec.athena.category.security"
             class="com.rochatec.athena.security.user.view.UserSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.security.user.view.UserSearchView"
+            id="com.rochatec.athena.security.user.view.UserSearchView"
             name="%view.user.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.security"
+            category="com.rochatec.athena.category.security"
             class="com.rochatec.athena.security.user.view.UserTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.security.user.view.UserTableView"
+            id="com.rochatec.athena.security.user.view.UserTableView"
             name="%view.user.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.security"
+            category="com.rochatec.athena.category.security"
             class="com.rochatec.athena.security.profile.view.ProfileSearchView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.security.profile.view.ProfileSearchView"
+            id="com.rochatec.athena.security.profile.view.ProfileSearchView"
             name="%view.profile.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.security"
+            category="com.rochatec.athena.category.security"
             class="com.rochatec.athena.security.profile.view.ProfileTableView"
             icon="icons/infra/table_16.png"
-            id="com.rochatec.metallurgical.security.profile.view.ProfileTableView"
+            id="com.rochatec.athena.security.profile.view.ProfileTableView"
             name="%view.profile.name"
             restorable="true">
       </view>
       <category
-            id="com.rochatec.metallurgical.category.sales"
+            id="com.rochatec.athena.category.sales"
             name="Sales">
       </category>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.sales"
+            category="com.rochatec.athena.category.sales"
             class="com.rochatec.athena.salesOrder.view.SaleOrderCustomerView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.salesOrder.view.SaleOrderCustomerView"
+            id="com.rochatec.athena.salesOrder.view.SaleOrderCustomerView"
             name="%view.saleOrder.customer.name"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            category="com.rochatec.metallurgical.category.sales"
+            category="com.rochatec.athena.category.sales"
             class="com.rochatec.athena.salesOrder.view.SaleOrderHistoryView"
             icon="icons/infra/view_16.png"
-            id="com.rochatec.metallurgical.salesOrder.view.SaleOrderHistoryView"
+            id="com.rochatec.athena.salesOrder.view.SaleOrderHistoryView"
             name="%view.saleOrder.history.name"
             restorable="true">
       </view>
    </extension>
    <extension
-         id="com.rochatec.metallurgical.app.views"
-         name="com.rochatec.metallurgical.app.views"
+         id="com.rochatec.athena.app.views"
+         name="com.rochatec.athena.app.views"
          point="org.eclipse.ui.commands">
       <command
-            id="com.rochatec.metallurgical.command.exit"
+            id="com.rochatec.athena.command.exit"
             name="Close App">
       </command>
       <category
-            id="com.rochatec.metallurgical.command.humanresources"
+            id="com.rochatec.athena.command.humanresources"
             name="Human Resources">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.job.search"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.job.search"
             name="Job Search">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.job.new"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.job.new"
             name="New Job">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.job.edit"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.job.edit"
             name="Edit Job">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.job.delete"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.job.delete"
             name="Delete Job">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.employee.search"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.employee.search"
             name="Employee Search">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.employee.new"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.employee.new"
             name="New Employee">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.employee.edit"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.employee.edit"
             name="Edit Employee">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.command.humanresources"
-            id="com.rochatec.metallurgical.command.employee.delete"
+            categoryId="com.rochatec.athena.command.humanresources"
+            id="com.rochatec.athena.command.employee.delete"
             name="Delete Employee">
       </command>
       <category
-            id="com.rochatec.metallurgical.category.crm"
+            id="com.rochatec.athena.category.crm"
             name="CRM">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.category.crm"
-            id="com.rochatec.metallurgical.command.customer.search"
+            categoryId="com.rochatec.athena.category.crm"
+            id="com.rochatec.athena.command.customer.search"
             name="Customer Search">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.crm"
-            id="com.rochatec.metallurgical.command.customer.new"
+            categoryId="com.rochatec.athena.category.crm"
+            id="com.rochatec.athena.command.customer.new"
             name="New Customer">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.crm"
-            id="com.rochatec.metallurgical.command.customer.edit"
+            categoryId="com.rochatec.athena.category.crm"
+            id="com.rochatec.athena.command.customer.edit"
             name="Edit Customer">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.crm"
-            id="com.rochatec.metallurgical.command.customer.delete"
+            categoryId="com.rochatec.athena.category.crm"
+            id="com.rochatec.athena.command.customer.delete"
             name="Delete Customer">
       </command>
       <category
-            id="com.rochatec.metallurgical.category.manufacture"
+            id="com.rochatec.athena.category.manufacture"
             name="Manufacture">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.category.search"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.category.search"
             name="Search Category">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.category.new"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.category.new"
             name="New Category">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.category.edit"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.category.edit"
             name="Edit Category">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.category.delete"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.category.delete"
             name="Delete Category">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.product.search"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.product.search"
             name="Search Product">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.product.new"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.product.new"
             name="New Product">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.product.edit"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.product.edit"
             name="Edit Product">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.product.delete"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.product.delete"
             name="Delete Product">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.productSet.search"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.productSet.search"
             name="Search Set">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.productSet.new"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.productSet.new"
             name="New Set">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.productSet.edit"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.productSet.edit"
             name="Edit Set">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.productSet.delete"
+            categoryId="com.rochatec.athena.category.manufacture"
+            id="com.rochatec.athena.command.productSet.delete"
             name="Delete Set">
       </command>
-      <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.machine.search"
-            name="Search Machine">
-      </command>
-      <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.machine.new"
-            name="New Machine">
-      </command>
-      <command
-            id="com.rochatec.metallurgical.command.machine.edit"
-            name="Edit Machine">
-      </command>
-      <command
-            categoryId="com.rochatec.metallurgical.category.manufacture"
-            id="com.rochatec.metallurgical.command.machine.delete"
-            name="Delete Machine">
-      </command>
       <category
-            id="com.rochatec.metallurgical.category.supply"
+            id="com.rochatec.athena.category.supply"
             name="Supply">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.supplier.search"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.supplier.search"
             name="Search Supplier">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.supplier.new"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.supplier.new"
             name="New Supplier">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.supplier.edit"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.supplier.edit"
             name="Edit Supplier">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.supplier.delete"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.supplier.delete"
             name="Delete Supplier">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.shipper.search"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.shipper.search"
             name="Search Shipper">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.shipper.new"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.shipper.new"
             name="New Shipper">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.shipper.edit"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.shipper.edit"
             name="Edit Shipper">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.supply"
-            id="com.rochatec.metallurgical.command.shipper.delete"
+            categoryId="com.rochatec.athena.category.supply"
+            id="com.rochatec.athena.command.shipper.delete"
             name="Delete Shipper">
       </command>
       <category
-            id="com.rochatec.metallurgical.category.security"
+            id="com.rochatec.athena.category.security"
             name="Security">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.user.search"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.user.search"
             name="Search User">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.user.new"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.user.new"
             name="New User">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.user.edit"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.user.edit"
             name="Edit User">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.user.delete"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.user.delete"
             name="Delete user">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.profile.search"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.profile.search"
             name="Search Profile">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.profile.new"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.profile.new"
             name="New Profile">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.profile.delete"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.profile.delete"
             name="Delete Profile">
       </command>
       <command
-            categoryId="com.rochatec.metallurgical.category.security"
-            id="com.rochatec.metallurgical.command.profile.edit"
+            categoryId="com.rochatec.athena.category.security"
+            id="com.rochatec.athena.command.profile.edit"
             name="Edit Profile">
       </command>
       <category
-            id="com.rochatec.metallurgical.category.sales"
+            id="com.rochatec.athena.category.sales"
             name="Sales">
       </category>
       <command
-            categoryId="com.rochatec.metallurgical.category.sales"
-            id="com.rochatec.metallurgical.command.saleOrder.search"
+            categoryId="com.rochatec.athena.category.sales"
+            id="com.rochatec.athena.command.saleOrder.search"
             name="Search Sale Order">
       </command>
    </extension>
    <extension
-         id="com.rochatec.metallurgical.app.handlers"
-         name="com.rochatec.metallurgical.app.handlers"
+         id="com.rochatec.athena.app.handlers"
+         name="com.rochatec.athena.app.handlers"
          point="org.eclipse.ui.handlers">
       <handler
             class="com.rochatec.athena.handler.ExitHandler"
-            commandId="com.rochatec.metallurgical.command.exit">
+            commandId="com.rochatec.athena.command.exit">
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.job.handler.JobSearchHandler"
-            commandId="com.rochatec.metallurgical.command.job.search">
+            commandId="com.rochatec.athena.command.job.search">
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.job.handler.JobNewHandler"
-            commandId="com.rochatec.metallurgical.command.job.new">
+            commandId="com.rochatec.athena.command.job.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.job">
+                  definitionId="com.rochatec.athena.app.crud.job">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.job.handler.JobDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.job.delete">
+            commandId="com.rochatec.athena.command.job.delete">
          <activeWhen>
             <and>
                <count
@@ -681,7 +631,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Job">
+                        value="com.rochatec.athena.model.Job">
                   </instanceof>
                </iterate>
             </and>
@@ -689,24 +639,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.job.handler.JobEditHandler"
-            commandId="com.rochatec.metallurgical.command.job.edit">
+            commandId="com.rochatec.athena.command.job.edit">
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.employee.handler.EmployeeSearchHandler"
-            commandId="com.rochatec.metallurgical.command.employee.search">
+            commandId="com.rochatec.athena.command.employee.search">
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.employee.handler.EmployeeNewHandler"
-            commandId="com.rochatec.metallurgical.command.employee.new">
+            commandId="com.rochatec.athena.command.employee.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.employee">
+                  definitionId="com.rochatec.athena.app.crud.employee">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.employee.handler.EmployeeDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.employee.delete">
+            commandId="com.rochatec.athena.command.employee.delete">
          <activeWhen>
             <and>
                <count
@@ -716,7 +666,7 @@
                      ifEmpty="true"
                      operator="and">
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Employee">
+                        value="com.rochatec.athena.model.Employee">
                   </instanceof>
                </iterate>
             </and>
@@ -724,24 +674,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.humanresources.employee.handler.EmployeeEditHandler"
-            commandId="com.rochatec.metallurgical.command.employee.edit">
+            commandId="com.rochatec.athena.command.employee.edit">
       </handler>
       <handler
             class="com.rochatec.athena.crm.customer.handler.CustomerSearchHandler"
-            commandId="com.rochatec.metallurgical.command.customer.search">
+            commandId="com.rochatec.athena.command.customer.search">
       </handler>
       <handler
             class="com.rochatec.athena.crm.customer.handler.CustomerNewHandler"
-            commandId="com.rochatec.metallurgical.command.customer.new">
+            commandId="com.rochatec.athena.command.customer.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.customer">
+                  definitionId="com.rochatec.athena.app.crud.customer">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.crm.customer.handler.CustomerDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.customer.delete">
+            commandId="com.rochatec.athena.command.customer.delete">
          <activeWhen>
             <and>
                <count
@@ -749,7 +699,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Customer">
+                        value="com.rochatec.athena.model.Customer">
                   </instanceof>
                </iterate>
             </and>
@@ -757,24 +707,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.crm.customer.handler.CustomerEditHandler"
-            commandId="com.rochatec.metallurgical.command.customer.edit">
+            commandId="com.rochatec.athena.command.customer.edit">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.category.handler.CategorySearchHandler"
-            commandId="com.rochatec.metallurgical.command.category.search">
+            commandId="com.rochatec.athena.command.category.search">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.category.handler.CategoryNewHandler"
-            commandId="com.rochatec.metallurgical.command.category.new">
+            commandId="com.rochatec.athena.command.category.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.category">
+                  definitionId="com.rochatec.athena.app.crud.category">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.category.handler.CategoryDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.category.delete">
+            commandId="com.rochatec.athena.command.category.delete">
          <activeWhen>
             <and>
                <count
@@ -782,7 +732,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Category">
+                        value="com.rochatec.athena.model.Category">
                   </instanceof>
                </iterate>
             </and>
@@ -790,24 +740,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.category.handler.CategoryEditHandler"
-            commandId="com.rochatec.metallurgical.command.category.edit">
+            commandId="com.rochatec.athena.command.category.edit">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.product.handler.ProductSearchHandler"
-            commandId="com.rochatec.metallurgical.command.product.search">
+            commandId="com.rochatec.athena.command.product.search">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.product.handler.ProductNewHandler"
-            commandId="com.rochatec.metallurgical.command.product.new">
+            commandId="com.rochatec.athena.command.product.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.product">
+                  definitionId="com.rochatec.athena.app.crud.product">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.product.handler.ProductDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.product.delete">
+            commandId="com.rochatec.athena.command.product.delete">
          <activeWhen>
             <and>
                <count
@@ -815,7 +765,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Product">
+                        value="com.rochatec.athena.model.Product">
                   </instanceof>
                </iterate>
             </and>
@@ -823,24 +773,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.product.handler.ProductEditHandler"
-            commandId="com.rochatec.metallurgical.command.product.edit">
+            commandId="com.rochatec.athena.command.product.edit">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.productSet.handler.ProductSetSearchHandler"
-            commandId="com.rochatec.metallurgical.command.productSet.search">
+            commandId="com.rochatec.athena.command.productSet.search">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.productSet.handler.ProductSetNewHandler"
-            commandId="com.rochatec.metallurgical.command.productSet.new">
+            commandId="com.rochatec.athena.command.productSet.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                  definitionId="com.rochatec.athena.app.crud.productSet">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.productSet.handler.ProductSetDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.productSet.delete">
+            commandId="com.rochatec.athena.command.productSet.delete">
          <activeWhen>
             <and>
                <count
@@ -848,7 +798,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.ProductSet">
+                        value="com.rochatec.athena.model.ProductSet">
                   </instanceof>
                </iterate>
             </and>
@@ -856,24 +806,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.productSet.handler.ProductSetEditHandler"
-            commandId="com.rochatec.metallurgical.command.productSet.edit">
+            commandId="com.rochatec.athena.command.productSet.edit">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.machine.handler.MachineSearchHandler"
-            commandId="com.rochatec.metallurgical.command.machine.search">
+            commandId="com.rochatec.athena.command.machine.search">
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.machine.handler.MachineNewhandler"
-            commandId="com.rochatec.metallurgical.command.machine.new">
+            commandId="com.rochatec.athena.command.machine.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.machine">
+                  definitionId="com.rochatec.athena.app.crud.machine">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.machine.handler.MachineDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.machine.delete">
+            commandId="com.rochatec.athena.command.machine.delete">
          <activeWhen>
             <and>
                <count
@@ -881,7 +831,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Machine">
+                        value="com.rochatec.athena.model.Machine">
                   </instanceof>
                </iterate>
             </and>
@@ -889,24 +839,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.manufacture.machine.handler.MachineEditHandler"
-            commandId="com.rochatec.metallurgical.command.machine.edit">
+            commandId="com.rochatec.athena.command.machine.edit">
       </handler>
       <handler
             class="com.rochatec.athena.supply.supplier.handler.SupplierSearchHandler"
-            commandId="com.rochatec.metallurgical.command.supplier.search">
+            commandId="com.rochatec.athena.command.supplier.search">
       </handler>
       <handler
             class="com.rochatec.athena.supply.supplier.handler.SupplierNewHandler"
-            commandId="com.rochatec.metallurgical.command.supplier.new">
+            commandId="com.rochatec.athena.command.supplier.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                  definitionId="com.rochatec.athena.app.crud.supplier">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.supply.supplier.handler.SupplierDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.supplier.delete">
+            commandId="com.rochatec.athena.command.supplier.delete">
          <activeWhen>
             <and>
                <count
@@ -914,7 +864,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Supplier">
+                        value="com.rochatec.athena.model.Supplier">
                   </instanceof>
                </iterate>
             </and>
@@ -922,24 +872,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.supply.supplier.handler.SupplierEditHandler"
-            commandId="com.rochatec.metallurgical.command.supplier.edit">
+            commandId="com.rochatec.athena.command.supplier.edit">
       </handler>
       <handler
             class="com.rochatec.athena.supply.shipper.handler.ShipperSearchHandler"
-            commandId="com.rochatec.metallurgical.command.shipper.search">
+            commandId="com.rochatec.athena.command.shipper.search">
       </handler>
       <handler
             class="com.rochatec.athena.supply.shipper.handler.ShipperNewHandler"
-            commandId="com.rochatec.metallurgical.command.shipper.new">
+            commandId="com.rochatec.athena.command.shipper.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                  definitionId="com.rochatec.athena.app.crud.shipper">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.supply.shipper.handler.ShipperDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.shipper.delete">
+            commandId="com.rochatec.athena.command.shipper.delete">
          <activeWhen>
             <and>
                <count
@@ -947,7 +897,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Shipper">
+                        value="com.rochatec.athena.model.Shipper">
                   </instanceof>
                </iterate>
             </and>
@@ -955,24 +905,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.supply.shipper.handler.ShipperEditHandler"
-            commandId="com.rochatec.metallurgical.command.shipper.edit">
+            commandId="com.rochatec.athena.command.shipper.edit">
       </handler>
       <handler
             class="com.rochatec.athena.security.user.handler.UserSearchHandler"
-            commandId="com.rochatec.metallurgical.command.user.search">
+            commandId="com.rochatec.athena.command.user.search">
       </handler>
       <handler
             class="com.rochatec.athena.security.user.handler.UserNewHandler"
-            commandId="com.rochatec.metallurgical.command.user.new">
+            commandId="com.rochatec.athena.command.user.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.user">
+                  definitionId="com.rochatec.athena.app.crud.user">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.security.user.handler.UserDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.user.delete">
+            commandId="com.rochatec.athena.command.user.delete">
          <activeWhen>
             <and>
                <count
@@ -980,7 +930,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.User">
+                        value="com.rochatec.athena.model.User">
                   </instanceof>
                </iterate>
             </and>
@@ -988,24 +938,24 @@
       </handler>
       <handler
             class="com.rochatec.athena.security.user.handler.UserEditHandler"
-            commandId="com.rochatec.metallurgical.command.user.edit">
+            commandId="com.rochatec.athena.command.user.edit">
       </handler>
       <handler
             class="com.rochatec.athena.security.profile.handler.ProfileSearchHandler"
-            commandId="com.rochatec.metallurgical.command.profile.search">
+            commandId="com.rochatec.athena.command.profile.search">
       </handler>
       <handler
             class="com.rochatec.athena.security.profile.handler.ProfileNewHandler"
-            commandId="com.rochatec.metallurgical.command.profile.new">
+            commandId="com.rochatec.athena.command.profile.new">
          <activeWhen>
             <reference
-                  definitionId="com.rochatec.metallurgical.app.crud.profile">
+                  definitionId="com.rochatec.athena.app.crud.profile">
             </reference>
          </activeWhen>
       </handler>
       <handler
             class="com.rochatec.athena.security.profile.handler.ProfileDeleteHandler"
-            commandId="com.rochatec.metallurgical.command.profile.delete">
+            commandId="com.rochatec.athena.command.profile.delete">
          <activeWhen>
             <and>
                <count
@@ -1013,7 +963,7 @@
                </count>
                <iterate>
                   <instanceof
-                        value="com.rochatec.metallurgical.model.Profile">
+                        value="com.rochatec.athena.model.Profile">
                   </instanceof>
                </iterate>
             </and>
@@ -1021,188 +971,188 @@
       </handler>
       <handler
             class="com.rochatec.athena.security.profile.handler.ProfileEditHandler"
-            commandId="com.rochatec.metallurgical.command.profile.edit">
+            commandId="com.rochatec.athena.command.profile.edit">
       </handler>
       <handler
             class="com.rochatec.athena.salesOrder.handler.SaleOrderSearchHandler"
-            commandId="com.rochatec.metallurgical.command.saleOrder.search">
+            commandId="com.rochatec.athena.command.saleOrder.search">
       </handler>
    </extension>
    <extension
-         id="com.rochatec.metallurgical.app.editors"
-         name="com.rochatec.metallurgical.app.editors"
+         id="com.rochatec.athena.app.editors"
+         name="com.rochatec.athena.app.editors"
          point="org.eclipse.ui.editors">
       <editor
             class="com.rochatec.athena.humanresources.job.editor.JobEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.humanresources.job.editor.JobEditor"
+            id="com.rochatec.athena.humanresources.job.editor.JobEditor"
             name="%editor.job.name">
       </editor>
       <editor
             class="com.rochatec.athena.humanresources.employee.editor.EmployeeEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.humanresources.employee.editor.EmployeeEditor"
+            id="com.rochatec.athena.humanresources.employee.editor.EmployeeEditor"
             name="%editor.employee.name">
       </editor>
       <editor
             class="com.rochatec.athena.crm.customer.editor.CustomerEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.crm.customer.editor.CustomerEditor"
+            id="com.rochatec.athena.crm.customer.editor.CustomerEditor"
             name="%editor.customer.name">
       </editor>
       <editor
             class="com.rochatec.athena.manufacture.category.editor.CategoryEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.manufacture.category.editor.CategoryEditor"
+            id="com.rochatec.athena.manufacture.category.editor.CategoryEditor"
             name="%editor.category.name">
       </editor>
       <editor
             class="com.rochatec.athena.manufacture.product.editor.ProductEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.manufacture.product.editor.ProductEditor"
+            id="com.rochatec.athena.manufacture.product.editor.ProductEditor"
             name="%editor.product.name">
       </editor>
       <editor
             class="com.rochatec.athena.manufacture.productSet.editor.ProductSetEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.manufacture.productSet.editor.ProductSetEditor"
+            id="com.rochatec.athena.manufacture.productSet.editor.ProductSetEditor"
             name="%editor.productSet.name">
       </editor>
       <editor
             class="com.rochatec.athena.manufacture.machine.editor.MachineEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.manufacture.machine.editor.MachineEditor"
+            id="com.rochatec.athena.manufacture.machine.editor.MachineEditor"
             name="%editor.machine.name">
       </editor>
       <editor
             class="com.rochatec.athena.supply.supplier.editor.SupplierEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.supply.supplier.editor.SupplierEditor"
+            id="com.rochatec.athena.supply.supplier.editor.SupplierEditor"
             name="%editor.supplier.name">
       </editor>
       <editor
             class="com.rochatec.athena.supply.shipper.editor.ShipperEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.supply.shipper.editor.ShipperEditor"
+            id="com.rochatec.athena.supply.shipper.editor.ShipperEditor"
             name="%editor.shipper.name">
       </editor>
       <editor
             class="com.rochatec.athena.security.user.editor.UserEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.security.user.editor.UserEditor"
+            id="com.rochatec.athena.security.user.editor.UserEditor"
             name="%editor.user.name">
       </editor>
       <editor
             class="com.rochatec.athena.security.profile.editor.ProfileEditor"
             default="false"
             icon="icons/infra/editor_16.png"
-            id="com.rochatec.metallurgical.security.profile.editor.ProfileEditor"
+            id="com.rochatec.athena.security.profile.editor.ProfileEditor"
             name="%editor.profile.name">
       </editor>
    </extension>
    <extension
-         id="com.rochatec.metallurgical.menus"
-         name="com.rochatec.metallurgical.menus"
+         id="com.rochatec.athena.menus"
+         name="com.rochatec.athena.menus"
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
-               id="com.rochatec.metallurgical.menu.register"
+               id="com.rochatec.athena.menu.register"
                label="%menu.register.label"
                mnemonic="%menu.register.mnemonic"
                tooltip="%menu.register.label">
             <command
-                  commandId="com.rochatec.metallurgical.command.job.search"
+                  commandId="com.rochatec.athena.command.job.search"
                   icon="icons/infra/job_16.png"
-                  id="com.rochatec.metallurgical.humanresources.menu.register.job"
+                  id="com.rochatec.athena.humanresources.menu.register.job"
                   label="%menu.register.job.label"
                   mnemonic="%menu.register.job.mnemonic"
                   style="push"
                   tooltip="%menu.register.job.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.employee.search"
+                  commandId="com.rochatec.athena.command.employee.search"
                   icon="icons/infra/employee_16.png"
-                  id="com.rochatec.metallurgical.menu.employee.search"
+                  id="com.rochatec.athena.menu.employee.search"
                   label="%menu.register.employee.label"
                   mnemonic="%menu.register.employee.mnemonic"
                   style="push">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.customer.search"
+                  commandId="com.rochatec.athena.command.customer.search"
                   icon="icons/infra/customer_16.png"
-                  id="com.rochatec.metallurgical.menu.customer.search"
+                  id="com.rochatec.athena.menu.customer.search"
                   label="%menu.register.customer.label"
                   style="push"
                   tooltip="%menu.register.customer.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.category.search"
+                  commandId="com.rochatec.athena.command.category.search"
                   icon="icons/infra/category_16.png"
-                  id="com.rochatec.metallurgical.menu.category.search"
+                  id="com.rochatec.athena.menu.category.search"
                   label="%menu.register.category.label"
                   style="push"
                   tooltip="%menu.register.category.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.product.search"
+                  commandId="com.rochatec.athena.command.product.search"
                   icon="icons/infra/product_16.png"
-                  id="com.rochatec.metallurgical.menu.product.search"
+                  id="com.rochatec.athena.menu.product.search"
                   label="%menu.register.product.label"
                   style="push"
                   tooltip="%menu.register.product.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.productSet.search"
+                  commandId="com.rochatec.athena.command.productSet.search"
                   icon="icons/infra/set_16.png"
-                  id="com.rochatec.metallurgical.menu.productSet.search"
+                  id="com.rochatec.athena.menu.productSet.search"
                   label="%menu.register.set.label"
                   style="push"
                   tooltip="%menu.register.set.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.machine.search"
+                  commandId="com.rochatec.athena.command.machine.search"
                   icon="icons/infra/machine_16.png"
-                  id="com.rochatec.metallurgical.menu.machine.search"
+                  id="com.rochatec.athena.menu.machine.search"
                   label="%menu.register.machine.label"
                   style="push"
                   tooltip="%menu.register.machine.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.supplier.search"
+                  commandId="com.rochatec.athena.command.supplier.search"
                   icon="icons/infra/supplier_16.png"
-                  id="com.rochatec.metallurgical.menu.supplier.search"
+                  id="com.rochatec.athena.menu.supplier.search"
                   label="%menu.register.supplier.label"
                   style="push"
                   tooltip="%menu.register.supplier.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.shipper.search"
+                  commandId="com.rochatec.athena.command.shipper.search"
                   icon="icons/infra/shipper_16.png"
-                  id="com.rochatec.metallurgical.menu.shipper.search"
+                  id="com.rochatec.athena.menu.shipper.search"
                   label="%menu.register.shipper.label"
                   style="push"
                   tooltip="%menu.register.shipper.label">
             </command>
             <separator
-                  name="com.rochatec.metallurgical.app.separator"
+                  name="com.rochatec.athena.app.separator"
                   visible="true">
             </separator>
             <command
-                  commandId="com.rochatec.metallurgical.command.exit"
+                  commandId="com.rochatec.athena.command.exit"
                   icon="icons/infra/exit_16.png"
-                  id="com.rochatec.metallurgical.menu.exit"
+                  id="com.rochatec.athena.menu.exit"
                   label="%menu.register.exit.label"
                   mnemonic="%menu.register.exit.mnemonic"
                   style="push"
@@ -1210,36 +1160,36 @@
             </command>
          </menu>
          <menu
-               id="com.rochatec.metallurgical.menu.sales"
+               id="com.rochatec.athena.menu.sales"
                label="%menu.sales.label"
                mnemonic="%menu.sales.label"
                tooltip="%menu.sales.label">
             <command
-                  commandId="com.rochatec.metallurgical.command.saleOrder.search"
+                  commandId="com.rochatec.athena.command.saleOrder.search"
                   icon="icons/infra/sale_order_16.png"
-                  id="com.rochatec.metallurgical.sales.menu.sales.saleOrder"
+                  id="com.rochatec.athena.sales.menu.sales.saleOrder"
                   label="%menu.sales.saleOrder.label"
                   style="push"
                   tooltip="%menu.sales.saleOrder.label">
             </command>
          </menu>
          <menu
-               id="com.rochatec.metallurgical.menu.security"
+               id="com.rochatec.athena.menu.security"
                label="%menu.security.label"
                mnemonic="%menu.security.label"
                tooltip="%menu.security.label">
             <command
-                  commandId="com.rochatec.metallurgical.command.user.search"
+                  commandId="com.rochatec.athena.command.user.search"
                   icon="icons/infra/user_16.png"
-                  id="com.rochatec.metallurgical.security.menu.security.user"
+                  id="com.rochatec.athena.security.menu.security.user"
                   label="%menu.security.user.label"
                   style="push"
                   tooltip="%menu.security.user.label">
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.profile.search"
+                  commandId="com.rochatec.athena.command.profile.search"
                   icon="icons/infra/profile_16.png"
-                  id="com.rochatec.metallurgical.security.menu.security.profile"
+                  id="com.rochatec.athena.security.menu.security.profile"
                   label="%menu.security.profile.label"
                   style="push"
                   tooltip="%menu.security.profile.label">
@@ -1250,12 +1200,12 @@
             allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.job"
+               id="com.rochatec.athena.toolbar.crud.job"
                label="Job">
             <command
-                  commandId="com.rochatec.metallurgical.command.job.new"
+                  commandId="com.rochatec.athena.command.job.new"
                   icon="icons/infra/add_16.png"
-                  id="com.rochatec.metallurgical.tooltip.new"
+                  id="com.rochatec.athena.tooltip.new"
                   label="%toolbar.job.new.label"
                   mnemonic="%toolbar.job.new.mnemonic"
                   style="push"
@@ -1263,7 +1213,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.job">
+                        definitionId="com.rochatec.athena.app.crud.job">
                   </reference>
                </visibleWhen>
             </command>
@@ -1277,14 +1227,14 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.job">
+                        definitionId="com.rochatec.athena.app.crud.job">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.job.delete"
+                  commandId="com.rochatec.athena.command.job.delete"
                   icon="icons/infra/delete_16.png"
-                  id="com.rochatec.metallurgical.tooltip.delete"
+                  id="com.rochatec.athena.tooltip.delete"
                   label="%toolbar.job.delete.label"
                   mnemonic="%toolbar.job.delete.mnemonic"
                   style="push"
@@ -1292,16 +1242,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.job">
+                        definitionId="com.rochatec.athena.app.crud.job">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.employee"
+               id="com.rochatec.athena.toolbar.crud.employee"
                label="Employee">
             <command
-                  commandId="com.rochatec.metallurgical.command.employee.new"
+                  commandId="com.rochatec.athena.command.employee.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.employee.new.label"
                   mnemonic="%toolbar.employee.new.mnemonic"
@@ -1310,7 +1260,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.employee">
+                        definitionId="com.rochatec.athena.app.crud.employee">
                   </reference>
                </visibleWhen>
             </command>
@@ -1323,12 +1273,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.employee">
+                        definitionId="com.rochatec.athena.app.crud.employee">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.employee.delete"
+                  commandId="com.rochatec.athena.command.employee.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.employee.delete.label"
                   mnemonic="toolbar.employee.delete.mnemonic"
@@ -1336,16 +1286,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.employee">
+                        definitionId="com.rochatec.athena.app.crud.employee">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.customer"
+               id="com.rochatec.athena.toolbar.crud.customer"
                label="Customer">
             <command
-                  commandId="com.rochatec.metallurgical.command.customer.new"
+                  commandId="com.rochatec.athena.command.customer.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.customer.new.label"
                   mnemonic="%toolbar.customer.new.mnemonic"
@@ -1354,7 +1304,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.customer">
+                        definitionId="com.rochatec.athena.app.crud.customer">
                   </reference>
                </visibleWhen>
             </command>
@@ -1368,12 +1318,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.customer">
+                        definitionId="com.rochatec.athena.app.crud.customer">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.customer.delete"
+                  commandId="com.rochatec.athena.command.customer.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.customer.delete.label"
                   mnemonic="toolbar.customer.delete.mnemonic"
@@ -1382,16 +1332,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.customer">
+                        definitionId="com.rochatec.athena.app.crud.customer">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.category"
+               id="com.rochatec.athena.toolbar.crud.category"
                label="Category">
             <command
-                  commandId="com.rochatec.metallurgical.command.customer.new"
+                  commandId="com.rochatec.athena.command.customer.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.category.new.label"
                   mnemonic="%toolbar.customer.new.mnemonic"
@@ -1400,7 +1350,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.category">
+                        definitionId="com.rochatec.athena.app.crud.category">
                   </reference>
                </visibleWhen>
             </command>
@@ -1414,12 +1364,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.category">
+                        definitionId="com.rochatec.athena.app.crud.category">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.customer.delete"
+                  commandId="com.rochatec.athena.command.customer.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.category.delete.label"
                   mnemonic="toolbar.customer.delete.mnemonic"
@@ -1428,16 +1378,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.category">
+                        definitionId="com.rochatec.athena.app.crud.category">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.product"
+               id="com.rochatec.athena.toolbar.crud.product"
                label="Product">
             <command
-                  commandId="com.rochatec.metallurgical.command.product.new"
+                  commandId="com.rochatec.athena.command.product.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.product.new.label"
                   style="push"
@@ -1445,7 +1395,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.product">
+                        definitionId="com.rochatec.athena.app.crud.product">
                   </reference>
                </visibleWhen>
             </command>
@@ -1458,12 +1408,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.product">
+                        definitionId="com.rochatec.athena.app.crud.product">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.product.delete"
+                  commandId="com.rochatec.athena.command.product.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.product.delete.label"
                   style="push"
@@ -1471,16 +1421,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.product">
+                        definitionId="com.rochatec.athena.app.crud.product">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.productSet"
+               id="com.rochatec.athena.toolbar.crud.productSet"
                label="ProductSet">
             <command
-                  commandId="com.rochatec.metallurgical.command.productSet.new"
+                  commandId="com.rochatec.athena.command.productSet.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.productSet.new.label"
                   style="push"
@@ -1488,7 +1438,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                        definitionId="com.rochatec.athena.app.crud.productSet">
                   </reference>
                </visibleWhen>
             </command>
@@ -1501,12 +1451,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                        definitionId="com.rochatec.athena.app.crud.productSet">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.productSet.delete"
+                  commandId="com.rochatec.athena.command.productSet.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.productSet.delete.label"
                   style="push"
@@ -1514,59 +1464,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                        definitionId="com.rochatec.athena.app.crud.productSet">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.machine"
-               label="Machine">
-            <command
-                  commandId="com.rochatec.metallurgical.command.machine.new"
-                  icon="icons/infra/add_16.png"
-                  label="%toolbar.machine.new.label"
-                  style="push"
-                  tooltip="%toolbar.machine.new.label">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.machine">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.eclipse.ui.file.save"
-                  icon="icons/infra/save_edit.png"
-                  label="%toolbar.machine.save.label"
-                  style="push"
-                  tooltip="%toolbar.machine.save.label">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.machine">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="com.rochatec.metallurgical.command.machine.delete"
-                  icon="icons/infra/delete_16.png"
-                  label="%toolbar.machine.delete.label"
-                  style="push"
-                  tooltip="%toolbar.machine.delete.label">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.machine">
-                  </reference>
-               </visibleWhen>
-            </command>
-         </toolbar>
-         <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.supplier"
+               id="com.rochatec.athena.toolbar.crud.supplier"
                label="Supplier">
             <command
-                  commandId="com.rochatec.metallurgical.command.supplier.new"
+                  commandId="com.rochatec.athena.command.supplier.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.supplier.new.label"
                   style="push"
@@ -1574,7 +1481,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                        definitionId="com.rochatec.athena.app.crud.supplier">
                   </reference>
                </visibleWhen>
             </command>
@@ -1587,12 +1494,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                        definitionId="com.rochatec.athena.app.crud.supplier">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.supplier.delete"
+                  commandId="com.rochatec.athena.command.supplier.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.supplier.delete.label"
                   style="push"
@@ -1600,16 +1507,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                        definitionId="com.rochatec.athena.app.crud.supplier">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.supplier"
+               id="com.rochatec.athena.toolbar.crud.supplier"
                label="Shipper">
             <command
-                  commandId="com.rochatec.metallurgical.command.shipper.new"
+                  commandId="com.rochatec.athena.command.shipper.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.shipper.new.label"
                   style="push"
@@ -1617,7 +1524,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                        definitionId="com.rochatec.athena.app.crud.shipper">
                   </reference>
                </visibleWhen>
             </command>
@@ -1630,12 +1537,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                        definitionId="com.rochatec.athena.app.crud.shipper">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.shipper.delete"
+                  commandId="com.rochatec.athena.command.shipper.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.shipper.delete.label"
                   style="push"
@@ -1643,16 +1550,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                        definitionId="com.rochatec.athena.app.crud.shipper">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.user"
+               id="com.rochatec.athena.toolbar.crud.user"
                label="User">
             <command
-                  commandId="com.rochatec.metallurgical.command.user.new"
+                  commandId="com.rochatec.athena.command.user.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.user.new.label"
                   style="push"
@@ -1660,7 +1567,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.user">
+                        definitionId="com.rochatec.athena.app.crud.user">
                   </reference>
                </visibleWhen>
             </command>
@@ -1673,12 +1580,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.user">
+                        definitionId="com.rochatec.athena.app.crud.user">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.user.delete"
+                  commandId="com.rochatec.athena.command.user.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.user.delete.label"
                   style="push"
@@ -1686,16 +1593,16 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.user">
+                        definitionId="com.rochatec.athena.app.crud.user">
                   </reference>
                </visibleWhen>
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.metallurgical.toolbar.crud.user"
+               id="com.rochatec.athena.toolbar.crud.user"
                label="Profile">
             <command
-                  commandId="com.rochatec.metallurgical.command.profile.new"
+                  commandId="com.rochatec.athena.command.profile.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.profile.new.label"
                   style="push"
@@ -1703,7 +1610,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.profile">
+                        definitionId="com.rochatec.athena.app.crud.profile">
                   </reference>
                </visibleWhen>
             </command>
@@ -1716,12 +1623,12 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.profile">
+                        definitionId="com.rochatec.athena.app.crud.profile">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.metallurgical.command.profile.delete"
+                  commandId="com.rochatec.athena.command.profile.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.profile.delete.label"
                   style="push"
@@ -1729,7 +1636,7 @@
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="com.rochatec.metallurgical.app.crud.profile">
+                        definitionId="com.rochatec.athena.app.crud.profile">
                   </reference>
                </visibleWhen>
             </command>
@@ -1737,11 +1644,11 @@
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.humanresources.job.view.JobTableView">
+            locationURI="toolbar:com.rochatec.athena.humanresources.job.view.JobTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.job.new"
+               commandId="com.rochatec.athena.command.job.new"
                icon="icons/infra/add_16.png"
-               id="com.rochatec.metallurgical.tooltip.job.input.new"
+               id="com.rochatec.athena.tooltip.job.input.new"
                label="%toolbar.job.new.label"
                mnemonic="%toolbar.job.new.mnemonic"
                style="push"
@@ -1749,7 +1656,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.job">
+                     definitionId="com.rochatec.athena.app.crud.job">
                </reference>
             </visibleWhen>
          </command>
@@ -1763,14 +1670,14 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.job">
+                     definitionId="com.rochatec.athena.app.crud.job">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.job.delete"
+               commandId="com.rochatec.athena.command.job.delete"
                icon="icons/infra/delete_16.png"
-               id="com.rochatec.metallurgical.tooltip.job.input.delete"
+               id="com.rochatec.athena.tooltip.job.input.delete"
                label="%toolbar.job.delete.label"
                mnemonic="%toolbar.job.delete.mnemonic"
                style="push"
@@ -1778,16 +1685,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.job">
+                     definitionId="com.rochatec.athena.app.crud.job">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.humanresources.employee.view.EmployeeTableView">
+            locationURI="toolbar:com.rochatec.athena.humanresources.employee.view.EmployeeTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.employee.new"
+               commandId="com.rochatec.athena.command.employee.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.employee.new.label"
                mnemonic="%toolbar.employee.new.mnemonic"
@@ -1796,7 +1703,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.employee">
+                     definitionId="com.rochatec.athena.app.crud.employee">
                </reference>
             </visibleWhen>
          </command>
@@ -1809,12 +1716,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.employee">
+                     definitionId="com.rochatec.athena.app.crud.employee">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.employee.delete"
+               commandId="com.rochatec.athena.command.employee.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.employee.delete.label"
                mnemonic="toolbar.employee.delete.mnemonic"
@@ -1822,16 +1729,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.employee">
+                     definitionId="com.rochatec.athena.app.crud.employee">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.crm.customer.view.CustomerTableView">
+            locationURI="toolbar:com.rochatec.athena.crm.customer.view.CustomerTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.customer.new"
+               commandId="com.rochatec.athena.command.customer.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.customer.new.label"
                mnemonic="%toolbar.customer.new.mnemonic"
@@ -1840,7 +1747,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.customer">
+                     definitionId="com.rochatec.athena.app.crud.customer">
                </reference>
             </visibleWhen>
          </command>
@@ -1854,12 +1761,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.customer">
+                     definitionId="com.rochatec.athena.app.crud.customer">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.customer.delete"
+               commandId="com.rochatec.athena.command.customer.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.customer.delete.label"
                mnemonic="toolbar.customer.delete.mnemonic"
@@ -1868,16 +1775,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.customer">
+                     definitionId="com.rochatec.athena.app.crud.customer">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="true"
-            locationURI="toolbar:com.rochatec.metallurgical.manufacture.category.view.CategoryTableView">
+            locationURI="toolbar:com.rochatec.athena.manufacture.category.view.CategoryTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.customer.new"
+               commandId="com.rochatec.athena.command.customer.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.category.new.label"
                mnemonic="%toolbar.customer.new.mnemonic"
@@ -1886,7 +1793,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.category">
+                     definitionId="com.rochatec.athena.app.crud.category">
                </reference>
             </visibleWhen>
          </command>
@@ -1900,12 +1807,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.category">
+                     definitionId="com.rochatec.athena.app.crud.category">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.customer.delete"
+               commandId="com.rochatec.athena.command.customer.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.category.delete.label"
                mnemonic="toolbar.customer.delete.mnemonic"
@@ -1914,16 +1821,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.category">
+                     definitionId="com.rochatec.athena.app.crud.category">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="true"
-            locationURI="toolbar:com.rochatec.metallurgical.manufacture.product.view.ProductTableView">
+            locationURI="toolbar:com.rochatec.athena.manufacture.product.view.ProductTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.product.new"
+               commandId="com.rochatec.athena.command.product.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.product.new.label"
                style="push"
@@ -1931,7 +1838,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.product">
+                     definitionId="com.rochatec.athena.app.crud.product">
                </reference>
             </visibleWhen>
          </command>
@@ -1944,12 +1851,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.product">
+                     definitionId="com.rochatec.athena.app.crud.product">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.product.delete"
+               commandId="com.rochatec.athena.command.product.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.product.delete.label"
                style="push"
@@ -1957,16 +1864,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.product">
+                     definitionId="com.rochatec.athena.app.crud.product">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.manufacture.productSet.view.ProductSetTableView">
+            locationURI="toolbar:com.rochatec.athena.manufacture.productSet.view.ProductSetTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.productSet.new"
+               commandId="com.rochatec.athena.command.productSet.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.productSet.new.label"
                style="push"
@@ -1974,7 +1881,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                     definitionId="com.rochatec.athena.app.crud.productSet">
                </reference>
             </visibleWhen>
          </command>
@@ -1987,12 +1894,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                     definitionId="com.rochatec.athena.app.crud.productSet">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.productSet.delete"
+               commandId="com.rochatec.athena.command.productSet.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.productSet.delete.label"
                style="push"
@@ -2000,59 +1907,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.productSet">
+                     definitionId="com.rochatec.athena.app.crud.productSet">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.manufacture.machine.view.MachineTableView">
+            locationURI="toolbar:com.rochatec.athena.supply.supplier.view.SupplierTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.machine.new"
-               icon="icons/infra/add_16.png"
-               label="%toolbar.machine.new.label"
-               style="push"
-               tooltip="%toolbar.machine.new.label">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.machine">
-               </reference>
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.eclipse.ui.file.save"
-               icon="icons/infra/save_edit.png"
-               label="%toolbar.machine.save.label"
-               style="push"
-               tooltip="%toolbar.machine.save.label">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.machine">
-               </reference>
-            </visibleWhen>
-         </command>
-         <command
-               commandId="com.rochatec.metallurgical.command.machine.delete"
-               icon="icons/infra/delete_16.png"
-               label="%toolbar.machine.delete.label"
-               style="push"
-               tooltip="%toolbar.machine.delete.label">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.machine">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.supply.supplier.view.SupplierTableView">
-         <command
-               commandId="com.rochatec.metallurgical.command.supplier.new"
+               commandId="com.rochatec.athena.command.supplier.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.supplier.new.label"
                style="push"
@@ -2060,7 +1924,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                     definitionId="com.rochatec.athena.app.crud.supplier">
                </reference>
             </visibleWhen>
          </command>
@@ -2073,12 +1937,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                     definitionId="com.rochatec.athena.app.crud.supplier">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.supplier.delete"
+               commandId="com.rochatec.athena.command.supplier.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.supplier.delete.label"
                style="push"
@@ -2086,16 +1950,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.supplier">
+                     definitionId="com.rochatec.athena.app.crud.supplier">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.supply.shipper.view.ShipperTableView">
+            locationURI="toolbar:com.rochatec.athena.supply.shipper.view.ShipperTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.shipper.new"
+               commandId="com.rochatec.athena.command.shipper.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.shipper.new.label"
                style="push"
@@ -2103,7 +1967,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                     definitionId="com.rochatec.athena.app.crud.shipper">
                </reference>
             </visibleWhen>
          </command>
@@ -2116,12 +1980,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                     definitionId="com.rochatec.athena.app.crud.shipper">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.shipper.delete"
+               commandId="com.rochatec.athena.command.shipper.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.shipper.delete.label"
                style="push"
@@ -2129,16 +1993,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.shipper">
+                     definitionId="com.rochatec.athena.app.crud.shipper">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.security.user.view.UserTableView">
+            locationURI="toolbar:com.rochatec.athena.security.user.view.UserTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.user.new"
+               commandId="com.rochatec.athena.command.user.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.user.new.label"
                style="push"
@@ -2146,7 +2010,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.user">
+                     definitionId="com.rochatec.athena.app.crud.user">
                </reference>
             </visibleWhen>
          </command>
@@ -2159,12 +2023,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.user">
+                     definitionId="com.rochatec.athena.app.crud.user">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.user.delete"
+               commandId="com.rochatec.athena.command.user.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.user.delete.label"
                style="push"
@@ -2172,16 +2036,16 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.user">
+                     definitionId="com.rochatec.athena.app.crud.user">
                </reference>
             </visibleWhen>
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:com.rochatec.metallurgical.security.profile.view.ProfileTableView">
+            locationURI="toolbar:com.rochatec.athena.security.profile.view.ProfileTableView">
          <command
-               commandId="com.rochatec.metallurgical.command.profile.new"
+               commandId="com.rochatec.athena.command.profile.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.profile.new.label"
                style="push"
@@ -2189,7 +2053,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.profile">
+                     definitionId="com.rochatec.athena.app.crud.profile">
                </reference>
             </visibleWhen>
          </command>
@@ -2202,12 +2066,12 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.profile">
+                     definitionId="com.rochatec.athena.app.crud.profile">
                </reference>
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.metallurgical.command.profile.delete"
+               commandId="com.rochatec.athena.command.profile.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.profile.delete.label"
                style="push"
@@ -2215,7 +2079,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.rochatec.metallurgical.app.crud.profile">
+                     definitionId="com.rochatec.athena.app.crud.profile">
                </reference>
             </visibleWhen>
          </command>
@@ -2226,7 +2090,7 @@
       <sourceProvider
             provider="com.rochatec.athena.provider.CrudSourceProvider">
          <variable
-               name="com.rochatec.metallurgical.app.crudInstance"
+               name="com.rochatec.athena.app.crudInstance"
                priorityLevel="workbench">
          </variable>
       </sourceProvider>
@@ -2234,104 +2098,116 @@
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="com.rochatec.metallurgical.app.crud.job">
+            id="com.rochatec.athena.app.crud.job">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="job">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.employee">
+            id="com.rochatec.athena.app.crud.employee">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="employee">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.category">
+            id="com.rochatec.athena.app.crud.category">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="category">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.customer">
+            id="com.rochatec.athena.app.crud.customer">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="customer">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.product">
+            id="com.rochatec.athena.app.crud.product">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="product">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.productSet">
+            id="com.rochatec.athena.app.crud.productSet">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="productSet">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.machine">
+            id="com.rochatec.athena.app.crud.machine">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="machine">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.supplier">
+            id="com.rochatec.athena.app.crud.supplier">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="supplier">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.shipper">
+            id="com.rochatec.athena.app.crud.shipper">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="shipper">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.user">
+            id="com.rochatec.athena.app.crud.user">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="user">
             </equals>
          </with>
       </definition>
       <definition
-            id="com.rochatec.metallurgical.app.crud.profile">
+            id="com.rochatec.athena.app.crud.profile">
          <with
-               variable="com.rochatec.metallurgical.app.crudInstance">
+               variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="profile">
             </equals>
          </with>
       </definition>
+   </extension>
+   <extension
+         id="Athena"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.rochatec.athena.app.application"
+            name="%product.name">
+         <property
+               name="appName"
+               value="Athena">
+         </property>
+      </product>
    </extension>
 
 </plugin>

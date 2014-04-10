@@ -9,7 +9,7 @@ import com.rochatec.athena.salesOrder.view.SaleOrderHistoryView;
 
 public class SaleOrderPerspective implements IPerspectiveFactory{
 	
-	public static final String ID = "com.rochatec.metallurgical.salesOrder.perspective.SaleOrderPerspective";
+	public static final String ID = "com.rochatec.athena.salesOrder.perspective.SaleOrderPerspective";
 	private static final String CUSTOMER_PART = "CUSTOMER_PART";
 	private static final String SALE_ORDER_PART = "SALE_ORDER_PART";			
 
