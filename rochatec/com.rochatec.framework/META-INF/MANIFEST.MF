@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Framework
+Bundle-SymbolicName: com.rochatec.framework
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: ROCHATEC
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: com.rochatec.framework.exception,
+ com.rochatec.framework.formater,
+ com.rochatec.framework.formater.impl,
+ com.rochatec.framework.model,
+ com.rochatec.framework.util
+Require-Bundle: org.eclipse.swt;bundle-version="3.102.1"
