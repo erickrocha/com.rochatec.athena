@@ -52,7 +52,7 @@ public class Address implements Serializable {
 	@Transient
 	private String addressNumber;
 	
-	@Column(name="COMPLEMENT")
+	@Column(name="COMPLEMENT",length=200)
 	private String complement;
 
 	//bi-directional many-to-one association to Province

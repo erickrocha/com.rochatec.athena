@@ -48,7 +48,7 @@ public class EmployeeLabelProvider extends LabelProvider implements
 			case 10:
 				return employee.getAddress().getProvince().getAcronym();
 			case 11:
-				return StatusTradutor.getLabel(employee.getActive());
+				return StatusTradutor.getLabel(employee.getStatus());
 			}			
 		} catch (BadFormatException e) {
 			Activator.getDefault().addConsoleError(e);

@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PROFILE",schema="METALLURGICAL")
+@Table(name = "PROFILE")
 @NamedQueries({
 		@NamedQuery(name = "Profile.findByName", query = "SELECT p FROM Profile p WHERE p.label like :name ORDER BY p.name"),
 		@NamedQuery(name = "Profile.findAll", query = "SELECT p FROM Profile p ORDER BY p.name") })
@@ -33,10 +33,10 @@ public class Profile implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SEQ_PROFILE")
 	protected Long id;
 
-	@Column(name = "NAME", updatable = true, insertable = true)
+	@Column(name = "NAME", updatable = true, insertable = true,length=30)
 	protected String name;
 	
-	@Column(name="LABEL",updatable =true,insertable =true)
+	@Column(name="LABEL",updatable =true,insertable =true,length=50)
 	protected String label;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

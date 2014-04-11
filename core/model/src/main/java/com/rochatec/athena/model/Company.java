@@ -60,19 +60,19 @@ public class Company implements Serializable {
 	@Column(name = "ADDRESS_NUMBER", length = 10)
 	private String addressNumber;
 
-	@Column(length = 10)
+	@Column(length = 20)
 	private String zipcode;
 
-	@Column(length = 10)
+	@Column(length = 20)
 	private String phone;
 
-	@Column(length = 10)
+	@Column(length = 20)
 	private String fax;
 
-	@Column(length = 70)
+	@Column(name="WEB_SITE",length = 70)
 	private String website;
 
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
 	private Status status;
 

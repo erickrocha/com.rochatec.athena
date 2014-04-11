@@ -43,7 +43,7 @@ public class ProductLabelProvider extends LabelProvider implements ITableLabelPr
 		case 8:
 			return Formatter.getCurrency().mask(product.getIpi() != null ? product.getIpi() : BigDecimal.ZERO);
 		case 9:
-			return StatusTradutor.getLabel(product.getActive());
+			return StatusTradutor.getLabel(product.getStatus());
 		}
 		}catch (BadFormatException ex){
 			Activator.getDefault().addConsoleError(ex);

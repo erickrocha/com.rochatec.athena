@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="PRODUCT", schema = "METALLURGICAL")
+@Table(name="PRODUCT")
 @DiscriminatorColumn(name = "PRODUCT_TYPE", discriminatorType = DiscriminatorType.STRING)
 public abstract class AbstractProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,8 +37,9 @@ public abstract class AbstractProduct implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Enumerated(EnumType.ORDINAL)
-	private Status active;
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS")
+	private Status status;
 
 	@Column(precision=10, scale=2)
 	private BigDecimal costprice = BigDecimal.ZERO;
@@ -137,15 +138,15 @@ public abstract class AbstractProduct implements Serializable {
 	}
 
 	public boolean isActive() {
-		return this.active.equals(Status.ACTIVE) ? true : false;
+		return this.status.equals(Status.ACTIVE) ? true : false;
 	}
 
 	public void setActive(boolean active) {
-		this.active = active ? Status.ACTIVE : Status.INACTIVE;
+		this.status = active ? Status.ACTIVE : Status.INACTIVE;
 	}
 
-	public void setActive(Status active) {
-		this.active = active;
+	public void setActive(Status status) {
+		this.status = status;
 	}
 
 	public BigDecimal getCostprice() {
@@ -373,11 +374,7 @@ public abstract class AbstractProduct implements Serializable {
 	}
 	
 	public Status getStatus() {
-		return active;
-	}	
-
-	public Status getActive() {
-		return active;
+		return status;
 	}	
 	
 	@Override

@@ -38,8 +38,9 @@ public class Employee implements Serializable {
 	@Column(unique = true, nullable = false)
 	private Long id;
 
-	@Enumerated(EnumType.ORDINAL)
-	private Status active;
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS")
+	private Status status;
 
 	@Column(name = "ADDRESS_NUMBER", length = 10)
 	private String addressNumber;
@@ -50,7 +51,7 @@ public class Employee implements Serializable {
 	@Column(length = 70)
 	private String email;
 
-	@Column(name = "HIREDATE")
+	@Column(name = "HIRE_DATE")
 	@Temporal(TemporalType.DATE)
 	private Calendar hiredate;
 
@@ -93,12 +94,12 @@ public class Employee implements Serializable {
 		this.id = id;
 	}
 
-	public Status getActive() {
-		return this.active;
+	public Status getStatus() {
+		return this.status;
 	}
 
-	public void setActive(Status active) {
-		this.active = active;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public String getAddressNumber() {
@@ -210,11 +211,11 @@ public class Employee implements Serializable {
 	}
 	
 	public void setActive(boolean active){
-		this.active = active ? Status.ACTIVE : Status.INACTIVE;
+		this.status = active ? Status.ACTIVE : Status.INACTIVE;
 	}
 	
 	public boolean isActive(){
-		return this.active.equals(Status.ACTIVE) ? true : false;
+		return this.status.equals(Status.ACTIVE) ? true : false;
 	}
 
 	@Override

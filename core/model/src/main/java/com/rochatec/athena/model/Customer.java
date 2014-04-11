@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.rochatec.metallurgical.util.CalendarUtil;
+
 @Entity
 @Table(name = "CUSTOMER")
 @NamedQueries({
@@ -45,6 +47,9 @@ public class Customer implements Serializable {
 	@Column(name="REGISTER_NUMBER",length=20)
 	private String registerNumber;
 	
+	@Column(name="CITY_REGISTER",length=20)
+	private String cityRegister;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ADDRESS", nullable=false)
 	private Address address;
@@ -67,6 +72,34 @@ public class Customer implements Serializable {
 	
 	@Column(name="CELL_PHONE",length=20)
 	private String cellPhone;
+	
+	public Customer() {
+		
+	}
+	
+	public Customer(String socialSecurity, String name,
+			String registerNumber, String cityRegister, Address address,
+			String addressNumber, String zipcode, Calendar dateRegister,
+			String email, String homePhone, String cellPhone) {
+		super();		
+		this.socialSecurity = socialSecurity;
+		this.name = name;
+		this.registerNumber = registerNumber;
+		this.cityRegister = cityRegister;
+		this.address = address;
+		this.addressNumber = addressNumber;
+		this.zipcode = zipcode;
+		this.dateRegister = dateRegister;
+		this.email = email;
+		this.homePhone = homePhone;
+		this.cellPhone = cellPhone;
+	}
+
+	public Customer(String socialSecurity, String name,
+			String registerNumber, String cityRegister, Address address,
+			String addressNumber, String zipcode,String email, String homePhone, String cellPhone) {
+		this(socialSecurity,name,registerNumber,cityRegister,address,addressNumber,zipcode,CalendarUtil.getToday(),email,homePhone,cellPhone);		
+	}
 
 	public Long getId() {
 		return id;
@@ -158,6 +191,14 @@ public class Customer implements Serializable {
 
 	public void setCellPhone(String cellPhone) {
 		this.cellPhone = cellPhone.trim();
+	}
+
+	public String getCityRegister() {
+		return cityRegister;
+	}
+
+	public void setCityRegister(String cityRegister) {
+		this.cityRegister = cityRegister;
 	}
 
 	@Override

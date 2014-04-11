@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name = "SHIPPERS")
+@Table(name = "SHIPPER")
 @NamedQueries({
 		@NamedQuery(name = "Shipper.findBySocialSecurity", query = "SELECT s FROm Shipper s WHERE s.socialSecurity = :socialSecurity") })
 public class Shipper implements Serializable {
@@ -52,7 +52,7 @@ public class Shipper implements Serializable {
 	@Column(name = "COMERCIAL_NAME", length = 60)
 	private String comercialName;
 
-	@Column(length = 10)
+	@Column(length = 20,name="PHONE")
 	private String phone;
 
 	@Column(name = "REGISTER_NUMBER", length = 20)
@@ -61,21 +61,21 @@ public class Shipper implements Serializable {
 	@Column(name = "SOCIAL_SECURITY", nullable = false, length = 20)
 	private String socialSecurity;
 
-	@Column(length = 10)
+	@Column(length = 10,name="ZIPCODE")
 	private String zipcode;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATE_REGISTER")
 	private Calendar dateRegister;
 
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
 	private Status status;
 
 	@Column(name = "EMAIL", length = 70)
 	private String email;
 
-	@Column(name = "FAX")
+	@Column(name = "FAX",length=20)
 	private String fax;
 
 	// bi-directional many-to-one association to Address

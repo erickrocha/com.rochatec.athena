@@ -40,10 +40,10 @@ public class User implements Serializable {
 	@Column(name="ID",updatable=false,unique=true)
 	protected Long id;
 
-	@Column(name="USERNAME",insertable=true,updatable=true,nullable=false,unique=true)
+	@Column(name="USERNAME",insertable=true,updatable=true,nullable=false,unique=true,length=30)
 	protected String username;
 
-	@Column(name="PASSWORD",insertable=true,updatable=true,nullable=false,unique=false)
+	@Column(name="PASSWORD",insertable=true,updatable=true,nullable=false,unique=false,length=50)
 	protected String password;
 
 	@OneToOne

@@ -21,7 +21,7 @@ public class Province implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=2)
+	@Column(unique=true, nullable=false, length=10)
 	private String acronym;
 
 	@Column(nullable=false, length=40)

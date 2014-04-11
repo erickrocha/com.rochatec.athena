@@ -52,10 +52,10 @@ public class Supplier implements Serializable {
 	@Column(name="DATE_REGISTER", nullable=false)
 	private Calendar dateRegister;
 
-	@Column(length=10)
+	@Column(length=10,name="FAX")
 	private String fax;
 
-	@Column(length=10)
+	@Column(length=10,name="PHONE")
 	private String phone;
 
 	@Column(name="REGISTER_NUMBER", length=20)
@@ -67,13 +67,13 @@ public class Supplier implements Serializable {
 	@Column(name="TRADE_NAME", nullable=false, length=60)
 	private String tradeName;
 
-	@Column(length=70)
+	@Column(name="WEB_SITE",length=70)
 	private String website;
 
 	@Column(length=10)
 	private String zipcode;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING )
 	@Column(name="STATUS")
 	private Status status;
 

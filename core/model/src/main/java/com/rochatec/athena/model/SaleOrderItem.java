@@ -30,14 +30,14 @@ public class SaleOrderItem implements Serializable,IProductItem {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "SALES_ORDER", nullable = false, updatable = false)
+	@JoinColumn(name = "SALE_ORDER", nullable = false, updatable = false)
 	private SaleOrder saleOrder;
 
 	@OneToOne
 	@JoinColumn(name = "PRODUCT", nullable = false)
 	private AbstractProduct product;
 	
-	@Column(name = "QUANTITY", nullable = false, precision = 10, scale = 0)
+	@Column(name = "QUANTITY", nullable = false, precision = 10, scale = 3)
 	private BigDecimal quantity;
 	
 	@Column(name="SELL_PRICE",precision=10,scale=2)

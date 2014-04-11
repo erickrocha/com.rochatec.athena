@@ -10,7 +10,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="CATEGORY",schema="METALLURGICAL")
+@Table(name="CATEGORY")
 @NamedQueries({
 	@NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name like :name ORDER BY c.name"),
 	@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c ORDER BY c.name") })

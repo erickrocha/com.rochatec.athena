@@ -17,13 +17,13 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = -5186616697168139116L;
 
 	@Id
-	@Column(name = "KEY", updatable = false, unique = true)
+	@Column(name = "KEY", updatable = false, unique = true,length=5)
 	protected String key;
 
-	@Column(name = "NAME", updatable = true, insertable = true, nullable = false)
+	@Column(name = "NAME", updatable = true, insertable = true, nullable = false,length=30)
 	protected String name;
 
-	@Column(name = "LABEL", updatable = true, insertable = true, nullable = true)
+	@Column(name = "LABEL", updatable = true, insertable = true, nullable = true,length=50)
 	protected String description;
 
 	public Role() {

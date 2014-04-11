@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "INVOICE", schema = "METALLURGICAL")
+@Table(name = "INVOICE")
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "INVOICE_TYPE")
 public abstract class AbstractInvoice implements Serializable {
 
