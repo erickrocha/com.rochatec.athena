@@ -2,6 +2,7 @@ package com.rochatec.athena.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -136,6 +137,14 @@ public class Employee implements Serializable {
 		hiredate.add(Calendar.SECOND,0);
 		hiredate.add(Calendar.MILLISECOND,0);
 		this.hiredate = hiredate;
+	}
+	
+	public void setHiredate(Date date){
+		hiredate.add(Calendar.HOUR,0);
+		hiredate.add(Calendar.MINUTE,0);
+		hiredate.add(Calendar.SECOND,0);
+		hiredate.add(Calendar.MILLISECOND,0);
+		this.hiredate.setTime(date);
 	}
 
 	public void setResignationDate(Calendar resignationDate) {

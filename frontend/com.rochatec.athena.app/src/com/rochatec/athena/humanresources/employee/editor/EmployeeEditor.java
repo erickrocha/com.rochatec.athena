@@ -144,7 +144,7 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 	}
 	
 	private void createAddressViewer(Composite parent) {
-		addressViewer = new AddressViewer(parent,SWT.BORDER);		
+		addressViewer = new AddressViewer(parent,SWT.BORDER,this);		
 	}
 
 	@Override
@@ -160,6 +160,9 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 			Employee employee = editorInput.getEmployee();
 			addressViewer.setInput(employee.getAddress());
 			jobViewer.setSelection(new SearchSelection<Job>(employee.getJob()));
+		}else{			
+			jobViewer.setInput(writableList);
+			jobViewer.setSelection(new SearchSelection<Job>((Job)writableList.get(0)));
 		}
 	}
 

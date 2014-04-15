@@ -51,9 +51,14 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 		super(owner);
 	}
 	
-	public AddressDialog(Shell owner,Editable editable) {
+	public AddressDialog(Shell owner,Editable editable){
+		this(owner,editable,new Address());
+	}
+	
+	public AddressDialog(Shell owner,Editable editable,Address selected) {
 		super(owner);
 		this.editable = editable;
+		this.selected = selected;
 	}
 	
 	@Override

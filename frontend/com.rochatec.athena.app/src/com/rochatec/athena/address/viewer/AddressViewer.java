@@ -89,8 +89,10 @@ public class AddressViewer implements ISelectionProvider{
 		public void linkActivated(HyperlinkEvent event) {
 			AddressDialog dialog = new AddressDialog(propertieViewer.getActiveShell(),editable);
 			Address address = dialog.dialog();
-			setInput(address);
-			firechanged(address);
+			if (address != null){
+				setInput(address);
+				firechanged(address);
+			}			
 		}
 	}
 	

@@ -248,7 +248,10 @@ public class UserEditor extends AbstractEditor implements Bindable{
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			Profile profile = (Profile)((IStructuredSelection)event.getSelection()).getFirstElement();
-			roleTable.setCheckeds(profile.getRoles());
+			if (profile != null){
+				roleTable.setCheckeds(profile.getRoles());
+				allRolesCheckeds();
+			}
 		}
 		
 	}
