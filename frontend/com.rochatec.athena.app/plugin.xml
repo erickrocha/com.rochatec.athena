@@ -2194,7 +2194,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.rochatec.athena.app.application"
-            name="%product.name">
+            name="Athena">
          <property
                name="appName"
                value="Athena">

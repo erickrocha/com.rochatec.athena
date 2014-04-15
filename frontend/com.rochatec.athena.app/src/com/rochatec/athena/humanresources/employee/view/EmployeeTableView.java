@@ -20,7 +20,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class EmployeeTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.humanresources.employee.view.EmployeeTableView";
+	public static final String ID = "com.rochatec.athena.humanresources.employee.view.EmployeeTableView";
 	
 	protected AbstractTable tableViewer; 
 	

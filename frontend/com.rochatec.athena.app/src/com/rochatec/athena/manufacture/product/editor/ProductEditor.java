@@ -54,7 +54,7 @@ import com.rochatec.graphics.viewer.TextViewer;
 
 public class ProductEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.manufacture.product.editor.ProductEditor";
+	public static final String ID = "com.rochatec.athena.manufacture.product.editor.ProductEditor";
 	protected ProductEditorInput editorInput;
 	protected ManufactureClientService manufactureClientService = ServiceFactory.getInstance().getManufactureClientService();
 	

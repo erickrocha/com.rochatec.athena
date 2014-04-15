@@ -21,7 +21,7 @@ import com.rochatec.athena.log.LogListener;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "com.rochatec.metallurgical.app"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "com.rochatec.athena.app"; //$NON-NLS-1$
 	
 	private static final Logger LOGGER = Logger.getLogger(Activator.class);
 

@@ -25,7 +25,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class CategoryEditor extends AbstractEditor {
 	
-	public static final String ID = "com.rochatec.metallurgical.manufacture.category.editor.CategoryEditor";
+	public static final String ID = "com.rochatec.athena.manufacture.category.editor.CategoryEditor";
 	private CategoryEditorInput editorInput;
 	private IdLabel idLabel;
 	private Text txtName;

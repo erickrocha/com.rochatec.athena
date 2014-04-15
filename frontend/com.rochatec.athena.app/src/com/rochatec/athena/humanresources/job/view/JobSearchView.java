@@ -17,7 +17,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class JobSearchView extends AbstractView implements Executable<Job>{
 
-	public static final String ID = "com.rochatec.metallurgical.humanresources.job.view.JobSearchView";
+	public static final String ID = "com.rochatec.athena.humanresources.job.view.JobSearchView";
 	private JobSearchBox searchBox;
 	
 	@Override

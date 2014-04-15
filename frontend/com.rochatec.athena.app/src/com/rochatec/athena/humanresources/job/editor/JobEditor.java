@@ -26,7 +26,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class JobEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.humanresources.job.editor.JobEditor";
+	public static final String ID = "com.rochatec.athena.humanresources.job.editor.JobEditor";
 	
 	protected HumanResourceClientService humanResourceClientService = ServiceFactory.getInstance().getHumanResourceClientService();
 	

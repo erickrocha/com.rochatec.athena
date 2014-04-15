@@ -32,7 +32,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class SupplierEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.supply.supplier.editor.SupplierEditor";
+	public static final String ID = "com.rochatec.athena.supply.supplier.editor.SupplierEditor";
 	
 	protected SupplyClientService supplyClientService = ServiceFactory.getInstance().getSupplyClientService();
 	private SupplierEditorInput editorInput;

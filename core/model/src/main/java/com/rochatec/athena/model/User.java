@@ -54,9 +54,9 @@ public class User implements Serializable {
 	@JoinColumn(name="PROFILE",referencedColumnName="ID")
 	protected Profile profile;
 	
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name="ACTIVE",insertable=true,updatable=true,nullable=false,unique=false)
-	protected Status active;
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS",insertable=true,updatable=true,nullable=false,unique=false)
+	protected Status status;
 
 	@Column(name="BLOCKED",insertable=true,updatable=true,nullable=false,unique=false)
 	protected int blocked;
@@ -77,14 +77,14 @@ public class User implements Serializable {
 	}
 
 	public User(Long id, String username, String password, Employee employee,
-			Profile profile, Status active, int blocked) {
+			Profile profile, Status status, int blocked) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.employee = employee;
 		this.profile = profile;
-		this.active = active;
+		this.status = status;
 		this.blocked = blocked;
 	}
 	
@@ -141,19 +141,19 @@ public class User implements Serializable {
 	}
 
 	public boolean isActive() {
-		return active.equals(Status.ACTIVE) ? true : false;
+		return status.equals(Status.ACTIVE) ? true : false;
 	}
 	
 	public Status getActive(){
-		return active;
+		return status;
 	}
 
-	public void setActive(Status active) {
-		this.active = active;
+	public void setActive(Status status) {
+		this.status = status;
 	}
 	
 	public void setActive(boolean active){
-		this.active = active ? Status.ACTIVE : Status.INACTIVE;
+		this.status = active ? Status.ACTIVE : Status.INACTIVE;
 	}
 	
 	public boolean isBlocked(){

@@ -21,7 +21,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class JobTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.humanresources.job.view.JobTableView";
+	public static final String ID = "com.rochatec.athena.humanresources.job.view.JobTableView";
 	
 	protected AbstractTable tableViewer; 
 	

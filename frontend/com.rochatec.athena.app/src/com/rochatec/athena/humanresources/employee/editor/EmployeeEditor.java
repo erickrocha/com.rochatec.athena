@@ -46,7 +46,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class EmployeeEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.humanresources.employee.editor.EmployeeEditor";
+	public static final String ID = "com.rochatec.athena.humanresources.employee.editor.EmployeeEditor";
 
 	private EmployeeEditorInput editorInput;
 	protected IdLabel idLabel;

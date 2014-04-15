@@ -31,7 +31,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class ShipperEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.supply.shipper.editor.ShipperEditor";
+	public static final String ID = "com.rochatec.athena.supply.shipper.editor.ShipperEditor";
 	private ShipperEditorInput editorInput;
 	private SupplyClientService supplyClientService = ServiceFactory.getInstance().getSupplyClientService();
 	

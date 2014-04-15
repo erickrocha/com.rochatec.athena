@@ -15,7 +15,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class CustomerSearchView extends AbstractView implements Executable<Customer> {
 	
-	public static final String ID = "com.rochatec.metallurgical.crm.customer.view.CustomerSearchView";
+	public static final String ID = "com.rochatec.athena.crm.customer.view.CustomerSearchView";
 	private CustomerSearchBox searchBox;
 
 	@Override

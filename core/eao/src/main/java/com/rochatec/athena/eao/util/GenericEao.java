@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 public class GenericEao<T,ID extends Serializable> {
 	
-	@PersistenceContext(unitName = "MetallurgicalPersistence")
+	@PersistenceContext(unitName = "AthenaPersistence")
 	private EntityManager entityManager;
 	
 	private Class<T> entityBeanType;

@@ -21,7 +21,7 @@ import com.rochatec.graphics.view.AbstractView;
 
 public class CustomerTableView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.metallurgical.crm.customer.view.CustomerTableView";
+	public static final String ID = "com.rochatec.athena.crm.customer.view.CustomerTableView";
 	
 	protected AbstractTable tableViewer; 
 	

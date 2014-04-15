@@ -9,7 +9,7 @@ import com.rochatec.athena.welcome.view.ToolView;
 
 public class InputPerspective implements IPerspectiveFactory{
 	
-	public static final String ID = "com.rochatec.metallurgical.perspective.InputPerspective";
+	public static final String ID = "com.rochatec.athena.perspective.InputPerspective";
 	
 	@Override
 	public void createInitialLayout(IPageLayout layout) {

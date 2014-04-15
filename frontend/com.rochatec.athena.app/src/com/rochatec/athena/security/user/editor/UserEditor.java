@@ -54,7 +54,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class UserEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.security.user.editor.UserEditor";
+	public static final String ID = "com.rochatec.athena.security.user.editor.UserEditor";
 	protected UserEditorInput editorInput;
 	protected SecurityClientService securityClientService = ServiceFactory.getInstance().getSecurityClientService();
 	

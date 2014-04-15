@@ -35,7 +35,7 @@ import com.rochatec.graphics.util.WidgetUtils;
 
 public class CustomerEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.crm.customer.editor.CustomerEditor";
+	public static final String ID = "com.rochatec.athena.crm.customer.editor.CustomerEditor";
 
 	private CustomerEditorInput editorInput;
 	protected IdLabel idLabel;

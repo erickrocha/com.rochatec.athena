@@ -35,7 +35,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class ProfileEditor extends AbstractEditor implements Bindable{
 	
-	public static final String ID = "com.rochatec.metallurgical.security.profile.editor.ProfileEditor";
+	public static final String ID = "com.rochatec.athena.security.profile.editor.ProfileEditor";
 	protected ProfileEditorInput editorInput;
 	protected SecurityClientService securityClientService = ServiceFactory.getInstance().getSecurityClientService();
 	
