@@ -34,9 +34,9 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Employee;
 import com.rochatec.athena.model.Job;
 import com.rochatec.athena.util.DataBindingFactory;
+import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
-import com.rochatec.framework.formater.impl.PhoneFormaterImpl;
 import com.rochatec.framework.formater.impl.SocialSecurityFormaterImpl;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.gui.IdLabel;
@@ -133,10 +133,10 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 		txtRegisterNumber = new Text(composite, SWT.BORDER);
 		txtRegisterNumber.setLayoutData(new GridData(200,15));
 		
-		txtHomePhone = new MaskedText(composite, new PhoneFormaterImpl());
+		txtHomePhone = new MaskedText(composite, Formatter.getPhone());
 		txtHomePhone.setLayoutData(new GridData(200,15));
 		
-		txtCellPhone = new MaskedText(composite, new PhoneFormaterImpl());
+		txtCellPhone = new MaskedText(composite, Formatter.getPhone());
 		txtCellPhone.setLayoutData(new GridData(200,15));
 		
 		txtEmail = new Text(composite, SWT.BORDER);

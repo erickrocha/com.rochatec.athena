@@ -7,7 +7,10 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -48,6 +51,7 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 	protected Text txtWebSite;
 	protected MaskedText txtPhone;
 	protected MaskedText txtFax;
+	protected Button btActive;
 	
 	protected AddressViewer addressViewer;
 	
@@ -80,7 +84,7 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 		dateRegisterCal.setValue(new Date());
 		
 		txtSocialSecurity = new MaskedText(panel,new SocialSecurityFormaterImpl());
-		txtSocialSecurity.setLayoutData(new GridData(120,17));
+		txtSocialSecurity.setLayoutData(new GridData(150,17));
 		
 		txtCompanyName = new Text(panel, SWT.BORDER);
 		txtCompanyName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
@@ -89,12 +93,18 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 	private void createShortnameField(Composite parent){
 		Composite composite = new Group(parent,SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		composite.setLayout(LayoutFactory.getInstance().getGridLayout(1));
+		composite.setLayout(LayoutFactory.getInstance().getGridLayout(2));
 		
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("supplier.field.label.tradeName"));
+		new Label(composite, SWT.NONE);
 		
 		txtTradeName = new Text(composite, SWT.BORDER);
 		txtTradeName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		
+		btActive = new Button(composite,SWT.CHECK);
+		btActive.setText( Messages.getMessage("app.active"));
+		btActive.setSelection(true);
+		btActive.addSelectionListener(new ActiveListener());
 	}
 	
 	private void createFields(Composite parent){
@@ -143,7 +153,27 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		
+		if (isDirty()){
+			Supplier supplier = editorInput.getSupplier();
+			supplier.setActive(btActive.getSelection());
+			supplier.setAddress(addressViewer.getAddress());
+			supplier = supplyClientService.persist(supplier);
+			idLabel.setLabelText(supplier.getId());
+			setDirty(false);
+			setEnabled(true);
+			getSite().getPage().closeEditor(this,true);
+		}
+	}
+	
+	public void setEnabled(boolean value){
+		txtCompanyName.setEnabled(value);
+		dateRegisterCal.setEnabled(value);
+		txtSocialSecurity.setEnabled(value);
+		txtTradeName.setEnabled(value);
+		txtWebSite.setEnabled(value);
+		txtPhone.setEnabled(value);
+		txtRegisterNumber.setEnabled(value);
+		txtFax.setEnabled(value);		
 	}
 
 	@Override
@@ -165,9 +195,16 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 		map.put("cityRegister",txtCityRegister);
 		map.put("phone",txtPhone);
 		map.put("fax",txtFax);
-		map.put("website",txtWebSite);
-		map.put("address",addressViewer);
+		map.put("website",txtWebSite);		
 		return map;
+	}
+	
+	class ActiveListener extends SelectionAdapter{
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			Button button = (Button)e.widget;
+			button.setText(btActive.getSelection() ? Messages.getMessage("app.active") : Messages.getMessage("app.inactive"));
+		}
 	}
 
 }

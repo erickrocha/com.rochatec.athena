@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.metallurgical.util.StringUtils;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -114,7 +115,7 @@ public class Customer implements Serializable {
 	}
 
 	public void setSocialSecurity(String socialSecurity) {
-		this.socialSecurity = socialSecurity.trim();
+		this.socialSecurity = StringUtils.onlyNumber(socialSecurity);
 	}
 
 	public String getName() {
@@ -158,7 +159,7 @@ public class Customer implements Serializable {
 	}
 
 	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode.trim();
+		this.zipcode = StringUtils.onlyNumber(zipcode);
 	}
 
 	public Calendar getDateRegister() {
@@ -182,7 +183,7 @@ public class Customer implements Serializable {
 	}
 
 	public void setHomePhone(String homePhone) {
-		this.homePhone = homePhone.trim();
+		this.homePhone = StringUtils.onlyNumber(homePhone);
 	}
 
 	public String getCellPhone() {
@@ -190,7 +191,7 @@ public class Customer implements Serializable {
 	}
 
 	public void setCellPhone(String cellPhone) {
-		this.cellPhone = cellPhone.trim();
+		this.cellPhone = StringUtils.onlyNumber(cellPhone);
 	}
 
 	public String getCityRegister() {

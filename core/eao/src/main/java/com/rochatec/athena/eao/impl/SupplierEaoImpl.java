@@ -56,7 +56,7 @@ public class SupplierEaoImpl extends GenericEao<Supplier,Serializable> implement
 			params = new HashMap<String, Object>();
 			builder.append("s.companyName like :companyName ");
 			params.put("companyName",name);
-			builder.append("OR s.tradeName like :tradeName");
+			builder.append("OR s.tradeName like :tradeName ");
 			params.put("tradeName", name);
 			addStatusWhere(status);
 			addPeriodwhere(begin, end);
@@ -96,7 +96,7 @@ public class SupplierEaoImpl extends GenericEao<Supplier,Serializable> implement
 	
 	private void addStatusWhere(Status status){
 		if (!status.equals(Status.ALL)){
-			builder.append("AND s.active = :status ");
+			builder.append("AND s.status = :status ");
 			params.put("status", status);
 		}
 	}

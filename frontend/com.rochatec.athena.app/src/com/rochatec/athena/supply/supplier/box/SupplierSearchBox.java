@@ -33,7 +33,7 @@ public class SupplierSearchBox extends AbstractWrapperSearchBox<Supplier>{
 		List<IColumn> columns = new ArrayList<IColumn>();
 		columns.add(new Column("id",Messages.getMessage("supplier.field.label.id"),ColumnType.LONG));
 		columns.add(new Column("businessName",Messages.getMessage("supplier.field.label.businessName"),ColumnType.NAME));
-		columns.add(new Column("socialSecurity",Messages.getMessage("supplier.field.label.socialsecurity"),ColumnType.STRING));
+		columns.add(new Column("socialSecurity",Messages.getMessage("supplier.field.label.socialSecurity"),ColumnType.STRING));
 		columns.add(new Column("dateRegister",Messages.getMessage("supplier.field.label.dateRegister"),ColumnType.DATE));				
 		return columns;
 	}

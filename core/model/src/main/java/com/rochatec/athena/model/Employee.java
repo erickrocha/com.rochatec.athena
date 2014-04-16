@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.rochatec.metallurgical.util.StringUtils;
+
 /**
  * The persistent class for the EMPLOYEE database table.
  * 
@@ -72,7 +74,7 @@ public class Employee implements Serializable {
 	@Column(name = "SOCIAL_SECURITY", nullable = false, length = 20)
 	private String socialSecurity;
 
-	@Column(length = 10)
+	@Column(name="ZIP_CODE",length = 10)	
 	private String zipcode;
 
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -116,7 +118,7 @@ public class Employee implements Serializable {
 	}
 
 	public void setCellPhone(String cellPhone) {
-		this.cellPhone = cellPhone.trim();
+		this.cellPhone = StringUtils.onlyNumber(cellPhone); 
 	}
 
 	public String getEmail() {
@@ -160,7 +162,7 @@ public class Employee implements Serializable {
 	}
 
 	public void setHomePhone(String homePhone) {
-		this.homePhone = homePhone.trim();
+		this.homePhone = StringUtils.onlyNumber(homePhone);
 	}
 
 	public String getName() {
@@ -184,7 +186,7 @@ public class Employee implements Serializable {
 	}
 
 	public void setSocialSecurity(String socialSecurity) {
-		this.socialSecurity = socialSecurity;
+		this.socialSecurity = StringUtils.onlyNumber(socialSecurity);
 	}
 
 	public String getZipcode() {
@@ -192,7 +194,7 @@ public class Employee implements Serializable {
 	}
 
 	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode.trim();
+		this.zipcode = StringUtils.onlyNumber(zipcode);
 	}
 
 	public Address getAddress() {

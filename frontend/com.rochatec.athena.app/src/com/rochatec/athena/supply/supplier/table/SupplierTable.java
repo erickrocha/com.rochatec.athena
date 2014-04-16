@@ -24,15 +24,15 @@ public class SupplierTable extends AbstractTable{
 		id.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn socialSecurity = new TableViewerColumn(tableViewer,SWT.CENTER);
-		socialSecurity.getColumn().setText(Messages.getMessage("supplier.field.label.socialsecurity"));
-		socialSecurity.getColumn().setWidth(120);
+		socialSecurity.getColumn().setText(Messages.getMessage("supplier.field.label.socialSecurity"));
+		socialSecurity.getColumn().setWidth(150);
 		socialSecurity.getColumn().setResizable(true);
 		socialSecurity.getColumn().setMoveable(true);
 		socialSecurity.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn businessName = new TableViewerColumn(tableViewer,SWT.LEFT);
 		businessName.getColumn().setText(Messages.getMessage("supplier.field.label.businessName"));
-		businessName.getColumn().setWidth(200);
+		businessName.getColumn().setWidth(250);
 		businessName.getColumn().setResizable(true);
 		businessName.getColumn().setMoveable(true);
 		businessName.getColumn().setAlignment(SWT.LEFT);
@@ -45,7 +45,7 @@ public class SupplierTable extends AbstractTable{
 		tradeName.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn registerNumber = new TableViewerColumn(tableViewer,SWT.CENTER);
-		registerNumber.getColumn().setText(Messages.getMessage("supplier.field.label.register.number"));
+		registerNumber.getColumn().setText(Messages.getMessage("supplier.field.label.registerNumber"));
 		registerNumber.getColumn().setWidth(100);
 		registerNumber.getColumn().setResizable(true);
 		registerNumber.getColumn().setMoveable(true);

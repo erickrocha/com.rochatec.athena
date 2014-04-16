@@ -1,10 +1,12 @@
 package com.rochatec.athena.crm.customer.editor;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -21,12 +23,11 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Address;
 import com.rochatec.athena.model.Customer;
 import com.rochatec.athena.util.DataBindingFactory;
+import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
-import com.rochatec.framework.formater.impl.PhoneFormaterImpl;
 import com.rochatec.framework.formater.impl.SocialSecurityFormaterImpl;
 import com.rochatec.graphics.editor.AbstractEditor;
-import com.rochatec.graphics.gui.DateField;
 import com.rochatec.graphics.gui.IdLabel;
 import com.rochatec.graphics.gui.MaskedText;
 import com.rochatec.graphics.selection.SearchSelection;
@@ -40,7 +41,7 @@ public class CustomerEditor extends AbstractEditor implements Bindable{
 	private CustomerEditorInput editorInput;
 	protected IdLabel idLabel;
 
-	protected DateField dateRegisterCal;
+	protected DateChooserCombo dateRegisterCal;
 	protected Text txtName;
 	protected MaskedText txtSocialSecurity;
 	protected Text txtRegisterNumber;
@@ -80,8 +81,9 @@ public class CustomerEditor extends AbstractEditor implements Bindable{
 		new Label(panel, SWT.NONE).setText(Messages.getMessage("customer.field.label.socialSecurity"));
 		new Label(panel, SWT.NONE).setText(Messages.getMessage("customer.field.label.name"));
 
-		dateRegisterCal = new DateField(panel);
+		dateRegisterCal = new DateChooserCombo(panel,SWT.BORDER);
 		dateRegisterCal.setLayoutData(new GridData(120, 30));
+		dateRegisterCal.setValue(new Date());
 
 		txtSocialSecurity = new MaskedText(panel,new SocialSecurityFormaterImpl());
 		txtSocialSecurity.setLayoutData(new GridData(150, 17));
@@ -103,10 +105,10 @@ public class CustomerEditor extends AbstractEditor implements Bindable{
 		txtRegisterNumber = new Text(composite, SWT.BORDER);
 		txtRegisterNumber.setLayoutData(new GridData(200, 15));
 
-		txtHomePhone = new MaskedText(composite, new PhoneFormaterImpl());
+		txtHomePhone = new MaskedText(composite,Formatter.getPhone());
 		txtHomePhone.setLayoutData(new GridData(200, 15));
 
-		txtCellPhone = new MaskedText(composite, new PhoneFormaterImpl());
+		txtCellPhone = new MaskedText(composite,Formatter.getPhone());
 		txtCellPhone.setLayoutData(new GridData(200, 15));
 
 		txtEmail = new Text(composite, SWT.BORDER);
@@ -138,7 +140,7 @@ public class CustomerEditor extends AbstractEditor implements Bindable{
 		customer.setAddress(addressViewer.getAddress());
 		customer = crmClientService.persist(customer);
 		idLabel.setLabelText(customer.getId());
-
+		setDirty(false);
 	}
 
 	@Override
@@ -157,8 +159,7 @@ public class CustomerEditor extends AbstractEditor implements Bindable{
 		map.put("registerNumber",txtRegisterNumber);
 		map.put("email",txtEmail);
 		map.put("homePhone",txtHomePhone);
-		map.put("cellPhone",txtCellPhone);
-		map.put("address",addressViewer);
+		map.put("cellPhone",txtCellPhone);		
 		return map;
 	}
 

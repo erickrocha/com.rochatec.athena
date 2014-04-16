@@ -2,6 +2,7 @@ package com.rochatec.graphics.nebula;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.eclipse.core.databinding.observable.Diffs;
 import org.eclipse.core.databinding.observable.Realm;
@@ -36,12 +37,13 @@ public class DateChooserComboObservableValue extends AbstractObservableValue {
 	/**
 	 * Previous value of the Date.
 	 */
-	private Date oldValue;
+	private Calendar oldValue;
 
 	private Listener updateListener = new Listener() {
 		public void handleEvent(Event event) {
 			if ( ! updating ) {
-				Date newValue = combo.getValue();
+				Calendar newValue = GregorianCalendar.getInstance();
+				newValue.setTime(combo.getValue());				
 
 				if ( (newValue == null && oldValue != null)
 						 || (newValue != null && ! newValue.equals(oldValue)) ) {
@@ -99,7 +101,9 @@ public class DateChooserComboObservableValue extends AbstractObservableValue {
 	}
 
 	protected Object doGetValue() {
-		return oldValue = combo.getValue();
+		oldValue = GregorianCalendar.getInstance();
+		oldValue.setTime(combo.getValue());
+		return oldValue;
 	}
 
 	/**
@@ -116,14 +120,15 @@ public class DateChooserComboObservableValue extends AbstractObservableValue {
 				combo.setValue(((Calendar) value).getTime());
 			}else {
 				combo.setValue((Date) value);
-			}			
-			oldValue = combo.getValue();
+			}
+			oldValue = GregorianCalendar.getInstance();			
+			oldValue.setTime(combo.getValue());
 		} finally {
 			updating = false;
 		}
 	}
 
 	public Object getValueType() {
-		return Date.class;
+		return Calendar.class;
 	}
 }

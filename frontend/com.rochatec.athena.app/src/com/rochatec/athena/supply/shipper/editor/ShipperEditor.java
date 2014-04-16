@@ -6,7 +6,10 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -46,6 +49,7 @@ public class ShipperEditor extends AbstractEditor implements Bindable{
 	protected Text txtEmail;
 	protected MaskedText txtPhone;
 	protected MaskedText txtFax;
+	protected Button btActive;
 	
 	protected AddressViewer addressViewer;
 	
@@ -93,6 +97,11 @@ public class ShipperEditor extends AbstractEditor implements Bindable{
 		
 		txtComercialName = new Text(composite, SWT.BORDER);
 		txtComercialName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		
+		btActive = new Button(composite,SWT.CHECK);
+		btActive.setText( Messages.getMessage("app.active"));
+		btActive.setSelection(true);
+		btActive.addSelectionListener(new ActiveListener());
 	}
 	
 	private void createFields(Composite parent){
@@ -143,9 +152,24 @@ public class ShipperEditor extends AbstractEditor implements Bindable{
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		Shipper shipper = editorInput.getShipper();
+		shipper.setActive(btActive.getSelection());
+		shipper.setAddress(addressViewer.getAddress());
 		shipper = supplyClientService.persist(shipper);
 		idLabel.setLabelText(shipper.getId());
 		setDirty(false);
+		setEnabled(false);
+		getSite().getPage().closeEditor(this,true);
+	}
+	
+	public void setEnabled(boolean value){
+		txtBusinessName.setEnabled(value);
+		dateRegisterCal.setEnabled(value);
+		txtSocialSecurity.setEnabled(value);
+		txtComercialName.setEnabled(value);
+		txtEmail.setEnabled(value);
+		txtPhone.setEnabled(value);
+		txtRegisterNumber.setEnabled(value);
+		txtFax.setEnabled(value);		
 	}
 
 	@Override
@@ -169,6 +193,14 @@ public class ShipperEditor extends AbstractEditor implements Bindable{
 		map.put("socialSecurity",txtSocialSecurity);
 		map.put("dateRegister",dateRegisterCal);		
 		return map;
+	}
+	
+	class ActiveListener extends SelectionAdapter{
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			Button button = (Button)e.widget;
+			button.setText(btActive.getSelection() ? Messages.getMessage("app.active") : Messages.getMessage("app.inactive"));
+		}
 	}
 
 }

@@ -105,7 +105,7 @@ public class CustomerEaoImpl extends GenericEao<Customer,Serializable> implement
 	
 	private void addStatusWhere(Status status){
 		if (!status.equals(Status.ALL)){
-			builder.append("AND c.active = :status ");
+			builder.append("AND c.status = :status ");
 			params.put("status", status);
 		}
 	}

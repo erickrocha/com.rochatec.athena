@@ -97,7 +97,7 @@ public class ShipperEaoImpl extends GenericEao<Shipper, Serializable> implements
 	
 	private void addStatusWhere(Status status){
 		if (!status.equals(Status.ALL)){
-			builder.append("AND s.active = :status ");
+			builder.append("AND s.status = :status ");
 			params.put("status", status);
 		}
 	}

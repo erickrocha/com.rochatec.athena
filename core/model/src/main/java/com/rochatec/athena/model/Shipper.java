@@ -23,6 +23,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.rochatec.metallurgical.util.StringUtils;
+
 /**
  * The persistent class for the SHIPPERS database table.
  * 
@@ -131,7 +133,7 @@ public class Shipper implements Serializable {
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone.trim();
+		this.phone = StringUtils.onlyNumber(phone);
 	}
 
 	public String getRegisterNumber() {
@@ -147,7 +149,7 @@ public class Shipper implements Serializable {
 	}
 
 	public void setSocialSecurity(String socialSecurity) {
-		this.socialSecurity = socialSecurity.trim();
+		this.socialSecurity = StringUtils.onlyNumber(socialSecurity);
 	}
 
 	public String getZipcode() {
@@ -155,7 +157,7 @@ public class Shipper implements Serializable {
 	}
 
 	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode.trim();
+		this.zipcode = StringUtils.onlyNumber(zipcode);
 	}
 
 	public Address getAddress() {
@@ -225,7 +227,7 @@ public class Shipper implements Serializable {
 	}
 
 	public void setFax(String fax) {
-		this.fax = fax.trim();
+		this.fax = StringUtils.onlyNumber(fax);
 	}
 	
 	@Override

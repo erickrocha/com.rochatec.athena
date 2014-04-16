@@ -85,11 +85,11 @@ public class CategoryEditor extends AbstractEditor {
 			category = manufactureClientService.persist(category);
 			idLabel.setLabelText(category.getId());
 			setDirty(false);
-			setDisable(true);
+			setEnable(false);
 		}		
 	}
 	
-	private void setDisable(boolean value){
+	private void setEnable(boolean value){
 		txtName.setEnabled(value);		
 	}
 

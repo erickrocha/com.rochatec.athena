@@ -122,6 +122,7 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 		viewerProvince.setContentProvider(new GenericContentProvider<Province>());
 		viewerProvince.setLabelProvider(new ProvinceLabelProvider());
 		viewerProvince.setInput(resourceClientService.findAllProvinces());
+		viewerProvince.addSelectionChangedListener(new ProvinceSelectionChangedListener());
 	}
 
 	@Override

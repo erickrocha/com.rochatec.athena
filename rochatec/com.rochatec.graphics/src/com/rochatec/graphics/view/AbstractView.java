@@ -34,7 +34,7 @@ public abstract class AbstractView extends ViewPart{
 	
 	protected void activateContext(){
 		IContextService contextService = (IContextService) getSite().getService(IContextService.class);
-		contextService.activateContext("com.rochatec.metallurgical.app.crud");		
+		contextService.activateContext("com.rochatec.athena.app.crud");		
 	}
 	
 	protected abstract void addListeners();

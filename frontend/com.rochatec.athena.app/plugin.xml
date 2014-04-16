@@ -1333,7 +1333,7 @@
                id="com.rochatec.athena.toolbar.crud.category"
                label="Category">
             <command
-                  commandId="com.rochatec.athena.command.customer.new"
+                  commandId="com.rochatec.athena.command.category.new"
                   icon="icons/infra/add_16.png"
                   label="%toolbar.category.new.label"
                   mnemonic="%toolbar.customer.new.mnemonic"
@@ -1361,7 +1361,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="com.rochatec.athena.command.customer.delete"
+                  commandId="com.rochatec.athena.command.category.delete"
                   icon="icons/infra/delete_16.png"
                   label="%toolbar.category.delete.label"
                   mnemonic="toolbar.customer.delete.mnemonic"
@@ -1776,7 +1776,7 @@
             allPopups="true"
             locationURI="toolbar:com.rochatec.athena.manufacture.category.view.CategoryTableView">
          <command
-               commandId="com.rochatec.athena.command.customer.new"
+               commandId="com.rochatec.athena.command.category.new"
                icon="icons/infra/add_16.png"
                label="%toolbar.category.new.label"
                mnemonic="%toolbar.customer.new.mnemonic"
@@ -1804,7 +1804,7 @@
             </visibleWhen>
          </command>
          <command
-               commandId="com.rochatec.athena.command.customer.delete"
+               commandId="com.rochatec.athena.command.category.delete"
                icon="icons/infra/delete_16.png"
                label="%toolbar.category.delete.label"
                mnemonic="toolbar.customer.delete.mnemonic"
