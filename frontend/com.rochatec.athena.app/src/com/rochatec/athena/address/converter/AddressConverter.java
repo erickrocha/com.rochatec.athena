@@ -54,7 +54,7 @@ public class AddressConverter implements IConverter<Address>{
 		properties.add(new Property(Messages.getMessage("address.field.label.complement"),"",3));
 		properties.add(new Property(Messages.getMessage("address.field.label.neighborhood"),address.getNeighborhood(),4));
 		properties.add(new Property(Messages.getMessage("address.field.label.city"),address.getCity(),5));
-		properties.add(new Property(Messages.getMessage("address.field.label.province"),address.getProvince().getAcronym(),6));
+		properties.add(new Property(Messages.getMessage("address.field.label.province"),address.getProvince() != null ? address.getProvince().getAcronym() : "",6));
 		return properties;
 	}
 
