@@ -599,6 +599,16 @@
             id="com.rochatec.athena.command.saleOrder.search"
             name="Search Sale Order">
       </command>
+      <command
+            categoryId="com.rochatec.athena.category.sales"
+            id="com.rochatec.athena.command.saleOrder.new"
+            name="New Sale Order">
+      </command>
+      <command
+            categoryId="com.rochatec.athena.category.sales"
+            id="com.rochatec.athena.command.saleOrder.edit"
+            name="Edit Sale Order">
+      </command>
    </extension>
    <extension
          id="com.rochatec.athena.app.handlers"
@@ -977,6 +987,10 @@
             class="com.rochatec.athena.salesOrder.handler.SaleOrderSearchHandler"
             commandId="com.rochatec.athena.command.saleOrder.search">
       </handler>
+      <handler
+            class="com.rochatec.athena.salesOrder.handler.SaleOrderNewHandler"
+            commandId="com.rochatec.athena.command.saleOrder.new">
+      </handler>
    </extension>
    <extension
          id="com.rochatec.athena.app.editors"
@@ -1058,6 +1072,11 @@
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.security.profile.editor.ProfileEditor"
             name="%editor.profile.name">
+      </editor>
+      <editor
+            class="com.rochatec.athena.salesOrder.editor.SaleOrderEditor1"
+            id="com.rochatec.athena.salesOrder.editor.SaleOrderEditor1"
+            name="New EditorPart">
       </editor>
    </extension>
    <extension
@@ -2074,6 +2093,24 @@
                      definitionId="com.rochatec.athena.app.crud.profile">
                </reference>
             </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.rochatec.athena.salesOrder.view.SaleOrderHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.saleOrder.new"
+               id="com.rochatec.athena.popup.saleOrder.new"
+               label="%popup.saleOrder.new.label"
+               style="push"
+               tooltip="%popup.saleOrder.new.label">
+         </command>
+         <command
+               commandId="com.rochatec.athena.command.saleOrder.edit"
+               id="com.rochatec.athena.popup.saleOrder.edit"
+               label="%popup.saleOrder.edit.label"
+               style="push"
+               tooltip="%popup.saleOrder.edit.label">
          </command>
       </menuContribution>
    </extension>

@@ -27,6 +27,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.rochatec.metallurgical.util.CalendarUtil;
+
 @Entity
 @Table(name = "SALE_ORDER")
 public class SaleOrder implements Serializable {
@@ -242,6 +244,13 @@ public class SaleOrder implements Serializable {
 			items.add(item);
 		}
 		return items;
+	}
+	
+	public static final SaleOrder factory(Customer customer){
+		SaleOrder saleOrder = new SaleOrder();
+		saleOrder.setCustomer(customer);
+		saleOrder.setDateRegister(CalendarUtil.getToday());
+		saleOrder.set
 	}
  
 }

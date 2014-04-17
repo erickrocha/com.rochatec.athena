@@ -2,6 +2,7 @@ package com.rochatec.graphics.provider;
 
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.ISharedImages;
 
 import com.rochatec.framework.model.TreeObject;
 import com.rochatec.graphics.Activator;
@@ -16,6 +17,8 @@ public class TreeLabelProvider extends LabelProvider{
 	
 	public Image getImage(Object obj) {		
 		switch (((TreeObject)obj).getType()) {
+		case 0:
+			return Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage();
 		case 1:
 			return Activator.getImageDescriptor(IComponentsIcons.INVOICE_16).createImage();
 		case 2:

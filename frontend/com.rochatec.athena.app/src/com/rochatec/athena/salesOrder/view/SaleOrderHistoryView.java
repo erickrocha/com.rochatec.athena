@@ -1,15 +1,17 @@
 package com.rochatec.athena.salesOrder.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 
 import com.rochatec.athena.client.service.SalesClientService;
-import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Customer;
 import com.rochatec.athena.model.SaleOrder;
 import com.rochatec.athena.model.SaleOrderStatus;
@@ -36,9 +38,12 @@ public class SaleOrderHistoryView extends AbstractView implements ISelectionChan
 		composite.setLayout(LayoutFactory.getInstance().getFillLayout());
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true,true));
 		viewer = new TreePropertieViewer(composite);
+		MenuManager menuManager = new MenuManager();
+		Menu menu = menuManager.createContextMenu(viewer.getViewer().getTree());
+		viewer.getViewer().getTree().setMenu(menu);
 		getSite().setSelectionProvider(viewer.getViewer());
+		getSite().registerContextMenu(menuManager,viewer.getViewer());
 		viewer.addDoubleClickListener(CommandFactory.getDoubleClickCommand(ICommands.SALE_ORDER_EDIT, getSite()));
-		
 	}
 
 	@Override
@@ -51,14 +56,22 @@ public class SaleOrderHistoryView extends AbstractView implements ISelectionChan
 		
 	}
 	
-	private void fill(List<SaleOrder> saleOrders){
-		TreeParent root = new TreeParent(Messages.getMessage("saleOrder.name"),0);				
+	public void add(Customer customer,SaleOrder saleOrder){
+		List<SaleOrder> saleOrders = new ArrayList<SaleOrder>();
+		saleOrders.add(saleOrder);
+		fill(customer,saleOrders);
+	}
+	
+	private void fill(Customer customer, List<SaleOrder> saleOrders){
+		TreeParent root = new TreeParent(customer.getName(),0);
+		root.setObject(root);
+						
 		for (SaleOrder saleOrder : saleOrders){
 			TreeObject object = new TreeObject(saleOrder.toStringwithDateRegister().toString(),1,saleOrder);
 			object.setParent(root);
 			root.addChild(object);
 		}
-		viewer.setInput(root);	
+		viewer.setInput(root);		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -67,7 +80,7 @@ public class SaleOrderHistoryView extends AbstractView implements ISelectionChan
 		SearchSelection<Customer> selection = (SearchSelection<Customer>)event.getSelection();
 		Customer customer = selection.getSingleSelection();
 		List<SaleOrder> saleOrders = salesClientService.findSaleOrdersByCustomer(customer,null,null,SaleOrderStatus.ALL);
-		fill(saleOrders);		
+		fill(customer,saleOrders);		
 	}
 
 }
