@@ -94,6 +94,7 @@ public class ShipperEditor extends AbstractEditor implements Bindable{
 		composite.setLayout(LayoutFactory.getInstance().getGridLayout(1));
 		
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("shipper.field.label.tradeName"));
+		new Label(composite, SWT.NONE);
 		
 		txtComercialName = new Text(composite, SWT.BORDER);
 		txtComercialName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
