@@ -30,13 +30,6 @@
             name="%perspective.job.search.name">
       </perspective>
       <perspective
-            class="com.rochatec.athena.humanresources.job.perspective.JobInputPerspective"
-            fixed="true"
-            icon="icons/infra/perspective_16.png"
-            id="com.rochatec.athena.humanresources.job.perspective.JobInputPerspective"
-            name="%perspective.job.input.name">
-      </perspective>
-      <perspective
             class="com.rochatec.athena.humanresources.employee.perspective.EmployeeSearchPerspective"
             fixed="true"
             icon="icons/infra/perspective_16.png"
@@ -75,13 +68,6 @@
             icon="icons/infra/perspective_16.png"
             id="com.rochatec.athena.manufacture.productSet.perspective.ProductSetSearchPerspective"
             name="%perspective.productSet.search.name">
-      </perspective>
-      <perspective
-            class="com.rochatec.athena.manufacture.machine.perspective.MachineSearchPerspective"
-            fixed="true"
-            icon="icons/infra/perspective_16.png"
-            id="com.rochatec.athena.manufacture.machine.perspective.MachineSearchPerspective"
-            name="%perspective.machine.search.name">
       </perspective>
       <perspective
             class="com.rochatec.athena.supply.supplier.perspective.SupplierSearchPerspective"
@@ -819,39 +805,6 @@
             commandId="com.rochatec.athena.command.productSet.edit">
       </handler>
       <handler
-            class="com.rochatec.athena.manufacture.machine.handler.MachineSearchHandler"
-            commandId="com.rochatec.athena.command.machine.search">
-      </handler>
-      <handler
-            class="com.rochatec.athena.manufacture.machine.handler.MachineNewhandler"
-            commandId="com.rochatec.athena.command.machine.new">
-         <activeWhen>
-            <reference
-                  definitionId="com.rochatec.athena.app.crud.machine">
-            </reference>
-         </activeWhen>
-      </handler>
-      <handler
-            class="com.rochatec.athena.manufacture.machine.handler.MachineDeleteHandler"
-            commandId="com.rochatec.athena.command.machine.delete">
-         <activeWhen>
-            <and>
-               <count
-                     value="1">
-               </count>
-               <iterate>
-                  <instanceof
-                        value="com.rochatec.athena.model.Machine">
-                  </instanceof>
-               </iterate>
-            </and>
-         </activeWhen>
-      </handler>
-      <handler
-            class="com.rochatec.athena.manufacture.machine.handler.MachineEditHandler"
-            commandId="com.rochatec.athena.command.machine.edit">
-      </handler>
-      <handler
             class="com.rochatec.athena.supply.supplier.handler.SupplierSearchHandler"
             commandId="com.rochatec.athena.command.supplier.search">
       </handler>
@@ -1037,14 +990,7 @@
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.manufacture.productSet.editor.ProductSetEditor"
             name="%editor.productSet.name">
-      </editor>
-      <editor
-            class="com.rochatec.athena.manufacture.machine.editor.MachineEditor"
-            default="false"
-            icon="icons/infra/editor_16.png"
-            id="com.rochatec.athena.manufacture.machine.editor.MachineEditor"
-            name="%editor.machine.name">
-      </editor>
+      </editor>     
       <editor
             class="com.rochatec.athena.supply.supplier.editor.SupplierEditor"
             default="false"
@@ -1072,11 +1018,6 @@
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.security.profile.editor.ProfileEditor"
             name="%editor.profile.name">
-      </editor>
-      <editor
-            class="com.rochatec.athena.salesOrder.editor.SaleOrderEditor1"
-            id="com.rochatec.athena.salesOrder.editor.SaleOrderEditor1"
-            name="New EditorPart">
       </editor>
    </extension>
    <extension

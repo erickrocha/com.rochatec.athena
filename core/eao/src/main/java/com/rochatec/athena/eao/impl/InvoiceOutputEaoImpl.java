@@ -20,6 +20,7 @@ import com.rochatec.metallurgical.util.CalendarUtil;
 @Stateless
 public class InvoiceOutputEaoImpl extends GenericEao<InvoiceOutput,Serializable> implements InvoiceOutputEaoLocal{
 	
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(InvoiceOutputEaoImpl.class);
 	
 	private Map<String,Object> params = new HashMap<String, Object>();
@@ -53,6 +54,7 @@ public class InvoiceOutputEaoImpl extends GenericEao<InvoiceOutput,Serializable>
 		return null;
 	}
 	
+	@SuppressWarnings("unused")
 	private void addStatusWhere(InvoiceStatus status){
 		if (!status.equals(InvoiceStatus.ALL)){
 			builder.append("AND i.status = :status ");
@@ -60,6 +62,7 @@ public class InvoiceOutputEaoImpl extends GenericEao<InvoiceOutput,Serializable>
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void addPeriodwhere(String field,Calendar begin,Calendar end){
 		if ((begin != null && end == null) || (end != null && begin == null) || (begin != null && end != null) ){
 			begin = begin == null ? CalendarUtil.getFirstHourToday() : begin;
@@ -70,6 +73,7 @@ public class InvoiceOutputEaoImpl extends GenericEao<InvoiceOutput,Serializable>
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void fillParams(Query query){
 		for (String param : params.keySet()){
 			query.setParameter(param,params.get(param));

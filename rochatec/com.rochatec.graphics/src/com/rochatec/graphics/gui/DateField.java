@@ -57,6 +57,10 @@ public class DateField {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	
+	public String getValueString(){
+		return value;
+	}
 
 	public void setValue(Date date){
 		if (date != null){

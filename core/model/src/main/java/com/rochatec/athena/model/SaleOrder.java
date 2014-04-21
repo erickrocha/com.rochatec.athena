@@ -250,7 +250,7 @@ public class SaleOrder implements Serializable {
 		SaleOrder saleOrder = new SaleOrder();
 		saleOrder.setCustomer(customer);
 		saleOrder.setDateRegister(CalendarUtil.getToday());
-		saleOrder.set
+		return saleOrder;
 	}
  
 }
