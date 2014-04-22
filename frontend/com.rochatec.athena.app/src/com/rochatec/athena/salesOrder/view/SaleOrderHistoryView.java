@@ -1,6 +1,5 @@
 package com.rochatec.athena.salesOrder.view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.action.MenuManager;
@@ -57,14 +56,18 @@ public class SaleOrderHistoryView extends AbstractView implements ISelectionChan
 	}
 	
 	public void add(Customer customer,SaleOrder saleOrder){
-		List<SaleOrder> saleOrders = new ArrayList<SaleOrder>();
-		saleOrders.add(saleOrder);
-		fill(customer,saleOrders);
+		TreeParent root = new TreeParent(customer.getName(),0);
+		root.setObject(customer);
+		
+		TreeObject object = new TreeObject(saleOrder.toStringwithDateRegister().toString(),1,saleOrder);
+		object.setParent(root);
+		root.addChild(object);
+		viewer.setInput(root);
 	}
 	
 	private void fill(Customer customer, List<SaleOrder> saleOrders){
 		TreeParent root = new TreeParent(customer.getName(),0);
-		root.setObject(root);
+		root.setObject(customer);
 						
 		for (SaleOrder saleOrder : saleOrders){
 			TreeObject object = new TreeObject(saleOrder.toStringwithDateRegister().toString(),1,saleOrder);
@@ -81,6 +84,14 @@ public class SaleOrderHistoryView extends AbstractView implements ISelectionChan
 		Customer customer = selection.getSingleSelection();
 		List<SaleOrder> saleOrders = salesClientService.findSaleOrdersByCustomer(customer,null,null,SaleOrderStatus.ALL);
 		fill(customer,saleOrders);		
+	}
+	
+	public void addSelectionChangedListener(ISelectionChangedListener listener){
+		this.viewer.addSelectionChangedListener(listener);
+	}
+	
+	public void removeSelectionChangedListener(ISelectionChangedListener listener){
+		this.viewer.removeSelectionChangedListener(listener);
 	}
 
 }

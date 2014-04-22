@@ -246,10 +246,12 @@ public class SaleOrder implements Serializable {
 		return items;
 	}
 	
-	public static final SaleOrder factory(Customer customer){
+	public static final SaleOrder factory(Customer customer,Employee employee){
 		SaleOrder saleOrder = new SaleOrder();
 		saleOrder.setCustomer(customer);
+		saleOrder.setEmployee(employee);
 		saleOrder.setDateRegister(CalendarUtil.getToday());
+		saleOrder.setStatus(SaleOrderStatus.SAVE);
 		return saleOrder;
 	}
  
