@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu-app>
+<menu name="MANAGER" label="Administrativo" parent="NULL" index="1">
+  <sub-menu role="ADM01" name="MANAGER_PRICE" label="Administração de Preços" parent="MANAGER" action="com.rochatec.metallurgical.menu.AdministrativePriceAction" />
+   <separator />
+  <sub-menu role="ALL" name="CLOSE" label="Fechar" parent="MANAGER" action="com.rochatec.metallurgical.menu.CloseAction"/>
+</menu>
+<menu name="REGISTER" label="Cadastro" parent="NULL" index="2" >
+  <sub-menu role="CUS01" name="CUSTOMER" label="Clientes" parent="REGISTER" action="com.rochatec.metallurgical.menu.CustomerAction" />
+  <sub-menu role="EMP01" name="EMPLOYEE" label="Funcionários" parent="REGISTER" action="com.rochatec.metallurgical.menu.EmployeeAction" />
+  <sub-menu role="JOB01" name="JOB" label="Cargos" parent="REGISTER" action="com.rochatec.metallurgical.menu.JobAction"/>
+  <sub-menu role="CAT01" name="CATEGORY" label="Categorias" parent="REGISTER" action="com.rochatec.metallurgical.menu.CategoryAction"/>
+  <sub-menu role="PRO01" name="PRODUCT" label="Produtos" parent="REGISTER" action="com.rochatec.metallurgical.menu.ProductAction"/>
+  <sub-menu role="PRS01" name="PRODUCTSET" label="Conjuntos" parent="REGISTER" action="com.rochatec.metallurgical.menu.ProductSetAction"/>
+  <sub-menu role="MAC01" name="MACHINE" label="Máquinas" parent="REGISTER" action="com.rochatec.metallurgical.menu.MachineAction"/>
+  <sub-menu role="NCM01" name="NCM" label="NCM" parent="REGISTER" action="com.rochatec.metallurgical.menu.NcmAction"/>		
+  <sub-menu role="SUP01" name="SUPPLIER" label="Fornecedores" parent="REGISTER" action="com.rochatec.metallurgical.menu.SupplierAction"/>
+  <sub-menu role="NOP01" name="NATURE_OPERATION" label="Natureza da Operação" parent="REGISTER" action="com.rochatec.metallurgical.menu.NatureOfOperationAction"/>
+  <sub-menu role="CAR01" name="SHIPPER" label="Transportadora" parent="REGISTER" action="com.rochatec.metallurgical.menu.ShipperAction"/>
+  <sub-menu role="TEA01" name="TEAM" label="Equipe" parent="REGISTER" action="com.rochatec.metallurgical.menu.TeamAction"/>
+  <sub-menu role="TAS01" name="TASK" label="Tarefas Humanas" parent="REGISTER" action="com.rochatec.metallurgical.menu.HumanTaskAction"/>  
+</menu>
+<menu name="PCP" label="Planejamento e Controle Produção" parent="NULL" index="3">
+<sub-menu role="SEO01" name="SERVICE_ORDER" label="Ordem de Serviço" parent="PCP" action="com.rochatec.metallurgical.menu.ServiceOrderAction" />
+  <sub-menu role="PRC01" name="PROCESS" label="Processos" parent="PCP" action="com.rochatec.metallurgical.menu.ProcessAction" />
+</menu>
+<menu name="INVOICE" label="Nota Fiscal" parent="NULL" index="4">
+  <sub-menu role="INP01" name="INVOICE_INPUT" label="Nota Fiscal Entrada" parent="INVOICE" action="com.rochatec.metallurgical.menu.InvoiceInputAction" />
+  <sub-menu role="INO01" name="INVOICE_OUTPUT" label="Nota Fiscal Saída" parent="INVOICE" action="com.rochatec.metallurgical.menu.InvoiceOutputAction" />
+</menu>
+<menu name="SALE" label="Vendas" parent="NULL" index="5">
+  <sub-menu role="SAL01" name="SALE_ORDER" label="Pedido de Venda" parent="SALE" action="com.rochatec.metallurgical.menu.SaleOrderAction" />
+</menu>
+<menu name="SECURITY" label="Segurança" parent="NULL" index="6">
+  <sub-menu role="USER1" name="USER" label="Usuários" parent="SECURITY" action="com.rochatec.metallurgical.menu.UserAction" />
+  <sub-menu role="PRF01" name="PROFILE" label="Perfil" parent="SECURITY" action="com.rochatec.metallurgical.menu.ProfileAction" />
+</menu>
+<menu name="CONFIG" label="Configuração" parent="NULL" index="7">
+  <sub-menu role="PRE01" name="PREFERENCE" label="Preferências" parent="CONFIG" action="com.rochatec.metallurgical.menu.PreferenceAction" />
+</menu>
+</menu-app>
