@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SALES_ORDER_ITEM")
+@Table(name="SALE_ORDER_ITEM")
 public class SaleOrderItem implements Serializable,IProductItem {
 
 	/**

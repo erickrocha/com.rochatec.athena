@@ -42,10 +42,7 @@ public class TreeContentProvider implements IStructuredContentProvider,
 	}
 
 	@Override
-	public Object[] getElements(Object parent) {
-		if (parent instanceof TreeParent && ((TreeParent)parent).getParent() == null){
-			return new Object[]{parent};
-		}
+	public Object[] getElements(Object parent) {		
 		return getChildren(parent);
 	}
 

@@ -944,6 +944,10 @@
             class="com.rochatec.athena.salesOrder.handler.SaleOrderNewHandler"
             commandId="com.rochatec.athena.command.saleOrder.new">
       </handler>
+      <handler
+            class="com.rochatec.athena.salesOrder.handler.SaleOrderEditHandler"
+            commandId="com.rochatec.athena.command.saleOrder.edit">
+      </handler>
    </extension>
    <extension
          id="com.rochatec.athena.app.editors"
@@ -1018,6 +1022,13 @@
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.security.profile.editor.ProfileEditor"
             name="%editor.profile.name">
+      </editor>
+      <editor
+            class="com.rochatec.athena.salesOrder.editor.SaleOrderEditor"
+            default="false"
+            icon="icons/infra/editor_16.png"
+            id="com.rochatec.athena.salesOrder.editor.SaleOrderEditor"
+            name="Sale Order">
       </editor>
    </extension>
    <extension

@@ -3233,3 +3233,135 @@ java.lang.RuntimeException: Operation failed with status WAITING
 4075 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
 4076 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@af6cd14, receiver=Remoting connection EJB receiver [connection=Remoting connection <58b4a384>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID ebde7962 (outbound) of Remoting connection 0728f695 to localhost/127.0.0.1:4447
 26063 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID ebde7962 (outbound) of Remoting connection 0728f695 to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4302 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4307 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4332 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4496 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4507 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@3ff0750a, receiver=Remoting connection EJB receiver [connection=Remoting connection <5515cb4>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID ea8c1fcc (outbound) of Remoting connection 44d6cc92 to localhost/127.0.0.1:4447
+4509 [Remoting "client-endpoint" task-3] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+260590 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID ea8c1fcc (outbound) of Remoting connection 44d6cc92 to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4475 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4481 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4503 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4753 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4763 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@3e921b6a, receiver=Remoting connection EJB receiver [connection=Remoting connection <355e0f92>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID c52ca8b3 (outbound) of Remoting connection 0aaaec4e to localhost/127.0.0.1:4447
+4776 [Remoting "client-endpoint" task-3] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+26515 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID c52ca8b3 (outbound) of Remoting connection 0aaaec4e to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4353 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4357 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4365 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4517 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4530 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@3d0db4fa, receiver=Remoting connection EJB receiver [connection=Remoting connection <58621e34>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID c38bd194 (outbound) of Remoting connection 45581dba to localhost/127.0.0.1:4447
+4532 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+28178 [Remoting "client-endpoint" task-4] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID c38bd194 (outbound) of Remoting connection 45581dba to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4188 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4192 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4201 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4371 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4381 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@7138e57a, receiver=Remoting connection EJB receiver [connection=Remoting connection <4be3eb6a>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID aa0606ab (outbound) of Remoting connection 52847b05 to localhost/127.0.0.1:4447
+4383 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+96217 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID aa0606ab (outbound) of Remoting connection 52847b05 to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3793 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3796 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3804 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3951 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+3960 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@17acfe9b, receiver=Remoting connection EJB receiver [connection=Remoting connection <2bd9ed18>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID f277662a (outbound) of Remoting connection 074a0414 to localhost/127.0.0.1:4447
+3962 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+8717 [main] ERROR com.rochatec.athena.log.LogListener  - Problems occurred when invoking code from plug-in: "org.eclipse.jface".java.lang.ClassCastException: [Lcom.rochatec.framework.model.TreeObject; cannot be cast to com.rochatec.framework.model.TreeObject
+19328 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID f277662a (outbound) of Remoting connection 074a0414 to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+16143 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+16147 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+16154 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+16293 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+16311 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+16313 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@5e7f7e41, receiver=Remoting connection EJB receiver [connection=Remoting connection <705cd925>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID cf3831d3 (outbound) of Remoting connection 0c51c0c9 to localhost/127.0.0.1:4447
+26386 [main] ERROR com.rochatec.athena.log.LogListener  - Problems occurred when invoking code from plug-in: "org.eclipse.jface".java.lang.RuntimeException: com.rochatec.athena.command.saleOrder.edit not found
+73698 [Remoting "client-endpoint" task-4] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID cf3831d3 (outbound) of Remoting connection 0c51c0c9 to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3651 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3655 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3662 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3817 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+3826 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@1fa8e045, receiver=Remoting connection EJB receiver [connection=Remoting connection <64d3ca11>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID 9e6b49dc (outbound) of Remoting connection 69503410 to localhost/127.0.0.1:4447
+3829 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+10121 [main] ERROR com.rochatec.athena.log.LogListener  - Problems occurred when invoking code from plug-in: "org.eclipse.jface".java.lang.RuntimeException: com.rochatec.athena.command.saleOrder.edit not found
+17979 [Remoting "client-endpoint" task-2] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 9e6b49dc (outbound) of Remoting connection 69503410 to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+5790 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+5794 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+5802 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+5955 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+5971 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@af6cd14, receiver=Remoting connection EJB receiver [connection=Remoting connection <58b4a384>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID 84ebf777 (outbound) of Remoting connection 0728f695 to localhost/127.0.0.1:4447
+5973 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+13262 [main] ERROR com.rochatec.athena.log.LogListener  - Problems occurred when invoking code from plug-in: "org.eclipse.jface".java.lang.RuntimeException: com.rochatec.athena.command.saleOrder.edit not found
+19284 [Remoting "client-endpoint" task-2] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 84ebf777 (outbound) of Remoting connection 0728f695 to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3464 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3468 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3476 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3651 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+3663 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@5db5fbc1, receiver=Remoting connection EJB receiver [connection=Remoting connection <4f707f0c>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID a8626081 (outbound) of Remoting connection 0f5c6afe to localhost/127.0.0.1:4447
+3664 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3694 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3700 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3712 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3868 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+3889 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+3892 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@158805b, receiver=Remoting connection EJB receiver [connection=Remoting connection <4ec913d1>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID 93333094 (outbound) of Remoting connection 44d6cc92 to localhost/127.0.0.1:4447
+54973 [main] ERROR com.rochatec.athena.log.LogListener  - Problems occurred when invoking code from plug-in: "org.eclipse.jface".java.lang.RuntimeException: com.rochatec.athena.command.saleOrder.edit not found
+182581 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 93333094 (outbound) of Remoting connection 44d6cc92 to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4162 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4167 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4175 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4341 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4357 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@3c51d2cb, receiver=Remoting connection EJB receiver [connection=Remoting connection <78e26afa>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID 8f224069 (outbound) of Remoting connection 0f0ade81 to localhost/127.0.0.1:4447
+4359 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+24703 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 8f224069 (outbound) of Remoting connection 0f0ade81 to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3851 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3855 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3873 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4011 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4023 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@cf871cb, receiver=Remoting connection EJB receiver [connection=Remoting connection <75e04c59>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID c024e7ab (outbound) of Remoting connection 1578361e to localhost/127.0.0.1:4447
+4025 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+318666 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID c024e7ab (outbound) of Remoting connection 1578361e to localhost/127.0.0.1:4447 can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3814 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3818 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3826 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3989 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4003 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@674e7651, receiver=Remoting connection EJB receiver [connection=Remoting connection <6e033953>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID be0f7eaa (outbound) of Remoting connection 5b7ffa5a to localhost/127.0.0.1:4447
+4005 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+5422 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+5425 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+5445 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+5578 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+5591 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@5111e1ab, receiver=Remoting connection EJB receiver [connection=Remoting connection <3b5b5c9b>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID eb06b459 (outbound) of Remoting connection 1254b3df to localhost/127.0.0.1:4447
+5595 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+27454 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID eb06b459 (outbound) of Remoting connection 1254b3df to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+3580 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+3585 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+3604 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+3750 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+3760 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@cf871cb, receiver=Remoting connection EJB receiver [connection=Remoting connection <75e04c59>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID c09b0a89 (outbound) of Remoting connection 1578361e to localhost/127.0.0.1:4447
+3764 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+26754 [Remoting "client-endpoint" task-2] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID c09b0a89 (outbound) of Remoting connection 1578361e to null can no longer process messages
+349403 [Remoting "client-endpoint" task-4] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID be0f7eaa (outbound) of Remoting connection 5b7ffa5a to null can no longer process messages
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+4163 [main] INFO  org.xnio  - XNIO Version 3.0.3.GA
+4166 [main] INFO  org.xnio.nio  - XNIO NIO Implementation Version 3.0.3.GA
+4174 [main] INFO  org.jboss.remoting  - JBoss Remoting version 3.2.3.GA
+4323 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.VersionReceiver  - Received server version 1 and marshalling strategies [river]
+4332 [main] INFO  org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver  - Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@af6cd14, receiver=Remoting connection EJB receiver [connection=Remoting connection <58b4a384>,channel=jboss.ejb,nodename=ca115]} on channel Channel ID 9745504a (outbound) of Remoting connection 0728f695 to localhost/127.0.0.1:4447
+4334 [Remoting "client-endpoint" task-2] WARN  org.jboss.ejb.client.remoting.ChannelAssociation  - Unsupported message received with header 0xffffffff
+27504 [Remoting "client-endpoint" task-3] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 9745504a (outbound) of Remoting connection 0728f695 to localhost/127.0.0.1:4447 can no longer process messages

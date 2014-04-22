@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -111,6 +113,11 @@ public class SaleOrder implements Serializable {
 
 	public void setDateValidity(Calendar dateValidity) {
 		this.dateValidity = dateValidity;
+	}
+	
+	public void setDateValidity(Date dateRegister,int sumDays){		
+		dateValidity.setTime(dateRegister);
+		dateValidity.set(Calendar.DAY_OF_MONTH,dateValidity.get(Calendar.DAY_OF_MONTH)+sumDays);
 	}
 
 	public Calendar getDateDelivery() {
