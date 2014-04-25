@@ -15,6 +15,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
+import com.rochatec.athena.components.viewer.ItemViewer;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.SaleOrder;
 import com.rochatec.athena.util.StatusTradutor;
@@ -37,7 +38,7 @@ public class SaleOrderEditor extends AbstractEditor implements Bindable{
 	@Override
 	protected void createContents(Composite parent) {
 		createInfoBox(parent);
-		
+		createItemBox(parent);
 	}	
 	
 	protected void createInfoBox(Composite parent){
@@ -46,7 +47,7 @@ public class SaleOrderEditor extends AbstractEditor implements Bindable{
 		composite.setLayout(LayoutFactory.getInstance().getGridLayout(2,0));		
 		createOtherFields(composite);
 		createObservationField(composite);		
-		createFooter(parent);
+		createFooter(parent);		
 	}
 	
 	private void createOtherFields(Composite parent){
@@ -98,6 +99,10 @@ public class SaleOrderEditor extends AbstractEditor implements Bindable{
 		lblTotal.setLayoutData(new GridData(SWT.RIGHT,SWT.RIGHT,true,false));
 		lblTotal.setAlignment(SWT.RIGHT);
 		lblTotal.setText("0,00");		
+	}
+	
+	private void createItemBox(Composite parent){
+		ItemViewer itemViewer = new ItemViewer(parent);
 	}
 
 	@Override
