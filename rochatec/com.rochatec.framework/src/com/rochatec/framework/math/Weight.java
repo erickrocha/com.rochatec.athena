@@ -37,12 +37,19 @@ public class Weight implements IFormarter{
 
 	@Override
 	public String mask(String value) throws BadFormatException {
-		return null;
+		BigDecimal decimal = parse(value);		
+		decimal.setScale(3, RoundingMode.HALF_EVEN);
+		return nf.format(decimal);
 	}
 
 	@Override
 	public String mask(Object value) throws BadFormatException {
-		return null;
+		if (value instanceof BigDecimal){
+			BigDecimal decimal =  (BigDecimal)value;
+			decimal.setScale(3, RoundingMode.HALF_EVEN);
+			return nf.format(decimal);
+		}
+		return nf.format(value);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -45,7 +46,7 @@ public abstract class AbstractProduct implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
-	private Status status;
+	private Status status = Status.ACTIVE;
 
 	@Column(precision=10, scale=2)
 	private BigDecimal costprice = BigDecimal.ZERO;
@@ -133,7 +134,7 @@ public abstract class AbstractProduct implements Serializable {
     private int manufacture;
     
     //bi-directional many-to-one association to Product
-  	@OneToMany(mappedBy="product",fetch=FetchType.LAZY)
+  	@OneToMany(mappedBy="product",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     private Set<BarCode> barCodes;
     
     public AbstractProduct() {

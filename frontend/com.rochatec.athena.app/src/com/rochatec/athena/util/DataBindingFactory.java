@@ -12,6 +12,7 @@ import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.nebula.jface.tablecomboviewer.TableComboViewer;
 import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
@@ -94,6 +95,11 @@ public class DataBindingFactory<T> {
 				ctx.bindValue(widgetValue, modelValue);
 			}else if (component instanceof TextViewer){
 				TextViewer viewer = (TextViewer)component;
+				IObservableValue widgetValue = ViewersObservables.observeSingleSelection(viewer);
+				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
+				ctx.bindValue(widgetValue, modelValue);
+			}else if (component instanceof ComboViewer){
+				ComboViewer viewer = (ComboViewer)component;
 				IObservableValue widgetValue = ViewersObservables.observeSingleSelection(viewer);
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				ctx.bindValue(widgetValue, modelValue);

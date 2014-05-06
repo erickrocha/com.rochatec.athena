@@ -29,10 +29,12 @@ import org.eclipse.ui.PartInitException;
 
 import com.rochatec.athena.client.service.ManufactureClientService;
 import com.rochatec.athena.i18n.Messages;
+import com.rochatec.athena.manufacture.barcode.viewer.BarCodeViewer;
 import com.rochatec.athena.manufacture.category.provider.CategoryLabelProvider;
 import com.rochatec.athena.manufacture.icms.provider.IcmsLabelProvider;
 import com.rochatec.athena.manufacture.ncm.dialog.NcmDialog;
 import com.rochatec.athena.manufacture.ncm.provider.NcmLabelProvider;
+import com.rochatec.athena.manufacture.product.helper.ProductHelper;
 import com.rochatec.athena.manufacture.unitMeasure.provider.UnitMeasureLabelProvider;
 import com.rochatec.athena.model.Category;
 import com.rochatec.athena.model.Icms;
@@ -88,6 +90,7 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 	private TimeFormatedText txtProductionTime;
 	private TimeFormatedText txtLastProductionTime;
 	private TimeFormatedText txtAverageProductionTime;
+	private BarCodeViewer barCodeViewer;
 	
 	@Override
 	public void makeActions(IToolBarManager toolBarManager) {
@@ -102,6 +105,7 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		createStockBox(form.getBody());
 		createPriceBox(form.getBody());
 		createInfoBox(form.getBody());
+		createBarcode(form.getBody());
 		DataBindingFactory<Product> factory = new DataBindingFactory<Product>(editorInput.getProduct(),this);
 		factory.bind(getBinds());
 	}
@@ -256,9 +260,9 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.weight"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.height"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.width"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.lastProductionTime"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.width"));		
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.productionTime"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.lastProductionTime"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.averageProductionTime"));
 		
 		txtWeight = new NumberFormatedText(composite);
@@ -279,6 +283,11 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		txtAverageProductionTime = new TimeFormatedText(composite);
 		txtAverageProductionTime.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));	
 	}
+	
+	private void createBarcode(Composite parent){
+		barCodeViewer = new BarCodeViewer(parent);
+		barCodeViewer.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,true));
+	}
 
 	@Override
 	protected void addListeners() {
@@ -296,15 +305,19 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 			idLabel.setLabelText(product.getId());
 			viewerICms.setSelection(new SearchSelection<Icms>(product.getIcms()));
 			viewerCategory.setSelection(new SearchSelection<Category>(product.getCategory()));
+			barCodeViewer.setBarCodes(product.getBarCodesList());
 		}else{
 			viewerICms.setSelection(new SearchSelection<Icms>(icms.get(0)));
 			viewerCategory.setSelection(new SearchSelection<Category>(categories.get(0)));
+			txtProductionTime.setEnabled(false);		
 		}
 	}
-
+	
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		Product product = editorInput.getProduct();
+		ProductHelper helper = new ProductHelper(product);
+		helper.fillBarCodes(barCodeViewer.getBarCodes());
 		product = manufactureClientService.persist(product);
 		idLabel.setLabelText(product.getId());
 		setDirty(false);

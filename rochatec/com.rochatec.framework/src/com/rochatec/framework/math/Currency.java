@@ -37,7 +37,7 @@ public class Currency implements IFormarter{
 
 	@Override
 	public String mask(Object value) throws BadFormatException {
-		return null;
+		return nf.format(value);		
 	}
 
 	@Override
