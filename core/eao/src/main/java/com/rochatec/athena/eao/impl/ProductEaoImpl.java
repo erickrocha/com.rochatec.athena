@@ -27,15 +27,27 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 	private StringBuilder builder = new StringBuilder();
 
 	public Product findById(Long id) {
-		Product product = super.findById(id);
-		return product;
+		try {
+			builder = new StringBuilder("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes WHERE ");
+			params = new HashMap<String, Object>();			
+			builder.append("p.id = :ID");
+			params.put("ID",id);
+			Query query = getEntityManager().createQuery(builder.toString(),Product.class);
+			fillParams(query);
+			Product product = (Product)query.getSingleResult();
+			return product;
+		}catch (Exception e){
+			LOGGER.error(builder.toString());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Product> findByName(String name, Calendar begin, Calendar end,Status status) {
 		try{
-			builder = new StringBuilder("SELECT p FROM Product p WHERE  ");
+			builder = new StringBuilder("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes WHERE  ");
 			params = new HashMap<String, Object>();			
 			builder.append("p.name like :name OR p.shortName like :shortName ");
 			params.put("name",name+"%");
@@ -57,7 +69,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 	@Override
 	public List<Product> findByCategory(String category, Calendar begin,Calendar end, Status status) {
 		try{
-			builder = new StringBuilder("SELECT p FROM Product p WHERE ");
+			builder = new StringBuilder("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes WHERE ");
 			params = new HashMap<String, Object>();
 			builder.append("p.category.name = :name ");
 			params.put("name",category);
@@ -78,7 +90,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 	@Override
 	public List<Product> findByDateRegister(Calendar begin, Calendar end,Status status) {
 		try{
-			builder = new StringBuilder("SELECT p FROM Product p WHERE p.dateRegister BETWEEN :begin AND :end ");
+			builder = new StringBuilder("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes WHERE p.dateRegister BETWEEN :begin AND :end ");
 			params = new HashMap<String, Object>();
 			begin = begin == null ? CalendarUtil.getFirstHourToday() : begin;
 			end = end == null ? CalendarUtil.getLastHourToday() : end;

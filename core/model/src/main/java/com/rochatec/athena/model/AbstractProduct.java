@@ -2,7 +2,11 @@ package com.rochatec.athena.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -10,11 +14,13 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -125,6 +131,10 @@ public abstract class AbstractProduct implements Serializable {
     
     @Column(name="MANUFACTURE",precision=10,scale=0)
     private int manufacture;
+    
+    //bi-directional many-to-one association to Product
+  	@OneToMany(mappedBy="product",fetch=FetchType.LAZY)
+    private Set<BarCode> barCodes;
     
     public AbstractProduct() {
     }
@@ -375,8 +385,28 @@ public abstract class AbstractProduct implements Serializable {
 	
 	public Status getStatus() {
 		return status;
-	}	
+	}
 	
+	public Set<BarCode> getBarCodes() {
+		return barCodes;
+	}
+	
+	public List<BarCode> getBarCodesList(){
+		return new ArrayList<BarCode>(this.barCodes);
+	}
+	
+	public void setBarCodes(List<BarCode> barCodes){
+		this.barCodes = new HashSet<BarCode>(barCodes);
+	}
+
+	public void setBarCodes(Set<BarCode> barCodes) {
+		this.barCodes = barCodes;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

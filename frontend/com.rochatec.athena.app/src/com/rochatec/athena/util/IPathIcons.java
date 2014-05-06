@@ -17,8 +17,6 @@ public interface IPathIcons {
 	public static final String CHECK_ALL_16 = "icons/infra/check_all_16.png";
 	public static final String SALE_ORDER_16 = "icons/infra/sale_order_16.png";
 	
-	
-	
 	/*Icones de Infra */
 	public static final String INFRA_EDITOR_16 = "icons/infra/editor_16.png";
 	public static final String INFRA_VIEW_16 = "icons/infra/view_16.png";
@@ -36,4 +34,7 @@ public interface IPathIcons {
 	public static final String INFRA_ADD_48 = "icons/infra/add_48.png";
 			
 	public static final String LOGIN_32 = "icons/infra/login_32.png";
+	public static final String SEARCH_32 = "icons/infra/search_32.png";
+	public static final String SEARCH_48 = "icons/infra/search_48.png";
 }
+
