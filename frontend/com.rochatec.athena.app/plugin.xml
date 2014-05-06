@@ -104,6 +104,12 @@
             id="com.rochatec.athena.salesOrder.perspective.SaleOrderPerspective"
             name="%perspective.saleOrder.search.name">
       </perspective>
+      <perspective
+            class="com.rochatec.athena.invoice.input.perspective.InvoiceInputPerspective"
+            icon="icons/infra/perspective_16.png"
+            id="com.rochatec.athena.invoice.input.perspective.InvoiceInputPerspective"
+            name="%perspective.invoice.inpu.search.name">
+      </perspective>
    </extension>
    <extension
          id="com.rochatec.athena.app.views"
@@ -345,6 +351,19 @@
             icon="icons/infra/view_16.png"
             id="com.rochatec.athena.salesOrder.view.SaleOrderHistoryView"
             name="%view.saleOrder.history.name"
+            restorable="true">
+      </view>
+      <category
+            id="com.rochatec.athena.category.invoice"
+            name="Invoice">
+      </category>
+      <view
+            allowMultiple="false"
+            category="com.rochatec.athena.category.invoice"
+            class="com.rochatec.athena.invoice.input.view.InvoiceInputSupplierView"
+            icon="icons/infra/view_16.png"
+            id="com.rochatec.athena.invoice.input.view.InvoiceInputSupplierView"
+            name="%view.invoice.input.supplier.name"
             restorable="true">
       </view>
    </extension>
@@ -594,6 +613,15 @@
             categoryId="com.rochatec.athena.category.sales"
             id="com.rochatec.athena.command.saleOrder.edit"
             name="Edit Sale Order">
+      </command>
+      <category
+            id="com.rochatec.athena.category.invoice"
+            name="Invoice">
+      </category>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.invoice.input.search"
+            name="Invoice Input">
       </command>
    </extension>
    <extension
@@ -948,6 +976,10 @@
             class="com.rochatec.athena.salesOrder.handler.SaleOrderEditHandler"
             commandId="com.rochatec.athena.command.saleOrder.edit">
       </handler>
+      <handler
+            class="com.rochatec.athena.invoice.input.handler.InvoiceInputHandler"
+            commandId="com.rochatec.athena.command.invoice.input.search">
+      </handler>
    </extension>
    <extension
          id="com.rochatec.athena.app.editors"
@@ -1134,6 +1166,19 @@
                   label="%menu.sales.saleOrder.label"
                   style="push"
                   tooltip="%menu.sales.saleOrder.label">
+            </command>
+         </menu>
+         <menu
+               id="com.rochatec.athena.menu.invoice"
+               label="%menu.invoice.label"
+               tooltip="%menu.invoice.label">
+            <command
+                  commandId="com.rochatec.athena.command.invoice.input.search"
+                  icon="icons/infra/invoice_16.png"
+                  id="com.rochatec.athena.invoice.menu.invoiceInput"
+                  label="%menu.invoice.input.label"
+                  style="push"
+                  tooltip="menu.invoice.input.label">
             </command>
          </menu>
          <menu

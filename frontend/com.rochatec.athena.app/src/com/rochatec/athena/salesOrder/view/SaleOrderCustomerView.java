@@ -94,7 +94,7 @@ public class SaleOrderCustomerView extends AbstractView implements Executable<Cu
 			properties.add(new Property(getLabel("city"),customer.getAddress().getCity(),8));
 			properties.add(new Property(getLabel("province"),customer.getAddress().getProvince().getAcronym(),9));
 			properties.add(new Property(getLabel("homePhone"),Formatter.getPhone().mask(customer.getHomePhone()),10));
-			properties.add(new Property(getLabel("cellPhone"),customer.getCellPhone(),11));
+			properties.add(new Property(getLabel("cellPhone"),Formatter.getPhone().mask(customer.getCellPhone()),11));
 			properties.add(new Property(getLabel("email"),customer.getEmail(),12));
 		} catch (BadFormatException e) {
 			Activator.getDefault().addConsoleError(e);

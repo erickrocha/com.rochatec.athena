@@ -66,7 +66,7 @@ public class SupplierTable extends AbstractTable{
 		street.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn streetNumber = new TableViewerColumn(tableViewer,SWT.CENTER);
-		streetNumber.getColumn().setText(Messages.getMessage("supplier.field.label.streetnumber"));
+		streetNumber.getColumn().setText(Messages.getMessage("supplier.field.label.streetNumber"));
 		streetNumber.getColumn().setWidth(100);
 		streetNumber.getColumn().setResizable(true);
 		streetNumber.getColumn().setMoveable(true);
