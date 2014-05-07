@@ -3,6 +3,7 @@ package com.rochatec.athena.invoice.input.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -18,6 +19,7 @@ import com.rochatec.athena.app.Activator;
 import com.rochatec.athena.client.service.SupplyClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Supplier;
+import com.rochatec.athena.provider.DefaultSelectionProvider;
 import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.exception.BadFormatException;
@@ -113,7 +115,10 @@ public class InvoiceInputSupplierView extends AbstractView implements Executable
 
 	@Override
 	protected void addListeners() {
-		
+		getSite().setSelectionProvider(new DefaultSelectionProvider());
+		getSite().getSelectionProvider().addSelectionChangedListener(
+				(ISelectionChangedListener) Activator.getDefault().getView(
+						InvoiceInputSupplierHistoryView.ID));
 		
 	}
 

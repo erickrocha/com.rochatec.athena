@@ -366,6 +366,15 @@
             name="%view.invoice.input.supplier.name"
             restorable="true">
       </view>
+      <view
+            allowMultiple="false"
+            category="com.rochatec.athena.category.invoice"
+            class="com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView"
+            icon="icons/infra/view_16.png"
+            id="com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView"
+            name="%view.invoice.input.history.name"
+            restorable="true">
+      </view>
    </extension>
    <extension
          id="com.rochatec.athena.app.views"
@@ -622,6 +631,16 @@
             categoryId="com.rochatec.athena.category.invoice"
             id="com.rochatec.athena.command.invoice.input.search"
             name="Invoice Input">
+      </command>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.inovice.input.new"
+            name="New Invoice Input">
+      </command>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.invoice.input.edit"
+            name="Edit Invoice Input">
       </command>
    </extension>
    <extension
@@ -979,6 +998,14 @@
       <handler
             class="com.rochatec.athena.invoice.input.handler.InvoiceInputHandler"
             commandId="com.rochatec.athena.command.invoice.input.search">
+      </handler>
+      <handler
+            class="com.rochatec.athena.invoice.input.handler.InvoiceInputNewHandler"
+            commandId="com.rochatec.athena.command.inovice.input.new">
+      </handler>
+      <handler
+            class="com.rochatec.athena.invoice.input.handler.InvoiceInputEditHandler"
+            commandId="com.rochatec.athena.command.invoice.input.edit">
       </handler>
    </extension>
    <extension
@@ -2097,6 +2124,7 @@
             locationURI="popup:com.rochatec.athena.salesOrder.view.SaleOrderHistoryView">
          <command
                commandId="com.rochatec.athena.command.saleOrder.new"
+               icon="icons/infra/add_16.png"
                id="com.rochatec.athena.popup.saleOrder.new"
                label="%popup.saleOrder.new.label"
                style="push"
@@ -2104,10 +2132,71 @@
          </command>
          <command
                commandId="com.rochatec.athena.command.saleOrder.edit"
+               icon="icons/app/edit_16.png"
                id="com.rochatec.athena.popup.saleOrder.edit"
                label="%popup.saleOrder.edit.label"
                style="push"
                tooltip="%popup.saleOrder.edit.label">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:com.rochatec.athena.salesOrder.view.SaleOrderHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.saleOrder.new"
+               icon="icons/infra/add_16.png"
+               id="com.rochatec.athena.popup.saleOrder.new"
+               label="%popup.saleOrder.new.label"
+               style="push"
+               tooltip="%popup.saleOrder.new.label">
+         </command>
+         <command
+               commandId="com.rochatec.athena.command.saleOrder.edit"
+               icon="icons/app/edit_16.png"
+               id="com.rochatec.athena.popup.saleOrder.edit"
+               label="%popup.saleOrder.edit.label"
+               style="push"
+               tooltip="%popup.saleOrder.edit.label">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.inovice.input.new"
+               icon="icons/infra/add_16.png"
+               id="com.rochatec.athena.popup.invoice.input.new"
+               label="%popup.invoice.input.new.label"
+               style="push"
+               tooltip="%popup.invoice.input.new.label">
+         </command>
+         <command
+               commandId="com.rochatec.athena.command.invoice.input.edit"
+               icon="icons/app/edit_16.png"
+               id="com.rochatec.athena.popup.invoice.input.edit"
+               label="%popup.invoice.input.edit.label"
+               style="push"
+               tooltip="%popup.invoice.input.edit.label">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.inovice.input.new"
+               icon="icons/infra/add_16.png"
+               id="com.rochatec.athena.popup.invoice.input.new"
+               label="%popup.invoice.input.new.label"
+               style="push"
+               tooltip="%popup.invoice.input.new.label">
+         </command>
+         <command
+               commandId="com.rochatec.athena.command.invoice.input.edit"
+               icon="icons/app/edit_16.png"
+               id="com.rochatec.athena.popup.invoice.input.edit"
+               label="%popup.invoice.input.edit.label"
+               style="push"
+               tooltip="%popup.invoice.input.edit.label">
          </command>
       </menuContribution>
    </extension>

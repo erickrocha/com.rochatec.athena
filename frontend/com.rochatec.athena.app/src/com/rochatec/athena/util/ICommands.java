@@ -50,4 +50,8 @@ public interface ICommands {
 	public static final String SALE_ORDER_DELETE = "com.rochatec.athena.command.saleOrder.delete";
 	public static final String SALE_ORDER_EDIT = "com.rochatec.athena.command.saleOrder.edit";
 	
+	public static final String INVOICE_INPUT_NEW = "com.rochatec.athena.command.inovice.input.new";
+	public static final String INVOICE_INPUT_DELETE = "com.rochatec.athena.command.invoice.input.delete";
+	public static final String INVOICE_INPUT_EDIT = "com.rochatec.athena.command.invoice.input.edit";
+	
 }
