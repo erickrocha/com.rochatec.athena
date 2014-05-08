@@ -421,3 +421,5 @@ create table BARCODE
  CREATE SEQUENCE  "ATHENA"."SEQ_BARCODE"  MINVALUE 1 MAXVALUE 9999999999 INCREMENT BY 1 START WITH 1  ;
 
 
+alter table company add IN_USE number default 0
+

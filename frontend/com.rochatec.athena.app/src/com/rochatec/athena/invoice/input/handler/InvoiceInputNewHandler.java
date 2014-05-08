@@ -6,6 +6,7 @@ import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.rochatec.athena.model.Supplier;
+import com.rochatec.framework.model.HierarchyObject;
 import com.rochatec.framework.model.TreeParent;
 import com.rochatec.graphics.selection.DefaultSelectHandler;
 
@@ -16,7 +17,7 @@ public class InvoiceInputNewHandler extends DefaultSelectHandler{
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ITreeSelection selection =  (ITreeSelection)HandlerUtil.getCurrentSelection(event);		
-		TreeParent root = (TreeParent)selection.getFirstElement();
+		HierarchyObject root = (HierarchyObject)selection.getFirstElement();
 		
 		
 		return null;

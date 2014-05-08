@@ -30,15 +30,23 @@ public interface IPathIcons {
 	public static final String INFRA_VIEW_16 = "icons/infra/view_16.png";
 	public static final String INFRA_TERMINAL_16 = "icons/infra/terminal_16.png";
 	public static final String INFRA_PERSPECTIVE_16 = "icons/infra/perspective_16.png";
+	
 	public static final String INFRA_ADD_16 = "icons/infra/add_16.png";
 	public static final String INFRA_ADD_24 = "icons/infra/add_24.png";
+	
+	public static final String INFRA_EDIT_16 = "icons/app/edit_16.png";
+	
 	public static final String INFRA_SAVE_16 = "icons/infra/save_edit.png";
+	
 	public static final String INFRA_DELETE_16 = "icons/infra/delete_16.png";
+	
 	public static final String INFRA_TOOLS_16 = "icons/infra/tools_16.png";
 	public static final String INFRA_EXIT_16 = "icons/infra/exit_16.png";
 	public static final String INFRA_JOB_16 = "icons/infra/job_16.png";
 	public static final String INFRA_ADD_ADDRESS_32 = "icons/infra/add_address_32.png";
 	public static final String INFRA_ADD_ADDRESS_48 = "icons/infra/add_address_48.png";
+	
+	
 	
 	public static final String INFRA_ADD_48 = "icons/infra/add_48.png";
 	public static final String INFRA_BARCODE_24 = "icons/infra/barcode_24.png";

@@ -1,20 +1,24 @@
 package com.rochatec.athena.facade.impl;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.rochatec.athena.eao.local.AddressEaoLocal;
+import com.rochatec.athena.eao.local.CompanyEaoLocal;
 import com.rochatec.athena.eao.local.MenuEaoLocal;
 import com.rochatec.athena.eao.local.NatureOfOperationEaoLocal;
 import com.rochatec.athena.eao.local.ProvinceEaoLocal;
 import com.rochatec.athena.facade.local.ResourcefacadeLocal;
 import com.rochatec.athena.facade.remote.ResourceFacadeRemote;
 import com.rochatec.athena.model.Address;
+import com.rochatec.athena.model.Company;
 import com.rochatec.athena.model.Menu;
 import com.rochatec.athena.model.NatureOfOperation;
 import com.rochatec.athena.model.Province;
+import com.rochatec.athena.model.Status;
 
 @Stateless
 public class ResourceFacadeImpl implements ResourcefacadeLocal,
@@ -31,6 +35,9 @@ public class ResourceFacadeImpl implements ResourcefacadeLocal,
 	
 	@EJB
 	private MenuEaoLocal menuEaoLocal;
+	
+	@EJB
+	private CompanyEaoLocal companyEaoLocal;
 
 	public List<Province> findAllProvinces() {
 		List<Province> provinces = provinceEaoLocal.findAll();
@@ -102,6 +109,49 @@ public class ResourceFacadeImpl implements ResourcefacadeLocal,
 	public List<Menu> getMenus() {
 		List<Menu> menus = menuEaoLocal.getMenus();
 		return menus;
+	}
+
+	@Override
+	public Company persist(Company company) {
+		company = companyEaoLocal.persist(company);
+		return company;
+	}
+
+	@Override
+	public void remove(Company company) {
+		companyEaoLocal.remove(company);		
+	}
+
+	@Override
+	public Company findCompanyById(Long id) {
+		Company company = companyEaoLocal.findById(id);
+		return company;
+	}
+
+	@Override
+	public Company findCompanyByIndex(Long id, String socialSecurity) {
+		Company company = companyEaoLocal.findByIndex(id, socialSecurity);
+		return company;
+	}
+
+	@Override
+	public Company findCompanyBySocialSecurity(String socialSecurity) {
+		Company company = companyEaoLocal.findBySocialSecurity(socialSecurity);
+		return company;
+	}
+
+	@Override
+	public List<Company> findCompaniesByName(String name, Calendar begin,
+			Calendar end, Status status) {
+		List<Company> companies = companyEaoLocal.findByName(name,begin, end, status);
+		return companies;
+	}
+
+	@Override
+	public List<Company> findCompaniesByDateRegister(Calendar begin,
+			Calendar end, Status status) {
+		List<Company> companies = companyEaoLocal.findByDateRegister(begin, end, status);
+		return companies;
 	}
 
 }

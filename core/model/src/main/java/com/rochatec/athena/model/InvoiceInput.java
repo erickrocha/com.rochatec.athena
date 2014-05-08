@@ -20,6 +20,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.rochatec.metallurgical.util.CalendarUtil;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value = "INPUT")
@@ -113,6 +115,16 @@ public class InvoiceInput extends AbstractInvoice {
 			this.items.add(newItem);
 		}
 		
+	}
+	
+	public static final InvoiceInput factory(Company company,Supplier supplier){
+		InvoiceInput invoice = new InvoiceInput();
+		invoice.setDateRegister(CalendarUtil.getToday());
+		invoice.setReceiver(company);
+		invoice.setIssuer(supplier);
+		invoice.setValues(new InvoiceValue());
+		invoice.setStatus(InvoiceStatus.SAVE);
+		return invoice;
 	}
 
 }

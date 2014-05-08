@@ -1,14 +1,17 @@
 package com.rochatec.athena.client.service.impl;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.rochatec.athena.client.ServiceLocator;
 import com.rochatec.athena.client.service.ResourceClientService;
 import com.rochatec.athena.facade.remote.ResourceFacadeRemote;
 import com.rochatec.athena.model.Address;
+import com.rochatec.athena.model.Company;
 import com.rochatec.athena.model.Menu;
 import com.rochatec.athena.model.NatureOfOperation;
 import com.rochatec.athena.model.Province;
+import com.rochatec.athena.model.Status;
 
 public class ResourceClientServiceImpl implements ResourceClientService {
 
@@ -68,6 +71,50 @@ public class ResourceClientServiceImpl implements ResourceClientService {
 	
 	public List<Menu> getMenus() {
 		return serviceRemote.getMenus();
+	}
+
+
+	@Override
+	public Company persist(Company company) {
+		return serviceRemote.persist(company);
+	}
+
+
+	@Override
+	public void remove(Company company) {
+		serviceRemote.remove(company);		
+	}
+
+
+	@Override
+	public Company findCompanyById(Long id) {
+		return serviceRemote.findCompanyById(id);
+	}
+
+
+	@Override
+	public Company findCompanyByIndex(Long id, String socialSecurity) {		
+		return serviceRemote.findCompanyByIndex(id, socialSecurity);
+	}
+
+
+	@Override
+	public Company findCompanyBySocialSecurity(String socialSecurity) {
+		return serviceRemote.findCompanyBySocialSecurity(socialSecurity);
+	}
+
+
+	@Override
+	public List<Company> findCompaniesByName(String name, Calendar begin,
+			Calendar end, Status status) {		
+		return serviceRemote.findCompaniesByName(name, begin, end, status);
+	}
+
+
+	@Override
+	public List<Company> findCompaniesByDateRegister(Calendar begin,
+			Calendar end, Status status) {
+		return serviceRemote.findCompaniesByDateRegister(begin, end, status);
 	}
 
 }

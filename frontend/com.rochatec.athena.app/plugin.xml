@@ -2159,46 +2159,6 @@
                tooltip="%popup.saleOrder.edit.label">
          </command>
       </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView">
-         <command
-               commandId="com.rochatec.athena.command.inovice.input.new"
-               icon="icons/infra/add_16.png"
-               id="com.rochatec.athena.popup.invoice.input.new"
-               label="%popup.invoice.input.new.label"
-               style="push"
-               tooltip="%popup.invoice.input.new.label">
-         </command>
-         <command
-               commandId="com.rochatec.athena.command.invoice.input.edit"
-               icon="icons/app/edit_16.png"
-               id="com.rochatec.athena.popup.invoice.input.edit"
-               label="%popup.invoice.input.edit.label"
-               style="push"
-               tooltip="%popup.invoice.input.edit.label">
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView">
-         <command
-               commandId="com.rochatec.athena.command.inovice.input.new"
-               icon="icons/infra/add_16.png"
-               id="com.rochatec.athena.popup.invoice.input.new"
-               label="%popup.invoice.input.new.label"
-               style="push"
-               tooltip="%popup.invoice.input.new.label">
-         </command>
-         <command
-               commandId="com.rochatec.athena.command.invoice.input.edit"
-               icon="icons/app/edit_16.png"
-               id="com.rochatec.athena.popup.invoice.input.edit"
-               label="%popup.invoice.input.edit.label"
-               style="push"
-               tooltip="%popup.invoice.input.edit.label">
-         </command>
-      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.services">
