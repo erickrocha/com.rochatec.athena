@@ -17,6 +17,14 @@ public interface IPathIcons {
 	public static final String CHECK_ALL_16 = "icons/infra/check_all_16.png";
 	public static final String SALE_ORDER_16 = "icons/infra/sale_order_16.png";
 	
+	public static final String INVOICE_16 = "icons/app/invoice_16.png";
+	public static final String INVOICE_20 = "icons/app/invoice_20.png";
+	public static final String INVOICE_32 = "icons/app/invoice_32.png";
+	
+	public static final String PURCHASE_ORDER_16 = "icons/app/purchase_order_16.png";
+	public static final String PURCHASE_ORDER_20 = "icons/app/purchase_order_20.png";
+	public static final String PURCHASE_ORDER_32 = "icons/app/purchase_order_32.png";
+	
 	/*Icones de Infra */
 	public static final String INFRA_EDITOR_16 = "icons/infra/editor_16.png";
 	public static final String INFRA_VIEW_16 = "icons/infra/view_16.png";

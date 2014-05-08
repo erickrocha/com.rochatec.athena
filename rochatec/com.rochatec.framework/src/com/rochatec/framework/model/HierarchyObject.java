@@ -1,5 +1,6 @@
 package com.rochatec.framework.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.graphics.Image;
@@ -10,10 +11,20 @@ public class HierarchyObject {
 	private String label;
 	private Object wrapper;
 	private Image image;
-	private List<HierarchyObject> childs;
+	private List<HierarchyObject> childs = new ArrayList<HierarchyObject>();
 
 	public HierarchyObject() {
 
+	}
+	
+	public HierarchyObject(String label) {
+		this.label = label;
+	}
+	
+	public HierarchyObject(String label,HierarchyObject parent, Object wrapper) {
+		this.label = label;
+		this.parent = parent;
+		this.wrapper = wrapper;		
 	}
 
 	public HierarchyObject(String label,HierarchyObject parent, Object wrapper,
@@ -67,6 +78,16 @@ public class HierarchyObject {
 	@Override
 	public String toString() {
 		return label;
+	}
+	
+	public void addChild(HierarchyObject object){
+		if (this.childs == null)
+			this.childs = new ArrayList<HierarchyObject>();
+		this.childs.add(object);
+	}
+	
+	public void removeChild(HierarchyObject object){
+		this.childs.remove(object);
 	}
 
 }

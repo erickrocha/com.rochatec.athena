@@ -10,16 +10,21 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.ISharedImages;
 
+import com.rochatec.athena.app.Activator;
 import com.rochatec.athena.client.service.InvoiceClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.Supplier;
 import com.rochatec.athena.util.CommandFactory;
 import com.rochatec.athena.util.ICommands;
+import com.rochatec.athena.util.IPathIcons;
 import com.rochatec.athena.utils.ServiceFactory;
-import com.rochatec.framework.model.TreeObject;
+import com.rochatec.framework.model.HierarchyObject;
 import com.rochatec.framework.model.TreeParent;
+import com.rochatec.graphics.provider.HierarchyContentProvider;
+import com.rochatec.graphics.provider.HierarchyLabelProvider;
 import com.rochatec.graphics.selection.SearchSelection;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.view.AbstractView;
@@ -48,6 +53,8 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 		composite.setLayout(LayoutFactory.getInstance().getFillLayout());
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true,true));
 		viewer = new TreeViewer(composite);
+		viewer.setContentProvider(new HierarchyContentProvider());
+		viewer.setLabelProvider(new HierarchyLabelProvider());
 		MenuManager menuManager = new MenuManager();
 		Menu menu = menuManager.createContextMenu(viewer.getTree());
 		viewer.getTree().setMenu(menu);
@@ -62,23 +69,25 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	public void add(Supplier supplier,InvoiceInput invoiceInput){
-		TreeParent root = new TreeParent(supplier.getCompanyName(),0);
-		root.setObject(supplier);
+		HierarchyObject root = new HierarchyObject(supplier.getCompanyName());
+		root.setWrapper(supplier);
+		root.setImage(Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage());
 		
-		TreeObject object = new TreeObject(invoiceInput.toString(),1,invoiceInput);
-		object.setParent(root);
+		HierarchyObject object = new HierarchyObject(invoiceInput.toString(),root,invoiceInput);
+		object.setImage(Activator.getImageDescriptor(IPathIcons.INVOICE_20).createImage());
 		root.addChild(object);
 		viewer.setInput(root);
 	}
 	
 	private void fill(Supplier supplier, List<InvoiceInput> invoices){
-		TreeParent root = new TreeParent(supplier.getCompanyName(),0);
-		root.setObject(supplier);
+		HierarchyObject root = new HierarchyObject(supplier.getCompanyName());
+		root.setImage(Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage());
+		root.setWrapper(supplier);
 						
 		for (InvoiceInput invoice : invoices){
-			TreeObject object = new TreeObject(invoice.toString(),1,invoice);
-			object.setParent(root);
-			root.addChild(object);
+			HierarchyObject object = new HierarchyObject(invoice.toString(),root,invoice);
+			object.setImage(Activator.getImageDescriptor(IPathIcons.INVOICE_20).createImage());
+			root.addChild(object);			
 		}
 		viewer.setInput(root);		
 	}

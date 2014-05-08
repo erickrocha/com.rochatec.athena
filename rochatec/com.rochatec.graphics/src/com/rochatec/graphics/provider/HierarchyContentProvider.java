@@ -20,16 +20,20 @@ public class HierarchyContentProvider implements ITreeContentProvider{
 	}
 
 	@Override
-	public Object[] getElements(Object inputElement) {		
+	public Object[] getElements(Object inputElement) {
 		return getChildren(inputElement);
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		HierarchyObject hierarchyObject = (HierarchyObject)parentElement;
-		if (hierarchyObject.getChilds() != null && !hierarchyObject.getChilds().isEmpty())
+		if (hierarchyObject.getParent() == null && hierarchyObject.getChilds().isEmpty()){
+			return new Object[]{hierarchyObject};
+		}else if (hierarchyObject.getChilds() != null && !hierarchyObject.getChilds().isEmpty()){
 			return hierarchyObject.getChilds().toArray();
-		return EMPTY_ARRAY;
+		}else{
+			return EMPTY_ARRAY;
+		}
 	}
 
 	@Override
