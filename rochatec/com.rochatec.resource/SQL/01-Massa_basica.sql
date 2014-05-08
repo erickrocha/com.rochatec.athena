@@ -118,6 +118,19 @@ INSERT INTO NCM (CODE,DESCRIPTION,UNIT_MEASURE) VALUES ('9102000','ACAFRAO','kg'
 INSERT INTO NCM (CODE,DESCRIPTION,UNIT_MEASURE) VALUES ('9103000','ACAFRAO-DA-TERRA (CURCUMA)','kg');
 INSERT INTO NCM (CODE,DESCRIPTION,UNIT_MEASURE) VALUES ('94052000','ABAJURES DE CABECEIRA OU DE ESCRITORIO,ETC.ELETRICOS','kg');
 
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('1.000','ENTRADAS OU AQUISIÇÔES DE SERVIÇOS DO ESTADO','Classificam-se, neste grupo, as Operações ou prestações em que o estabelecimento remetente esteja localizado na mesma unidade da Federação do destinatário',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('2.000','ENTRADAS OU AQUISIÇÔES DE SERVIÇOS DE OUTROS ESTADOS','Classificam-se, neste grupo, as Operações ou prestações em que o estabelecimento remetente esteja localizado em unidade da Federação diversa daquela do destinatário',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('3.000','ENTRADAS OU AQUISIÇÔES DE SERVIÇOS DO EXTERIOR','Classificam-se, neste grupo, as entradas de mercadorias oriundas de outro país, inclusive as decorrentes de aquisição por arrematação, concorrência ou qualquer outra forma de alienação promovida pelo poder público, e os serviços iniciados no exterior',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('5.000','SAÍDAS OU PRESTAÇÔES DE SERVIÇOS PARA O ESTADO','Classificam-se, neste grupo, as Operações ou prestações em que o estabelecimento remetente esteja localizado na mesma unidade da Federação do destinatário.',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('6.000','SAÍDAS OU PRESTAÇÔES DE SERVIÇOS PARA OUTROS ESTADOS','Classificam-se, neste grupo, as Operações ou prestações em que o estabelecimento remetente esteja localizado em unidade da Federação diversa daquela do destinatário',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('7.000','SAÍDAS OU PRESTAÇÔES DE SERVIÇOS PARA O EXTERIOR','Classificam-se, neste grupo, as Operações ou prestações em que o destinatário esteja localizado em outro país',null);
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('1.100','COMPRAS PARA INDUSTRIALIZAÇÃO, PRODUÇÃO RURAL, COMERCIALIZAÇÃO OU PRESTAÇÃO DE SERVIÇOS','Dec. 28.868/2006 ¿ Efeitos a partir de 01/01/2006, ficando facultada ao contribuinte a sua adoção para fatos geradores ocorridos no período de 01 de novembro a 31 de dezembro de 2005','1.000');
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('1.101','Compra para industrialização ou produção rural (NR Ajuste SINIEF 05/2005) (Decreto 28.868/2006)','Compra de mercadoria a ser utilizada em processo de industrialização ou produção rural, bem como a entrada de mercadoria em estabelecimento industrial ou produtor rural de cooperativa recebida de seus cooperados ou de estabelecimento de outra cooperativa.','1.100');
+Insert into NATURE_OF_OPERATION (CFOP,LABEL,APPLICATION,PARENT) values ('1.102','Compra para comercialização','Classificam-se neste código as compras de mercadorias a serem comercializadas. Também serão classificadas neste código as entradas de mercadorias em estabelecimento comercial de cooperativa recebidas de seus cooperados ou de estabelecimento de outra cooperativa.','1.100');
+
+
+
+
 insert into profile (ID,NAME,LABEL) values (1,'Administrador','Administrador do Sistema');
 
 insert into PROFILE_ROLE (SELECT 1,key FROM role);
