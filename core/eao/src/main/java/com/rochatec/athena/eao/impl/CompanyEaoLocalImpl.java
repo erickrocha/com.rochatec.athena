@@ -35,7 +35,7 @@ public class CompanyEaoLocalImpl extends GenericEao<Company,Serializable> implem
 	@Override
 	public Company findByIndex(Long id, String socialSecurity) {
 		String hql = "SELECT c FROM Company c WHERE c.socialSecurity = :socialSecurity OR id = :id";
-		Query query = getEntityManager().createNamedQuery(hql);
+		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("socialSecurity",socialSecurity);
 		query.setParameter("id",id);
 		Company company = (Company)query.getSingleResult();
@@ -45,7 +45,7 @@ public class CompanyEaoLocalImpl extends GenericEao<Company,Serializable> implem
 	@Override
 	public Company findBySocialSecurity(String socialSecurity) {
 		String hql = "SELECT c FROM Company c WHERE c.socialSecurity = :socialSecurity";
-		Query query = getEntityManager().createNamedQuery(hql);
+		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("socialSecurity",socialSecurity);
 		Company company = (Company)query.getSingleResult();
 		return company;

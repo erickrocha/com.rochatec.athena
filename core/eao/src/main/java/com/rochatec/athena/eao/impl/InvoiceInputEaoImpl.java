@@ -144,7 +144,7 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<InvoiceInput> findAllByIssuer(Supplier supplier) {
-		String hql = "SELECT i FROM InvoiceInput i JOIN FETCH i.items WHERE i.issuer = :supplier ";
+		String hql = "SELECT i FROM InvoiceInput i LEFT JOIN FETCH i.items WHERE i.issuer = :supplier ";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("supplier",supplier);
 		List<InvoiceInput> invoices = query.getResultList();

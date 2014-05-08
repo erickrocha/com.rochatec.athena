@@ -19,6 +19,19 @@ public class WorkbenchUtil {
 		IWorkbenchPage page = window.getActivePage();
 		page.setPerspective(registry.findPerspectiveWithId(perspectiveId));
 		page.openEditor(input, editorId);
-	}	
+	}
+	
+	public static void handlerOpenEditorInPerspective(String perspectiveId,
+			String editorId, IEditorInput input, IWorkbenchWindow workbenchWindow)
+			throws PartInitException {
+		IWorkbenchWindow window = workbenchWindow;
+		IPerspectiveRegistry registry = window.getWorkbench()
+				.getPerspectiveRegistry();
+		IWorkbenchPage page = window.getActivePage();
+		page.setPerspective(registry.findPerspectiveWithId(perspectiveId));
+		page.openEditor(input, editorId);
+	}
+	
+	
 
 }

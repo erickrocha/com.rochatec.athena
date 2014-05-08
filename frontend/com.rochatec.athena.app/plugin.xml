@@ -1089,6 +1089,13 @@
             id="com.rochatec.athena.salesOrder.editor.SaleOrderEditor"
             name="Sale Order">
       </editor>
+      <editor
+            class="com.rochatec.athena.invoice.input.editor.InvoiceInputEditor"
+            default="false"
+            icon="icons/infra/editor_16.png"
+            id="com.rochatec.athena.invoice.input.editor.InvoiceInputEditor"
+            name="Invoice Input">
+      </editor>
    </extension>
    <extension
          id="com.rochatec.athena.menus"

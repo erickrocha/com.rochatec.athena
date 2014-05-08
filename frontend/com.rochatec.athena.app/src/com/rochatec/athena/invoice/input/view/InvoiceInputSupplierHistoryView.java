@@ -100,13 +100,13 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	private void createToolbarAdd(Supplier supplier){
-		form.getToolBarManager().add(new InvoiceInputNewAction(viewer,supplier));		
+		form.getToolBarManager().add(new InvoiceInputNewAction(this,supplier));		
 		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
 		form.getToolBarManager().update(true);		
 	}
 	
 	private void createToolbarEdit(InvoiceInput invoice){
-		form.getToolBarManager().add(new InvoiceInputEditAction(viewer,invoice));		
+		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
 		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
 		form.getToolBarManager().update(true);
 	}
