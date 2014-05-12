@@ -18,6 +18,7 @@ import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Control;
@@ -96,9 +97,16 @@ public abstract class AbstractViewer extends Viewer{
 	}	
 	
 	protected void internalRefresh(Object element){
-		Text control = (Text)getControl();
-		ILabelProvider labelProvider = (ILabelProvider) getLabelProvider();
-		control.setText(labelProvider.getText(element));
+		if (getControl() instanceof CLabel){
+			CLabel control = (CLabel)getControl();
+			ILabelProvider labelProvider = (ILabelProvider) getLabelProvider();
+			control.setText(labelProvider.getText(element));
+		}
+		if (getControl() instanceof Text){
+			Text control = (Text)getControl();
+			ILabelProvider labelProvider = (ILabelProvider) getLabelProvider();
+			control.setText(labelProvider.getText(element));
+		}
 	}
 	
 	protected void firePostSelectionChanged(final SelectionChangedEvent event) {
