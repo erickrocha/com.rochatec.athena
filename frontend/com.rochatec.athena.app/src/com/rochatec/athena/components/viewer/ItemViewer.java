@@ -56,7 +56,8 @@ public class ItemViewer {
 	}
 	
 	protected void createContents(Composite parent){
-		Composite composite = new Group(parent,SWT.BORDER);
+		Group composite = new Group(parent,SWT.BORDER);
+		composite.setText(Messages.getMessage("itemViewer.title.label"));
 		composite.setLayout(LayoutFactory.getInstance().getGridLayout(2));
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
@@ -142,7 +143,7 @@ public class ItemViewer {
 				lblIpi.setText(Formatter.getPercentage().mask(product.getIpi()));
 				lblPrice.setText(Formatter.getCurrency().mask(product.getSellprice()));
 			}catch(BadFormatException ex){
-				
+				Activator.getDefault().println(ex.getMessage());
 			}
 		}
 	}

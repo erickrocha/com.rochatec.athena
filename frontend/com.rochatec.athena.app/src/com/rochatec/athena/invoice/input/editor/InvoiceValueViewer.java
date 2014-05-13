@@ -16,7 +16,7 @@ import com.rochatec.graphics.util.LayoutFactory;
 
 public class InvoiceValueViewer {
 
-	private Group composite;
+	private Group group;
 	private NumberFormatedText txtBaseIcms;
 	private NumberFormatedText txtTotalIcms;
 	private NumberFormatedText txtBaseIcmsSub;
@@ -41,54 +41,55 @@ public class InvoiceValueViewer {
 	
 	
 	private void createContents(Composite parent,int style){
-		composite = new Group(parent,style);
-		composite.setLayout(LayoutFactory.getInstance().getGridLayout(6));
+		group = new Group(parent,style);
+		group.setText(Messages.getMessage("invoiceValue.title.label"));
+		group.setLayout(LayoutFactory.getInstance().getGridLayout(6));
 		
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.baseIcms.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIcms.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.baseIcmsSub.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIcmsSub.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIpi.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalProducts.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.baseIcms.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIcms.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.baseIcmsSub.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIcmsSub.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIpi.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalProducts.field.label"));
 		
-		txtBaseIcms = new NumberFormatedText(composite);
+		txtBaseIcms = new NumberFormatedText(group);
 		txtBaseIcms.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIcms = new NumberFormatedText(composite);
+		txtTotalIcms = new NumberFormatedText(group);
 		txtTotalIcms.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtBaseIcmsSub = new NumberFormatedText(composite);
+		txtBaseIcmsSub = new NumberFormatedText(group);
 		txtBaseIcmsSub.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIcmsSub = new NumberFormatedText(composite);
+		txtTotalIcmsSub = new NumberFormatedText(group);
 		txtTotalIcmsSub.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIpi = new NumberFormatedText(composite);
+		txtTotalIpi = new NumberFormatedText(group);
 		txtTotalIpi.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalItems = new NumberFormatedText(composite);
+		txtTotalItems = new NumberFormatedText(group);
 		txtTotalItems.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalFrete.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalSeguro.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.outrasDespesas.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.desconto.field.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalInvoice.field.label"));
-		new Label(composite, SWT.NONE);
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalFrete.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalSeguro.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.outrasDespesas.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.desconto.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalInvoice.field.label"));
+		new Label(group, SWT.NONE);
 		
-		txtTotalFrete = new NumberFormatedText(composite);
+		txtTotalFrete = new NumberFormatedText(group);
 		txtTotalFrete.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalSeguro = new NumberFormatedText(composite);
+		txtTotalSeguro = new NumberFormatedText(group);
 		txtTotalSeguro.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtOutrasDespesas = new NumberFormatedText(composite);
+		txtOutrasDespesas = new NumberFormatedText(group);
 		txtOutrasDespesas.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtDesconto = new NumberFormatedText(composite);
+		txtDesconto = new NumberFormatedText(group);
 		txtDesconto.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalInvoice = new NumberFormatedText(composite);
+		txtTotalInvoice = new NumberFormatedText(group);
 		txtTotalInvoice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false,2,0));		
 	}
 	
@@ -116,15 +117,15 @@ public class InvoiceValueViewer {
 	}
 	
 	public void setLayoutDate(Object layoutData){
-		this.composite.setLayoutData(layoutData);
+		this.group.setLayoutData(layoutData);
 	}
 	
 	public void setLayout(Layout layout){
-		this.composite.setLayout(layout);
+		this.group.setLayout(layout);
 	}
 	
 	public void pack(){
-		this.composite.pack();
+		this.group.pack();
 	}
 }
 

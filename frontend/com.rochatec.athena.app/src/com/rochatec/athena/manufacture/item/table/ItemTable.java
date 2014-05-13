@@ -25,42 +25,42 @@ public class ItemTable extends AbstractTable{
 		
 		TableViewerColumn name = new TableViewerColumn(tableViewer, SWT.LEFT);
 		name.getColumn().setText(Messages.getMessage("productItem.field.label.name"));
-		name.getColumn().setWidth(350);
+		name.getColumn().setWidth(450);
 		name.getColumn().setResizable(true);
 		name.getColumn().setMoveable(false);
 		name.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn quantity = new TableViewerColumn(tableViewer, SWT.LEFT);
 		quantity.getColumn().setText(Messages.getMessage("productItem.field.label.quantity"));
-		quantity.getColumn().setWidth(100);
+		quantity.getColumn().setWidth(150);
 		quantity.getColumn().setResizable(true);
 		quantity.getColumn().setMoveable(false);
 		quantity.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn sellPrice = new TableViewerColumn(tableViewer, SWT.LEFT);
 		sellPrice.getColumn().setText(Messages.getMessage("productItem.field.label.sellPrice"));
-		sellPrice.getColumn().setWidth(100);
+		sellPrice.getColumn().setWidth(150);
 		sellPrice.getColumn().setResizable(true);
 		sellPrice.getColumn().setMoveable(false);
 		sellPrice.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn icms = new TableViewerColumn(tableViewer, SWT.LEFT);
 		icms.getColumn().setText(Messages.getMessage("productItem.field.label.icms"));
-		icms.getColumn().setWidth(100);
+		icms.getColumn().setWidth(150);
 		icms.getColumn().setResizable(true);
 		icms.getColumn().setMoveable(false);
 		icms.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn ipi = new TableViewerColumn(tableViewer, SWT.LEFT);
 		ipi.getColumn().setText(Messages.getMessage("productItem.field.label.ipi"));
-		ipi.getColumn().setWidth(100);
+		ipi.getColumn().setWidth(150);
 		ipi.getColumn().setResizable(true);
 		ipi.getColumn().setMoveable(false);
 		ipi.getColumn().setAlignment(SWT.LEFT);
 		
 		TableViewerColumn totalItem = new TableViewerColumn(tableViewer, SWT.LEFT);
 		totalItem.getColumn().setText(Messages.getMessage("productItem.field.label.totalItem"));
-		totalItem.getColumn().setWidth(100);
+		totalItem.getColumn().setWidth(150);
 		totalItem.getColumn().setResizable(true);
 		totalItem.getColumn().setMoveable(false);
 		totalItem.getColumn().setAlignment(SWT.LEFT);

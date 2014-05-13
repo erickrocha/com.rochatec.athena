@@ -642,6 +642,10 @@
             id="com.rochatec.athena.command.invoice.input.edit"
             name="Edit Invoice Input">
       </command>
+      <command
+            id="com.rochatec.athena.command.show.perspectives"
+            name="Show all Perspectives">
+      </command>
    </extension>
    <extension
          id="com.rochatec.athena.app.handlers"
@@ -1007,6 +1011,10 @@
             class="com.rochatec.athena.invoice.input.handler.InvoiceInputEditHandler"
             commandId="com.rochatec.athena.command.invoice.input.edit">
       </handler>
+      <handler
+            class="com.rochatec.athena.handler.ListPerspectivesHandler"
+            commandId="com.rochatec.athena.command.show.perspectives">
+      </handler>
    </extension>
    <extension
          id="com.rochatec.athena.app.editors"
@@ -1094,7 +1102,7 @@
             default="false"
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.invoice.input.editor.InvoiceInputEditor"
-            name="Invoice Input">
+            name="%editor.invoiceInput.name">
       </editor>
    </extension>
    <extension
@@ -1235,6 +1243,19 @@
                   label="%menu.security.profile.label"
                   style="push"
                   tooltip="%menu.security.profile.label">
+            </command>
+         </menu>
+         <menu
+               id="com.rochatec.athena.menu.window"
+               label="%menu.window.label"
+               tooltip="%menu.window.label">
+            <command
+                  commandId="com.rochatec.athena.command.show.perspectives"
+                  icon="icons/infra/view_16.png"
+                  id="com.rochatec.athena.security.menu.window.perspectives"
+                  label="%menu.window.listPerspectives"
+                  style="push"
+                  tooltip="menu.window.listPerspectives">
             </command>
          </menu>
       </menuContribution>

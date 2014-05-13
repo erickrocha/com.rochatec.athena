@@ -12,6 +12,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
+import com.rochatec.athena.components.viewer.ItemViewer;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.status.provider.InvoiceStatusLabelProvider;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
@@ -22,6 +23,7 @@ import com.rochatec.athena.util.Formatter;
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.provider.GenericContentProvider;
+import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.viewer.TextViewer;
 
@@ -40,12 +42,14 @@ public class InvoiceInputEditor extends AbstractEditor {
 	private Text txtSerialNumber;
 	private TextViewer statusViewer; 
 	private InvoiceValueViewer valueViewer;
+	private ItemViewer itemViewer;
 
 	@Override
 	protected void createContents(Composite parent) {
 		createReceiverBox(parent);
 		createTributaryBox(parent);
 		createInvoiceValueViewer(parent);
+		createInvoiceItem(parent);
 	}
 	
 	private void createReceiverBox(Composite parent){
@@ -81,7 +85,9 @@ public class InvoiceInputEditor extends AbstractEditor {
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.cfop.field.label"));		
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.status.field.label"));
 		
-		lblInvoiceNumber = new CLabel(group, SWT.BORDER);
+		lblInvoiceNumber = new CLabel(group, SWT.BORDER|SWT.SHADOW_NONE);
+		lblInvoiceNumber.setForeground(Colors.getColorBlue());
+		lblInvoiceNumber.setAlignment(SWT.CENTER);
 		lblInvoiceNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtSerialNumber = new Text(group, SWT.BORDER);
@@ -103,6 +109,10 @@ public class InvoiceInputEditor extends AbstractEditor {
 	private void createInvoiceValueViewer(Composite parent){
 		valueViewer = new InvoiceValueViewer(parent);
 		valueViewer.setLayoutDate(new GridData(SWT.FILL,SWT.FILL,true,false));
+	}
+	
+	private void createInvoiceItem(Composite parent){
+		itemViewer = new ItemViewer(parent);
 	}
 
 	@Override
