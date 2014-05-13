@@ -12,7 +12,6 @@ public class UserTable extends AbstractTable{
 
 	public UserTable(Composite parent) {
 		super(parent);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

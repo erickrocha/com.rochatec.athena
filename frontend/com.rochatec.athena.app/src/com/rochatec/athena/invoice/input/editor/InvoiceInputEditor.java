@@ -25,7 +25,7 @@ import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.viewer.TextViewer;
 
-public class InvoiceInputEditor extends AbstractEditor{
+public class InvoiceInputEditor extends AbstractEditor {
 	
 	public static final String ID = "com.rochatec.athena.invoice.input.editor.InvoiceInputEditor";
 	private InvoiceInputEditorInput editorInput;
@@ -38,12 +38,14 @@ public class InvoiceInputEditor extends AbstractEditor{
 	private Text txtCfop;
 	private CLabel lblInvoiceNumber;
 	private Text txtSerialNumber;
-	private TextViewer statusViewer;  
+	private TextViewer statusViewer; 
+	private InvoiceValueViewer valueViewer;
 
 	@Override
 	protected void createContents(Composite parent) {
 		createReceiverBox(parent);
 		createTributaryBox(parent);
+		createInvoiceValueViewer(parent);
 	}
 	
 	private void createReceiverBox(Composite parent){
@@ -97,10 +99,14 @@ public class InvoiceInputEditor extends AbstractEditor{
 		statusViewer.setContentProvider(new GenericContentProvider<InvoiceStatus>());
 		statusViewer.setLabelProvider(new InvoiceStatusLabelProvider());
 	}
+	
+	private void createInvoiceValueViewer(Composite parent){
+		valueViewer = new InvoiceValueViewer(parent);
+		valueViewer.setLayoutDate(new GridData(SWT.FILL,SWT.FILL,true,false));
+	}
 
 	@Override
 	protected void addListeners() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -114,6 +120,7 @@ public class InvoiceInputEditor extends AbstractEditor{
 			lblCompanyInscMunicipal.setText(invoice.getReceiver().getCityRegister());
 			statusViewer.setInput(invoice.getStatus());
 			lblInvoiceNumber.setText(invoice.getNumber().toString());
+			valueViewer.setValue(invoice.getValues());
 			if (invoice.getId() != null){
 				
 			}
@@ -125,7 +132,6 @@ public class InvoiceInputEditor extends AbstractEditor{
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -135,7 +141,6 @@ public class InvoiceInputEditor extends AbstractEditor{
 		setSite(site);
 		setInput(input);
 		this.editorInput = (InvoiceInputEditorInput)input;		
-		
-	}
+	}	
 
 }

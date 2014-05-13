@@ -55,8 +55,7 @@ public class Property implements Comparable<Property>{
 
 	@Override
 	public int compareTo(Property o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return key.compareTo(o.key);
 	}				
 	
 }

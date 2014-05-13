@@ -337,7 +337,6 @@ public class ProductSetEditor extends AbstractEditor implements Bindable{
 
 	@Override
 	protected void addListeners() {
-		// TODO Auto-generated method stub
 		
 	}
 
