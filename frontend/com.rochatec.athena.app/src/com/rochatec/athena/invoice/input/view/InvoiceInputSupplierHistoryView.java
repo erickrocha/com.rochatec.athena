@@ -1,5 +1,6 @@
 package com.rochatec.athena.invoice.input.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -58,10 +59,16 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	public void add(Supplier supplier,InvoiceInput invoiceInput){
-		root = new HierarchyObject(supplier.getCompanyName());
-		root.setWrapper(supplier);
-		root.setImage(Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage());
+		if (root == null){
+			root = new HierarchyObject(supplier.getCompanyName());
+			root.setWrapper(supplier);
+			root.setImage(Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage());
+		}
 		
+		if (root != null && root.getChilds() == null){
+			root.setChilds(new ArrayList<HierarchyObject>());
+		}
+				
 		HierarchyObject object = new HierarchyObject(invoiceInput.toString(),root,invoiceInput);
 		object.setImage(Activator.getImageDescriptor(IPathIcons.INVOICE_20).createImage());
 		root.addChild(object);
@@ -106,6 +113,7 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	private void createToolbarEdit(InvoiceInput invoice){
+		form.getToolBarManager().remove(InvoiceInputEditAction.ID);		
 		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
 		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
 		form.getToolBarManager().update(true);

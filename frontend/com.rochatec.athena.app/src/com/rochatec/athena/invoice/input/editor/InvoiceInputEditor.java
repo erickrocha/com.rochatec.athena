@@ -23,7 +23,6 @@ import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.util.LayoutFactory;
-import com.rochatec.graphics.viewer.LabelViewer;
 import com.rochatec.graphics.viewer.TextViewer;
 
 public class InvoiceInputEditor extends AbstractEditor{
@@ -39,7 +38,7 @@ public class InvoiceInputEditor extends AbstractEditor{
 	private Text txtCfop;
 	private CLabel lblInvoiceNumber;
 	private Text txtSerialNumber;
-	private LabelViewer statusViewer;  
+	private TextViewer statusViewer;  
 
 	@Override
 	protected void createContents(Composite parent) {
@@ -94,7 +93,7 @@ public class InvoiceInputEditor extends AbstractEditor{
 		txtCfop = new Text(group, SWT.BORDER);
 		txtCfop.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		statusViewer = new LabelViewer(new CLabel(group, SWT.BORDER));
+		statusViewer = new TextViewer(new Text(group, SWT.BORDER));
 		statusViewer.setContentProvider(new GenericContentProvider<InvoiceStatus>());
 		statusViewer.setLabelProvider(new InvoiceStatusLabelProvider());
 	}
