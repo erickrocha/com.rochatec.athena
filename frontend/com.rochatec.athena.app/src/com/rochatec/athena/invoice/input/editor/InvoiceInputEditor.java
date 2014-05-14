@@ -1,5 +1,8 @@
 package com.rochatec.athena.invoice.input.editor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -12,11 +15,15 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
-import com.rochatec.athena.components.viewer.ItemViewer;
+import com.rochatec.athena.client.helper.InvoiceInputHelper;
 import com.rochatec.athena.i18n.Messages;
+import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
+import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
+import com.rochatec.athena.invoice.item.viewer.InvoiceInputItemViewer;
 import com.rochatec.athena.invoice.status.provider.InvoiceStatusLabelProvider;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
 import com.rochatec.athena.model.InvoiceInput;
+import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.InvoiceStatus;
 import com.rochatec.athena.model.NatureOfOperation;
 import com.rochatec.athena.util.Formatter;
@@ -27,7 +34,7 @@ import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.viewer.TextViewer;
 
-public class InvoiceInputEditor extends AbstractEditor {
+public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemListener{
 	
 	public static final String ID = "com.rochatec.athena.invoice.input.editor.InvoiceInputEditor";
 	private InvoiceInputEditorInput editorInput;
@@ -42,8 +49,10 @@ public class InvoiceInputEditor extends AbstractEditor {
 	private Text txtSerialNumber;
 	private TextViewer statusViewer; 
 	private InvoiceValueViewer valueViewer;
-	private ItemViewer itemViewer;
+	private InvoiceInputItemViewer itemViewer;
 
+	private List<InvoiceInputItem> items = new ArrayList<InvoiceInputItem>();
+	
 	@Override
 	protected void createContents(Composite parent) {
 		createReceiverBox(parent);
@@ -112,7 +121,8 @@ public class InvoiceInputEditor extends AbstractEditor {
 	}
 	
 	private void createInvoiceItem(Composite parent){
-		itemViewer = new ItemViewer(parent);
+		itemViewer = new InvoiceInputItemViewer(parent);
+		itemViewer.addInvoiceItemListener(this);
 	}
 
 	@Override
@@ -151,6 +161,26 @@ public class InvoiceInputEditor extends AbstractEditor {
 		setSite(site);
 		setInput(input);
 		this.editorInput = (InvoiceInputEditorInput)input;		
+	}
+
+	@Override
+	public void itemAdded(InvoiceItemEvent itemEvent) {
+		InvoiceInputHelper helper = new InvoiceInputHelper(items);
+		InvoiceInputItem item = helper.newItem(editorInput.getInvoice(),itemEvent.toValues());		
+		items.add(item);
+		itemViewer.setInput(items);
+	}
+
+	@Override
+	public void iItemUpdated(InvoiceItemEvent itemEvent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void itemDeleted(InvoiceItemEvent itemEvent) {
+		// TODO Auto-generated method stub
+		
 	}	
 
 }

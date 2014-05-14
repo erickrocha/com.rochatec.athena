@@ -18,7 +18,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="INVOICE_ITEM")
+@Table(name = "INVOICE_ITEM")
 @DiscriminatorColumn(name = "ITEM_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class AbstractInvoiceItem implements Serializable {
 
@@ -26,28 +26,31 @@ public class AbstractInvoiceItem implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6571754785362579347L;
-	
+
 	@SequenceGenerator(sequenceName = "SEQ_INVOICE_ITEM", name = "SEQ_INVOICE_ITEM", allocationSize = 1, initialValue = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_INVOICE_ITEM")
 	@Id
-	@Column(name="ID")
+	@Column(name = "ID")
 	private Long id;
 
 	@OneToOne
-	@JoinColumn(name="PRODUCT",referencedColumnName="ID")
+	@JoinColumn(name = "PRODUCT", referencedColumnName = "ID")
 	private Product product;
 
-	@Column(name="QUANTITY",precision=10,scale=3)
+	@Column(name = "QUANTITY", precision = 10, scale = 3)
 	private BigDecimal quantity = BigDecimal.ZERO;
 
-	@Column(name="TOTAL_PRODUCT",precision=10,scale=2)
+	@Column(name = "TOTAL_PRODUCT", precision = 10, scale = 2)
 	private BigDecimal totalProduct = BigDecimal.ZERO;
 
-	@Column(name="IPI_VALUE",precision=10,scale=3)
+	@Column(name = "IPI_BASE", precision = 10, scale = 2)
+	private BigDecimal ipiBase = BigDecimal.ZERO;
+
+	@Column(name = "IPI_VALUE", precision = 10, scale = 3)
 	private BigDecimal ipiValue = BigDecimal.ZERO;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "CANCELED")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "STATUS")
 	private ItemStatus status;
 
 	public Long getId() {
@@ -98,6 +101,14 @@ public class AbstractInvoiceItem implements Serializable {
 		this.status = status;
 	}
 
+	public BigDecimal getIpiBase() {
+		return ipiBase;
+	}
+
+	public void setIpiBase(BigDecimal ipiBase) {
+		this.ipiBase = ipiBase;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,7 +133,5 @@ public class AbstractInvoiceItem implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }

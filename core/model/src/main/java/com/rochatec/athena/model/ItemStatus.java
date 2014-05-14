@@ -2,5 +2,5 @@ package com.rochatec.athena.model;
 
 public enum ItemStatus {
 
-	CANCELED, SOLD; 
+	CANCELED,OK; 
 }
