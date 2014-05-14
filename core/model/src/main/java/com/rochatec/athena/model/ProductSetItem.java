@@ -108,4 +108,9 @@ public class ProductSetItem extends AbstractItem implements Serializable, IProdu
 		return getSellPrice().multiply(getQuantity());
 	}
 
+	@Override
+	public Long getProductId() {
+		return getProduct().getId();
+	}
+
 }

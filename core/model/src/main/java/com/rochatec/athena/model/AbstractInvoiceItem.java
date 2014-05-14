@@ -108,6 +108,8 @@ public class AbstractInvoiceItem implements Serializable {
 	public void setIpiBase(BigDecimal ipiBase) {
 		this.ipiBase = ipiBase;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

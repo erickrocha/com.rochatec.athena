@@ -6,6 +6,7 @@ import com.rochatec.framework.formater.impl.PhoneFormaterImpl;
 import com.rochatec.framework.formater.impl.SocialSecurityFormaterImpl;
 import com.rochatec.framework.formater.impl.ZipCodeFormaterImpl;
 import com.rochatec.framework.math.Currency;
+import com.rochatec.framework.math.Decimal;
 import com.rochatec.framework.math.Percentage;
 import com.rochatec.framework.math.Weight;
 
@@ -17,7 +18,8 @@ public class Formatter {
 	private static IFormarter zipCode;
 	private static IFormarter socialSecurity;
 	private static IFormarter phone;
-	private static IFormarter date;	
+	private static IFormarter date;
+	private static Decimal decimal;
 
 	static {
 		currency = new Currency();
@@ -27,6 +29,7 @@ public class Formatter {
 		socialSecurity = new SocialSecurityFormaterImpl();
 		phone = new PhoneFormaterImpl();
 		date = new DateFormaterImpl();
+		decimal = new Decimal();
 	}
 
 	public static Currency getCurrency() {
@@ -55,6 +58,10 @@ public class Formatter {
 	
 	public static IFormarter getDate(){
 		return date != null ? date : new DateFormaterImpl();
+	}
+	
+	public static Decimal getDecimal(){
+		return decimal != null ? decimal : new Decimal();
 	}
 
 }

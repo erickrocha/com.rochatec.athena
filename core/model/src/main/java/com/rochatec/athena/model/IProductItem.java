@@ -20,4 +20,6 @@ public interface IProductItem {
 	
 	public BigDecimal getTotalItem();
 	
+	public Long getProductId();
+	
 }

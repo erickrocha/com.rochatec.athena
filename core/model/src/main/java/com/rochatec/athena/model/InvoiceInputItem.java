@@ -1,6 +1,7 @@
 package com.rochatec.athena.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -87,4 +88,27 @@ public class InvoiceInputItem extends AbstractInvoiceItem implements
 	public BigDecimal getTotalItem() {
 		return getSellPrice().multiply(getQuantity());
 	}
+
+	@Override
+	public Long getProductId() {		
+		return getProduct().getId();
+	}
+	
+	public BigDecimal getTotalItems(){
+		BigDecimal value = getQuantity().multiply(costPrice);
+		value.setScale(2,RoundingMode.HALF_EVEN);
+		return value; 				
+	}
+	
+	public BigDecimal getTotalIcms(){
+		try {
+			BigDecimal total = getTotalItems();
+			BigDecimal value = total.divide(new BigDecimal(100).multiply(icms.getPercentage()));
+			value.setScale(2,RoundingMode.HALF_EVEN);
+			return value;
+		}catch (ArithmeticException ex){
+			return BigDecimal.ZERO;
+		}
+	}
+	
 }

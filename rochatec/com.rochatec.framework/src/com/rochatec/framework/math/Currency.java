@@ -22,9 +22,9 @@ public class Currency implements IFormarter{
 		return nf.format(value);
 	}
 
-	public Number parse(String value)throws BadFormatException {
+	public BigDecimal parse(String value)throws BadFormatException {
 		try {
-			return nf.parse(value);
+			return new BigDecimal(nf.parse(value).doubleValue());
 		} catch (ParseException e) {
 			throw new BadFormatException();
 		}		

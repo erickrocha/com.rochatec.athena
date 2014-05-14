@@ -22,7 +22,7 @@ public class ProductItemLabelProvider extends LabelProvider implements ITableLab
 		try {
 			switch (columnIndex) {
 			case 0:
-				return item.getId().toString();
+				return item.getProductId().toString();
 			case 1:
 				return item.getLabel();
 			case 2:

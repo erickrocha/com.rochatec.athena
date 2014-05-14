@@ -101,6 +101,16 @@ public class WidgetUtils {
 		return adapter;
 	}
 	
+	public static FocusAdapter setNotFocused(final Control next){
+		FocusAdapter adapter = new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				next.setFocus();
+			}
+		};
+		return adapter;
+	}
+	
 	public static void decorateLabel(Composite parent,Font font,Color foreground){
 		for (Control control : parent.getChildren()){
 			if (control instanceof CLabel){

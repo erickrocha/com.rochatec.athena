@@ -26,9 +26,9 @@ public class Percentage implements IFormarter{
 		return toString(new BigDecimal(value));
 	}
 
-	public Number parse(String value)throws BadFormatException {
+	public BigDecimal parse(String value)throws BadFormatException {
 		try {
-			return nf.parse(value);
+			return new BigDecimal(nf.parse(value).doubleValue());
 		} catch (ParseException e) {
 			throw new PercentageFormatException();
 		}		

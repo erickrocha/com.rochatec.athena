@@ -21,13 +21,17 @@ public class LayoutFactory {
 	public GridLayout getGridLayout(int columns,boolean makeEqualsColumnsWidth){
 		return getGridLayout(columns, makeEqualsColumnsWidth,0);
 	}
-	
 	public GridLayout getGridLayout(int columns,boolean makeEqualsColumnsWidth,int margin){
+		return getGridLayout(columns, makeEqualsColumnsWidth,0,0);
+	}
+	
+	public GridLayout getGridLayout(int columns,boolean makeEqualsColumnsWidth,int margin,int horinzontalSpacing){
 		GridLayout layout = new GridLayout(columns,makeEqualsColumnsWidth);
 		layout.marginBottom = margin;
 		layout.marginLeft = margin;
 		layout.marginRight = margin;
 		layout.marginTop = margin;
+		layout.horizontalSpacing = horinzontalSpacing;
 		return layout;
 	}
 	

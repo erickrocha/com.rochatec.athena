@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -24,16 +28,16 @@ import com.rochatec.athena.client.service.ManufactureClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
+import com.rochatec.athena.invoice.item.provider.InvoiceItemLabelProvider;
+import com.rochatec.athena.invoice.item.table.InvoiceItemTable;
 import com.rochatec.athena.manufacture.icms.provider.IcmsLabelProvider;
-import com.rochatec.athena.manufacture.item.provider.ProductItemLabelProvider;
-import com.rochatec.athena.manufacture.item.table.ItemTable;
 import com.rochatec.athena.manufacture.product.dialog.ProductDialog;
-import com.rochatec.athena.model.IProductItem;
 import com.rochatec.athena.model.Icms;
 import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.Product;
 import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.util.IPathIcons;
+import com.rochatec.athena.util.MathTools;
 import com.rochatec.athena.util.UnitMeasureTradutor;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.exception.BadFormatException;
@@ -51,13 +55,15 @@ public class InvoiceInputItemViewer {
 	private Composite base;
 	
 	private Text txtProductId;
-	private CLabel lblProductName;
-	private CLabel lblEmb;
+	private Text lblProductName;
+	private Text lblEmb;
 	private ComboViewer viewerICms;
+	private Text txtTotalIcms;
 	private Text txtIpiBase;
 	private Text txtIpi;
-	private CLabel lblLastCostPrice;	
+	private Text lblLastCostPrice;	
 	private Text txtCostPrice;
+	private Text txtTotalItem;
 	private Text txtQuantity;
 	private ImageHyperlink btSearch;
 	private ListenerList listeners;
@@ -78,23 +84,10 @@ public class InvoiceInputItemViewer {
 	protected void createContents(Composite parent){
 		Group composite = new Group(parent,SWT.BORDER);
 		composite.setText(Messages.getMessage("itemViewer.title.label"));
-		composite.setLayout(LayoutFactory.getInstance().getGridLayout(2));
+		composite.setLayout(LayoutFactory.getInstance().getGridLayout(1));
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		createFields(composite);
-		
-		Composite buttonComposite = new Composite(composite, SWT.NONE);
-		buttonComposite.setLayout(LayoutFactory.getInstance().getGridLayout(1));
-		buttonComposite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,true,0,2));		
-		
-		new Label(buttonComposite, SWT.NONE);
-		new Label(buttonComposite, SWT.NONE);
-		
-		btSearch = new ImageHyperlink(buttonComposite, SWT.NONE);
-		btSearch.setImage(Activator.getImageDescriptor(IPathIcons.SEARCH_48).createImage());
-		btSearch.setUnderlined(false);
-		btSearch.addHyperlinkListener(new SearchListener());
-		
+		createFields(composite);		
 		createInfoFields(composite);
 		postCreate();
 	}
@@ -105,70 +98,105 @@ public class InvoiceInputItemViewer {
 	
 	private void createFields(Composite parent){
 		Composite composite = new Composite(parent, SWT.NONE);
-		composite.setLayout(LayoutFactory.getInstance().getGridLayout(4));
+		GridLayout gridLayout = LayoutFactory.getInstance().getGridLayout();
+		gridLayout.makeColumnsEqualWidth = false;
+		gridLayout.numColumns = 6;
+		gridLayout.horizontalSpacing = 10;
+		composite.setLayout(gridLayout);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.id.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.name.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.unitMeasure.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.quantity.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.product.id.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.product.name.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.unitMeasure.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.quantity.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.costPrice.field.label"));
+		new Label(composite, SWT.NONE);
 		
 		txtProductId = new Text(composite, SWT.BORDER);
-		txtProductId.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
+		txtProductId.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,false,false));
 		txtProductId.addKeyListener(new DialogListener());
 		
-		lblProductName = new CLabel(composite, SWT.BORDER);
-		lblProductName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		lblProductName = new Text(composite, SWT.BORDER);
+		lblProductName.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
 		
-		lblEmb = new CLabel(composite, SWT.BORDER);
-		lblEmb.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
+		lblEmb = new Text(composite, SWT.BORDER);
+		lblEmb.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,false,false));
 		
 		txtQuantity = new Text(composite, SWT.BORDER);
-		txtQuantity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));		
+		txtQuantity.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,false,false));
+		txtQuantity.addFocusListener(new TotalItemCalculateListener());
+		
+		txtCostPrice = new Text(composite, SWT.BORDER);
+		txtCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		txtCostPrice.addFocusListener(new TotalItemCalculateListener());
+		
+		btSearch = new ImageHyperlink(composite, SWT.NONE);
+		btSearch.setImage(Activator.getImageDescriptor(IPathIcons.INFRA_ADD_24).createImage());
+		btSearch.setUnderlined(false);
+		btSearch.addHyperlinkListener(new SearchListener());
 	}
 	
 	private void createInfoFields(Composite parent){
 		Composite composite = new Composite(parent, SWT.NONE);
-		composite.setLayout(LayoutFactory.getInstance().getGridLayout(5));
+		GridLayout gridLayout = LayoutFactory.getInstance().getGridLayout();
+		gridLayout.makeColumnsEqualWidth = false;
+		gridLayout.numColumns = 6;
+		gridLayout.horizontalSpacing = 10;
+		composite.setLayout(gridLayout);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.icms.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.ipiBase.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.ipi.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.lastCostPrice.label"));
-		new Label(composite, SWT.NONE).setText(Messages.getMessage("itemViewer.product.costPrice.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.lastCostPrice.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.totalItems.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.icms.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.totalIcms.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.ipi.field.label"));
+		new Label(composite, SWT.NONE).setText(Messages.getMessage("invoiceItem.totalIpi.field.label"));
+		
+		lblLastCostPrice = new Text(composite, SWT.BORDER);
+		lblLastCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		
+		txtTotalItem = new Text(composite, SWT.BORDER);
+		txtTotalItem.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
 		
 		viewerICms = new ComboViewer(new CCombo(composite, SWT.BORDER|SWT.DROP_DOWN|SWT.READ_ONLY));
 		viewerICms.setContentProvider(new GenericContentProvider<Icms>());
 		viewerICms.setLabelProvider(new IcmsLabelProvider());
-		viewerICms.getCCombo().setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		viewerICms.getCCombo().setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		viewerICms.addSelectionChangedListener(new ChageIcmsListener());
+		
+		txtTotalIcms = new Text(composite, SWT.BORDER);
+		txtTotalIcms.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
 		
 		txtIpiBase = new Text(composite, SWT.BORDER);
-		txtIpiBase.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		txtIpiBase.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		txtIpiBase.addFocusListener(new TotalIpiCalculateListener());
 		
 		txtIpi = new Text(composite, SWT.BORDER);
-		txtIpi.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		txtIpi.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
 		
-		lblLastCostPrice = new CLabel(composite, SWT.BORDER);
-		lblLastCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		
-		txtCostPrice = new Text(composite, SWT.BORDER);
-		txtCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		
-		txtQuantity.addKeyListener(WidgetUtils.setNextFocusOnEnter(viewerICms.getCCombo()));
+		txtQuantity.addKeyListener(WidgetUtils.setNextFocusOnEnter(txtCostPrice));
+		txtCostPrice.addKeyListener(WidgetUtils.setNextFocusOnEnter(viewerICms.getCCombo()));
 		viewerICms.getCCombo().addKeyListener(WidgetUtils.setNextFocusOnEnter(txtIpiBase));
-		txtIpiBase.addKeyListener(WidgetUtils.setNextFocusOnEnter(txtIpi));
-		txtIpi.addKeyListener(WidgetUtils.setNextFocusOnEnter(txtCostPrice));
-		txtCostPrice.addKeyListener(WidgetUtils.setNextFocusOnEnter(btSearch));
+		txtIpiBase.addKeyListener(WidgetUtils.setNextFocusOnEnter(btSearch));
+		
+		lblProductName.addFocusListener(WidgetUtils.setNotFocused(txtQuantity));
+		lblEmb.addFocusListener(WidgetUtils.setNotFocused(txtQuantity));
+		
+		lblLastCostPrice.addFocusListener(WidgetUtils.setNotFocused(viewerICms.getCCombo()));
+		txtTotalItem.addFocusListener(WidgetUtils.setNotFocused(viewerICms.getCCombo()));
+		
+		txtTotalIcms.addFocusListener(WidgetUtils.setNotFocused(txtIpiBase));
+		txtIpi.addFocusListener(WidgetUtils.setNotFocused(btSearch));
+		
 	}
 	
 	private void createTable(Composite parent){
 		Composite composite = new Composite(parent,SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
 		composite.setLayout(LayoutFactory.getInstance().getFillLayout());
-		tableViewer = new ItemTable(composite);
-		tableViewer.setContentProvider(new GenericContentProvider<IProductItem>());
-		tableViewer.setLabelProvider(new ProductItemLabelProvider());
+		tableViewer = new InvoiceItemTable(composite);
+		tableViewer.setContentProvider(new GenericContentProvider<InvoiceInputItem>());
+		tableViewer.setLabelProvider(new InvoiceItemLabelProvider());
 	}
 	
 	public void setLayoutData(Object layoutData){
@@ -190,7 +218,9 @@ public class InvoiceInputItemViewer {
 				lblProductName.setText(product.getName());
 				viewerICms.setSelection(new SearchSelection<Icms>(product.getIcms()));
 				lblEmb.setText(UnitMeasureTradutor.getLabel(product.getUnitMeasure()));
-				lblLastCostPrice.setText(Formatter.getCurrency().mask(product.getLastCostprice()));
+				lblLastCostPrice.setText(Formatter.getDecimal().mask(product.getLastCostprice()));
+				txtCostPrice.setText(Formatter.getDecimal().mask(product.getCostprice()));				
+				txtIpiBase.setText(Formatter.getDecimal().mask(product.getIpi()));
 			}catch(BadFormatException ex){
 				Activator.getDefault().println(ex.getMessage());
 			}
@@ -228,10 +258,44 @@ public class InvoiceInputItemViewer {
 		this.listeners.remove(listener);
 	}
 	
+	private void clear(){
+		txtProductId.setText("");
+		lblProductName.setText("");
+		lblEmb.setText("");
+		lblLastCostPrice.setText("");
+		txtQuantity.setText("");
+		txtIpi.setText("");
+		txtTotalIcms.setText("");
+		txtTotalItem.setText("");
+		txtCostPrice.setText("");
+		viewerICms.getCCombo().select(0);
+	}
+	
 	class SearchListener extends HyperLinkAdapter{
 		@Override
 		public void linkActivated(HyperlinkEvent event) {
 			fireAddedEvent(product);
+			clear();
+		}
+	}
+	
+	class TotalItemCalculateListener extends FocusAdapter{
+		@Override
+		public void focusLost(FocusEvent e) {
+			try {				
+				txtTotalItem.setText(MathTools.multiply(txtQuantity.getText(), txtCostPrice.getText()));
+			} catch (BadFormatException ex) {				
+			}			
+		}
+	}
+	
+	class TotalIpiCalculateListener extends FocusAdapter{
+		@Override
+		public void focusLost(FocusEvent e) {
+			try {				
+				txtIpi.setText(MathTools.percentage(txtTotalItem.getText(), txtIpiBase.getText()));
+			} catch (BadFormatException ex) {				
+			}	
 		}
 	}
 	
@@ -252,6 +316,25 @@ public class InvoiceInputItemViewer {
 				break;
 			default:
 				break;
+			}
+		}
+		
+		@Override
+		public void keyReleased(KeyEvent e) {
+			if (product != null){
+				txtQuantity.setFocus();
+			}
+		}
+	}
+	
+	class ChageIcmsListener implements ISelectionChangedListener{
+		@Override
+		public void selectionChanged(SelectionChangedEvent event) {
+			try{
+				Icms icms = (Icms) ((IStructuredSelection)event.getSelection()).getFirstElement();
+				txtTotalIcms.setText(MathTools.percentage(txtTotalItem.getText(),icms.getPercentage()));
+			}catch(BadFormatException ex){
+				
 			}
 		}
 	}
