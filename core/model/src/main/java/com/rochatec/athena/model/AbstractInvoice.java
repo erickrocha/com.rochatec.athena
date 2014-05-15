@@ -48,13 +48,13 @@ public abstract class AbstractInvoice implements Serializable {
 	 * Número da Nota Fiscal
 	 */
 	@Column(name = "INVOICE_NUMBER")
-	private Long number;
+	private String number;
 
 	/**
 	 * Número de Série para controle de formulário
 	 */
 	@Column(name = "SERIAL_NUMBER")
-	private Long serialNumber;
+	private String serialNumber;
 
 	/**
 	 * CFOP da Nota fiscal
@@ -96,19 +96,19 @@ public abstract class AbstractInvoice implements Serializable {
 		this.id = id;
 	}
 
-	public Long getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Long number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
-	public Long getSerialNumber() {
+	public String getSerialNumber() {
 		return serialNumber;
 	}
 
-	public void setSerialNumber(Long serialNumber) {
+	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 

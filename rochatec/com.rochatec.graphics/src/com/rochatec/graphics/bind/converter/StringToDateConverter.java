@@ -6,18 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.eclipse.core.databinding.conversion.IConverter;
+import org.eclipse.core.databinding.conversion.Converter;
 
-public class StringToDateConverter implements IConverter{
+public class StringToDateConverter extends Converter{
 
-	@Override
-	public Object getFromType() {
-		return String.class;
-	}
-
-	@Override
-	public Object getToType() {
-		return Calendar.class;
+	public StringToDateConverter() {
+		super(String.class,Calendar.class);
 	}
 
 	@Override

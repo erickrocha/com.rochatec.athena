@@ -22,7 +22,7 @@ public class LayoutFactory {
 		return getGridLayout(columns, makeEqualsColumnsWidth,0);
 	}
 	public GridLayout getGridLayout(int columns,boolean makeEqualsColumnsWidth,int margin){
-		return getGridLayout(columns, makeEqualsColumnsWidth,0,0);
+		return getGridLayout(columns, makeEqualsColumnsWidth,margin,0);
 	}
 	
 	public GridLayout getGridLayout(int columns,boolean makeEqualsColumnsWidth,int margin,int horinzontalSpacing){
@@ -35,10 +35,13 @@ public class LayoutFactory {
 		return layout;
 	}
 	
-	public GridLayout getGridLayout(int columns,int margin){
-		return getGridLayout(columns,false, margin);
+	public GridLayout getGridLayout(int columns,int margin,int horizontalSpacing){
+		return getGridLayout(columns,false, margin,horizontalSpacing);
 	}
 	
+	public GridLayout getGridLayout(int columns,int margin){
+		return getGridLayout(columns,false, margin,0);
+	}
 	
 	public GridLayout getGridLayout(int columns){
 		return getGridLayout(columns,false);

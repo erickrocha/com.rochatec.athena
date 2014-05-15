@@ -37,7 +37,7 @@ public class InvoiceValue implements Serializable {
 
 	@Column(name="TOTAL_SEGURO",precision=10,scale=2)
 	private BigDecimal totalSeguro = BigDecimal.ZERO;
-
+	
 	@Column(name="OUTRAS_DESPESAS",precision=10,scale=2)
 	private BigDecimal outrasdespesas = BigDecimal.ZERO;
 
@@ -134,5 +134,20 @@ public class InvoiceValue implements Serializable {
 	public void setDesconto(BigDecimal desconto) {
 		this.desconto = desconto;
 	}
-
+	
+	public BigDecimal getTotal(){
+		BigDecimal total = BigDecimal.ZERO; 
+		total.add(totalFrete).add(totalIcmsSub).add(totalIpi).add(totalSeguro).add(totalItems).add(outrasdespesas);
+		total.subtract(desconto);
+		this.totalInvoice = total;
+		return total;
+	}
+	
+	
+	public boolean validate(){
+		if (getTotal().equals(totalInvoice)){
+			return true;
+		}
+		return false;
+	}
 }

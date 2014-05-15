@@ -2,12 +2,14 @@ package com.rochatec.athena.invoice.input.editor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
@@ -24,13 +26,13 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
 import com.rochatec.athena.invoice.item.viewer.InvoiceInputItemViewer;
-import com.rochatec.athena.invoice.status.provider.InvoiceStatusLabelProvider;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.InvoiceInputItem;
-import com.rochatec.athena.model.InvoiceStatus;
 import com.rochatec.athena.model.NatureOfOperation;
+import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
+import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.provider.GenericContentProvider;
@@ -38,20 +40,17 @@ import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.viewer.TextViewer;
 
-public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemListener{
+public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemListener,Bindable{
 	
 	public static final String ID = "com.rochatec.athena.invoice.input.editor.InvoiceInputEditor";
 	private InvoiceInputEditorInput editorInput;
-	private CLabel lblCompanyName;
-	private CLabel lblCompanySocialSecurity;
-	private CLabel lblCompanyRegisterNumber;
-	private CLabel lblCompanyInscMunicipal;
+	private InvoiceInputReceiverViewer receiverViewer;
 	
 	private TextViewer textViewer;
 	private Text txtCfop;
-	private CLabel lblInvoiceNumber;
+	private Text txtInvoiceNumber;
 	private Text txtSerialNumber;
-	private TextViewer statusViewer; 
+	private Text txtStatus; 
 	private InvoiceValueViewer valueViewer;
 	private InvoiceInputItemViewer itemViewer;
 
@@ -63,34 +62,20 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		createTributaryBox(parent);
 		createInvoiceValueViewer(parent);
 		createInvoiceItem(parent);
+		DataBindingFactory<InvoiceInput> factory = new DataBindingFactory<InvoiceInput>(editorInput.getInvoice(),this);
+		factory.bind(getBinds());
 	}
 	
 	private void createReceiverBox(Composite parent){
-		Group group  = new Group(parent,SWT.NONE);
-		group.setText(Messages.getMessage("invoice.receiver.field.label"));
-		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		group.setLayout(LayoutFactory.getInstance().getGridLayout(4));		
-		
-		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.receiver.companyName.field.label"));
-		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.receiver.socialSecurity.field.label"));
-		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.receiver.registerNumber.field.label"));
-		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.receiver.cityRegister.field.label"));
-		
-		lblCompanyName = new CLabel(group, SWT.BORDER);
-		lblCompanyName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));		
-		lblCompanySocialSecurity = new CLabel(group, SWT.BORDER);
-		lblCompanySocialSecurity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
-		lblCompanyRegisterNumber = new CLabel(group, SWT.BORDER);
-		lblCompanyRegisterNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
-		lblCompanyInscMunicipal = new CLabel(group, SWT.BORDER);
-		lblCompanyInscMunicipal.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
+		receiverViewer = new InvoiceInputReceiverViewer(parent,editorInput.getInvoice().getReceiver(),this);
+		receiverViewer.setEnabled(false);
 	}
 	
 	private void createTributaryBox(Composite parent){
 		Group group  = new Group(parent,SWT.NONE);
 		group.setText(Messages.getMessage("invoice.tributary.group.title"));
 		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		group.setLayout(LayoutFactory.getInstance().getGridLayout(5));
+		group.setLayout(LayoutFactory.getInstance().getGridLayout(5,false,5,10));
 		
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.invoiceNumber.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.serialNumber.field.label"));
@@ -98,10 +83,9 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.cfop.field.label"));		
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.status.field.label"));
 		
-		lblInvoiceNumber = new CLabel(group, SWT.BORDER|SWT.SHADOW_NONE);
-		lblInvoiceNumber.setForeground(Colors.getColorBlue());
-		lblInvoiceNumber.setAlignment(SWT.CENTER);
-		lblInvoiceNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		txtInvoiceNumber = new Text(group, SWT.BORDER|SWT.SHADOW_NONE);
+		txtInvoiceNumber.setForeground(Colors.getColorBlue());		
+		txtInvoiceNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtSerialNumber = new Text(group, SWT.BORDER);
 		txtSerialNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
@@ -114,13 +98,12 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		txtCfop = new Text(group, SWT.BORDER);
 		txtCfop.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		statusViewer = new TextViewer(new Text(group, SWT.BORDER));
-		statusViewer.setContentProvider(new GenericContentProvider<InvoiceStatus>());
-		statusViewer.setLabelProvider(new InvoiceStatusLabelProvider());
+		txtStatus = new Text(group, SWT.BORDER);
+		txtStatus.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 	}
 	
 	private void createInvoiceValueViewer(Composite parent){
-		valueViewer = new InvoiceValueViewer(parent);
+		valueViewer = new InvoiceValueViewer(parent,editorInput.getInvoice().getValues(),this);
 		valueViewer.setLayoutDate(new GridData(SWT.FILL,SWT.FILL,true,false));
 	}
 	
@@ -136,22 +119,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 
 	@Override
 	protected void fill() {		
-		try {
-			InvoiceInput invoice = editorInput.getInvoice();
-			lblCompanyName.setText(invoice.getReceiver().getCompanyName());
-			lblCompanySocialSecurity.setText(Formatter.getSocialSecurity().mask(invoice.getReceiver().getSocialSecurity()));
-			lblCompanyRegisterNumber.setText(invoice.getReceiver().getRegisterNumber());
-			lblCompanyInscMunicipal.setText(invoice.getReceiver().getCityRegister());
-			statusViewer.setInput(invoice.getStatus());
-			lblInvoiceNumber.setText(invoice.getNumber().toString());
-			valueViewer.setValue(invoice.getValues());
-			if (invoice.getId() != null){
 				
-			}
-		} catch (BadFormatException e) {
-			
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -178,6 +146,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 			InvoiceInputItem item = helper.newItem(editorInput.getInvoice(),e.product,e.icms,costPrice,ipiBase,ipiValue,quantity);		
 			items.add(item);
 			itemViewer.setInput(items);
+			setDirty(true);
 		}catch (BadFormatException ex){
 			ControlDecoration deco = new ControlDecoration(e.costPrice,SWT.TOP|SWT.LEFT);			
 			deco.setImage(Activator.getImageDescriptor(ISharedImages.IMG_DEC_FIELD_ERROR).createImage());			
@@ -186,14 +155,21 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 
 	@Override
 	public void iItemUpdated(InvoiceItemEvent itemEvent) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void itemDeleted(InvoiceItemEvent itemEvent) {
-		// TODO Auto-generated method stub
 		
-	}	
+	}
 
+	@Override
+	public Map<String, Object> getBinds() {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("cfop",txtCfop);
+		map.put("number",txtInvoiceNumber);
+		map.put("serialNumber",txtSerialNumber);
+		map.put("status",txtStatus);
+		return map;
+	}		
 }

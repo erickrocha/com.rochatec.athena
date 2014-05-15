@@ -20,6 +20,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Text;
 
 import com.rochatec.athena.address.viewer.AddressViewer;
+import com.rochatec.athena.bind.converter.BigDecimalToStringConverter;
+import com.rochatec.athena.bind.converter.StringToBigDecimalConverter;
 import com.rochatec.framework.bind.Editable;
 import com.rochatec.graphics.bind.converter.DateToStringConverter;
 import com.rochatec.graphics.bind.converter.StringToDateConverter;
@@ -62,8 +64,12 @@ public class DataBindingFactory<T> {
 			}else if (component instanceof NumberFormatedText){
 				NumberFormatedText field = (NumberFormatedText)component;
 				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field);
+				UpdateValueStrategy targetToModel = new UpdateValueStrategy();
+				targetToModel.setConverter(new StringToBigDecimalConverter());				
+				UpdateValueStrategy modelToTarget = new UpdateValueStrategy();
+				modelToTarget.setConverter(new BigDecimalToStringConverter());				
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
-				ctx.bindValue(widgetValue, modelValue);
+				ctx.bindValue(widgetValue, modelValue,targetToModel,modelToTarget);
 			}else if (component instanceof DateFormatedText){
 				DateFormatedText field = (DateFormatedText)component;
 				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field);

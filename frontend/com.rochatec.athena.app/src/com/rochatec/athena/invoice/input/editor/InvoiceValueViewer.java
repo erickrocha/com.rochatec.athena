@@ -1,5 +1,8 @@
 package com.rochatec.athena.invoice.input.editor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -9,12 +12,13 @@ import org.eclipse.swt.widgets.Layout;
 
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.InvoiceValue;
-import com.rochatec.athena.util.Formatter;
-import com.rochatec.framework.exception.BadFormatException;
+import com.rochatec.athena.util.DataBindingFactory;
+import com.rochatec.framework.bind.Bindable;
+import com.rochatec.framework.bind.Editable;
 import com.rochatec.graphics.gui.NumberFormatedText;
 import com.rochatec.graphics.util.LayoutFactory;
 
-public class InvoiceValueViewer {
+public class InvoiceValueViewer implements Bindable{
 
 	private Group group;
 	private NumberFormatedText txtBaseIcms;
@@ -30,13 +34,16 @@ public class InvoiceValueViewer {
 	private NumberFormatedText txtDesconto;
 	
 	private InvoiceValue invoiceValue;
+	private Editable editable;
 	
-	public InvoiceValueViewer(Composite parent) {
-		this(parent,SWT.NONE);
+	public InvoiceValueViewer(Composite parent,InvoiceValue invoiceValue,Editable editable) {
+		this(parent,SWT.NONE,invoiceValue,editable);
 	}
 	
-	public InvoiceValueViewer(Composite parent,int style) {
-		createContents(parent,style);
+	public InvoiceValueViewer(Composite parent,int style,InvoiceValue invoiceValue,Editable editable) {
+		this.invoiceValue = invoiceValue;
+		this.editable = editable;
+		createContents(parent,style);		
 	}
 	
 	
@@ -90,30 +97,17 @@ public class InvoiceValueViewer {
 		txtDesconto.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtTotalInvoice = new NumberFormatedText(group);
-		txtTotalInvoice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false,2,0));		
+		txtTotalInvoice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false,2,0));
+		DataBindingFactory<InvoiceValue> factory = new DataBindingFactory<InvoiceValue>(invoiceValue,editable);
+		factory.bind(getBinds());
 	}
 	
 	public void setValue(InvoiceValue value){
 		this.invoiceValue = value;
-		fill(invoiceValue);
 	}
 	
-	private void fill(InvoiceValue value){
-		try{
-			txtBaseIcms.setText(Formatter.getCurrency().mask(value.getBaseIcms()));
-			txtTotalIcms.setText(Formatter.getCurrency().mask(value.getTotalIcms()));
-			txtBaseIcmsSub.setText(Formatter.getCurrency().mask(value.getBaseIcmsSub()));
-			txtTotalIcmsSub.setText(Formatter.getCurrency().mask(value.getTotalIcmsSub()));
-			txtTotalIpi.setText(Formatter.getCurrency().mask(value.getTotalIpi()));
-			txtTotalItems.setText(Formatter.getCurrency().mask(value.getTotalItems()));
-			txtTotalFrete.setText(Formatter.getCurrency().mask(value.getTotalFrete()));
-			txtTotalSeguro.setText(Formatter.getCurrency().mask(value.getTotalSeguro()));
-			txtOutrasDespesas.setText(Formatter.getCurrency().mask(value.getOutrasdespesas()));
-			txtDesconto.setText(Formatter.getCurrency().mask(value.getDesconto()));
-			txtTotalInvoice.setText(Formatter.getCurrency().mask(value.getTotalInvoice()));
-		}catch (BadFormatException ex){
-			
-		}
+	public InvoiceValue getValue(){
+		return this.invoiceValue;
 	}
 	
 	public void setLayoutDate(Object layoutData){
@@ -127,6 +121,25 @@ public class InvoiceValueViewer {
 	public void pack(){
 		this.group.pack();
 	}
+
+	@Override
+	public Map<String, Object> getBinds() {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("baseIcms",txtBaseIcms);
+		map.put("totalIcms",txtTotalIcms);
+		map.put("baseIcmsSub",txtBaseIcmsSub);
+		map.put("totalIcmsSub",txtTotalIcmsSub);
+		map.put("desconto",txtDesconto);
+		map.put("outrasdespesas",txtOutrasDespesas);
+		map.put("totalFrete",txtTotalFrete);
+		map.put("totalInvoice",txtTotalInvoice);
+		map.put("totalIpi",txtTotalIpi);
+		map.put("totalItems",txtTotalItems);
+		map.put("totalSeguro",txtTotalSeguro);		
+		return map;
+	}
+	
+	
 }
 
 

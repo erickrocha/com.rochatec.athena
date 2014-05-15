@@ -276,6 +276,7 @@ public class InvoiceInputItemViewer {
 		public void linkActivated(HyperlinkEvent event) {
 			fireAddedEvent(product);
 			clear();
+			txtProductId.setFocus();
 		}
 	}
 	

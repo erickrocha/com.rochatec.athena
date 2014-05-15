@@ -3,18 +3,12 @@ package com.rochatec.graphics.bind.converter;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-import org.eclipse.core.databinding.conversion.IConverter;
+import org.eclipse.core.databinding.conversion.Converter;
 
-public class DateToStringConverter implements IConverter{
+public class DateToStringConverter extends Converter{
 
-	@Override
-	public Object getFromType() {		
-		return Calendar.class;
-	}
-
-	@Override
-	public Object getToType() {
-		return String.class;
+	public DateToStringConverter() {
+		super(Calendar.class,String.class);		
 	}
 
 	@Override
