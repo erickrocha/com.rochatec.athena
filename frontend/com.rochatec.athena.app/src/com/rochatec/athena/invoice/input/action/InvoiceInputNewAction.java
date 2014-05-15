@@ -49,12 +49,12 @@ public class InvoiceInputNewAction extends Action{
 		}
 	}
 	
-	private Long getInvoiceNumber(Shell shell){
+	private String getInvoiceNumber(Shell shell){
 		InputDialog dialog = new InputDialog(view.getSite().getShell(),
 				Messages.getMessage("invoice.dialog.invoice.number.title"),
 				Messages.getMessage("invoice.dialog.invoice.number.message"), "",null);
 		dialog.open();
 		String value = dialog.getValue();
-		return Long.parseLong(value);
+		return value;
 	}
 }

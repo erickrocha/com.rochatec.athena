@@ -27,6 +27,8 @@ import com.rochatec.graphics.bind.converter.MaskToStringConverter;
 import com.rochatec.graphics.bind.converter.StringToBigDecimalConverter;
 import com.rochatec.graphics.bind.converter.StringToDateConverter;
 import com.rochatec.graphics.bind.converter.StringToMaskConverter;
+import com.rochatec.graphics.bind.converter.StringToWeightConverter;
+import com.rochatec.graphics.bind.converter.WeightToStringConverter;
 import com.rochatec.graphics.gui.DateFormatedText;
 import com.rochatec.graphics.gui.MaskedText;
 import com.rochatec.graphics.gui.NumberFormatedText;
@@ -75,12 +77,16 @@ public class DataBindingFactory<T> {
 					modelToTarget.setConverter(new StringToMaskConverter(Formatter.getPhone()));
 					break;
 				case ATHENA.PATTERN_BIGDECIMAL:
-					targetToModel.setConverter(new BigDecimalToStringConverter());
+					targetToModel.setConverter(new StringToBigDecimalConverter());
 					modelToTarget.setConverter(new BigDecimalToStringConverter());
 					break;
 				case ATHENA.PATTERN_DATE:
 					targetToModel.setConverter(new DateToStringConverter());
 					modelToTarget.setConverter(new StringToDateConverter());
+					break;
+				case ATHENA.PATTERN_WEIGHT:
+					targetToModel.setConverter(new WeightToStringConverter());
+					modelToTarget.setConverter(new StringToWeightConverter());
 					break;
 				default:
 					targetToModel.setConverter(new MaskToStringConverter(Formatter.getNone()));

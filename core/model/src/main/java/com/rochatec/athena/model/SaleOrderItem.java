@@ -154,7 +154,7 @@ public class SaleOrderItem implements Serializable,IProductItem {
 
 	@Override
 	public BigDecimal getIpi() {
-		return new BigDecimal(product.getIpi());
+		return product.getIpi();
 	}
 
 	@Override

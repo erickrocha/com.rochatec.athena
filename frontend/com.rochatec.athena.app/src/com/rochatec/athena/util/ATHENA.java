@@ -9,5 +9,6 @@ public interface ATHENA {
 	public int PATTERN_ZIPCODE = 0x123127;
 	public int PATTERN_PHONE = 0x123128;
 	public int PATTERN_NONE = 0x123129;
+	public int PATTERN_WEIGHT = 0x123130;
 	
 }

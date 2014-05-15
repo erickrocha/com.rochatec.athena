@@ -41,13 +41,16 @@ import com.rochatec.athena.model.Icms;
 import com.rochatec.athena.model.Ncm;
 import com.rochatec.athena.model.Product;
 import com.rochatec.athena.model.UnitMeasure;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
+import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.gui.DateFormatedText;
 import com.rochatec.graphics.gui.IdLabel;
 import com.rochatec.graphics.gui.NumberFormatedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.gui.TimeFormatedText;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.selection.SearchSelection;
@@ -74,19 +77,19 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 	private Button btActive;
 	private Button btManufacture;
 	
-	private NumberFormatedText txtStock;
-	private NumberFormatedText txtStockDown;
-	private NumberFormatedText txtStockUp;
-	private NumberFormatedText txtSellPrice;
-	private NumberFormatedText txtCostPrice;
-	private NumberFormatedText txtLastSellPrice;
-	private NumberFormatedText txtLastCostPrice;
+	private TextField txtStock;
+	private TextField txtStockDown;
+	private TextField txtStockUp;
+	private TextField txtSellPrice;
+	private TextField txtCostPrice;
+	private TextField txtLastSellPrice;
+	private TextField txtLastCostPrice;
 	private DateFormatedText txtDateLastSellPrice;
 	private DateFormatedText txtDateLastCostPrice;
-	private NumberFormatedText txtMarkup;
-	private NumberFormatedText txtWeight;
-	private NumberFormatedText txtHeight;
-	private NumberFormatedText txtWidth;
+	private TextField txtMarkup;
+	private TextField txtWeight;
+	private TextField txtHeight;
+	private TextField txtWidth;
 	private TimeFormatedText txtProductionTime;
 	private TimeFormatedText txtLastProductionTime;
 	private TimeFormatedText txtAverageProductionTime;
@@ -207,16 +210,20 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.stockUp"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.markup"));
 		
-		txtStockDown = new NumberFormatedText(composite);
+		txtStockDown = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtStockDown.setFormatter(Formatter.getDecimal());
 		txtStockDown.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtStock = new NumberFormatedText(composite);
+		txtStock = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtStock.setFormatter(Formatter.getDecimal());
 		txtStock.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtStockUp = new NumberFormatedText(composite);
+		txtStockUp = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtStockUp.setFormatter(Formatter.getDecimal());
 		txtStockUp.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtMarkup = new NumberFormatedText(composite);
+		txtMarkup = new TextField(composite,ATHENA.PATTERN_BIGDECIMAL);
+		txtMarkup.setFormatter(Formatter.getDecimal());
 		txtMarkup.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 	}
 	
@@ -233,22 +240,26 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.lastSellPrice"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.dateLastSellPrice"));
 		
-		txtCostPrice = new NumberFormatedText(composite);
+		txtCostPrice = new TextField(composite,ATHENA.PATTERN_BIGDECIMAL);
+		txtCostPrice.setFormatter(Formatter.getDecimal());
 		txtCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtLastCostPrice = new NumberFormatedText(composite);
+		txtLastCostPrice = new TextField(composite,ATHENA.PATTERN_BIGDECIMAL);
+		txtLastCostPrice.setFormatter(Formatter.getDecimal());
 		txtLastCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtDateLastCostPrice = new DateFormatedText(composite);
 		txtDateLastCostPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtSellPrice = new NumberFormatedText(composite);
+		txtSellPrice = new TextField(composite,ATHENA.PATTERN_BIGDECIMAL);
+		txtSellPrice.setFormatter(Formatter.getDecimal());
 		txtSellPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtLastSellPrice = new NumberFormatedText(composite);
+		txtLastSellPrice = new TextField(composite,ATHENA.PATTERN_BIGDECIMAL);
+		txtLastSellPrice.setFormatter(Formatter.getDecimal());
 		txtLastSellPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtDateLastSellPrice = new DateFormatedText(composite);
+		txtDateLastSellPrice = new DateFormatedText(composite);		
 		txtDateLastSellPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 	}
@@ -265,13 +276,16 @@ public class ProductEditor extends AbstractEditor implements Bindable{
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.lastProductionTime"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("product.field.label.averageProductionTime"));
 		
-		txtWeight = new NumberFormatedText(composite);
+		txtWeight = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtWeight.setFormatter(Formatter.getWeight());
 		txtWeight.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtHeight = new NumberFormatedText(composite);
+		txtHeight = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtHeight.setFormatter(Formatter.getWeight());
 		txtHeight.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtWidth = new NumberFormatedText(composite);
+		txtWidth = new TextField(composite,ATHENA.PATTERN_WEIGHT);
+		txtWidth.setFormatter(Formatter.getWeight());
 		txtWidth.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtProductionTime = new TimeFormatedText(composite);

@@ -81,7 +81,7 @@ public class InvoiceInputItem extends AbstractInvoiceItem implements
 
 	@Override
 	public BigDecimal getIpi() {
-		return new BigDecimal(getProduct().getIpi());
+		return getProduct().getIpi();
 	}
 
 	@Override

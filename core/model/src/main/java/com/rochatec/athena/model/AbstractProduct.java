@@ -64,7 +64,7 @@ public abstract class AbstractProduct implements Serializable {
 	private Calendar dateRegister;
 
 	@Column(precision=5, scale=2)
-	private Double ipi = 0D;
+	private BigDecimal ipi = BigDecimal.ZERO;
 
 	@Column(name="LAST_COSTPRICE", precision=10, scale=2)
 	private BigDecimal lastCostprice = BigDecimal.ZERO;
@@ -73,7 +73,7 @@ public abstract class AbstractProduct implements Serializable {
 	private BigDecimal lastSellprice = BigDecimal.ZERO;
 
 	@Column(precision=10, scale=2)
-	private Double markup = 0D;
+	private BigDecimal markup = BigDecimal.ZERO;
 
 	@Column(nullable=false, length=80)
 	private String name;
@@ -192,11 +192,11 @@ public abstract class AbstractProduct implements Serializable {
 		this.dateRegister = dateRegister;
 	}
 
-	public Double getIpi() {
+	public BigDecimal getIpi() {
 		return this.ipi;
 	}
 
-	public void setIpi(Double ipi) {
+	public void setIpi(BigDecimal ipi) {
 		this.ipi = ipi;
 	}
 
@@ -216,11 +216,11 @@ public abstract class AbstractProduct implements Serializable {
 		this.lastSellprice = lastSellprice;
 	}
 
-	public Double getMarkup() {
+	public BigDecimal getMarkup() {
 		return this.markup;
 	}
 
-	public void setMarkup(Double markup) {
+	public void setMarkup(BigDecimal markup) {
 		this.markup = markup;
 	}
 

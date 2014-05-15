@@ -23,14 +23,14 @@ import com.rochatec.athena.address.viewer.AddressViewer;
 import com.rochatec.athena.client.service.SupplyClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Supplier;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
+import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
-import com.rochatec.framework.formater.impl.PhoneFormaterImpl;
-import com.rochatec.framework.formater.impl.SocialSecurityFormaterImpl;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.gui.IdLabel;
-import com.rochatec.graphics.gui.MaskedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.util.LayoutFactory;
 
 public class SupplierEditor extends AbstractEditor implements Bindable{
@@ -45,12 +45,12 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 	protected DateChooserCombo dateRegisterCal;
 	protected Text txtCompanyName;
 	protected Text txtTradeName;
-	protected MaskedText txtSocialSecurity;
+	protected TextField txtSocialSecurity;
 	protected Text txtRegisterNumber;
 	protected Text txtCityRegister;
 	protected Text txtWebSite;
-	protected MaskedText txtPhone;
-	protected MaskedText txtFax;
+	protected TextField txtPhone;
+	protected TextField txtFax;
 	protected Button btActive;
 	
 	protected AddressViewer addressViewer;
@@ -83,7 +83,8 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 		dateRegisterCal.setLayoutData(new GridData(120,25));
 		dateRegisterCal.setValue(new Date());
 		
-		txtSocialSecurity = new MaskedText(panel,new SocialSecurityFormaterImpl());
+		txtSocialSecurity = new TextField(panel,ATHENA.PATTERN_SOCIALSECURITY);
+		txtSocialSecurity.setFormatter(Formatter.getSocialSecurity());
 		txtSocialSecurity.setLayoutData(new GridData(150,17));
 		
 		txtCompanyName = new Text(panel, SWT.BORDER);
@@ -124,10 +125,12 @@ public class SupplierEditor extends AbstractEditor implements Bindable{
 		txtCityRegister = new Text(composite,SWT.BORDER);
 		txtCityRegister.setLayoutData(new GridData(200,15));
 		
-		txtPhone = new MaskedText(composite, new PhoneFormaterImpl());
+		txtPhone = new TextField(composite,ATHENA.PATTERN_PHONE);
+		txtPhone.setFormatter(Formatter.getPhone());
 		txtPhone.setLayoutData(new GridData(200,15));
 		
-		txtFax = new MaskedText(composite, new PhoneFormaterImpl());
+		txtFax = new TextField(composite,ATHENA.PATTERN_PHONE);
+		txtFax.setFormatter(Formatter.getPhone());
 		txtFax.setLayoutData(new GridData(200,15));
 		
 		txtWebSite = new Text(composite, SWT.BORDER);

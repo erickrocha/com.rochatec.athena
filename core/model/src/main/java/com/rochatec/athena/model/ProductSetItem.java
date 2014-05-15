@@ -2,7 +2,6 @@ package com.rochatec.athena.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -97,13 +96,6 @@ public class ProductSetItem extends AbstractItem implements Serializable, IProdu
 	}
 
 	@Override
-	public BigDecimal getIpi() {
-		BigDecimal ipi = new BigDecimal(product.getIpi());
-		ipi.setScale(2,RoundingMode.HALF_EVEN);
-		return ipi;
-	}
-
-	@Override
 	public BigDecimal getTotalItem() {		
 		return getSellPrice().multiply(getQuantity());
 	}
@@ -111,6 +103,11 @@ public class ProductSetItem extends AbstractItem implements Serializable, IProdu
 	@Override
 	public Long getProductId() {
 		return getProduct().getId();
+	}
+
+	@Override
+	public BigDecimal getIpi() {		
+		return product.getIpi();
 	}
 
 }
