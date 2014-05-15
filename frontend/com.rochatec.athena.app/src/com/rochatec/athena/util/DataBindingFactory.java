@@ -20,14 +20,17 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Text;
 
 import com.rochatec.athena.address.viewer.AddressViewer;
-import com.rochatec.athena.bind.converter.BigDecimalToStringConverter;
-import com.rochatec.athena.bind.converter.StringToBigDecimalConverter;
 import com.rochatec.framework.bind.Editable;
+import com.rochatec.graphics.bind.converter.BigDecimalToStringConverter;
 import com.rochatec.graphics.bind.converter.DateToStringConverter;
+import com.rochatec.graphics.bind.converter.MaskToStringConverter;
+import com.rochatec.graphics.bind.converter.StringToBigDecimalConverter;
 import com.rochatec.graphics.bind.converter.StringToDateConverter;
+import com.rochatec.graphics.bind.converter.StringToMaskConverter;
 import com.rochatec.graphics.gui.DateFormatedText;
 import com.rochatec.graphics.gui.MaskedText;
 import com.rochatec.graphics.gui.NumberFormatedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.gui.TimeFormatedText;
 import com.rochatec.graphics.nebula.DateChooserComboObservableValue;
 import com.rochatec.graphics.viewer.TextViewer;
@@ -51,6 +54,40 @@ public class DataBindingFactory<T> {
 				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(text);
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				ctx.bindValue(widgetValue, modelValue);
+			}else if (component instanceof TextField){
+				TextField field = (TextField)component;
+				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field.getWidget());
+				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
+				
+				UpdateValueStrategy targetToModel = new UpdateValueStrategy();
+				UpdateValueStrategy modelToTarget = new UpdateValueStrategy();
+				switch (field.getTypePattern()) {
+				case ATHENA.PATTERN_SOCIALSECURITY:
+					targetToModel.setConverter(new MaskToStringConverter(Formatter.getSocialSecurity()));
+					modelToTarget.setConverter(new StringToMaskConverter(Formatter.getSocialSecurity()));
+					break;
+				case ATHENA.PATTERN_ZIPCODE:
+					targetToModel.setConverter(new MaskToStringConverter(Formatter.getZipCode()));
+					modelToTarget.setConverter(new StringToMaskConverter(Formatter.getZipCode()));
+					break;
+				case ATHENA.PATTERN_PHONE:
+					targetToModel.setConverter(new MaskToStringConverter(Formatter.getPhone()));
+					modelToTarget.setConverter(new StringToMaskConverter(Formatter.getPhone()));
+					break;
+				case ATHENA.PATTERN_BIGDECIMAL:
+					targetToModel.setConverter(new BigDecimalToStringConverter());
+					modelToTarget.setConverter(new BigDecimalToStringConverter());
+					break;
+				case ATHENA.PATTERN_DATE:
+					targetToModel.setConverter(new DateToStringConverter());
+					modelToTarget.setConverter(new StringToDateConverter());
+					break;
+				default:
+					targetToModel.setConverter(new MaskToStringConverter(Formatter.getNone()));
+					modelToTarget.setConverter(new StringToMaskConverter(Formatter.getNone()));
+					break;
+				}
+				ctx.bindValue(widgetValue, modelValue,targetToModel,modelToTarget);
 			}else if (component instanceof DateChooserCombo){
 				DateChooserCombo field = (DateChooserCombo)component;				
 				DateChooserComboObservableValue widgetValue = new DateChooserComboObservableValue(field, SWT.Modify);

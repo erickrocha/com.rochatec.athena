@@ -33,14 +33,14 @@ import com.rochatec.athena.humanresources.job.provider.JobLabelProvider;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Employee;
 import com.rochatec.athena.model.Job;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
-import com.rochatec.framework.formater.impl.SocialSecurityFormaterImpl;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.gui.IdLabel;
-import com.rochatec.graphics.gui.MaskedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.selection.SearchSelection;
 import com.rochatec.graphics.util.LayoutFactory;
 
@@ -52,14 +52,14 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 	protected IdLabel idLabel;
 	protected DateChooserCombo hiredateCal;
 	protected Text txtName;
-	protected MaskedText txtSocialSecurity;
+	protected TextField txtSocialSecurity;
 	protected Button btActive;
 	
 	protected TableComboViewer jobViewer; 
 	protected Text txtRegisterNumber;
 	protected Text txtEmail;
-	protected MaskedText txtHomePhone;
-	protected MaskedText txtCellPhone;
+	protected TextField txtHomePhone;
+	protected TextField txtCellPhone;
 	
 	protected AddressViewer addressViewer;
 	
@@ -98,7 +98,8 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 		hiredateCal.setLayoutData(new GridData(120,25));
 		hiredateCal.setValue(new Date());
 		
-		txtSocialSecurity = new MaskedText(panel,new SocialSecurityFormaterImpl());
+		txtSocialSecurity = new TextField(panel,ATHENA.PATTERN_SOCIALSECURITY);
+		txtSocialSecurity.setFormatter(Formatter.getSocialSecurity());
 		txtSocialSecurity.setLayoutData(new GridData(150,17));
 		
 		txtName = new Text(panel, SWT.BORDER);
@@ -133,10 +134,12 @@ public class EmployeeEditor extends AbstractEditor implements Bindable{
 		txtRegisterNumber = new Text(composite, SWT.BORDER);
 		txtRegisterNumber.setLayoutData(new GridData(200,15));
 		
-		txtHomePhone = new MaskedText(composite, Formatter.getPhone());
+		txtHomePhone = new TextField(composite, ATHENA.PATTERN_PHONE);
+		txtHomePhone.setFormatter(Formatter.getPhone());
 		txtHomePhone.setLayoutData(new GridData(200,15));
 		
-		txtCellPhone = new MaskedText(composite, Formatter.getPhone());
+		txtCellPhone = new TextField(composite,ATHENA.PATTERN_PHONE);
+		txtCellPhone.setFormatter(Formatter.getPhone());
 		txtCellPhone.setLayoutData(new GridData(200,15));
 		
 		txtEmail = new Text(composite, SWT.BORDER);

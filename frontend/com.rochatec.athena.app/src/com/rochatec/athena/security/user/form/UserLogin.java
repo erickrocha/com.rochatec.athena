@@ -24,8 +24,8 @@ import com.rochatec.athena.exceptions.UserLoginException;
 import com.rochatec.athena.exceptions.UserNotLoggedException;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.User;
-import com.rochatec.athena.session.IAppConstants;
 import com.rochatec.athena.session.Request;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.Enviroment;
 import com.rochatec.athena.util.IPathIcons;
 import com.rochatec.athena.utils.ServiceFactory;
@@ -119,7 +119,7 @@ public class UserLogin extends ApplicationWindow{
 			try {
 				user = service.login(txtUsername.getText().trim().toUpperCase(),txtPassword.getText().trim());
 				if (user != null){
-					Request.getSession().setAttribute(IAppConstants.CURRENT_USER,user);
+					Request.getSession().setAttribute(ATHENA.CURRENT_USER,user);
 				}
 				setReturnCode(IDialogConstants.OK_ID);
 				close();

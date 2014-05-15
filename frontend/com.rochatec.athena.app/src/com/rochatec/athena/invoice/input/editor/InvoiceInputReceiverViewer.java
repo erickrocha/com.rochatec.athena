@@ -14,9 +14,10 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Company;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
+import com.rochatec.athena.util.TypePattern;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.bind.Editable;
-import com.rochatec.graphics.gui.MaskedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.util.LayoutFactory;
 
 public class InvoiceInputReceiverViewer implements Bindable{
@@ -24,7 +25,7 @@ public class InvoiceInputReceiverViewer implements Bindable{
 	private Editable editable;
 	private Company company;
 	private Text txtCompanyName;
-	private MaskedText txtCompanySocialSecurity;
+	private TextField txtCompanySocialSecurity;
 	private Text txtCompanyRegisterNumber;
 	private Text txtCompanyInscMunicipal;
 	private Group container;
@@ -53,7 +54,7 @@ public class InvoiceInputReceiverViewer implements Bindable{
 		
 		txtCompanyName = new Text(container, SWT.BORDER);
 		txtCompanyName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));		
-		txtCompanySocialSecurity = new MaskedText(container, SWT.BORDER,Formatter.getSocialSecurity());
+		txtCompanySocialSecurity = new TextField(container,TypePattern.SOCIAL_SECURITY.ordinal());
 		txtCompanySocialSecurity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
 		txtCompanyRegisterNumber = new Text(container, SWT.BORDER);
 		txtCompanyRegisterNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));

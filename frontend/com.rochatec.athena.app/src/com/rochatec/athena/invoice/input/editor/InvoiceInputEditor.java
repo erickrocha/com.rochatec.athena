@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
@@ -162,7 +161,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	public void itemDeleted(InvoiceItemEvent itemEvent) {
 		
 	}
-
+	
 	@Override
 	public Map<String, Object> getBinds() {
 		Map<String,Object> map = new HashMap<String, Object>();

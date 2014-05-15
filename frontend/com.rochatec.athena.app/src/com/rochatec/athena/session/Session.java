@@ -6,6 +6,7 @@ import java.util.Map;
 import com.rochatec.athena.exceptions.UserException;
 import com.rochatec.athena.exceptions.UserNotLoggedException;
 import com.rochatec.athena.model.User;
+import com.rochatec.athena.util.ATHENA;
 
 
 
@@ -24,8 +25,8 @@ public class Session {
 	}	
 	
 	public SecurityPolicy getSecurityPolicy() throws UserException{
-		if ( getAttribute(IAppConstants.CURRENT_USER) !=null){
-			User user = (User) getAttribute(IAppConstants.CURRENT_USER);
+		if ( getAttribute(ATHENA.CURRENT_USER) !=null){
+			User user = (User) getAttribute(ATHENA.CURRENT_USER);
 			SecurityPolicy policy = new SecurityPolicy(user);
 			return policy;
 		}else{

@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.ComboViewer;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.graphics.Point;
@@ -22,6 +19,7 @@ import com.rochatec.athena.client.service.ResourceClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Address;
 import com.rochatec.athena.model.Province;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.util.IPathIcons;
@@ -29,7 +27,7 @@ import com.rochatec.athena.utils.ServiceFactory;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.bind.Editable;
 import com.rochatec.graphics.dialog.AbstractInputDialog;
-import com.rochatec.graphics.gui.MaskedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.util.LayoutFactory;
 
@@ -37,12 +35,11 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 
 	private Text txtStreet;
 	private Text txtStreetNumber;
-	private MaskedText txtZipCode;
+	private TextField txtZipCode;
 	private Text txtComplement;
 	private Text txtNeighborhood;
 	private Text txtCity;
 	private ComboViewer viewerProvince;
-	private Province province;
 	private Editable editable;
 
 	private ResourceClientService resourceClientService = ServiceFactory.getInstance().getResourceClientService();;
@@ -85,7 +82,8 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("address.field.label.street"));
 		new Label(composite, SWT.NONE).setText(Messages.getMessage("address.field.label.streetNumber"));
 
-		txtZipCode = new MaskedText(composite, Formatter.getZipCode());
+		txtZipCode = new TextField(composite,ATHENA.PATTERN_ZIPCODE);
+		txtZipCode.setFormatter(Formatter.getZipCode());
 		txtZipCode.setLayoutData(new GridData(150, 15));
 		txtStreet = new Text(composite, SWT.BORDER);
 		txtStreet.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
@@ -122,7 +120,6 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 		viewerProvince.setContentProvider(new GenericContentProvider<Province>());
 		viewerProvince.setLabelProvider(new ProvinceLabelProvider());
 		viewerProvince.setInput(resourceClientService.findAllProvinces());
-		viewerProvince.addSelectionChangedListener(new ProvinceSelectionChangedListener());
 	}
 
 	@Override
@@ -131,28 +128,10 @@ public class AddressDialog extends AbstractInputDialog<Address> implements Binda
 	}
 
 	@Override
-	public void save() {
-		selected = new Address();
-		selected.setStreet(txtStreet.getText());
-		selected.setZipcode(txtZipCode.getValue());
-		selected.setAddressNumber(txtStreetNumber.getText());
-		selected.setComplement(txtComplement.getText());
-		selected.setCity(txtCity.getText());
-		selected.setNeighborhood(txtNeighborhood.getText());
-		selected.setProvince(province);
+	public void save() {		
 		close();
 	}
 	
-	class ProvinceSelectionChangedListener implements ISelectionChangedListener{
-
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			IStructuredSelection selection = (IStructuredSelection)event.getSelection();
-			province = (Province)selection.getFirstElement();			
-		}
-		
-	}
-
 	@Override
 	public Map<String, Object> getBinds() {
 		Map<String,Object> map = new HashMap<String, Object>();
