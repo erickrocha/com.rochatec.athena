@@ -9,6 +9,8 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
@@ -25,6 +27,7 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
 import com.rochatec.athena.invoice.item.viewer.InvoiceInputItemViewer;
+import com.rochatec.athena.manufacture.natureOfOperation.dialog.NatureOfOperationDialog;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.InvoiceInputItem;
@@ -35,6 +38,7 @@ import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.provider.GenericContentProvider;
+import com.rochatec.graphics.selection.SearchSelection;
 import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.viewer.TextViewer;
@@ -93,6 +97,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		textViewer.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));		
 		textViewer.setContentProvider(new GenericContentProvider<NatureOfOperation>());
 		textViewer.setLabelProvider(new NatureOfOperationLabelProvider());
+		textViewer.addKeyListener(new NatureOfOperationSearchListener());
 		
 		txtCfop = new Text(group, SWT.BORDER);
 		txtCfop.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
@@ -170,5 +175,16 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		map.put("serialNumber",txtSerialNumber);
 		map.put("status",txtStatus);
 		return map;
-	}		
+	}
+	
+	class NatureOfOperationSearchListener extends KeyAdapter{
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.keyCode == SWT.F9){
+				NatureOfOperationDialog dialog = new NatureOfOperationDialog(e.display.getActiveShell());
+				NatureOfOperation natureOfOperation = dialog.dialog();
+				textViewer.setSelection(new SearchSelection<NatureOfOperation>(natureOfOperation));
+			}			
+		}
+	}
 }

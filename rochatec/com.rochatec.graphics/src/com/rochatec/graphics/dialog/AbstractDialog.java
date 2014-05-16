@@ -22,7 +22,6 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import com.rochatec.graphics.Activator;
 import com.rochatec.graphics.adapter.HyperLinkAdapter;
-import com.rochatec.graphics.table.AbstractTable;
 import com.rochatec.graphics.util.IKeyPadConstants;
 import com.rochatec.graphics.util.IResources;
 import com.rochatec.graphics.util.LayoutFactory;
@@ -36,7 +35,7 @@ public abstract class AbstractDialog<T> extends ApplicationWindow implements IDi
 	private ImageHyperlink lkCancel;
 	private ImageHyperlink lkConfirm;
 	protected T selected;
-	protected AbstractTable table;
+	protected ITreeOrTableSelection table;
 	
 	public AbstractDialog(Shell owner) {
 		super(owner);

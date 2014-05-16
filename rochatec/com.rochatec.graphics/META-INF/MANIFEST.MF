@@ -30,6 +30,7 @@ Export-Package: com.rochatec.graphics.adapter,
  com.rochatec.graphics.provider,
  com.rochatec.graphics.selection,
  com.rochatec.graphics.table,
+ com.rochatec.graphics.tree,
  com.rochatec.graphics.util,
  com.rochatec.graphics.view,
  com.rochatec.graphics.viewer

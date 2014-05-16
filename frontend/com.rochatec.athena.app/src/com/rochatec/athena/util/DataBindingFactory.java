@@ -31,7 +31,6 @@ import com.rochatec.graphics.bind.converter.StringToWeightConverter;
 import com.rochatec.graphics.bind.converter.WeightToStringConverter;
 import com.rochatec.graphics.gui.DateFormatedText;
 import com.rochatec.graphics.gui.MaskedText;
-import com.rochatec.graphics.gui.NumberFormatedText;
 import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.gui.TimeFormatedText;
 import com.rochatec.graphics.nebula.DateChooserComboObservableValue;
@@ -57,8 +56,9 @@ public class DataBindingFactory<T> {
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				ctx.bindValue(widgetValue, modelValue);
 			}else if (component instanceof TextField){
+				System.out.println(key);
 				TextField field = (TextField)component;
-				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field.getWidget());
+				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field.getWidget());				
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				
 				UpdateValueStrategy targetToModel = new UpdateValueStrategy();
@@ -81,12 +81,12 @@ public class DataBindingFactory<T> {
 					modelToTarget.setConverter(new BigDecimalToStringConverter());
 					break;
 				case ATHENA.PATTERN_DATE:
-					targetToModel.setConverter(new DateToStringConverter());
-					modelToTarget.setConverter(new StringToDateConverter());
+					targetToModel.setConverter(new StringToDateConverter());
+					modelToTarget.setConverter(new DateToStringConverter());
 					break;
 				case ATHENA.PATTERN_WEIGHT:
-					targetToModel.setConverter(new WeightToStringConverter());
-					modelToTarget.setConverter(new StringToWeightConverter());
+					targetToModel.setConverter(new StringToWeightConverter());
+					modelToTarget.setConverter(new WeightToStringConverter());
 					break;
 				default:
 					targetToModel.setConverter(new MaskToStringConverter(Formatter.getNone()));
@@ -104,15 +104,6 @@ public class DataBindingFactory<T> {
 				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(maskedText.getComponent());
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				ctx.bindValue(widgetValue, modelValue);
-			}else if (component instanceof NumberFormatedText){
-				NumberFormatedText field = (NumberFormatedText)component;
-				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field);
-				UpdateValueStrategy targetToModel = new UpdateValueStrategy();
-				targetToModel.setConverter(new StringToBigDecimalConverter());				
-				UpdateValueStrategy modelToTarget = new UpdateValueStrategy();
-				modelToTarget.setConverter(new BigDecimalToStringConverter());				
-				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
-				ctx.bindValue(widgetValue, modelValue,targetToModel,modelToTarget);
 			}else if (component instanceof DateFormatedText){
 				DateFormatedText field = (DateFormatedText)component;
 				IObservableValue widgetValue = WidgetProperties.text(SWT.Modify).observe(field);

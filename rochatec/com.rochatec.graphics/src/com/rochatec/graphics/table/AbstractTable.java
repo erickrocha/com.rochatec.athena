@@ -11,9 +11,10 @@ import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 
+import com.rochatec.graphics.dialog.ITreeOrTableSelection;
 import com.rochatec.graphics.util.LayoutFactory;
 
-public abstract class AbstractTable {
+public abstract class AbstractTable implements ITreeOrTableSelection{
 	
 	private TableViewer tableViewer;
 	
@@ -30,6 +31,14 @@ public abstract class AbstractTable {
 	}
 	
 	protected abstract void buildCollumns(TableViewer tableViewer);
+	
+	public void setHeaderVisible(boolean enabled){
+		this.tableViewer.getTable().setHeaderVisible(enabled);
+	}
+	
+	public void setLinesVisible(boolean enabled){
+		this.tableViewer.getTable().setLinesVisible(enabled);
+	}
 	
 	public void setLabelProvider(ILabelProvider labelProvider){
 		tableViewer.setLabelProvider(labelProvider);

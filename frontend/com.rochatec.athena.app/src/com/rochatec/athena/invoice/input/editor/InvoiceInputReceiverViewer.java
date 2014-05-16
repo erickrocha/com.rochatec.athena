@@ -12,9 +12,9 @@ import org.eclipse.swt.widgets.Text;
 
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.Company;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
-import com.rochatec.athena.util.TypePattern;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.bind.Editable;
 import com.rochatec.graphics.gui.TextField;
@@ -54,7 +54,8 @@ public class InvoiceInputReceiverViewer implements Bindable{
 		
 		txtCompanyName = new Text(container, SWT.BORDER);
 		txtCompanyName.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));		
-		txtCompanySocialSecurity = new TextField(container,TypePattern.SOCIAL_SECURITY.ordinal());
+		txtCompanySocialSecurity = new TextField(container,ATHENA.PATTERN_SOCIALSECURITY);
+		txtCompanySocialSecurity.setFormatter(Formatter.getSocialSecurity());
 		txtCompanySocialSecurity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
 		txtCompanyRegisterNumber = new Text(container, SWT.BORDER);
 		txtCompanyRegisterNumber.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));

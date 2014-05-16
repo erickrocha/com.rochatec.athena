@@ -29,7 +29,9 @@ public class Weight implements IFormarter{
 
 	public BigDecimal parse(String value)throws BadFormatException {
 		try {
-			return new BigDecimal(value).setScale(3);
+			BigDecimal decimal = new BigDecimal(value);
+			decimal.setScale(3,RoundingMode.HALF_EVEN);			
+			return decimal;
 		}catch (NumberFormatException e){
 			throw new WeightFormatException(); 
 		}		 
