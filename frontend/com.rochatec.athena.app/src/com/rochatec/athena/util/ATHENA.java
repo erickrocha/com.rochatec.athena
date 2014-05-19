@@ -3,6 +3,7 @@ package com.rochatec.athena.util;
 public interface ATHENA {
 
 	public long CURRENT_USER = 0x123123;
+	public int PATTERN_ENUM = 0x123122;
 	public int PATTERN_SOCIALSECURITY = 0x123124;
 	public int PATTERN_BIGDECIMAL = 0x123125;
 	public int PATTERN_DATE = 0x123126;

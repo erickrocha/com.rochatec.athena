@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.fieldassist.ControlDecoration;
+import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -34,6 +35,7 @@ import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.NatureOfOperation;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.athena.util.Formatter;
+import com.rochatec.athena.util.StatusTradutor;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
@@ -53,7 +55,9 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	private Text txtCfop;
 	private Text txtInvoiceNumber;
 	private Text txtSerialNumber;
-	private Text txtStatus; 
+	private Text txtStatus;
+	private DateChooserCombo arrivalDate;
+	private DateChooserCombo dateRegister;
 	private InvoiceValueViewer valueViewer;
 	private InvoiceInputItemViewer itemViewer;
 
@@ -78,13 +82,21 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		Group group  = new Group(parent,SWT.NONE);
 		group.setText(Messages.getMessage("invoice.tributary.group.title"));
 		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		group.setLayout(LayoutFactory.getInstance().getGridLayout(5,false,5,10));
+		group.setLayout(LayoutFactory.getInstance().getGridLayout(7,false,5,10));
 		
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.dateRegister.field.label"));
+		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.arrivalDate.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.invoiceNumber.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.serialNumber.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.natureOfOperation.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.cfop.field.label"));		
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoice.status.field.label"));
+		
+		arrivalDate = new DateChooserCombo(group, SWT.BORDER);
+		arrivalDate.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		
+		dateRegister = new DateChooserCombo(group, SWT.BORDER);
+		dateRegister.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		txtInvoiceNumber = new Text(group, SWT.BORDER|SWT.SHADOW_NONE);
 		txtInvoiceNumber.setForeground(Colors.getColorBlue());		
@@ -123,7 +135,11 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 
 	@Override
 	protected void fill() {		
-				
+		if (editorInput.getInvoice().getId() != null){
+			InvoiceInput invoice = editorInput.getInvoice();
+			txtStatus.setText(StatusTradutor.getLabel(invoice.getStatus()));
+		}
+		txtStatus.setEditable(false);
 	}
 
 	@Override
@@ -173,7 +189,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		map.put("cfop",txtCfop);
 		map.put("number",txtInvoiceNumber);
 		map.put("serialNumber",txtSerialNumber);
-		map.put("status",txtStatus);
+//		map.put("status",txtStatus);
 		return map;
 	}
 	
