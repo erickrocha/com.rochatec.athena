@@ -18,6 +18,7 @@ public class InvoiceInputHandler extends DefaultCrudHandler{
 		fireCrudService(window,"invoiceInput");
 		IPerspectiveRegistry registry = window.getWorkbench().getPerspectiveRegistry();
 		IWorkbenchPage page = window.getActivePage();
+		page.closeAllEditors(true);
 		page.setPerspective(registry.findPerspectiveWithId(InvoiceInputPerspective.ID));
 		return null;
 	}

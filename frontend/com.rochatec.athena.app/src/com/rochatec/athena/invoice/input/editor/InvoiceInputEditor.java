@@ -189,7 +189,8 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		map.put("cfop",txtCfop);
 		map.put("number",txtInvoiceNumber);
 		map.put("serialNumber",txtSerialNumber);
-//		map.put("status",txtStatus);
+		map.put("dateRegister",dateRegister);
+		map.put("arrivalDate",arrivalDate);
 		return map;
 	}
 	

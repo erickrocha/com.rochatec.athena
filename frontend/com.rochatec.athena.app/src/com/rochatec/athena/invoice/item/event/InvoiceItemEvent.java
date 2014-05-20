@@ -7,6 +7,7 @@ import java.util.Map;
 import org.eclipse.swt.widgets.Text;
 
 import com.rochatec.athena.model.Icms;
+import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.Product;
 
 public class InvoiceItemEvent extends EventObject{
@@ -17,6 +18,8 @@ public class InvoiceItemEvent extends EventObject{
 	public Icms icms;
 	public Text ipi;
 	public Text ipiBase;
+	
+	public InvoiceInputItem newItem;
 	
 	/**
 	 * 
