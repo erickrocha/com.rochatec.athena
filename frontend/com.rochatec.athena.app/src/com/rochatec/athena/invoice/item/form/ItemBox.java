@@ -1,5 +1,8 @@
 package com.rochatec.athena.invoice.item.form;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -27,13 +30,16 @@ import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
 import com.rochatec.athena.manufacture.icms.provider.IcmsLabelProvider;
 import com.rochatec.athena.manufacture.product.dialog.ProductDialog;
+import com.rochatec.athena.manufacture.product.provider.ProductLabelProvider;
 import com.rochatec.athena.model.Icms;
+import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.Product;
 import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.util.IPathIcons;
 import com.rochatec.athena.util.MathTools;
 import com.rochatec.athena.util.UnitMeasureTradutor;
 import com.rochatec.athena.utils.ServiceFactory;
+import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.adapter.HyperLinkAdapter;
 import com.rochatec.graphics.provider.GenericContentProvider;
@@ -41,11 +47,12 @@ import com.rochatec.graphics.selection.SearchSelection;
 import com.rochatec.graphics.util.IKeyPadConstants;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.util.WidgetUtils;
+import com.rochatec.graphics.viewer.IdAndTextViewer;
 
-public class ItemBox {
+public class ItemBox implements Bindable{
 
 	private Text txtProductId;
-	private Text lblProductName;
+	private IdAndTextViewer productViewer;
 	private Text lblEmb;
 	private ComboViewer viewerICms;
 	private Text txtTotalIcms;
@@ -58,12 +65,22 @@ public class ItemBox {
 	private ImageHyperlink btAdd;
 	private Product product;
 	private ListenerList listeners;
+	private InvoiceInputItem item; 
 	
 	private ManufactureClientService manufactureClientService = ServiceFactory.getInstance().getManufactureClientService();
 	
-	public ItemBox(Composite parent) {
+	public ItemBox(Composite parent,InvoiceInputItem item) {
 		this.listeners = new ListenerList();
+		this.item = item;
 		createContents(parent);
+	}
+	
+	public InvoiceInputItem getItem(){
+		return item;
+	}
+	
+	public void setItem(InvoiceInputItem item){
+		this.item =item;
 	}
 	
 	private void createContents(Composite parent){
@@ -101,8 +118,10 @@ public class ItemBox {
 		txtProductId.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,false,false));
 		txtProductId.addKeyListener(new DialogListener());
 		
-		lblProductName = new Text(composite, SWT.BORDER);
-		lblProductName.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		productViewer = new IdAndTextViewer(composite);
+		productViewer.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		productViewer.setContentProvider(new GenericContentProvider<Product>());
+		productViewer.setLabelProvider(new ProductLabelProvider());
 		
 		lblEmb = new Text(composite, SWT.BORDER);
 		lblEmb.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,false,false));
@@ -164,7 +183,7 @@ public class ItemBox {
 		viewerICms.getCCombo().addKeyListener(WidgetUtils.setNextFocusOnEnter(txtIpiBase));
 		txtIpiBase.addKeyListener(WidgetUtils.setNextFocusOnEnter(btAdd));
 		
-		lblProductName.addFocusListener(WidgetUtils.setNotFocused(txtQuantity));
+		productViewer.getControl().addFocusListener(WidgetUtils.setNotFocused(txtQuantity));
 		lblEmb.addFocusListener(WidgetUtils.setNotFocused(txtQuantity));
 		
 		lblLastCostPrice.addFocusListener(WidgetUtils.setNotFocused(viewerICms.getCCombo()));
@@ -185,7 +204,7 @@ public class ItemBox {
 		if (product != null){
 			try{
 				txtProductId.setText(product.getId().toString());
-				lblProductName.setText(product.getName());
+				productViewer.setSelection(new SearchSelection<Product>(product));
 				viewerICms.setSelection(new SearchSelection<Icms>(product.getIcms()));
 				lblEmb.setText(UnitMeasureTradutor.getLabel(product.getUnitMeasure()));
 				lblLastCostPrice.setText(Formatter.getDecimal().mask(product.getLastCostprice()));
@@ -199,7 +218,7 @@ public class ItemBox {
 	
 	private void clear(){
 		txtProductId.setText("");
-		lblProductName.setText("");
+		productViewer.clear();
 		lblEmb.setText("");
 		lblLastCostPrice.setText("");
 		txtQuantity.setText("");
@@ -302,6 +321,13 @@ public class ItemBox {
 				
 			}
 		}
+	}
+
+	@Override
+	public Map<String, Object> getBinds() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("product",productViewer);
+		return map;
 	}
 	
 }

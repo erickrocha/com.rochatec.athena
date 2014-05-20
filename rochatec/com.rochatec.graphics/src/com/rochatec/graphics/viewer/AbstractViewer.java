@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -21,6 +22,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
@@ -106,6 +108,15 @@ public abstract class AbstractViewer extends Viewer{
 			Text control = (Text)getControl();
 			ILabelProvider labelProvider = (ILabelProvider) getLabelProvider();
 			control.setText(labelProvider.getText(element));
+		}
+		if (getControl() instanceof Composite){
+			Composite composite = (Composite)getControl();
+			int index = 0;
+			for (Control c : composite.getChildren()){
+				ITableLabelProvider labelProvider = (ITableLabelProvider) getLabelProvider();
+				((Text)c).setText(labelProvider.getColumnText(element, index));
+				index++;
+			}
 		}
 	}
 	
@@ -217,4 +228,8 @@ public abstract class AbstractViewer extends Viewer{
 		oldProvider.dispose();
 	}
 
+	public void clear(){
+		this.input = null;
+		refresh();
+	}
 }

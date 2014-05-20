@@ -29,7 +29,7 @@ public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
 
 	@Override
 	public void createBody(Composite parent) {		
-		itemBox = new ItemBox(parent);
+		itemBox = new ItemBox(parent,selected);	
 	}
 	
 	public void addInvoiceItemListener(InvoiceItemListener listener){

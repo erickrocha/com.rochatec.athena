@@ -19,10 +19,15 @@ public class ProductLabelProvider extends LabelProvider implements ITableLabelPr
 	public Image getColumnImage(Object element, int columnIndex) {
 		return null;
 	}
-
+	
+	@Override
+	public String getText(Object element) {
+		return ((Product)element).getName();
+	}
 	
 	public String getColumnText(Object element, int columnIndex) {
-		try{Product product = (Product)element;
+		try{
+			Product product = (Product)element;
 		switch (columnIndex) {
 		case 0:
 			return Long.toString(product.getId()); 

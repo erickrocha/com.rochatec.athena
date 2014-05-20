@@ -32,6 +32,29 @@ public class InvoiceInputHelper {
 		item.setIpiValue(ipiValue);
 		return item;
 	}
+	
+	public InvoiceInputItem copy(InvoiceInputItem inputItem){
+		InvoiceInputItem item = new InvoiceInputItem();
+		item.setInvoice(inputItem.getInvoice());
+		item.setCostPrice(inputItem.getCostPrice());
+		item.setIcms(inputItem.getIcms());
+		item.setIpiBase(inputItem.getIpiBase());
+		item.setIpiValue(inputItem.getIpiValue());
+		item.setProduct(inputItem.getProduct());
+		item.setQuantity(inputItem.getQuantity());
+		item.setStatus(inputItem.getStatus());
+		item.setTotalProduct(inputItem.getTotalItems());
+		return item;
+	}
+	
+	public InvoiceInputItem merge(InvoiceInputItem oldItem,InvoiceInputItem newItem){
+		oldItem.setCostPrice(newItem.getCostPrice());
+		oldItem.setQuantity(newItem.getQuantity());
+		oldItem.setIpiBase(newItem.getIpiBase());
+		oldItem.setIcms(newItem.getIcms());
+		oldItem.setTotalProduct(newItem.getTotalItems());
+		return oldItem;
+	}
 
 	public List<InvoiceInputItem> getItems() {
 		return items;

@@ -31,7 +31,7 @@ public class InvoiceInputItemViewer {
 		base = new Composite(parent,SWT.NONE);
 		base.setLayout(LayoutFactory.getInstance().getGridLayout(1));
 		base.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		itemBox = new ItemBox(base);
+		itemBox = new ItemBox(base,new InvoiceInputItem());
 		createTable(base);
 	}
 	

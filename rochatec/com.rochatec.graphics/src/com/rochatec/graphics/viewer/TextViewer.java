@@ -1,13 +1,20 @@
 package com.rochatec.graphics.viewer;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 public class TextViewer extends AbstractViewer {
 
 	private Text text;
-
+	
+	public TextViewer(Composite parent,int style){
+		Composite composite = new Composite(parent,style);
+		this.text = new Text(composite, SWT.BORDER);
+	}
+	
 	public TextViewer(Text text) {
 		this.text = text;
 	}
