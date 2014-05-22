@@ -102,7 +102,8 @@ public class SaleOrderEditor extends AbstractEditor implements Bindable{
 	}
 	
 	private void createItemBox(Composite parent){
-		ItemViewer itemViewer = new ItemViewer(parent);
+		new ItemViewer(parent);
+		
 	}
 
 	@Override
