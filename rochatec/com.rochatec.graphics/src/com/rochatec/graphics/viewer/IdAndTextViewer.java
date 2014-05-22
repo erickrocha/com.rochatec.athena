@@ -46,6 +46,14 @@ public class IdAndTextViewer extends AbstractViewer {
 	public String getText(){
 		return name.getText();
 	}
+	
+	public String getId(){
+		return id.getText();
+	}
+	
+	public Long getIdToLong(){
+		return Long.parseLong(id.getText());
+	}
 
 	@Override
 	public Control getControl() {

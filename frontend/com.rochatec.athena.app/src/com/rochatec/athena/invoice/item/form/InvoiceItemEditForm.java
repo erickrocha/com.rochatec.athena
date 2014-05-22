@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Shell;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.model.InvoiceInputItem;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.graphics.dialog.AbstractEditDialog;
 
 public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
@@ -29,7 +30,7 @@ public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
 
 	@Override
 	public void createBody(Composite parent) {		
-		itemBox = new ItemBox(parent,selected);	
+		itemBox = new ItemBox(parent,selected,ATHENA.EDIT);	
 	}
 	
 	public void addInvoiceItemListener(InvoiceItemListener listener){

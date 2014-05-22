@@ -23,4 +23,6 @@ public interface ProductEaoLocal {
 	
 	public List<Product> findByDateRegister(Calendar begin, Calendar end, Status status);
 	
+	public Product findByUniqueKey(Long id,String barcode);
+	
 }

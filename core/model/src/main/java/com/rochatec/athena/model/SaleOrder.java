@@ -71,7 +71,7 @@ public class SaleOrder implements Serializable {
 	@Column(name = "OBSERVATION", length = 600)
 	private String observation;
 
-	@OneToMany(mappedBy = "saleOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "saleOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval=true)
 	private Set<SaleOrderItem> items;
 	
 	@Temporal(TemporalType.TIMESTAMP)

@@ -108,6 +108,11 @@ public class ManufactureClientServiceImpl implements ManufactureClientService{
 	public List<Product> findProductsByDateRegister(Calendar begin,	Calendar end, Status status) {
 		return serviceRemote.findProductsByDateRegister(begin, end, status);
 	}
+	
+	@Override
+	public Product findProductByUniqueKey(Long id,String barcode){
+		return serviceRemote.findProductByUniqueKey(id, barcode);
+	}
 
 	@Override
 	public ProductSet persist(ProductSet productSet) {

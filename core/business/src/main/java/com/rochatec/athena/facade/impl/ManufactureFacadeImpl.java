@@ -73,6 +73,12 @@ public class ManufactureFacadeImpl implements ManufactureFacadeLocal,
 		List<Product> products = productEaoLocal.findByDateRegister(begin,end,status);
 		return products;
 	}
+	
+	@Override
+	public Product findProductByUniqueKey(Long id, String barcode) {
+		Product product = productEaoLocal.findByUniqueKey(id, barcode);
+		return product;
+	}
 
 	public Category persist(Category category) {
 		category = categoryEaoLocal.persist(category);

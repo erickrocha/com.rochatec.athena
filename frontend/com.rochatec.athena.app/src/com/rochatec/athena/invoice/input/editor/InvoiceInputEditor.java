@@ -1,13 +1,11 @@
 package com.rochatec.athena.invoice.input.editor;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.nebula.widgets.datechooser.DateChooserCombo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
@@ -19,10 +17,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PartInitException;
 
-import com.rochatec.athena.app.Activator;
 import com.rochatec.athena.client.helper.InvoiceInputHelper;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
@@ -34,10 +30,8 @@ import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.NatureOfOperation;
 import com.rochatec.athena.util.DataBindingFactory;
-import com.rochatec.athena.util.Formatter;
 import com.rochatec.athena.util.StatusTradutor;
 import com.rochatec.framework.bind.Bindable;
-import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.editor.AbstractEditor;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.selection.SearchSelection;
@@ -158,19 +152,10 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	@Override
 	public void itemAdded(InvoiceItemEvent e) {
 		InvoiceInputHelper helper = new InvoiceInputHelper(items);		
-		try{
-			BigDecimal costPrice = Formatter.getDecimal().parse(e.costPrice.getText());
-			BigDecimal ipiBase = Formatter.getDecimal().parse(e.ipiBase.getText());
-			BigDecimal ipiValue = Formatter.getDecimal().parse(e.ipi.getText());
-			BigDecimal quantity = Formatter.getWeight().parse(e.quantity.getText());
-			InvoiceInputItem item = helper.newItem(editorInput.getInvoice(),e.product,e.icms,costPrice,ipiBase,ipiValue,quantity);		
-			items.add(item);
-			itemViewer.setInput(items);
-			setDirty(true);
-		}catch (BadFormatException ex){
-			ControlDecoration deco = new ControlDecoration(e.costPrice,SWT.TOP|SWT.LEFT);			
-			deco.setImage(Activator.getImageDescriptor(ISharedImages.IMG_DEC_FIELD_ERROR).createImage());			
-		}				
+		InvoiceInputItem item = helper.newItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);		
+		items.add(item);
+		itemViewer.setInput(items);
+		setDirty(true);
 	}
 
 	@Override

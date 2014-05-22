@@ -53,6 +53,7 @@ public interface ManufactureClientService {
 	
 	public List<Product> findProductsByDateRegister(Calendar begin,Calendar end,Status status);
 	
+	public Product findProductByUniqueKey(Long id,String barcode);
 	
 	public ProductSet persist(ProductSet productSet);
 

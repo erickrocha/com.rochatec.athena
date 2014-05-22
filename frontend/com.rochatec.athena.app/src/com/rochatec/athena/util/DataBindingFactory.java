@@ -34,6 +34,7 @@ import com.rochatec.graphics.gui.MaskedText;
 import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.gui.TimeFormatedText;
 import com.rochatec.graphics.nebula.DateChooserComboObservableValue;
+import com.rochatec.graphics.viewer.IdAndTextViewer;
 import com.rochatec.graphics.viewer.TextViewer;
 
 public class DataBindingFactory<T> {
@@ -140,6 +141,11 @@ public class DataBindingFactory<T> {
 				ctx.bindValue(widgetValue, modelValue);
 			}else if (component instanceof ComboViewer){
 				ComboViewer viewer = (ComboViewer)component;
+				IObservableValue widgetValue = ViewersObservables.observeSingleSelection(viewer);
+				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
+				ctx.bindValue(widgetValue, modelValue);
+			}else if (component instanceof IdAndTextViewer){
+				IdAndTextViewer viewer = (IdAndTextViewer)component;
 				IObservableValue widgetValue = ViewersObservables.observeSingleSelection(viewer);
 				IObservableValue modelValue = PojoProperties.value(object.getClass(),key).observe(object);
 				ctx.bindValue(widgetValue, modelValue);

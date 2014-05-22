@@ -27,7 +27,7 @@ public class InvoiceItemLabelProvider extends LabelProvider implements
 			case 1:
 				return item.getLabel();
 			case 2:
-				return Formatter.getDecimal().mask(item.getQuantity());
+				return Formatter.getWeight().mask(item.getQuantity());
 			case 3:
 				return Formatter.getDecimal().mask(item.getCostPrice());
 			case 4:

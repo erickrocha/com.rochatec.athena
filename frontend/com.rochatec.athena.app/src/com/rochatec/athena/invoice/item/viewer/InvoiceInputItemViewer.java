@@ -16,6 +16,7 @@ import com.rochatec.athena.invoice.item.form.ItemBox;
 import com.rochatec.athena.invoice.item.provider.InvoiceItemLabelProvider;
 import com.rochatec.athena.invoice.item.table.InvoiceItemTable;
 import com.rochatec.athena.model.InvoiceInputItem;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.table.AbstractTable;
 import com.rochatec.graphics.util.LayoutFactory;
@@ -25,13 +26,16 @@ public class InvoiceInputItemViewer {
 	private AbstractTable tableViewer;
 	private Composite base;
 	private ItemBox itemBox;
-
 	
 	public InvoiceInputItemViewer(Composite parent) {
+		this(parent,new InvoiceInputItem());
+	}
+	
+	public InvoiceInputItemViewer(Composite parent,InvoiceInputItem item){
 		base = new Composite(parent,SWT.NONE);
 		base.setLayout(LayoutFactory.getInstance().getGridLayout(1));
-		base.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		itemBox = new ItemBox(base,new InvoiceInputItem());
+		base.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));		
+		itemBox = new ItemBox(base,item,ATHENA.INSERT);		
 		createTable(base);
 	}
 	

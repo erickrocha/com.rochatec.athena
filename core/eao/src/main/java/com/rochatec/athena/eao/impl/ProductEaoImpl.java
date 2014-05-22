@@ -130,4 +130,23 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 			query.setParameter(param,params.get(param));
 		}
 	}
+
+	@Override
+	public Product findByUniqueKey(Long id, String barcode) {
+		try{			
+			builder = new StringBuilder("");
+			builder.append("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes b WHERE p.id = :id OR b.barcode = :barcode ");
+			params.put("id", id);
+			params.put("barcode",barcode);
+			Query query = getEntityManager().createQuery(builder.toString(),Product.class);
+			fillParams(query);
+			Product product = (Product)query.getSingleResult();
+			return product;					
+		}catch (Exception e) {
+			LOGGER.error(builder.toString());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
 }

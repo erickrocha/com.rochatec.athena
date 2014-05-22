@@ -76,7 +76,7 @@ public class InvoiceInputItem extends AbstractInvoiceItem implements
 
 	@Override
 	public Icms getIcms() {
-		return getProduct().getIcms();
+		return icms;
 	}
 
 	@Override
@@ -103,7 +103,7 @@ public class InvoiceInputItem extends AbstractInvoiceItem implements
 	public BigDecimal getTotalIcms(){
 		try {
 			BigDecimal total = getTotalItems();
-			BigDecimal value = total.divide(new BigDecimal(100).multiply(icms.getPercentage()));
+			BigDecimal value = total.divide(new BigDecimal(100).multiply(icms != null ? icms.getPercentage() : BigDecimal.ONE));
 			value.setScale(2,RoundingMode.HALF_EVEN);
 			return value;
 		}catch (ArithmeticException ex){
