@@ -6,10 +6,14 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.MessageBox;
 
+import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.form.InvoiceItemEditForm;
 import com.rochatec.athena.invoice.item.form.ItemBox;
@@ -26,16 +30,19 @@ public class InvoiceInputItemViewer {
 	private AbstractTable tableViewer;
 	private Composite base;
 	private ItemBox itemBox;
+	private InvoiceItemListener listener;
 	
-	public InvoiceInputItemViewer(Composite parent) {
-		this(parent,new InvoiceInputItem());
+	public InvoiceInputItemViewer(Composite parent,InvoiceItemListener listener) {
+		this(parent,new InvoiceInputItem(),listener);
 	}
 	
-	public InvoiceInputItemViewer(Composite parent,InvoiceInputItem item){
+	public InvoiceInputItemViewer(Composite parent,InvoiceInputItem item,InvoiceItemListener listener){
 		base = new Composite(parent,SWT.NONE);
 		base.setLayout(LayoutFactory.getInstance().getGridLayout(1));
 		base.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));		
-		itemBox = new ItemBox(base,item,ATHENA.INSERT);		
+		itemBox = new ItemBox(base,item,ATHENA.INSERT);
+		this.listener = listener;
+		addInvoiceItemListener(listener);
 		createTable(base);
 	}
 	
@@ -47,6 +54,7 @@ public class InvoiceInputItemViewer {
 		tableViewer.setContentProvider(new GenericContentProvider<InvoiceInputItem>());
 		tableViewer.setLabelProvider(new InvoiceItemLabelProvider());
 		tableViewer.addDoubleClickListener(new EditListener());
+		tableViewer.addKeyListener(new DeleteListener());
 	}
 	
 	public void setLayoutData(Object layoutData){
@@ -73,8 +81,23 @@ public class InvoiceInputItemViewer {
 		@Override
 		public void doubleClick(DoubleClickEvent event) {
 			InvoiceInputItem item = (InvoiceInputItem)((IStructuredSelection)tableViewer.getSelection()).getFirstElement();			
-			InvoiceItemEditForm form =  new InvoiceItemEditForm(event.getViewer().getControl().getShell(),item);
+			InvoiceItemEditForm form =  new InvoiceItemEditForm(event.getViewer().getControl().getShell(),item,listener);
 			form.open();
+		}
+	}
+	
+	class DeleteListener extends KeyAdapter{
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.character == SWT.DEL){
+				MessageBox msg = new MessageBox(e.display.getActiveShell(),SWT.ICON_QUESTION|SWT.YES|SWT.NO);
+		   		msg.setText(Messages.getMessage(""));
+		   		msg.setMessage(Messages.getMessage("app.dialog.close.message"));
+		   		int resp = msg.open();
+		   		if (resp == SWT.YES){
+		   			
+		   		}
+			}			
 		}
 	}
 }

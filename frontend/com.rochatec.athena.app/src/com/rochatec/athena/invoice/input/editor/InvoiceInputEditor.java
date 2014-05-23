@@ -118,8 +118,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	}
 	
 	private void createInvoiceItem(Composite parent){
-		itemViewer = new InvoiceInputItemViewer(parent);
-		itemViewer.addInvoiceItemListener(this);
+		itemViewer = new InvoiceInputItemViewer(parent,this);		
 	}
 
 	@Override
@@ -151,21 +150,32 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 
 	@Override
 	public void itemAdded(InvoiceItemEvent e) {
-		InvoiceInputHelper helper = new InvoiceInputHelper(items);		
-		InvoiceInputItem item = helper.newItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);		
-		items.add(item);
+		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());		
+		helper.addItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);		
+		setItems(helper.getItems());
+	}
+	
+	public void setItems(List<InvoiceInputItem> items){
+		this.items = items;
 		itemViewer.setInput(items);
-		setDirty(true);
+		setDirty(true); 
+	}
+	
+	public List<InvoiceInputItem> getItems(){
+		return this.items;
 	}
 
 	@Override
-	public void iItemUpdated(InvoiceItemEvent itemEvent) {
-		
+	public void iItemUpdated(InvoiceItemEvent e) {
+		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
+		helper.updateItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);
+		setItems(helper.getItems());
 	}
 
 	@Override
 	public void itemDeleted(InvoiceItemEvent itemEvent) {
-		
+		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
+		setItems(helper.getItems());
 	}
 	
 	@Override

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.EventObject;
 
 import com.rochatec.athena.model.Icms;
-import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.Product;
 
 public class InvoiceItemEvent extends EventObject{
@@ -17,9 +16,7 @@ public class InvoiceItemEvent extends EventObject{
 	public BigDecimal ipiBase;
 	public BigDecimal lastCostPrice;
 	public BigDecimal totalIcms;
-		
-	public InvoiceInputItem newItem;
-	
+			
 	/**
 	 * 
 	 */

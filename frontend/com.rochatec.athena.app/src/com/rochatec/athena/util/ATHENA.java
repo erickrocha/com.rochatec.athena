@@ -13,6 +13,6 @@ public interface ATHENA {
 	public int PATTERN_WEIGHT = 0x123130;
 	
 	public int EDIT = 0x123131;
-	public int INSERT = 0x123131;
+	public int INSERT = 0x123132;
 	
 }

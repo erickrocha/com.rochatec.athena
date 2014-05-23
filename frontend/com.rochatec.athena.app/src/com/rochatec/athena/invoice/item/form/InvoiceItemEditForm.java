@@ -13,9 +13,11 @@ import com.rochatec.graphics.dialog.AbstractEditDialog;
 public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
 
 	private ItemBox itemBox;
+	private InvoiceItemListener listener;
 	
-	public InvoiceItemEditForm(Shell owner, InvoiceInputItem selected) {
+	public InvoiceItemEditForm(Shell owner, InvoiceInputItem selected,InvoiceItemListener listener) {
 		super(owner, selected);
+		this.listener = listener;
 	}
 
 	@Override
@@ -30,7 +32,8 @@ public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
 
 	@Override
 	public void createBody(Composite parent) {		
-		itemBox = new ItemBox(parent,selected,ATHENA.EDIT);	
+		itemBox = new ItemBox(parent,selected,ATHENA.EDIT);
+		itemBox.addInvoiceItemListener(listener);
 	}
 	
 	public void addInvoiceItemListener(InvoiceItemListener listener){
@@ -41,4 +44,8 @@ public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
 		this.itemBox.removeInvoiceItemListener(listener);
 	}
 
+	@Override
+	public void execute() {		
+		itemBox.editItem();		
+	}
 }

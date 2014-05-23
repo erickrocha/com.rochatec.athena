@@ -32,6 +32,10 @@ public class CompositeText {
 		text = new Text(container,SWT.BORDER);
 	}
 	
+	public void setFocus(){
+		this.text.setFocus();
+	}
+	
 	public Composite getContainer(){
 		return this.container;
 	}

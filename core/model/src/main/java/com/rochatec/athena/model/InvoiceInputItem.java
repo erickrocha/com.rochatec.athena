@@ -110,5 +110,31 @@ public class InvoiceInputItem extends AbstractInvoiceItem implements
 			return BigDecimal.ZERO;
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((invoice == null) ? 0 : invoice.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InvoiceInputItem other = (InvoiceInputItem) obj;
+		if (invoice == null) {
+			if (other.invoice != null)
+				return false;
+		} else if (!invoice.equals(other.invoice))
+			return false;
+		return true;
+	}
+	
 	
 }

@@ -78,6 +78,8 @@ public abstract class AbstractEditDialog<T> extends ApplicationWindow implements
 	
 	public abstract String getTitle();
 	
+	public abstract void execute();
+	
 	public abstract void createBody(Composite parent);
 		
 	@Override
@@ -109,6 +111,7 @@ public abstract class AbstractEditDialog<T> extends ApplicationWindow implements
 					close();
 				};
 			}else{
+				execute();
 				close();
 			}
 		}

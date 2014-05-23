@@ -174,7 +174,7 @@ public class ItemBox {
 			btAdd = new ImageHyperlink(composite, SWT.NONE);
 			btAdd.setImage(Activator.getImageDescriptor(IPathIcons.INFRA_ADD_24).createImage());
 			btAdd.setUnderlined(false);
-			btAdd.addHyperlinkListener(new SearchListener());
+			btAdd.addHyperlinkListener(new AddItemListener());
 		}
 	}
 	
@@ -278,6 +278,18 @@ public class ItemBox {
 		}
 	}
 	
+	protected void fireEditedEvent(InvoiceItemEvent itemEvent){
+		for (Object listener : listeners.getListeners()){
+			((InvoiceItemListener)listener).iItemUpdated(itemEvent);
+		}
+	}
+	
+	protected void fireDeleteEvent(InvoiceItemEvent itemEvent){
+		for (Object listener : listeners.getListeners()){
+			((InvoiceItemListener)listener).itemDeleted(itemEvent);
+		}
+	}
+	
 	public void addInvoiceItemListener(InvoiceItemListener listener){
 		this.listeners.add(listener);
 	}
@@ -286,12 +298,27 @@ public class ItemBox {
 		this.listeners.remove(listener);
 	}
 	
-	class SearchListener extends HyperLinkAdapter{
+	public void addItem(){
+		InvoiceItemEvent itemEvent = buildEvent(product);
+		fireAddedEvent(itemEvent);
+		clear();
+	}
+	
+	public void editItem(){
+		InvoiceItemEvent itemEvent = buildEvent(product);
+		fireEditedEvent(itemEvent);
+		clear();
+	}
+	
+	public void deleteItem(InvoiceInputItem item){
+		InvoiceItemEvent itemEvent = new InvoiceItemEvent(item);
+		fireDeleteEvent(itemEvent);		
+	}
+	
+	class AddItemListener extends HyperLinkAdapter{
 		@Override
 		public void linkActivated(HyperlinkEvent event) {
-			InvoiceItemEvent itemEvent = buildEvent(product);
-			fireAddedEvent(itemEvent);
-			clear();			
+			addItem();
 		}
 	}
 	
