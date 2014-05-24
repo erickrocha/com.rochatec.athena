@@ -175,6 +175,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	@Override
 	public void itemDeleted(InvoiceItemEvent itemEvent) {
 		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
+		helper.deleteItem((InvoiceInputItem)itemEvent.getSource());
 		setItems(helper.getItems());
 	}
 	

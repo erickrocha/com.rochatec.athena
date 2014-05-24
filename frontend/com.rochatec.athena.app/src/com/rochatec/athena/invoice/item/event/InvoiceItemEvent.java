@@ -24,8 +24,7 @@ public class InvoiceItemEvent extends EventObject{
 
 	
 	public InvoiceItemEvent(Object source) {
-		super(source);
-		this.product = (Product)source;
+		super(source);		
 	}	
 	
 }

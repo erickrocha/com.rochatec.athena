@@ -91,11 +91,12 @@ public class InvoiceInputItemViewer {
 		public void keyPressed(KeyEvent e) {
 			if (e.character == SWT.DEL){
 				MessageBox msg = new MessageBox(e.display.getActiveShell(),SWT.ICON_QUESTION|SWT.YES|SWT.NO);
-		   		msg.setText(Messages.getMessage(""));
-		   		msg.setMessage(Messages.getMessage("app.dialog.close.message"));
+		   		msg.setText(Messages.getMessage("invoice.dialog.delete.item.title"));
+		   		msg.setMessage(Messages.getMessage("invoice.dialog.delete.item.message"));
 		   		int resp = msg.open();
 		   		if (resp == SWT.YES){
-		   			
+		   			InvoiceInputItem item = (InvoiceInputItem)((IStructuredSelection)tableViewer.getSelection()).getFirstElement();
+		   			itemBox.deleteItem(item);
 		   		}
 			}			
 		}

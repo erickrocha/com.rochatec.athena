@@ -258,6 +258,7 @@ public class ItemBox {
 	private InvoiceItemEvent buildEvent(Product product){		
 		try{
 			InvoiceItemEvent itemEvent = new InvoiceItemEvent(product);
+			itemEvent.product = product;
 			itemEvent.quantity = Formatter.getWeight().parse(txtQuantity.getText());
 			itemEvent.costPrice = Formatter.getDecimal().parse(txtCostPrice.getText());
 			itemEvent.ipi = Formatter.getDecimal().parse(txtIpi.getText());		
