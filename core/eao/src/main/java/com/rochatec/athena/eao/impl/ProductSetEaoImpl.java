@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -80,12 +78,6 @@ public class ProductSetEaoImpl extends GenericEao<ProductSet,Serializable> imple
 		return new ArrayList<ProductSet>();
 	}
 	
-	private List<ProductSet> clear(List<ProductSet> products){
-		Set<ProductSet> temp = new HashSet<ProductSet>();
-		temp.addAll(products);
-		return new ArrayList<ProductSet>(temp);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProductSet> findByDateRegister(Calendar begin, Calendar end,Status status) {

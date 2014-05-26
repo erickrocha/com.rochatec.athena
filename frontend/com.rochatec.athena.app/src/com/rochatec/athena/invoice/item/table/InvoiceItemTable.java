@@ -67,14 +67,14 @@ public class InvoiceItemTable extends AbstractTable{
 		
 		TableViewerColumn ipi = new TableViewerColumn(tableViewer, SWT.CENTER);
 		ipi.getColumn().setText(Messages.getMessage("invoiceItem.ipi.field.label"));
-		ipi.getColumn().setWidth(120);
+		ipi.getColumn().setWidth(100);
 		ipi.getColumn().setResizable(true);
 		ipi.getColumn().setMoveable(false);
 		ipi.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn valorIpi = new TableViewerColumn(tableViewer, SWT.CENTER);
 		valorIpi.getColumn().setText(Messages.getMessage("invoiceItem.totalIpi.field.label"));
-		valorIpi.getColumn().setWidth(120);
+		valorIpi.getColumn().setWidth(100);
 		valorIpi.getColumn().setResizable(true);
 		valorIpi.getColumn().setMoveable(false);
 		valorIpi.getColumn().setAlignment(SWT.CENTER);

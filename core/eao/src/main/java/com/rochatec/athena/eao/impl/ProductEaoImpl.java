@@ -57,7 +57,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 			Query query = getEntityManager().createQuery(builder.toString(),Product.class);
 			fillParams(query);
 			List<Product> products = query.getResultList();
-			return products;
+			return clear(products);
 		}catch (Exception e) {
 			LOGGER.error(builder.toString());
 			LOGGER.error(e.getMessage());
@@ -78,7 +78,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 			Query query = getEntityManager().createQuery(builder.toString(),Product.class);
 			fillParams(query);
 			List<Product> products = query.getResultList();
-			return products;
+			return clear(products);
 		}catch (Exception e) {
 			LOGGER.error(builder.toString());
 			LOGGER.error(e.getMessage());
@@ -100,7 +100,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 			Query query = getEntityManager().createQuery(builder.toString(),Product.class);
 			fillParams(query);
 			List<Product> products = query.getResultList();
-			return products;
+			return clear(products);
 		}catch (Exception e) {
 			LOGGER.error(builder.toString());
 			LOGGER.error(e.getMessage());
@@ -136,6 +136,7 @@ public class ProductEaoImpl extends GenericEao<Product, Serializable> implements
 		try{			
 			builder = new StringBuilder("");
 			builder.append("SELECT p FROM Product p LEFT JOIN FETCH p.barCodes b WHERE p.id = :id OR b.barcode = :barcode ");
+			params = new HashMap<String, Object>();
 			params.put("id", id);
 			params.put("barcode",barcode);
 			Query query = getEntityManager().createQuery(builder.toString(),Product.class);

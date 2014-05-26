@@ -1,13 +1,10 @@
 package com.rochatec.athena.eao.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -151,9 +148,4 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 		return clear(invoices);
 	}
 	
-	private List<InvoiceInput> clear(List<InvoiceInput> invoices){
-		Set<InvoiceInput> temp = new HashSet<InvoiceInput>(invoices);
-		return new ArrayList<InvoiceInput>(temp);
-	}
-
 }

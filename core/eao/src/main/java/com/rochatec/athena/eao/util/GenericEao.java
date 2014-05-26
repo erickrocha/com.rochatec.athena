@@ -3,6 +3,10 @@ package com.rochatec.athena.eao.util;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -48,6 +52,12 @@ public class GenericEao<T,ID extends Serializable> {
 
 	public void remove(T entity) {
 		getEntityManager().remove(entity);
+	}
+	
+	protected List<T> clear(List<T> rows){
+		Set<T> temp = new HashSet<T>();
+		temp.addAll(rows);
+		return new ArrayList<T>(temp);
 	}
 	
 }

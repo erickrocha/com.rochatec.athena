@@ -346,6 +346,7 @@ public class ItemBox {
 	class DialogListener extends KeyAdapter{
 		@Override
 		public void keyPressed(KeyEvent e) {
+			System.out.println(e.keyCode);
 			switch (e.keyCode) {
 			case IKeyPadConstants.KEY_F9:
 				ProductDialog dialog = new ProductDialog(e.display.getActiveShell());

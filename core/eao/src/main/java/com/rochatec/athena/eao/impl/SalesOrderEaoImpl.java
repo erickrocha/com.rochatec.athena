@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -112,13 +111,6 @@ public class SalesOrderEaoImpl extends GenericEao<SaleOrder,Serializable> implem
 		}
 		return new ArrayList<SaleOrder>();
 	}
-	
-	private List<SaleOrder> clear(List<SaleOrder> saleOrders){
-		Set<SaleOrder> temp = new HashSet<SaleOrder>();
-		temp.addAll(saleOrders);
-		return new ArrayList<SaleOrder>(temp);
-	}
-
 
 	@SuppressWarnings("unchecked")
 	@Override

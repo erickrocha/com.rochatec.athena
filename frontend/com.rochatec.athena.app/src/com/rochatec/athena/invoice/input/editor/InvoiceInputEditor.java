@@ -1,6 +1,8 @@
 package com.rochatec.athena.invoice.input.editor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,7 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
 import com.rochatec.athena.invoice.item.viewer.InvoiceInputItemViewer;
+import com.rochatec.athena.invoice.viewer.InvoiceTotalViewer;
 import com.rochatec.athena.manufacture.natureOfOperation.dialog.NatureOfOperationDialog;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
 import com.rochatec.athena.model.InvoiceInput;
@@ -54,6 +57,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	private DateChooserCombo dateRegister;
 	private InvoiceValueViewer valueViewer;
 	private InvoiceInputItemViewer itemViewer;
+	private InvoiceTotalViewer totalViewer;
 
 	private List<InvoiceInputItem> items = new ArrayList<InvoiceInputItem>();
 	
@@ -63,6 +67,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		createTributaryBox(parent);
 		createInvoiceValueViewer(parent);
 		createInvoiceItem(parent);
+		createTotalViewer(parent);
 		DataBindingFactory<InvoiceInput> factory = new DataBindingFactory<InvoiceInput>(editorInput.getInvoice(),this);
 		factory.bind(getBinds());
 	}
@@ -70,6 +75,13 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	private void createReceiverBox(Composite parent){
 		receiverViewer = new InvoiceInputReceiverViewer(parent,editorInput.getInvoice().getReceiver(),this);
 		receiverViewer.setEnabled(false);
+	}
+	
+	private void createTotalViewer(Composite parent){
+		totalViewer = new InvoiceTotalViewer(parent);
+		totalViewer.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		BigDecimal[] values = {BigDecimal.ZERO,BigDecimal.ZERO,BigDecimal.ZERO,BigDecimal.ZERO,BigDecimal.ZERO};
+		totalViewer.setInput(Arrays.asList(values));
 	}
 	
 	private void createTributaryBox(Composite parent){
@@ -153,6 +165,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());		
 		helper.addItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);		
 		setItems(helper.getItems());
+		totalViewer.setInput(helper.getTotais(valueViewer.getValue()));
 	}
 	
 	public void setItems(List<InvoiceInputItem> items){
@@ -170,6 +183,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
 		helper.updateItem(editorInput.getInvoice(),e.product,e.icms,e.costPrice,e.ipiBase,e.ipi,e.quantity);
 		setItems(helper.getItems());
+		totalViewer.setInput(helper.getTotais(valueViewer.getValue()));
 	}
 
 	@Override
@@ -177,6 +191,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
 		helper.deleteItem((InvoiceInputItem)itemEvent.getSource());
 		setItems(helper.getItems());
+		totalViewer.setInput(helper.getTotais(valueViewer.getValue()));
 	}
 	
 	@Override
