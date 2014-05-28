@@ -26,4 +26,6 @@ public interface InvoiceInputEaoLocal {
 	
 	public List<InvoiceInput> findAllByIssuer(Supplier supplier);
 	
+	public InvoiceInput findById(Long id);
+	
 }

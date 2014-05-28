@@ -39,6 +39,11 @@ public class InvoiceClientserviceImpl implements InvoiceClientService{
 		return invoiceFacadeRemote.findAllInvoiceInputByIssuer(supplier);
 	}
 
+	@Override
+	public InvoiceInput findInvoiceInputById(Long id) {
+		return invoiceFacadeRemote.findInvoiceInputById(id);
+	}
+
 	
 
 }

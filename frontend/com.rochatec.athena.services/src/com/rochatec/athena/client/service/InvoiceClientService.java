@@ -18,5 +18,5 @@ public interface InvoiceClientService {
 
 	public void remove(InvoiceOutput invoiceOutput);
 	
-
+	public InvoiceInput findInvoiceInputById(Long id);
 }

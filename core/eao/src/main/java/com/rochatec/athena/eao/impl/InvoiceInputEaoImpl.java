@@ -147,5 +147,15 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 		List<InvoiceInput> invoices = query.getResultList();
 		return clear(invoices);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public InvoiceInput findById(Long id) {
+		String hql = "SELECT i FROM InvoiceInput i LEFT JOIN FETCH i.items WHERE i.id = :id";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter("id",id);
+		List<InvoiceInput> invoices = query.getResultList();
+		return clear(invoices).get(0);
+	}
 	
 }

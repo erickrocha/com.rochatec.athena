@@ -641,11 +641,23 @@
             categoryId="com.rochatec.athena.category.invoice"
             id="com.rochatec.athena.command.invoice.input.edit"
             name="Edit Invoice Input">
+         <commandParameter
+               id="com.rochatec.athena.app.commandParameter.invoice"
+               name="InvoiceInput"
+               optional="true"
+               typeId="com.rochatec.athena.app.invoiceInput.parameterType"
+               values="org.eclipse.ui.internal.registry.ViewParameterValues">
+         </commandParameter>
       </command>
       <command
             id="com.rochatec.athena.command.show.perspectives"
             name="Show all Perspectives">
       </command>
+      <commandParameterType
+            converter="com.rochatec.athena.ui.internal.commands.InvoiceCommandParameterType"
+            id="com.rochatec.athena.app.invoiceInput.parameterType"
+            type="com.rochatec.athena.model.InvoiceInput">
+      </commandParameterType>
    </extension>
    <extension
          id="com.rochatec.athena.app.handlers"
@@ -2215,6 +2227,36 @@
                label="%popup.saleOrder.edit.label"
                style="push"
                tooltip="%popup.saleOrder.edit.label">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.inovice.input.new"
+               icon="icons/infra/add_16.png"
+               label="%toolbar.invoice.new.label"
+               style="push"
+               tooltip="%toolbar.invoice.new.label">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.rochatec.athena.app.crud.invoiceInput">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.ui.file.save"
+               icon="icons/infra/save_edit.png"
+               label="%toolbar.invoice.save.label"
+               style="push"
+               tooltip="%toolbar.invoice.save.label">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.rochatec.athena.app.crud.invoiceInput">
+               </reference>
+            </visibleWhen>
          </command>
       </menuContribution>
    </extension>

@@ -50,4 +50,10 @@ public class InvoiceFacadeImpl implements InvoiceFacadeLocal,InvoiceFacadeRemote
 		return invoiceInputs;
 	}
 
+	@Override
+	public InvoiceInput findInvoiceInputById(Long id) {
+		InvoiceInput invoiceInput = invoiceInputEaoLocal.findById(id);
+		return invoiceInput;
+	}
+
 }

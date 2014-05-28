@@ -20,5 +20,7 @@ public interface InvoiceFacadeLocal {
 	public void remove(InvoiceOutput invoiceOutput);	
 	
 	public List<InvoiceInput> findAllInvoiceInputByIssuer(Supplier supplier);
+	
+	public InvoiceInput findInvoiceInputById(Long id);
 
 }
