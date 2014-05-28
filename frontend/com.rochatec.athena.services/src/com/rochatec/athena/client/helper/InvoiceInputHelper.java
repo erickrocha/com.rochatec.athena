@@ -2,7 +2,9 @@ package com.rochatec.athena.client.helper;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.rochatec.athena.model.Icms;
 import com.rochatec.athena.model.InvoiceInput;
@@ -111,8 +113,8 @@ public class InvoiceInputHelper {
 		return total;
 	}
 	
-	public List<BigDecimal> getTotais(InvoiceValue value){
-		List<BigDecimal> values = new ArrayList<BigDecimal>();
+	public Map<Integer,BigDecimal> getTotais(InvoiceValue value){
+		Map<Integer,BigDecimal> values = new HashMap<Integer,BigDecimal>();
 		BigDecimal totalIcms = BigDecimal.ZERO;
 		BigDecimal totalIcmsSub = BigDecimal.ZERO;
 		BigDecimal totalIpi = BigDecimal.ZERO;
@@ -121,17 +123,17 @@ public class InvoiceInputHelper {
 		
 		for (InvoiceInputItem item : items){
 			totalIcms = totalIcms.add(item.getTotalIcms());
-			values.add(totalIcms);
+			values.put(0,totalIcms);
 			totalIcmsSub = totalIcmsSub.add(value.getTotalIcmsSub());
-			values.add(totalIcmsSub);
+			values.put(1,totalIcmsSub);
 			totalIpi = totalIpi.add(item.getIpiValue());
-			values.add(totalIpi);
+			values.put(2,totalIpi);
 			totalItem = totalItem.add(item.getTotalItems());
-			values.add(totalItem);
+			values.put(3,totalItem);
 		}
 		
 		totalInvoice.add(value.getTotalItems()).add(value.getTotalIcmsSub()).add(value.getOutrasdespesas());
-		values.add(totalInvoice);
+		values.put(4,totalInvoice);
 		return values;
 	}
 

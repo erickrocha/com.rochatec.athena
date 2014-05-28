@@ -1,7 +1,9 @@
 package com.rochatec.athena.invoice.viewer;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jface.viewers.ITableColorProvider;
 import org.eclipse.jface.viewers.ITableFontProvider;
@@ -43,7 +45,7 @@ public class InvoiceTotalViewer {
 		this.container.setLayout(LayoutFactory.getInstance().getFillLayout());
 		tableViewer = new TableViewer(container,SWT.BORDER | SWT.SINGLE|SWT.FULL_SELECTION);
 		tableViewer.getTable().setHeaderVisible(true);
-		tableViewer.getTable().setLinesVisible(true);
+//		tableViewer.getTable().setLinesVisible(true);
 		makeColumns(tableViewer);
 		tableViewer.setContentProvider(new GenericContentProvider<BigDecimal>());
 		tableViewer.setLabelProvider(new BigDecimalLabelProvider());
@@ -52,58 +54,57 @@ public class InvoiceTotalViewer {
 	private void makeColumns(TableViewer tableViewer){
 		TableViewerColumn totalIcms = new TableViewerColumn(tableViewer, SWT.CENTER);
 		totalIcms.getColumn().setText(Messages.getMessage("invoice.total.icms.label"));
-		totalIcms.getColumn().setWidth(100);
+		totalIcms.getColumn().setWidth(200);
 		totalIcms.getColumn().setResizable(true);
 		totalIcms.getColumn().setMoveable(false);
 		totalIcms.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn totalIcmsSub = new TableViewerColumn(tableViewer, SWT.CENTER);
 		totalIcmsSub.getColumn().setText(Messages.getMessage("invoice.total.icmsSub.label"));
-		totalIcmsSub.getColumn().setWidth(100);
+		totalIcmsSub.getColumn().setWidth(200);
 		totalIcmsSub.getColumn().setResizable(true);
 		totalIcmsSub.getColumn().setMoveable(false);
 		totalIcmsSub.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn totalIpi = new TableViewerColumn(tableViewer, SWT.CENTER);
 		totalIpi.getColumn().setText(Messages.getMessage("invoice.total.ipi.label"));
-		totalIpi.getColumn().setWidth(100);
+		totalIpi.getColumn().setWidth(200);
 		totalIpi.getColumn().setResizable(true);
 		totalIpi.getColumn().setMoveable(false);
 		totalIpi.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn totalItems = new TableViewerColumn(tableViewer, SWT.CENTER);
 		totalItems.getColumn().setText(Messages.getMessage("invoice.total.products.label"));
-		totalItems.getColumn().setWidth(100);
+		totalItems.getColumn().setWidth(200);
 		totalItems.getColumn().setResizable(true);
 		totalItems.getColumn().setMoveable(false);
 		totalItems.getColumn().setAlignment(SWT.CENTER);
 		
 		TableViewerColumn totalInvoice = new TableViewerColumn(tableViewer, SWT.CENTER);
 		totalInvoice.getColumn().setText(Messages.getMessage("invoice.total.invoice.label"));
-		totalInvoice.getColumn().setWidth(getColumnSize(30));
+		totalInvoice.getColumn().setWidth(200);
 		totalInvoice.getColumn().setResizable(true);
 		totalInvoice.getColumn().setMoveable(false);
 		totalInvoice.getColumn().setAlignment(SWT.CENTER);
-	}
-	
-	public int getColumnSize(int percentage){
-		int width = tableViewer.getTable().getClientArea().width;
-		return width / 100 * percentage;
 	}
 	
 	public void setLayoutData(Object layoutData){
 		this.container.setLayoutData(layoutData);
 	}
 	
-	public void setInput(List<BigDecimal> values){
-		this.tableViewer.setInput(values);
+	public void setInput(Map<Integer,BigDecimal> values){
+		List<Map<Integer,BigDecimal>> rows = new ArrayList<Map<Integer,BigDecimal>>();
+		rows.add(values);
+		this.tableViewer.setInput(rows);
 	}
 	
 	class BigDecimalLabelProvider extends LabelProvider implements ITableLabelProvider,ITableFontProvider,ITableColorProvider{
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public Color getForeground(Object element, int columnIndex) {
-			BigDecimal value = (BigDecimal)element;
+			Map<Integer,BigDecimal> map = (Map<Integer, BigDecimal>)element;
+			BigDecimal value = map.get(columnIndex);
 			if (value.doubleValue() >= 0D){
 				return Colors.getColorBlue();
 			}
@@ -128,10 +129,12 @@ public class InvoiceTotalViewer {
 			return null;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public String getColumnText(Object element, int columnIndex) {
+			Map<Integer,BigDecimal> map = (Map<Integer, BigDecimal>)element;
 			try {
-				return Formatter.getDecimal().mask((BigDecimal)element);
+				return Formatter.getDecimal().mask((map.get(columnIndex)));
 			}catch (BadFormatException ex){
 			}
 			return BigDecimal.ZERO.toString();

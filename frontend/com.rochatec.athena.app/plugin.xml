@@ -1704,6 +1704,36 @@
                </visibleWhen>
             </command>
          </toolbar>
+         <toolbar
+               id="com.rochatec.athena.toolbar.crud.invoice"
+               label="Invoice">
+            <command
+                  commandId="com.rochatec.athena.command.inovice.input.new"
+                  icon="icons/infra/add_16.png"
+                  label="%toolbar.invoice.new.label"
+                  style="push"
+                  tooltip="%toolbar.invoice.new.label">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.rochatec.athena.app.crud.invoiceInput">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.save"
+                  icon="icons/infra/save_edit.png"
+                  label="%toolbar.invoice.save.label"
+                  style="push"
+                  tooltip="%toolbar.invoice.save.label">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.rochatec.athena.app.crud.invoiceInput">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </toolbar>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -2296,6 +2326,15 @@
                variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="profile">
+            </equals>
+         </with>
+      </definition>
+      <definition
+            id="com.rochatec.athena.app.crud.invoiceInput">
+         <with
+               variable="com.rochatec.athena.app.crudInstance">
+            <equals
+                  value="invoiceInput">
             </equals>
          </with>
       </definition>

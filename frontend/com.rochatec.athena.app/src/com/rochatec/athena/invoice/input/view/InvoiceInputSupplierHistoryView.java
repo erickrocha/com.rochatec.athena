@@ -3,6 +3,7 @@ package com.rochatec.athena.invoice.input.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -113,7 +114,11 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	private void createToolbarEdit(InvoiceInput invoice){
-		form.getToolBarManager().remove(InvoiceInputEditAction.ID);		
+		form.getToolBarManager().remove(InvoiceInputEditAction.ID);
+		for (IContributionItem item :form.getToolBarManager().getItems()){
+			form.getToolBarManager().remove(item);
+		}
+		form.getToolBarManager().add(new InvoiceInputNewAction(this,invoice.getIssuer()));	
 		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
 		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
 		form.getToolBarManager().update(true);
