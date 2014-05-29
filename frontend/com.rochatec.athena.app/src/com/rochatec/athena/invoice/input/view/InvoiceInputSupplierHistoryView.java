@@ -3,7 +3,6 @@ package com.rochatec.athena.invoice.input.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -15,8 +14,6 @@ import org.eclipse.ui.ISharedImages;
 
 import com.rochatec.athena.app.Activator;
 import com.rochatec.athena.client.service.InvoiceClientService;
-import com.rochatec.athena.invoice.input.action.InvoiceInputEditAction;
-import com.rochatec.athena.invoice.input.action.InvoiceInputNewAction;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.Supplier;
 import com.rochatec.athena.util.CommandFactory;
@@ -108,20 +105,20 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	}
 	
 	private void createToolbarAdd(Supplier supplier){
-		form.getToolBarManager().add(new InvoiceInputNewAction(this,supplier));		
-		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
-		form.getToolBarManager().update(true);		
+//		form.getToolBarManager().add(new InvoiceInputNewAction(this,supplier));		
+//		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
+//		form.getToolBarManager().update(true);		
 	}
 	
 	private void createToolbarEdit(InvoiceInput invoice){
-		form.getToolBarManager().remove(InvoiceInputEditAction.ID);
-		for (IContributionItem item :form.getToolBarManager().getItems()){
-			form.getToolBarManager().remove(item);
-		}
-		form.getToolBarManager().add(new InvoiceInputNewAction(this,invoice.getIssuer()));	
-		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
-		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
-		form.getToolBarManager().update(true);
+//		form.getToolBarManager().remove(InvoiceInputEditAction.ID);
+//		for (IContributionItem item :form.getToolBarManager().getItems()){
+//			form.getToolBarManager().remove(item);
+//		}
+//		form.getToolBarManager().add(new InvoiceInputNewAction(this,invoice.getIssuer()));	
+//		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
+//		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
+//		form.getToolBarManager().update(true);
 	}
 
 	@Override

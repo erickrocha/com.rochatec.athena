@@ -2246,11 +2246,11 @@
             </visibleWhen>
          </command>
          <command
-               commandId="org.eclipse.ui.file.save"
-               icon="icons/infra/save_edit.png"
-               label="%toolbar.invoice.save.label"
+               commandId="com.rochatec.athena.command.invoice.input.edit"
+               icon="icons/app/edit_16.png"
+               label="%toolbar.invoice.edit.label"
                style="push"
-               tooltip="%toolbar.invoice.save.label">
+               tooltip="%toolbar.invoice.edit.label">
             <visibleWhen
                   checkEnabled="false">
                <reference

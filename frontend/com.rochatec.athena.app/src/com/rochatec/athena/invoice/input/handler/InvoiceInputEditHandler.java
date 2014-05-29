@@ -2,7 +2,7 @@ package com.rochatec.athena.invoice.input.handler;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -19,7 +19,7 @@ public class InvoiceInputEditHandler extends DefaultCrudHandler{
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		HierarchyObject hierarchyObject = (HierarchyObject)  ((IStructuredSelection) HandlerUtil.getCurrentSelection(event)).getFirstElement();
+		HierarchyObject hierarchyObject = (HierarchyObject)  ((ITreeSelection) HandlerUtil.getCurrentSelection(event)).getFirstElement();
 		InvoiceInput invoiceInput = (InvoiceInput)hierarchyObject.getWrapper();
 		try{						
 			InvoiceInputEditorInput input = new InvoiceInputEditorInput(invoiceInput);			
