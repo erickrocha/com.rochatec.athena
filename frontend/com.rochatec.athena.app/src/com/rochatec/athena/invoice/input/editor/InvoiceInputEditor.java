@@ -138,6 +138,7 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 		
 		txtStatus = new Text(group, SWT.BORDER);
 		txtStatus.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		txtStatus.setEnabled(false);
 	}
 	
 	private void createInvoiceValueViewer(Composite parent){
@@ -146,7 +147,8 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	}
 	
 	private void createInvoiceItem(Composite parent){
-		itemViewer = new InvoiceInputItemViewer(parent,this);		
+		itemViewer = new InvoiceInputItemViewer(parent,this);
+		itemViewer.setInput(editorInput.getInvoice().getItemsList());
 	}
 
 	@Override
@@ -158,7 +160,10 @@ public class InvoiceInputEditor extends AbstractEditor implements InvoiceItemLis
 	protected void fill() {		
 		if (editorInput.getInvoice().getId() != null){
 			InvoiceInput invoice = editorInput.getInvoice();
+			this.items = invoice.getItemsList();
 			txtStatus.setText(StatusTradutor.getLabel(invoice.getStatus()));
+			InvoiceInputHelper helper = new InvoiceInputHelper(getItems());
+			totalViewer.setInput(helper.getTotais(invoice.getValues()));
 		}
 		txtStatus.setEditable(false);
 	}

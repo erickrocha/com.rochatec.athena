@@ -54,7 +54,6 @@ public class InvoiceInputSupplierView extends AbstractView implements Executable
 	protected void createContents(Composite parent) {
 		createSearchBox(parent);
 		createInfoBox(parent);	
-		
 	}
 	
 	private void createSearchBox(Composite parent){

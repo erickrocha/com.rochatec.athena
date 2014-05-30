@@ -12,26 +12,27 @@ import org.eclipse.swt.widgets.Layout;
 
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.model.InvoiceValue;
+import com.rochatec.athena.util.ATHENA;
 import com.rochatec.athena.util.DataBindingFactory;
 import com.rochatec.framework.bind.Bindable;
 import com.rochatec.framework.bind.Editable;
-import com.rochatec.graphics.gui.NumberFormatedText;
+import com.rochatec.graphics.gui.TextField;
 import com.rochatec.graphics.util.LayoutFactory;
 
 public class InvoiceValueViewer implements Bindable{
 
 	private Group group;
-	private NumberFormatedText txtBaseIcms;
-	private NumberFormatedText txtTotalIcms;
-	private NumberFormatedText txtBaseIcmsSub;
-	private NumberFormatedText txtTotalIcmsSub;
-	private NumberFormatedText txtTotalItems;
-	private NumberFormatedText txtTotalFrete;
-	private NumberFormatedText txtTotalInvoice;
-	private NumberFormatedText txtTotalSeguro;
-	private NumberFormatedText txtOutrasDespesas;
-	private NumberFormatedText txtTotalIpi;
-	private NumberFormatedText txtDesconto;
+	private TextField txtBaseIcms;
+	private TextField txtTotalIcms;
+	private TextField txtBaseIcmsSub;
+	private TextField txtTotalIcmsSub;
+	private TextField txtTotalItems;
+	private TextField txtTotalFrete;
+	private TextField txtTotalInvoice;
+	private TextField txtTotalSeguro;
+	private TextField txtOutrasDespesas;
+	private TextField txtTotalIpi;
+	private TextField txtDesconto;
 	
 	private InvoiceValue invoiceValue;
 	private Editable editable;
@@ -59,22 +60,22 @@ public class InvoiceValueViewer implements Bindable{
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalIpi.field.label"));
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalProducts.field.label"));
 		
-		txtBaseIcms = new NumberFormatedText(group);
+		txtBaseIcms = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtBaseIcms.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIcms = new NumberFormatedText(group);
+		txtTotalIcms = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalIcms.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtBaseIcmsSub = new NumberFormatedText(group);
+		txtBaseIcmsSub = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtBaseIcmsSub.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIcmsSub = new NumberFormatedText(group);
+		txtTotalIcmsSub = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalIcmsSub.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalIpi = new NumberFormatedText(group);
+		txtTotalIpi = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalIpi.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalItems = new NumberFormatedText(group);
+		txtTotalItems = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalItems.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalFrete.field.label"));
@@ -84,19 +85,19 @@ public class InvoiceValueViewer implements Bindable{
 		new Label(group, SWT.NONE).setText(Messages.getMessage("invoiceValue.totalInvoice.field.label"));
 		new Label(group, SWT.NONE);
 		
-		txtTotalFrete = new NumberFormatedText(group);
+		txtTotalFrete = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalFrete.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalSeguro = new NumberFormatedText(group);
+		txtTotalSeguro = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalSeguro.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtOutrasDespesas = new NumberFormatedText(group);
+		txtOutrasDespesas = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtOutrasDespesas.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtDesconto = new NumberFormatedText(group);
+		txtDesconto = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtDesconto.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		txtTotalInvoice = new NumberFormatedText(group);
+		txtTotalInvoice = new TextField(group,ATHENA.PATTERN_BIGDECIMAL);
 		txtTotalInvoice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false,2,0));
 		DataBindingFactory<InvoiceValue> factory = new DataBindingFactory<InvoiceValue>(invoiceValue,editable);
 		factory.bind(getBinds());

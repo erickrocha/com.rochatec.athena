@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -46,10 +45,9 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 		viewer = new TreeViewer(composite);
 		viewer.setContentProvider(new HierarchyContentProvider());
 		viewer.setLabelProvider(new HierarchyLabelProvider());		
-		getSite().setSelectionProvider(viewer);
-		viewer.addPostSelectionChangedListener(new InvoicePostSelectedListener());
+		getSite().setSelectionProvider(viewer);		
 		viewer.addDoubleClickListener(CommandFactory.getDoubleClickCommand(ICommands.INVOICE_INPUT_EDIT, getSite()));
-	}
+	}	
 	
 	@Override
 	public void setFocus() {
@@ -99,43 +97,14 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	public void selectionChanged(SelectionChangedEvent event) {
 		SearchSelection<Supplier> selection = (SearchSelection<Supplier>)event.getSelection();
 		Supplier supplier = selection.getSingleSelection();
+		HierarchyObject hierarchyObject = new HierarchyObject(supplier.getCompanyName(),null,supplier);
+		viewer.setSelection(new SearchSelection<HierarchyObject>(hierarchyObject));
 		List<InvoiceInput> invoices = invoiceClientService.findAllInvoiceInputByIssuer(supplier);
 		fill(supplier,invoices);
-		createToolbarAdd(supplier);
-	}
-	
-	private void createToolbarAdd(Supplier supplier){
-//		form.getToolBarManager().add(new InvoiceInputNewAction(this,supplier));		
-//		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
-//		form.getToolBarManager().update(true);		
-	}
-	
-	private void createToolbarEdit(InvoiceInput invoice){
-//		form.getToolBarManager().remove(InvoiceInputEditAction.ID);
-//		for (IContributionItem item :form.getToolBarManager().getItems()){
-//			form.getToolBarManager().remove(item);
-//		}
-//		form.getToolBarManager().add(new InvoiceInputNewAction(this,invoice.getIssuer()));	
-//		form.getToolBarManager().add(new InvoiceInputEditAction(this,invoice));		
-//		form.getForm().setToolBarVerticalAlignment(SWT.TOP);		
-//		form.getToolBarManager().update(true);
 	}
 
 	@Override
 	protected void addListeners() {
 		
-	}
-	
-	class InvoicePostSelectedListener implements ISelectionChangedListener{
-
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			HierarchyObject hierarchyObject = (HierarchyObject) ((ITreeSelection)event.getSelection()).getFirstElement();			
-			if (hierarchyObject.getWrapper() instanceof InvoiceInput){
-				InvoiceInput invoice = (InvoiceInput)hierarchyObject.getWrapper();
-				createToolbarEdit(invoice);
-			}
-		}
-		
-	}
+	}	
 }

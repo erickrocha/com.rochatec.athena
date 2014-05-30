@@ -86,7 +86,9 @@ public class InvoiceInput extends AbstractInvoice {
 	}
 	
 	public List<InvoiceInputItem> getItemsList(){
-		return new ArrayList<InvoiceInputItem>(this.items);
+		if (items != null)
+			return new ArrayList<InvoiceInputItem>(this.items);
+		return new ArrayList<InvoiceInputItem>();
 	}
 	
 	public void setItemsList(List<InvoiceInputItem> items){

@@ -1,5 +1,6 @@
 package com.rochatec.athena.invoice.item.viewer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -66,6 +67,8 @@ public class InvoiceInputItemViewer {
 	}
 	
 	public void setInput(List<InvoiceInputItem> items){
+		if (items == null)
+			items = new ArrayList<InvoiceInputItem>();
 		tableViewer.setInput(items);
 	}
 	
