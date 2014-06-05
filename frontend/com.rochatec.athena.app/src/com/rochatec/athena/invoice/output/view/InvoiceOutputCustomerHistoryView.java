@@ -1,4 +1,4 @@
-package com.rochatec.athena.invoice.input.view;
+package com.rochatec.athena.invoice.output.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,9 @@ import org.eclipse.ui.ISharedImages;
 
 import com.rochatec.athena.app.Activator;
 import com.rochatec.athena.client.service.InvoiceClientService;
+import com.rochatec.athena.model.Customer;
 import com.rochatec.athena.model.InvoiceInput;
+import com.rochatec.athena.model.InvoiceOutput;
 import com.rochatec.athena.model.Supplier;
 import com.rochatec.athena.util.CommandFactory;
 import com.rochatec.athena.util.ICommands;
@@ -28,15 +30,15 @@ import com.rochatec.graphics.selection.SearchSelection;
 import com.rochatec.graphics.util.LayoutFactory;
 import com.rochatec.graphics.view.AbstractView;
 
-public class InvoiceInputSupplierHistoryView extends AbstractView implements ISelectionChangedListener{
+public class InvoiceOutputCustomerHistoryView extends AbstractView implements ISelectionChangedListener{
 	
-	public static final String ID = "com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView";
+	public static final String ID = "com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerHistoryView";
 	protected InvoiceClientService invoiceClientService = ServiceFactory.getInstance().getInvoiceClientService();
 	
 	protected TreeViewer viewer;
 	private HierarchyObject root;
 	
-	public InvoiceInputSupplierHistoryView() {
+	public InvoiceOutputCustomerHistoryView() {
 	}
 	
 	@Override
@@ -77,12 +79,12 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 		viewer.setInput(root);
 	}
 	
-	private void fill(Supplier supplier, List<InvoiceInput> invoices){
-		root = new HierarchyObject(supplier.getCompanyName());
+	private void fill(Customer customer, List<InvoiceOutput> invoices){
+		root = new HierarchyObject(customer.getName());
 		root.setImage(Activator.getImageDescriptor(ISharedImages.IMG_OBJ_FOLDER).createImage());
-		root.setWrapper(supplier);
+		root.setWrapper(customer);
 						
-		for (InvoiceInput invoice : invoices){
+		for (InvoiceOutput invoice : invoices){
 			HierarchyObject object = new HierarchyObject(invoice.toString(),root,invoice);
 			object.setImage(Activator.getImageDescriptor(IPathIcons.INVOICE_20).createImage());
 			root.addChild(object);			
@@ -101,12 +103,12 @@ public class InvoiceInputSupplierHistoryView extends AbstractView implements ISe
 	@SuppressWarnings("unchecked")
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-		SearchSelection<Supplier> selection = (SearchSelection<Supplier>)event.getSelection();
-		Supplier supplier = selection.getSingleSelection();
-		HierarchyObject hierarchyObject = new HierarchyObject(supplier.getCompanyName(),null,supplier);
+		SearchSelection<Customer> selection = (SearchSelection<Customer>)event.getSelection();
+		Customer customer = selection.getSingleSelection();
+		HierarchyObject hierarchyObject = new HierarchyObject(customer.getName(),null,customer);
 		viewer.setSelection(new SearchSelection<HierarchyObject>(hierarchyObject));
-		List<InvoiceInput> invoices = invoiceClientService.findAllInvoiceInputByIssuer(supplier);
-		fill(supplier,invoices);
+		List<InvoiceOutput> invoices = invoiceClientService.findAllInvoiceOutputstByReceiver(customer);
+		fill(customer,invoices);
 	}
 
 	@Override

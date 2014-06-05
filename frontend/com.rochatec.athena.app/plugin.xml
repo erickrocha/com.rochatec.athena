@@ -110,6 +110,13 @@
             id="com.rochatec.athena.invoice.input.perspective.InvoiceInputPerspective"
             name="%perspective.invoice.inpu.search.name">
       </perspective>
+      <perspective
+            class="com.rochatec.athena.invoice.output.perspective.InvoiceOutputPerspective"
+            fixed="true"
+            icon="icons/infra/perspective_16.png"
+            id="com.rochatec.athena.invoice.output.perspective.InvoiceOutputPerspective"
+            name="%perspective.invoice.output.search.name">
+      </perspective>
    </extension>
    <extension
          id="com.rochatec.athena.app.views"
@@ -373,6 +380,23 @@
             icon="icons/infra/view_16.png"
             id="com.rochatec.athena.invoice.input.view.InvoiceInputSupplierHistoryView"
             name="%view.invoice.input.history.name"
+            restorable="true">
+      </view>
+      <view
+            category="com.rochatec.athena.category.invoice"
+            class="com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerHistoryView"
+            icon="icons/infra/view_16.png"
+            id="com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerHistoryView"
+            name="%view.invoice.output.history.name"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            category="com.rochatec.athena.category.invoice"
+            class="com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerView"
+            icon="icons/infra/view_16.png"
+            id="com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerView"
+            name="%view.invoice.output.customer.name"
             restorable="true">
       </view>
    </extension>
@@ -641,23 +665,26 @@
             categoryId="com.rochatec.athena.category.invoice"
             id="com.rochatec.athena.command.invoice.input.edit"
             name="Edit Invoice Input">
-         <commandParameter
-               id="com.rochatec.athena.app.commandParameter.invoice"
-               name="InvoiceInput"
-               optional="true"
-               typeId="com.rochatec.athena.app.invoiceInput.parameterType"
-               values="org.eclipse.ui.internal.registry.ViewParameterValues">
-         </commandParameter>
       </command>
       <command
             id="com.rochatec.athena.command.show.perspectives"
             name="Show all Perspectives">
       </command>
-      <commandParameterType
-            converter="com.rochatec.athena.ui.internal.commands.InvoiceCommandParameterType"
-            id="com.rochatec.athena.app.invoiceInput.parameterType"
-            type="com.rochatec.athena.model.InvoiceInput">
-      </commandParameterType>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.invoice.output.search"
+            name="Invoice Output">
+      </command>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.inovice.output.new"
+            name="New Invoice">
+      </command>
+      <command
+            categoryId="com.rochatec.athena.category.invoice"
+            id="com.rochatec.athena.command.invoice.output.edit"
+            name="Edit Invoice">
+      </command>
    </extension>
    <extension
          id="com.rochatec.athena.app.handlers"
@@ -1032,6 +1059,23 @@
             class="com.rochatec.athena.handler.ListPerspectivesHandler"
             commandId="com.rochatec.athena.command.show.perspectives">
       </handler>
+      <handler
+            class="com.rochatec.athena.invoice.output.handler.InvoiceOutputHandler"
+            commandId="com.rochatec.athena.command.invoice.output.search">
+      </handler>
+      <handler
+            class="com.rochatec.athena.invoice.output.handler.InvoiceOutputNewHandler"
+            commandId="com.rochatec.athena.command.inovice.output.new">
+         <activeWhen>
+            <reference
+                  definitionId="com.rochatec.athena.app.crud.invoiceOutput">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.rochatec.athena.invoice.output.handler.InvoiceOutputEditHandler"
+            commandId="com.rochatec.athena.command.invoice.output.edit">
+      </handler>
    </extension>
    <extension
          id="com.rochatec.athena.app.editors"
@@ -1120,6 +1164,13 @@
             icon="icons/infra/editor_16.png"
             id="com.rochatec.athena.invoice.input.editor.InvoiceInputEditor"
             name="%editor.invoiceInput.name">
+      </editor>
+      <editor
+            class="com.rochatec.athena.invoice.output.editor.InvoiceOutputEditor"
+            default="false"
+            icon="icons/infra/editor_16.png"
+            id="com.rochatec.athena.invoice.output.editor.InvoiceOutputEditor"
+            name="%editor.invoiceOutput.name">
       </editor>
    </extension>
    <extension
@@ -1238,6 +1289,13 @@
                   label="%menu.invoice.input.label"
                   style="push"
                   tooltip="menu.invoice.input.label">
+            </command>
+            <command
+                  commandId="com.rochatec.athena.command.invoice.output.search"
+                  icon="icons/infra/invoice_16.png"
+                  id="com.rochatec.athena.invoice.menu.invoiceOutput"
+                  label="%menu.invoice.output.label"
+                  style="push">
             </command>
          </menu>
          <menu
@@ -1722,8 +1780,8 @@
             </command>
          </toolbar>
          <toolbar
-               id="com.rochatec.athena.toolbar.crud.invoice"
-               label="Invoice">
+               id="com.rochatec.athena.toolbar.crud.invoiceInput"
+               label="Invoice Input">
             <command
                   commandId="com.rochatec.athena.command.inovice.input.new"
                   icon="icons/infra/add_16.png"
@@ -1760,6 +1818,49 @@
                      checkEnabled="false">
                   <reference
                         definitionId="com.rochatec.athena.app.crud.invoiceInput">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="com.rochatec.athena.toolbar.crud.invoiceOutput"
+               label="Invoice Output">
+            <command
+                  commandId="com.rochatec.athena.command.inovice.output.new"
+                  icon="icons/infra/add_16.png"
+                  label="%toolbar.invoice.new.label"
+                  style="push"
+                  tooltip="%toolbar.invoice.new.label">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.rochatec.athena.app.crud.invoiceOutput">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.save"
+                  icon="icons/infra/save_edit.png"
+                  label="%toolbar.invoice.save.label"
+                  style="push"
+                  tooltip="%toolbar.invoice.save.label">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.rochatec.athena.app.crud.invoiceOutput">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.rochatec.athena.command.invoice.output.edit"
+                  icon="icons/app/edit_16.png"
+                  label="%toolbar.invoice.edit.label"
+                  style="push"
+                  tooltip="%toolbar.invoice.edit.label">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.rochatec.athena.app.crud.invoiceOutput">
                   </reference>
                </visibleWhen>
             </command>
@@ -2277,6 +2378,36 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:com.rochatec.athena.invoice.output.view.InvoiceOutputCustomerHistoryView">
+         <command
+               commandId="com.rochatec.athena.command.inovice.output.new"
+               icon="icons/infra/add_16.png"
+               label="%toolbar.invoice.new.label"
+               style="push"
+               tooltip="%toolbar.invoice.new.label">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.rochatec.athena.app.crud.invoiceOutput">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.rochatec.athena.command.invoice.output.edit"
+               icon="icons/app/edit_16.png"
+               label="%toolbar.invoice.edit.label"
+               style="push"
+               tooltip="%toolbar.invoice.edit.label">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.rochatec.athena.app.crud.invoiceOutput">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.services">
@@ -2395,6 +2526,15 @@
                variable="com.rochatec.athena.app.crudInstance">
             <equals
                   value="invoiceInput">
+            </equals>
+         </with>
+      </definition>
+      <definition
+            id="com.rochatec.athena.app.crud.invoiceOutput">
+         <with
+               variable="com.rochatec.athena.app.crudInstance">
+            <equals
+                  value="invoiceOutput">
             </equals>
          </with>
       </definition>

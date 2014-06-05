@@ -36,7 +36,6 @@ public class ProductTableView extends AbstractView implements ISelectionChangedL
 	    getSite().registerContextMenu(menuManager, tableViewer.getViewer());
 		getSite().setSelectionProvider(tableViewer.getViewer());
 		tableViewer.addDoubleClickListener(CommandFactory.getDoubleClickCommand(ICommands.PRODUCT_EDIT,getSite()));
-		
 	}
 
 	@Override

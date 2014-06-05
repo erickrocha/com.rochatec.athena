@@ -13,7 +13,6 @@ import org.jboss.logging.Logger;
 
 import com.rochatec.athena.eao.local.InvoiceInputEaoLocal;
 import com.rochatec.athena.eao.util.GenericEao;
-import com.rochatec.athena.model.Employee;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.InvoiceStatus;
 import com.rochatec.athena.model.Supplier;
@@ -31,13 +30,13 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 	public InvoiceInput findByNumber(Long number, Calendar begin, Calendar end,
 			InvoiceStatus status) {
 		try{
-			builder = new StringBuilder("SELECT i FROM InvoiceInput i WHERE ");
+			builder = new StringBuilder("SELECT i FROM InvoiceInput i LEFT JOIN FETCH i.items WHERE ");
 			params = new HashMap<String, Object>();
 			builder.append("i.number = :number ");
 			params.put("number",number);
 			addStatusWhere(status);
 			addPeriodwhere("dateRegister", begin, end);
-			Query query = getEntityManager().createQuery(builder.toString(),Employee.class);
+			Query query = getEntityManager().createQuery(builder.toString(),InvoiceInput.class);
 			fillParams(query);
 			InvoiceInput invoiceInput = (InvoiceInput)query.getSingleResult();
 			return invoiceInput;
@@ -54,16 +53,16 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 	public List<InvoiceInput> findByIssuer(String issuer, Calendar begin,
 			Calendar end, InvoiceStatus status) {
 		try{
-			builder = new StringBuilder("SELECT i FROM InvoiceInput i WHERE ");
+			builder = new StringBuilder("SELECT i FROM InvoiceInput i LEFT JOIN FETCH i.items WHERE ");
 			params = new HashMap<String, Object>();
 			builder.append("i.issuer.name = :issuerName ");
 			params.put("issuerName",issuer+"%");
 			addStatusWhere(status);
 			addPeriodwhere("dateRegister", begin, end);
-			Query query = getEntityManager().createQuery(builder.toString(),Employee.class);
+			Query query = getEntityManager().createQuery(builder.toString(),InvoiceInput.class);
 			fillParams(query);
 			List<InvoiceInput> invoices = query.getResultList();
-			return invoices;
+			return clear(invoices);
 		}catch (Exception e) {
 			LOGGER.error(builder.toString());
 			LOGGER.error(e.getMessage());
@@ -82,7 +81,7 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 			params.put("receiverName",receiver+"%");
 			addStatusWhere(status);
 			addPeriodwhere("dateRegister", begin, end);
-			Query query = getEntityManager().createQuery(builder.toString(),Employee.class);
+			Query query = getEntityManager().createQuery(builder.toString(),InvoiceInput.class);
 			fillParams(query);
 			List<InvoiceInput> invoices = query.getResultList();
 			return invoices;
@@ -104,7 +103,7 @@ public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> 
 			params.put("shipperName",shipper+"%");
 			addStatusWhere(status);
 			addPeriodwhere("dateRegister", begin, end);
-			Query query = getEntityManager().createQuery(builder.toString(),Employee.class);
+			Query query = getEntityManager().createQuery(builder.toString(),InvoiceInput.class);
 			fillParams(query);
 			List<InvoiceInput> invoices = query.getResultList();
 			return invoices;
