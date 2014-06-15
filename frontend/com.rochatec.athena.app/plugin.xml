@@ -685,6 +685,15 @@
             id="com.rochatec.athena.command.invoice.output.edit"
             name="Edit Invoice">
       </command>
+      <category
+            id="com.rochatec.athena.category.manager"
+            name="Manager">
+      </category>
+      <command
+            categoryId="com.rochatec.athena.category.manager"
+            id="com.rochatec.athena.command.manager.priceManager"
+            name="Price Manager">
+      </command>
    </extension>
    <extension
          id="com.rochatec.athena.app.handlers"
@@ -1262,6 +1271,18 @@
                   mnemonic="%menu.register.exit.mnemonic"
                   style="push"
                   tooltip="%menu.register.exit.label">
+            </command>
+         </menu>
+         <menu
+               id="com.rochatec.athena.menu.manager"
+               label="%menu.register.manager.label"
+               tooltip="%menu.register.manager.label">
+            <command
+                  commandId="com.rochatec.athena.command.manager.priceManager"
+                  icon="icons/infra/price_16.png"
+                  label="%menu.register.manager.priceManager"
+                  style="push"
+                  tooltip="%menu.register.manager.priceManager">
             </command>
          </menu>
          <menu
