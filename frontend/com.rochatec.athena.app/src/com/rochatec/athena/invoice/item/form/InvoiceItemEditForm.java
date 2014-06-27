@@ -6,16 +6,16 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
-import com.rochatec.athena.model.InvoiceInputItem;
+import com.rochatec.athena.model.AbstractInvoiceItem;
 import com.rochatec.athena.util.ATHENA;
 import com.rochatec.graphics.dialog.AbstractEditDialog;
 
-public class InvoiceItemEditForm extends AbstractEditDialog<InvoiceInputItem> {
+public class InvoiceItemEditForm extends AbstractEditDialog<AbstractInvoiceItem> {
 
 	private ItemBox itemBox;
 	private InvoiceItemListener listener;
 	
-	public InvoiceItemEditForm(Shell owner, InvoiceInputItem selected,InvoiceItemListener listener) {
+	public InvoiceItemEditForm(Shell owner, AbstractInvoiceItem selected,InvoiceItemListener listener) {
 		super(owner, selected);
 		this.listener = listener;
 	}

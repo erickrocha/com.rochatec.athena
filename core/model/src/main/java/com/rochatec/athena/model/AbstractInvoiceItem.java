@@ -2,6 +2,7 @@ package com.rochatec.athena.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -48,6 +49,13 @@ public class AbstractInvoiceItem implements Serializable {
 
 	@Column(name = "IPI_VALUE", precision = 10, scale = 3)
 	private BigDecimal ipiValue = BigDecimal.ZERO;
+	
+	@Column(name = "COST_PRICE", precision = 10, scale = 2)
+	private BigDecimal costPrice = BigDecimal.ZERO;
+
+	@OneToOne
+	@JoinColumn(name = "ICMS", referencedColumnName = "ID")
+	private Icms icms;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
@@ -107,6 +115,39 @@ public class AbstractInvoiceItem implements Serializable {
 
 	public void setIpiBase(BigDecimal ipiBase) {
 		this.ipiBase = ipiBase;
+	}
+	
+	public BigDecimal getCostPrice() {
+		return costPrice;
+	}
+
+	public void setCostPrice(BigDecimal costPrice) {
+		this.costPrice = costPrice;
+	}
+
+	public void setIcms(Icms icms) {
+		this.icms = icms;
+	}
+	
+	public Icms getIcms() {
+		return icms;
+	}
+	
+	public BigDecimal getTotalIcms(){
+		try {
+			BigDecimal total = getTotalItems();
+			BigDecimal value = total.divide(new BigDecimal(100).multiply(getIcms() != null ? getIcms().getPercentage() : BigDecimal.ONE));
+			value.setScale(2,RoundingMode.HALF_EVEN);
+			return value;
+		}catch (ArithmeticException ex){
+			return BigDecimal.ZERO;
+		}
+	}
+	
+	public BigDecimal getTotalItems(){
+		BigDecimal value = getQuantity().multiply(getCostPrice());
+		value.setScale(2,RoundingMode.HALF_EVEN);
+		return value; 				
 	}
 
 	@Override

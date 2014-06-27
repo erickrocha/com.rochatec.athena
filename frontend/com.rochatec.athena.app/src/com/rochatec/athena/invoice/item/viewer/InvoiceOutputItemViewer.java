@@ -18,26 +18,25 @@ import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.form.InvoiceItemEditForm;
 import com.rochatec.athena.invoice.item.form.ItemBox;
-import com.rochatec.athena.invoice.item.provider.InvoiceIInputtemLabelProvider;
+import com.rochatec.athena.invoice.item.provider.InvoiceOutputItemLabelProvider;
 import com.rochatec.athena.invoice.item.table.InvoiceItemTable;
+import com.rochatec.athena.model.AbstractInvoiceItem;
 import com.rochatec.athena.model.InvoiceInputItem;
+import com.rochatec.athena.model.InvoiceOutputItem;
 import com.rochatec.athena.util.ATHENA;
 import com.rochatec.graphics.provider.GenericContentProvider;
 import com.rochatec.graphics.table.AbstractTable;
 import com.rochatec.graphics.util.LayoutFactory;
 
-public class InvoiceInputItemViewer {
+
+public class InvoiceOutputItemViewer {
 	
 	private AbstractTable tableViewer;
 	private Composite base;
 	private ItemBox itemBox;
 	private InvoiceItemListener listener;
 	
-	public InvoiceInputItemViewer(Composite parent,InvoiceItemListener listener) {
-		this(parent,new InvoiceInputItem(),listener);
-	}
-	
-	public InvoiceInputItemViewer(Composite parent,InvoiceInputItem item,InvoiceItemListener listener){
+	public InvoiceOutputItemViewer(Composite parent,InvoiceOutputItem item,InvoiceItemListener listener){
 		base = new Composite(parent,SWT.NONE);
 		base.setLayout(LayoutFactory.getInstance().getGridLayout(1));
 		base.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));		
@@ -47,29 +46,19 @@ public class InvoiceInputItemViewer {
 		createTable(base);
 	}
 	
+	public InvoiceOutputItemViewer(Composite parent,InvoiceItemListener listener) {
+		this(parent,new InvoiceOutputItem(),listener);
+	}
+	
 	private void createTable(Composite parent){
 		Composite composite = new Composite(parent,SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
 		composite.setLayout(LayoutFactory.getInstance().getFillLayout());
 		tableViewer = new InvoiceItemTable(composite);
 		tableViewer.setContentProvider(new GenericContentProvider<InvoiceInputItem>());
-		tableViewer.setLabelProvider(new InvoiceIInputtemLabelProvider());
+		tableViewer.setLabelProvider(new InvoiceOutputItemLabelProvider());
 		tableViewer.addDoubleClickListener(new EditListener());
 		tableViewer.addKeyListener(new DeleteListener());
-	}
-	
-	public void setLayoutData(Object layoutData){
-		this.base.setLayoutData(layoutData);
-	}
-	
-	public Control getControl(){
-		return base;
-	}
-	
-	public void setInput(List<InvoiceInputItem> items){
-		if (items == null)
-			items = new ArrayList<InvoiceInputItem>();
-		tableViewer.setInput(items);
 	}
 	
 	public void addInvoiceItemListener(InvoiceItemListener listener){
@@ -80,10 +69,24 @@ public class InvoiceInputItemViewer {
 		this.itemBox.removeInvoiceItemListener(listener);
 	}
 	
+	public void setLayoutData(Object layoutData){
+		this.base.setLayoutData(layoutData);
+	}
+	
+	public Control getControl(){
+		return base;
+	}
+	
+	public void setInput(List<InvoiceOutputItem> items){
+		if (items == null)
+			items = new ArrayList<InvoiceOutputItem>();
+		tableViewer.setInput(items);
+	}
+	
 	class EditListener implements IDoubleClickListener{
 		@Override
 		public void doubleClick(DoubleClickEvent event) {
-			InvoiceInputItem item = (InvoiceInputItem)((IStructuredSelection)tableViewer.getSelection()).getFirstElement();			
+			AbstractInvoiceItem item = (AbstractInvoiceItem)((IStructuredSelection)tableViewer.getSelection()).getFirstElement();			
 			InvoiceItemEditForm form =  new InvoiceItemEditForm(event.getViewer().getControl().getShell(),item,listener);
 			form.open();
 		}

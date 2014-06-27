@@ -93,15 +93,7 @@ public class InvoiceInput extends AbstractInvoice {
 	
 	public void setItemsList(List<InvoiceInputItem> items){
 		this.items = new HashSet<InvoiceInputItem>(items);
-	}
-	
-	public List<IProductItem> getProductItems(){
-		List<IProductItem> items = new ArrayList<IProductItem>();
-		for (InvoiceInputItem item : getItems()){
-			items.add(item);
-		}
-		return items;
-	}
+	}	
 	
 	public void addItem(InvoiceInputItem newItem){
 		if (this.items.contains(newItem)){

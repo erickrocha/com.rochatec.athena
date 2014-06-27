@@ -25,7 +25,7 @@ import com.rochatec.athena.client.service.InvoiceClientService;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
-import com.rochatec.athena.invoice.item.viewer.InvoiceInputItemViewer;
+import com.rochatec.athena.invoice.item.viewer.InvoiceOutputItemViewer;
 import com.rochatec.athena.invoice.viewer.InvoiceTotalViewer;
 import com.rochatec.athena.manufacture.natureOfOperation.dialog.NatureOfOperationDialog;
 import com.rochatec.athena.manufacture.natureOfOperation.provider.NatureOfOperationLabelProvider;
@@ -61,7 +61,7 @@ public class InvoiceOutputEditor extends AbstractEditor implements InvoiceItemLi
 	private DateChooserCombo arrivalDate;
 	private DateChooserCombo dateRegister;
 	private InvoiceValueViewer valueViewer;
-	private InvoiceInputItemViewer itemViewer;
+	private InvoiceOutputItemViewer itemViewer;
 	private InvoiceTotalViewer totalViewer;
 
 	private List<InvoiceOutputItem> items = new ArrayList<InvoiceOutputItem>();
@@ -148,8 +148,8 @@ public class InvoiceOutputEditor extends AbstractEditor implements InvoiceItemLi
 	}
 	
 	private void createInvoiceItem(Composite parent){
-//		itemViewer = new InvoiceInputItemViewer(parent,this);
-//		itemViewer.setInput(editorInput.getInvoice().getItemsList());
+		itemViewer = new InvoiceOutputItemViewer(parent,this);
+		itemViewer.setInput(editorInput.getInvoice().getItemsList());
 	}
 
 	@Override

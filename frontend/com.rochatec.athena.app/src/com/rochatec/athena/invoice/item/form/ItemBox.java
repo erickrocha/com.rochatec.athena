@@ -32,6 +32,7 @@ import com.rochatec.athena.invoice.item.Listener.InvoiceItemListener;
 import com.rochatec.athena.invoice.item.event.InvoiceItemEvent;
 import com.rochatec.athena.manufacture.icms.provider.IcmsLabelProvider;
 import com.rochatec.athena.manufacture.product.dialog.ProductDialog;
+import com.rochatec.athena.model.AbstractInvoiceItem;
 import com.rochatec.athena.model.Icms;
 import com.rochatec.athena.model.InvoiceInputItem;
 import com.rochatec.athena.model.Product;
@@ -68,14 +69,14 @@ public class ItemBox {
 	private ImageHyperlink btAdd;
 	private Product product;
 	private ListenerList listeners;
-	private InvoiceInputItem item;
+	private AbstractInvoiceItem item;
 	
 	private Shell shell;
 	private int style;
 	
 	private ManufactureClientService manufactureClientService = ServiceFactory.getInstance().getManufactureClientService();
 	
-	public ItemBox(Composite parent,InvoiceInputItem item,int style) {
+	public ItemBox(Composite parent,AbstractInvoiceItem item,int style) {
 		this.listeners = new ListenerList();
 		this.item = item;
 		this.shell = parent.getShell();
@@ -83,11 +84,11 @@ public class ItemBox {
 		createContents(parent);
 	}
 	
-	public InvoiceInputItem getItem(){
+	public AbstractInvoiceItem getItem(){
 		return item;
 	}
 	
-	public void setItem(InvoiceInputItem item){
+	public void setItem(AbstractInvoiceItem item){
 		this.item =item;
 	}
 	
@@ -108,8 +109,8 @@ public class ItemBox {
 		try{
 			if (style == ATHENA.EDIT){
 				product = item.getProduct();
-				txtIdProduct.setText(item.getProduct() != null ? item.getProductId().toString() : "");
-				txtProductName.setText(item.getProduct() != null ? item.getLabel() : "");
+				txtIdProduct.setText(item.getProduct() != null ? item.getProduct().getId().toString() : "");
+				txtProductName.setText(item.getProduct() != null ? item.getProduct().getName() : "");
 				txtQuantity.setText(Formatter.getWeight().mask(item.getQuantity()));
 				txtCostPrice.setText(Formatter.getDecimal().mask(item.getCostPrice()));
 				viewerICms.setSelection(item.getIcms() != null ? new SearchSelection<Icms>(item.getIcms()) : new SearchSelection<Icms>(listIcms.get(0)));
