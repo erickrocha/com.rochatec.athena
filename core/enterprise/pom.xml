@@ -37,7 +37,7 @@
 			<artifactId>model</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 			<type>jar</type>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -54,7 +54,7 @@
 							<ejbModule>
 								<groupId>com.athena</groupId>
 								<artifactId>eao</artifactId>
-							</ejbModule>							
+							</ejbModule>
 							<jarModule>
 								<groupId>com.athena</groupId>
 								<artifactId>model</artifactId>
@@ -68,7 +68,34 @@
 						</archive>
 					</configuration>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.jboss.as.plugins</groupId>
+					<artifactId>jboss-as-maven-plugin</artifactId>
+					<version>7.6.Final</version>
+					<executions>
+						<execution>
+							<id>undeploy</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>undeploy</goal>
+							</goals>
+							<configuration>
+								<ignoreMissingDeployment>true</ignoreMissingDeployment>
+							</configuration>
+						</execution>
+						<!-- Deploy the application on install -->
+						<execution>
+							<id>deploy</id>
+							<phase>install</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+						</execution>
+					</executions>
+
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>

@@ -24,10 +24,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.rochatec.athena.pdv.application"
-            name="PDV">
+            name="Athena PDV">
          <property
-               name="windowImages"
-               value="icons/alt_window_16.gif,icons/alt_window_32.gif">
+               name="appName"
+               value="Athena PDV">
          </property>
       </product>
    </extension>
