@@ -69,7 +69,7 @@ public class BematechPrinterServiceImpl implements IPrinterService{
 
 	@Override
 	public int startCloseTicket(IncreaseOrDiscount increaseOrDiscount) {
-		return Bematech.IniciaFechamentoCupom(increaseOrDiscount, tipoAcrescimoDesconto, valorAcrescimoDesconto);
+		return Bematech.IniciaFechamentoCupom(increaseOrDiscount.getType().toString(),increaseOrDiscount.getType().toString(),increaseOrDiscount.getValueString());
 	}
 
 	@Override
