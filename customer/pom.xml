@@ -9,8 +9,10 @@
   <modules>
 	<module>com.rochatec.athena.pdv.plugin</module>   
 	<module>com.rochatec.athena.pdv.feature</module>
-	<module>com.rochatec.athena.pdv.product</module>
 	<module>com.rochatec.athena.pdv.p2updatesite</module>
+	<module>com.rochatec.athena.pdv.lib.ecf</module>
+	<module>com.rochatec.athena.pdv.lib.bematech</module>
+	<module>com.rochatec.athena.pdv.product</module>		
   </modules>
 
   <properties>

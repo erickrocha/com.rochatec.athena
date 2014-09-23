@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product useFeatures="false" includeLaunchers="true">
+<product name="Athena PDV" uid="com.rochatec.athena.pdv.plugin" id="com.rochatec.athena.pdv.plugin.product" application="com.rochatec.athena.pdv.plugin.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+
 
    <configIni use="default">
    </configIni>
@@ -11,8 +12,35 @@
       </vmArgsMac>
    </launcherArgs>
 
+   <windowImages/>
+
+
+   <launcher name="Athena PDV">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+
    <plugins>
    </plugins>
 
+   <features>
+      <feature id="com.rochatec.athena.pdv.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
 
 </product>

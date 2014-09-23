@@ -13,6 +13,8 @@
       </vmArgsMac>
    </launcherArgs>
 
+   <windowImages/>
+
    <launcher name="Metallurgical">
       <linux icon="/com.rochatec.metallurgical.app/engine.xpm"/>
       <solaris/>

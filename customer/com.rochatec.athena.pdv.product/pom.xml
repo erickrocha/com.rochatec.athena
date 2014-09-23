@@ -12,7 +12,7 @@
   <artifactId>com.rochatec.athena.pdv.product</artifactId>
   <packaging>eclipse-repository</packaging>
   <properties>
-    <product-id>athenaPdv.product</product-id>
+    <product-id>com.rochatec.athena.pdv.plugin</product-id>
   </properties>
   <build>
     <plugins>
