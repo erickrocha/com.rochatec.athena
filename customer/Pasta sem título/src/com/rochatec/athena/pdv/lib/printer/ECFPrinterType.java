@@ -1,4 +1,4 @@
-package com.rochatec.athena.pdv.lib;
+package com.rochatec.athena.pdv.lib.printer;
 
 public enum ECFPrinterType {
 
