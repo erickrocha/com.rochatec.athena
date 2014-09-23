@@ -18,6 +18,11 @@
             class="com.rochatec.athena.Perspective"
             id="com.rochatec.athena.pdv.plugin.perspective">
       </perspective>
+      <perspective
+            class="com.rochatec.athena.home.perspective.TwoColumnsPerspective"
+            id="com.rochatec.athena.home.perspective.TwoColumnsPerspective"
+            name="Two Collumns">
+      </perspective>
    </extension>
    <extension
          id="product"
@@ -30,6 +35,23 @@
                value="Athena PDV">
          </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="com.rochatec.athena.home.views.CommandsView"
+            id="com.rochatec.athena.home.views.CommandsView"
+            name="Commands"
+            restorable="false">
+      </view>
+      <view
+            allowMultiple="false"
+            class="com.rochatec.athena.home.views.CupomView"
+            id="com.rochatec.athena.home.views.CupomView"
+            name="Cupom View"
+            restorable="true">
+      </view>
    </extension>
 
 </plugin>
