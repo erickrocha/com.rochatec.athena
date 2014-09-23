@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.rochatec.athena</groupId>
   <artifactId>customer</artifactId>
@@ -9,6 +10,7 @@
 	<module>com.rochatec.athena.pdv.plugin</module>   
 	<module>com.rochatec.athena.pdv.feature</module>
 	<module>com.rochatec.athena.pdv.product</module>
+	<module>com.rochatec.athena.pdv.p2updatesite</module>
   </modules>
 
   <properties>
@@ -22,8 +24,7 @@
       <id>Luna</id>
       <url>${luna-repo.url}</url>
       <layout>p2</layout>
-    </repository>
-
+    </repository>	
   </repositories>
 
   <build>
