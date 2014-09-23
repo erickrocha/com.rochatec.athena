@@ -16,18 +16,18 @@
       <perspective
             name="RCP Perspective"
             class="com.rochatec.athena.Perspective"
-            id="com.rochatec.athena.pdv.perspective">
+            id="com.rochatec.athena.pdv.plugin.perspective">
       </perspective>
    </extension>
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="com.rochatec.athena.pdv.application"
-            name="Athena PDV">
+            application="com.rochatec.athena.pdv.plugin.application"
+            name="PDV">
          <property
-               name="appName"
-               value="Athena PDV">
+               name="windowImages"
+               value="icons/alt_window_16.gif,icons/alt_window_32.gif">
          </property>
       </product>
    </extension>
