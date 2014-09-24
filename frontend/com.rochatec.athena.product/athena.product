@@ -18,14 +18,9 @@
    <windowImages/>
 
    <launcher name="athena">
-      <linux icon="/com.rochatec.athena.product/resources/Athena_48.xpm"/>
       <solaris/>
       <win useIco="false">
-         <bmp
-            winSmallHigh="/com.rochatec.athena.product/resources/Athena_16.bmp"
-            winMediumHigh="/com.rochatec.athena.product/resources/Athena_32.bmp"
-            winLargeHigh="/com.rochatec.athena.product/resources/Athena_48.bmp"
-            winExtraLargeHigh="/com.rochatec.athena.product/resources/Athena_256.bmp"/>
+         <bmp/>
       </win>
    </launcher>
 
