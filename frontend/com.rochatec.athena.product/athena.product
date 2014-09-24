@@ -9,21 +9,31 @@
    <launcherArgs>
       <programArgs>-clearPersistedState
       </programArgs>
+      <vmArgs>-Xms1024M -Xmx1024M -XX:MaxPermSize=256M -XX:PermSize=256M
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
 
-   <launcher name="Metallurgical">
-      <linux icon="/com.rochatec.metallurgical.app/engine.xpm"/>
+   <launcher name="athena">
+      <linux icon="/com.rochatec.athena.product/resources/Athena_48.xpm"/>
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/com.rochatec.athena.product/resources/Athena_16.bmp"
+            winMediumHigh="/com.rochatec.athena.product/resources/Athena_32.bmp"
+            winLargeHigh="/com.rochatec.athena.product/resources/Athena_48.bmp"
+            winExtraLargeHigh="/com.rochatec.athena.product/resources/Athena_256.bmp"/>
       </win>
    </launcher>
 
    <vm>
+      <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
+      <macos include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</macos>
+      <solaris include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</solaris>
+      <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</windows>
    </vm>
 
    <plugins>
