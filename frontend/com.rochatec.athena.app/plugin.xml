@@ -5,8 +5,7 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application
-            icon="engine.xpm">
+      <application>
          <run
                class="com.rochatec.athena.app.Application">
          </run>

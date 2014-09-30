@@ -11,7 +11,7 @@
         <dependent-module archiveName="model-1.0.0-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/model/model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="oracle-11.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/oracle/11.0/oracle-11.0.jar">
+        <dependent-module archiveName="ojdbc6-11.2.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/oracle/ojdbc6/11.2.0/ojdbc6-11.2.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="hibernate-core-4.0.1.Final.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-core/4.0.1.Final/hibernate-core-4.0.1.Final.jar">

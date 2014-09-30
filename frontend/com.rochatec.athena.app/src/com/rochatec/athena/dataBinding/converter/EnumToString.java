@@ -10,7 +10,6 @@ public class EnumToString extends Converter{
 
 	@Override
 	public Object convert(Object fromObject) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

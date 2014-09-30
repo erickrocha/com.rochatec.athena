@@ -31,7 +31,6 @@ public class BematechPrinterServiceImpl implements IPrinterService{
 
 	@Override
 	public int sellItem(Item item) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -75,7 +74,6 @@ public class BematechPrinterServiceImpl implements IPrinterService{
 	@Override
 	public int closeTicket(Payment payment,
 			IncreaseOrDiscount increaseOrDiscount, String message) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
