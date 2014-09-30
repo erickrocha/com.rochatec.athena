@@ -5,9 +5,9 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 import com.rochatec.athena.home.views.CupomView;
 
-public class TwoColumnsPerspective implements IPerspectiveFactory{
+public class DefaultPerspective implements IPerspectiveFactory{
 	
-	public static final String id = "com.rochatec.athena.home.perspective.TwoColumnsPerspective";
+	public static final String id = "com.rochatec.athena.home.perspective.DefaultPerspective";
 
 	@Override
 	public void createInitialLayout(IPageLayout layout) {

@@ -7,6 +7,8 @@ Bundle-Activator: com.rochatec.athena.pdv.plugin.Activator
 Bundle-Vendor: ROCHATEC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.forms
+ org.eclipse.ui.forms,
+ com.rochatec.graphics,
+ com.rochatec.athena.pdv.service
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

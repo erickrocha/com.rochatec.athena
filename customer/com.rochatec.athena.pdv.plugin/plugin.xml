@@ -14,14 +14,10 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
-            class="com.rochatec.athena.Perspective"
-            id="com.rochatec.athena.pdv.plugin.perspective">
-      </perspective>
-      <perspective
-            class="com.rochatec.athena.home.perspective.TwoColumnsPerspective"
-            id="com.rochatec.athena.home.perspective.TwoColumnsPerspective"
-            name="Two Collumns">
+            class="com.rochatec.athena.home.perspective.DefaultPerspective"
+            fixed="true"
+            id="com.rochatec.athena.home.perspective.DefaultPerspectiv"
+            name="Default Perspective">
       </perspective>
    </extension>
    <extension
@@ -52,6 +48,20 @@
             name="Cupom View"
             restorable="true">
       </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.rochatec.athena.pdv.plugin.preferences.SamplePreferencePage"
+            id="com.rochatec.athena.pdv.plugin.preferences.SamplePreferencePage"
+            name="Sample Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.rochatec.athena.pdv.plugin.preferences.PreferenceInitializer">
+      </initializer>
    </extension>
 
 </plugin>
