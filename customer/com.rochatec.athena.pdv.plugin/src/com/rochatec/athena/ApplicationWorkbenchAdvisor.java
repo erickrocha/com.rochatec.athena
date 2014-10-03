@@ -4,7 +4,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import com.rochatec.athena.home.perspective.TwoColumnsPerspective;
+import com.rochatec.athena.home.perspective.DefaultPerspective;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
@@ -13,6 +13,6 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     }
 
 	public String getInitialWindowPerspectiveId() {
-		return TwoColumnsPerspective.id;
+		return DefaultPerspective.id;
 	}
 }

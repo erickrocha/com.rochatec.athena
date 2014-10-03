@@ -5,6 +5,7 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
+
       <application
             icon="athena.xpm">
          <run

@@ -7,8 +7,8 @@ Bundle-Activator: com.rochatec.athena.pdv.lib.ecf.Activator
 Bundle-Vendor: ROCHATEC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: com.rochatec.athena.pdv.lib.model,
  com.rochatec.athena.pdv.lib.printer,
  com.rochatec.athena.pdv.lib.service
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

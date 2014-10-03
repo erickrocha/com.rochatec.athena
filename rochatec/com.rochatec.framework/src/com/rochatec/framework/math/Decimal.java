@@ -38,13 +38,11 @@ public class Decimal implements IFormarter{
 
 	@Override
 	public String unMask(String value) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

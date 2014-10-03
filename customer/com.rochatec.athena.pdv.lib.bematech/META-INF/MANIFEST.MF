@@ -8,5 +8,5 @@ Bundle-Vendor: ROCHATEC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  com.rochatec.athena.pdv.lib.ecf
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
