@@ -7,7 +7,6 @@ import org.eclipse.ui.internal.actions.CommandAction;
 import com.rochatec.athena.i18n.Messages;
 import com.rochatec.athena.util.ICommands;
 
-@SuppressWarnings("restriction")
 public abstract class MetallurgicalActionFactory {
 
 	/**
