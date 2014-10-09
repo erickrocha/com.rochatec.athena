@@ -6,12 +6,16 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.events.IHyperlinkListener;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ImageHyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.ViewPart;
 
 import com.rochatec.athena.pdv.plugin.Activator;
+import com.rochatec.athena.pdv.service.facade.IProductFacade;
+import com.rochatec.athena.pdv.service.facade.impl.ProductFacadeImpl;
 import com.rochatec.athena.util.IPathIcons;
 import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.FontToolkit;
@@ -50,6 +54,26 @@ public class CupomView extends ViewPart{
 		text.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		ImageHyperlink hyperlink = new ImageHyperlink(composite, SWT.NONE);
 		hyperlink.setImage(Activator.getImageDescriptor(IPathIcons.BUTTON_SEARCH).createImage());
+		hyperlink.addHyperlinkListener(new IHyperlinkListener() {
+			
+			@Override
+			public void linkExited(HyperlinkEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void linkEntered(HyperlinkEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void linkActivated(HyperlinkEvent arg0) {
+				IProductFacade productFacade =  new ProductFacadeImpl();
+				productFacade.execute();
+			}
+		});
 	}
 
 	@Override

@@ -16,7 +16,7 @@
       <perspective
             class="com.rochatec.athena.home.perspective.DefaultPerspective"
             fixed="true"
-            id="com.rochatec.athena.home.perspective.DefaultPerspectiv"
+            id="com.rochatec.athena.home.perspective.DefaultPerspective"
             name="Default Perspective">
       </perspective>
    </extension>
@@ -36,32 +36,11 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
-            class="com.rochatec.athena.home.views.CommandsView"
-            id="com.rochatec.athena.home.views.CommandsView"
-            name="Commands"
-            restorable="false">
-      </view>
-      <view
-            allowMultiple="false"
             class="com.rochatec.athena.home.views.CupomView"
             id="com.rochatec.athena.home.views.CupomView"
             name="Cupom View"
             restorable="true">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="com.rochatec.athena.pdv.plugin.preferences.SamplePreferencePage"
-            id="com.rochatec.athena.pdv.plugin.preferences.SamplePreferencePage"
-            name="Sample Preferences">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="com.rochatec.athena.pdv.plugin.preferences.PreferenceInitializer">
-      </initializer>
    </extension>
 
 </plugin>
