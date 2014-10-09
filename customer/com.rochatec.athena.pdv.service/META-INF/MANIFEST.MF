@@ -5,11 +5,9 @@ Bundle-SymbolicName: com.rochatec.athena.pdv.service
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.rochatec.athena.pdv.service.Activator
 Bundle-Vendor: ROCHATEC
-Require-Bundle: org.eclipse.core.runtime,
- org.codehaus.groovy;bundle-version="2.3.4",
- org.codehaus.groovy.eclipse;bundle-version="2.9.0"
+Require-Bundle: org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- lib/com.rochatec.persistence-1.0-SNAPSHOT.jar,
+Bundle-ClassPath: lib/com.rochatec.persistence-1.0-SNAPSHOT.jar,
+ lib/mongo-java-driver-2.12.3.jar,
  lib/

@@ -2,6 +2,7 @@ package com.rochatec.athena.pdv.service.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Product implements Serializable{
@@ -56,6 +57,13 @@ public class Product implements Serializable{
 
 	public void setBarcodes(Set<String> barcodes) {
 		this.barcodes = barcodes;
+	}
+	
+	public void addBarcode(String barcode){
+		if (this.barcodes == null){
+			this.barcodes = new HashSet<String>();
+		}
+		this.barcodes.add(barcode);
 	}
 
 	public String getCategory() {
