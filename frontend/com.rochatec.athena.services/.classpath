@@ -13,7 +13,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/jboss-client.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/joda-time-2.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.17.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/model-1.0.0-SNAPSHOT.jar" sourcepath="/model"/>
+	<classpathentry exported="true" kind="lib" path="lib/model-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-jcl-1.6.1.jar"/>
 	<classpathentry kind="src" path="src/"/>

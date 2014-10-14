@@ -13,5 +13,5 @@ Export-Package: com.rochatec.framework.bind,
  com.rochatec.framework.math,
  com.rochatec.framework.model,
  com.rochatec.framework.util
-Require-Bundle: org.eclipse.swt;bundle-version="3.102.1",
- org.eclipse.core.runtime;bundle-version="3.9.0"
+Require-Bundle: org.eclipse.swt,
+ org.eclipse.core.runtime
