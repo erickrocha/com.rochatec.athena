@@ -29,5 +29,8 @@
       <feature id="com.rochatec.feature"/>
    </features>
 
+   <configurations>
+      <property name="org.eclipse.ui/KEY_CONFIGURATION_ID" value="com.rochatec.pos.athena.app.scheme.pos" />
+   </configurations>
 
 </product>

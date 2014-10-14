@@ -36,6 +36,10 @@
                name="appName"
                value="POS Athena">
          </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
    </extension>
    <extension
@@ -61,7 +65,7 @@
       </handler>
       <handler
             class="com.rochatec.pos.athena.handler.SumHandler"
-            commandId="com.rochatec.pos.athena.app.command.sell">
+            commandId="com.rochatec.pos.athena.app.command.sum">
       </handler>
       <handler
             class="com.rochatec.pos.athena.handler.CloseHandler"
@@ -69,20 +73,16 @@
       </handler>
    </extension>
    <extension
-         point="org.eclipse.ui.contexts">
-      <context
-            id="com.rochatec.pos.athena.app.context"
-            name="Application Context"
-            parentId="org.eclipse.ui.contexts.window">
-      </context>
-   </extension>
-   <extension
          point="org.eclipse.ui.bindings">
       <key
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="com.rochatec.pos.athena.app.key1"
-            sequence="com.rochatec.pos.athena.app.key1">
+            commandId="com.rochatec.pos.athena.app.command.open"
+            schemeId="com.rochatec.pos.athena.app.scheme.pos"
+            sequence="F9">
       </key>
+      <scheme
+            id="com.rochatec.pos.athena.app.scheme.pos"
+            name="POSAthena">
+      </scheme>
    </extension>
    <extension
          point="org.eclipse.ui.views">

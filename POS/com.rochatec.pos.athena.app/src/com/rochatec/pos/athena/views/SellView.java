@@ -6,8 +6,8 @@ import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -17,6 +17,7 @@ import com.rochatec.graphics.util.Colors;
 import com.rochatec.graphics.util.FontToolkit;
 import com.rochatec.graphics.util.WidgetUtils;
 import com.rochatec.pos.athena.i18n.Message;
+import com.rochatec.pos.athena.util.GridLayoutBuilder;
 
 public class SellView extends ViewPart{
 	
@@ -24,10 +25,10 @@ public class SellView extends ViewPart{
 	
 	private FormToolkit toolkit;
 	private ScrolledForm form;
-	private CLabel lblQuantity;
-	private CLabel lblPrice;
+	private Text txtQuantity;
+	private Text txtPrice;
 	private StyledText styledText;
-	private CLabel lblSubTotal;
+	private Text txtSubTotal;
 	private StringBuilder builder = new StringBuilder();
 
 	@Override
@@ -82,48 +83,39 @@ public class SellView extends ViewPart{
 	
 	
 	private void createItemBox(Composite parent){
-		Group group = new Group(parent, SWT.BORDER);
-		GridLayout layout = new GridLayout(1,true);
-		layout.marginTop = 10;
-		layout.marginLeft = 25;
-		layout.marginRight = 25;
-		layout.marginBottom = 10;
-		group.setLayout(layout);
+		Group group = new Group(parent, SWT.BORDER);		
+		group.setLayout(GridLayoutBuilder.getInstance().build(10,0,0,0));
 		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		
-		Composite compositeLabel = new Composite(group, SWT.NONE);
-		compositeLabel.setLayout(new GridLayout(3,true));
-		compositeLabel.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
-		new CLabel(compositeLabel, SWT.NONE|SWT.CENTER).setText(Message.getMessage("label.quantity"));
-		new CLabel(compositeLabel, SWT.NONE|SWT.CENTER);
-		new CLabel(compositeLabel, SWT.NONE|SWT.CENTER).setText(Message.getMessage("label.price"));
+		Composite composite = new Composite(group, SWT.NONE);
 		
-		for (Control control : compositeLabel.getChildren()){
-			if (control instanceof CLabel){
-				((CLabel)control).setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
-			}
-		}
+		composite.setLayout(GridLayoutBuilder.getInstance().build(0,0,0,0,3));
+		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL_EVEN_ODD,true,false));
+		CLabel lblQuantity = new CLabel(composite,SWT.NONE);
+		lblQuantity.setFont(FontToolkit.getInstance().getTahomaLabel());
+		lblQuantity.setText(Message.getMessage("label.quantity"));
+		new CLabel(composite, SWT.NONE|SWT.CENTER);
+		CLabel lblPrice = new CLabel(composite, SWT.NONE);
+		lblPrice.setFont(FontToolkit.getInstance().getTahomaLabel());
+		lblPrice.setText(Message.getMessage("label.price"));
 		
-		Composite compositeValues = new Composite(group, SWT.NONE);
-		compositeValues.setLayout(new GridLayout(3,false));
-		compositeValues.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+		composite.setLayout(new GridLayout(3,false));
+		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
 		
-		lblQuantity = new CLabel(compositeValues,SWT.FLAT);
-		lblQuantity.setAlignment(SWT.LEFT);		
-		lblQuantity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		lblQuantity.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));		
-		lblQuantity.setText("0");
+		txtQuantity = new Text(composite,SWT.NONE|SWT.READ_ONLY);		
+		txtQuantity.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+		txtQuantity.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));		
+		txtQuantity.setText("0");
 		
-		CLabel cLabel =new CLabel(compositeValues, SWT.FLAT|SWT.CENTER);
+		CLabel cLabel =new CLabel(composite, SWT.FLAT|SWT.CENTER);
 		cLabel.setLayoutData(new GridData(SWT.FILL,SWT.FILL,false,false));
 		cLabel.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));
 		cLabel.setText("X");
 		
-		lblPrice = new CLabel(compositeValues, SWT.FLAT|SWT.RIGHT_TO_LEFT);
-		lblPrice.setAlignment(SWT.RIGHT);
-		lblPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		lblPrice.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));
-		lblPrice.setText("0,00");
+		txtPrice = new Text(composite, SWT.NONE|SWT.RIGHT|SWT.READ_ONLY);
+		txtPrice.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+		txtPrice.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));
+		txtPrice.setText("0,00");
 	}
 	
 	private void createCupom(Composite parent){
@@ -137,15 +129,17 @@ public class SellView extends ViewPart{
 		Group group = new Group(parent, SWT.NONE);
 		group.setLayout(new GridLayout(1,false));
 		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
-		new CLabel(group,SWT.RIGHT_TO_LEFT).setText(Message.getMessage("label.subtotal"));
-		lblSubTotal = new CLabel(group, SWT.FLAT);
-		lblSubTotal.setFont(FontToolkit.getInstance().getTahoma(40,SWT.BOLD));
-		lblSubTotal.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+		CLabel lblSubTotal = new CLabel(group,SWT.NONE);
+		lblSubTotal.setFont(FontToolkit.getInstance().getTahomaLabel());
+		lblSubTotal.setText(Message.getMessage("label.subtotal"));
+		txtSubTotal = new Text(group, SWT.FLAT|SWT.RIGHT|SWT.READ_ONLY);
+		txtSubTotal.setFont(FontToolkit.getInstance().getTahoma(40,SWT.BOLD));
+		txtSubTotal.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
 		
 	}
 	
 	public void setSubTotal(String value){
-		this.lblSubTotal.setText(value);
+		this.txtSubTotal.setText(value);
 	}
 	
 	public void addLine(String value){
@@ -154,11 +148,11 @@ public class SellView extends ViewPart{
 	}
 	
 	public void setQuantity(String quantity){
-		this.lblQuantity.setText(quantity);
+		this.txtQuantity.setText(quantity);
 	}
 	
 	public void setSellPrice(String price){
-		this.lblPrice.setText(price);
+		this.txtPrice.setText(price);
 	}
 	@Override
 	public void setFocus() {
