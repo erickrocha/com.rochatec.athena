@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: App
+Bundle-SymbolicName: com.rochatec.pos.athena.app; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.rochatec.pos.athena.app.Activator
+Bundle-Vendor: ROCHATEC
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ com.rochatec.framework,
+ com.rochatec.graphics,
+ com.rochatec.pos.athena.i18n
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

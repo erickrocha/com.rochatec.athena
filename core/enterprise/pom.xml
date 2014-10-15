@@ -111,9 +111,7 @@
 										<artifactId>
 											maven-ear-plugin
 										</artifactId>
-										<versionRange>
-											[2.6,)
-										</versionRange>
+										<versionRange>[2.4.2,)</versionRange>
 										<goals>
 											<goal>
 												generate-application-xml

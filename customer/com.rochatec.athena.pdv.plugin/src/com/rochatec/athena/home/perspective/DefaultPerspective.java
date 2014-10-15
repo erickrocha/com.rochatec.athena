@@ -7,7 +7,7 @@ import com.rochatec.athena.home.views.CupomView;
 
 public class DefaultPerspective implements IPerspectiveFactory{
 	
-	public static final String id = "com.rochatec.athena.home.perspective.DefaultPerspective";
+	public static final String ID = "com.rochatec.athena.home.perspective.DefaultPerspective";
 
 	@Override
 	public void createInitialLayout(IPageLayout layout) {

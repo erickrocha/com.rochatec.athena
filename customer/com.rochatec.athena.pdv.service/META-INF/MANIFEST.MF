@@ -8,3 +8,12 @@ Bundle-Vendor: ROCHATEC
 Require-Bundle: org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/com.rochatec.persistence-1.0-SNAPSHOT.jar,
+ lib/mongo-java-driver-2.12.3.jar,
+ lib/
+Export-Package: com.rochatec.athena.pdv.service.converter,
+ com.rochatec.athena.pdv.service.dao,
+ com.rochatec.athena.pdv.service.dao.impl,
+ com.rochatec.athena.pdv.service.facade,
+ com.rochatec.athena.pdv.service.facade.impl,
+ com.rochatec.athena.pdv.service.model
