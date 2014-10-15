@@ -25,6 +25,12 @@
             id="com.rochatec.pos.athena.perspective.SellPerspective"
             name="Sell">
       </perspective>
+      <perspective
+            class="com.rochatec.pos.athena.perspective.SumPerspective"
+            fixed="true"
+            id="com.rochatec.pos.athena.perspective.SumPerspective"
+            name="Sum">
+      </perspective>
    </extension>
    <extension
          id="product"
@@ -74,15 +80,20 @@
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
+      <scheme
+            id="com.rochatec.pos.athena.app.scheme.pos"
+            name="POSAthena">
+      </scheme>
       <key
             commandId="com.rochatec.pos.athena.app.command.open"
             schemeId="com.rochatec.pos.athena.app.scheme.pos"
             sequence="F9">
       </key>
-      <scheme
-            id="com.rochatec.pos.athena.app.scheme.pos"
-            name="POSAthena">
-      </scheme>
+      <key
+            commandId="com.rochatec.pos.athena.app.command.sum"
+            schemeId="com.rochatec.pos.athena.app.scheme.pos"
+            sequence="F10">
+      </key>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -100,6 +111,17 @@
             name="Sell"
             restorable="true">
       </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.trim.status">
+         <control
+               class="com.rochatec.pos.athena.contribution.ProductMenuContribution"
+               id="com.rochatec.pos.athena.contribution.ProductMenuContribution">
+         </control>
+      </menuContribution>
    </extension>
 
 </plugin>

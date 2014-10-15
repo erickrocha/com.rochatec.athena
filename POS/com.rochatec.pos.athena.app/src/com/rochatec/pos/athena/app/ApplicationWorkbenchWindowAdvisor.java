@@ -48,4 +48,5 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
    		}
    		return false;
    	}
+        
 }
