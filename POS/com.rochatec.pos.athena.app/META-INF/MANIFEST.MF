@@ -10,6 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.forms,
  com.rochatec.framework,
  com.rochatec.graphics,
- com.rochatec.pos.athena.i18n
+ com.rochatec.pos.athena.i18n,
+ org.eclipse.core.expressions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

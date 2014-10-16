@@ -25,6 +25,10 @@ public class FontToolkit {
 		 return JFaceResources.getFont(name);
 	}
 	
+	public Font getFontDefault(){
+		return JFaceResources.getDefaultFont();
+	}
+	
 	public Font getTahoma(int size,int style){
 		FontData fontData = JFaceResources.getFontRegistry().getFontData(TAHOMA)[0]; 
 		fontData.setHeight(size);

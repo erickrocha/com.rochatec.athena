@@ -29,6 +29,7 @@ public class SellView extends ViewPart{
 	private Text txtPrice;
 	private StyledText styledText;
 	private Text txtSubTotal;
+	private Text txtItemLabel;
 	private StringBuilder builder = new StringBuilder();
 
 	@Override
@@ -68,7 +69,8 @@ public class SellView extends ViewPart{
 	private void createLeftComposite(Composite parent) {
 		Composite leftPanel = new Composite(parent, SWT.NONE);
 		leftPanel.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		leftPanel.setLayout(new GridLayout(1,false));			
+		leftPanel.setLayout(new GridLayout(1,false));	
+		createItemLabel(leftPanel);
 		createItemBox(leftPanel);
 	}
 	
@@ -79,6 +81,20 @@ public class SellView extends ViewPart{
 		righPanel.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
 		createCupom(righPanel);
 		createSubTotalComposite(righPanel);
+	}
+	
+	private void createItemLabel(Composite parent){
+		Group group = new Group(parent, SWT.BORDER);		
+		group.setLayout(GridLayoutBuilder.getInstance().build(10,0,0,0));
+		group.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		
+		CLabel lblPrice = new CLabel(group, SWT.NONE);
+		lblPrice.setFont(FontToolkit.getInstance().getTahomaLabel());
+		lblPrice.setText(Message.getMessage("label.product.description"));
+		
+		txtItemLabel = new Text(group, SWT.READ_ONLY);
+		txtItemLabel.setFont(FontToolkit.getInstance().getTahoma(35,SWT.BOLD));
+		txtItemLabel.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 	}
 	
 	

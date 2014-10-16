@@ -62,6 +62,10 @@
             id="com.rochatec.pos.athena.app.command.open"
             name="Open">
       </command>
+      <command
+            id="com.rochatec.pos.athena.app.command.openConfig"
+            name="Open Config">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -76,6 +80,10 @@
       <handler
             class="com.rochatec.pos.athena.handler.CloseHandler"
             commandId="com.rochatec.pos.athena.app.command.close">
+      </handler>
+      <handler
+            class="com.rochatec.pos.athena.handler.OpenConfigHandler"
+            commandId="com.rochatec.pos.athena.app.command.openConfig">
       </handler>
    </extension>
    <extension
@@ -93,6 +101,11 @@
             commandId="com.rochatec.pos.athena.app.command.sum"
             schemeId="com.rochatec.pos.athena.app.scheme.pos"
             sequence="F10">
+      </key>
+      <key
+            commandId="com.rochatec.pos.athena.app.command.openConfig"
+            schemeId="com.rochatec.pos.athena.app.scheme.pos"
+            sequence="F1">
       </key>
    </extension>
    <extension
@@ -120,8 +133,50 @@
          <control
                class="com.rochatec.pos.athena.contribution.ProductMenuContribution"
                id="com.rochatec.pos.athena.contribution.ProductMenuContribution">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.rochatec.pos.athena.app.sell">
+               </reference>
+            </visibleWhen>
          </control>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="com.rochatec.pos.athena.provider.SellSourceProvider">
+         <variable
+               name="com.rochatec.pos.athena.app.variable1"
+               priorityLevel="workbench">
+         </variable>
+      </sourceProvider>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="com.rochatec.pos.athena.app.sell">
+         <with
+               variable="com.rochatec.pos.athena.provider.SellSourceProvider">
+            <equals
+                  value="sell">
+            </equals>
+         </with>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.rochatec.pos.athena.preferences.page.WelcomePage"
+            id="com.rochatec.pos.athena.preferences.page.WelcomePage"
+            name="Welcome Page">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.rochatec.pos.athena.preferences.initializer.AthenaPosInitializer">
+      </initializer>
    </extension>
 
 </plugin>
