@@ -1,11 +1,11 @@
-package com.rochatec.athena.tools;
+package com.rochatec.pos.athena.tools;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MessageBundleLoader {
-	public static final String MESSAGE_PATH = "com.rochatec.athena.resources.errors";
+	public static final String MESSAGE_PATH = "com.rochatec.athena.pos.resources.errors";
 
 	private static HashMap<String,ResourceBundle> messageBundles = new HashMap<String, ResourceBundle>();
 

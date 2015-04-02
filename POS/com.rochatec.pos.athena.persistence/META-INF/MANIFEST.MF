@@ -5,4 +5,7 @@ Bundle-SymbolicName: com.rochatec.pos.athena.persistence
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ROCHATEC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.eclipse.orbit.mongodb;bundle-version="2.10.1"
+Require-Bundle: javax.persistence,
+ org.eclipse.equinox.util,
+ org.eclipse.equinox.ds,
+ org.eclipse.osgi.services

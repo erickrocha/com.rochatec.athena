@@ -2,6 +2,15 @@ package com.rochatec.pos.athena.persistence.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="BARCODE")
 public class BarCode implements Serializable {
 
 	/**
@@ -9,10 +18,15 @@ public class BarCode implements Serializable {
 	 */
 	private static final long serialVersionUID = 7763367583162705634L;
 	
+	@Id
+	@Column(name="ID")
 	private Long id;
 	
+	@ManyToOne
+	@JoinColumn(name="PRODUCT", nullable=false)	
 	private Product product;
-
+	
+	@Column(name="BARCODE",unique=true)
 	private String barcode;
 
 	public BarCode() {
