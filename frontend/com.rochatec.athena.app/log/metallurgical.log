@@ -6678,3 +6678,5 @@ java.lang.RuntimeException: Operation failed with status WAITING
 41854 [main] ERROR com.rochatec.athena.log.LogListener  - Unhandled event loop exceptionjava.lang.NullPointerException
 46255 [Remoting "client-endpoint" task-1] INFO  org.jboss.ejb.client.remoting.ChannelAssociation  - Channel Channel ID 843bdae1 (outbound) of Remoting connection 320a6ef6 to localhost/127.0.0.1:4447 can no longer process messages
 1    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final
+0    [main] INFO  org.jboss.ejb.client  - JBoss EJB Client version 1.0.5.Final

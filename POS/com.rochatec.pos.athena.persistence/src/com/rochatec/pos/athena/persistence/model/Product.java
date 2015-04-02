@@ -1,23 +1,26 @@
 package com.rochatec.pos.athena.persistence.model;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Set;
 
-public class Product {
+/**
+ * Created by epr on 31/10/14.
+ */
+
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String name;
-	private BigDecimal price = BigDecimal.ZERO;
 
-	public Product() {
+	private Status status = Status.ACTIVE;
 
-	}
+	private Calendar dateRegister;
 
-	public Product(Long id, String name, BigDecimal price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
-	}
+	private Set<BarCode> barCodes;
+
+	protected Icms icms;
 
 	public Long getId() {
 		return id;
@@ -27,50 +30,36 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
+	public Calendar getDateRegister() {
+		return dateRegister;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;	
+	public void setDateRegister(Calendar dateRegister) {
+		this.dateRegister = dateRegister;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public Set<BarCode> getBarCodes() {
+		return barCodes;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setBarCodes(Set<BarCode> barCodes) {
+		this.barCodes = barCodes;
 	}
-	
-	@Override
-	public String toString() {		
-		return name;
+
+	public Icms getIcms() {
+		return icms;
+	}
+
+	public void setIcms(Icms icms) {
+		this.icms = icms;
 	}
 
 }

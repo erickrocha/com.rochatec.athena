@@ -3,9 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Persistence
 Bundle-SymbolicName: com.rochatec.pos.athena.persistence
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: com.rochatec.pos.athena.persistence.Activator
 Bundle-Vendor: ROCHATEC
-Require-Bundle: org.eclipse.core.runtime,
- com.rochatec.pos.athena.mongodb
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.orbit.mongodb;bundle-version="2.10.1"

@@ -12,8 +12,12 @@ public class WelcomePage extends FieldEditorPreferencePage implements IWorkbench
 	
 	public static final String ID = "com.rochatec.pos.athena.preferences.page.WelcomePage";
 	
+	public WelcomePage() {
+		super(GRID);
+	}
+	
 	@Override
-	public void init(IWorkbench workbench) {
+	public void init(IWorkbench workbench) {		
 		 setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		 setDescription(Message.getMessage("preference.page.welcome"));
 	}

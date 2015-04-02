@@ -26,7 +26,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         configurer.setInitialSize(new Point(1024,768));
         configurer.setShowCoolBar(false);  
         configurer.setShellStyle(SWT.SHELL_TRIM);
-        configurer.setShowStatusLine(true);
+        configurer.setShowStatusLine(false);
     }
     
     @Override

@@ -31,6 +31,7 @@ public class SellView extends ViewPart{
 	private Text txtSubTotal;
 	private Text txtItemLabel;
 	private StringBuilder builder = new StringBuilder();
+	private Text txtProduct;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -39,9 +40,9 @@ public class SellView extends ViewPart{
 		form.getBody().setLayout(new GridLayout(1,false));
 		toolkit.decorateFormHeading(form.getForm());
 		createHeader(form.getBody());
-		createPanels(form.getBody());
+		createPanels(form.getBody());		
 		WidgetUtils.backgroundEquals(form.getBody());
-		
+		createFooter(form.getBody());
 	}
 
 	private void createHeader(Composite parent){
@@ -150,8 +151,18 @@ public class SellView extends ViewPart{
 		lblSubTotal.setText(Message.getMessage("label.subtotal"));
 		txtSubTotal = new Text(group, SWT.FLAT|SWT.RIGHT|SWT.READ_ONLY);
 		txtSubTotal.setFont(FontToolkit.getInstance().getTahoma(40,SWT.BOLD));
-		txtSubTotal.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-		
+		txtSubTotal.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));		
+	}
+	
+	private void createFooter(Composite parent){
+		Composite composite = new Composite(parent,SWT.BORDER);
+		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		composite.setLayout(GridLayoutBuilder.getInstance().build(0,0,3));
+		txtProduct = new Text(composite,  SWT.SEARCH | SWT.ICON_SEARCH | SWT.CANCEL| SWT.BORDER);
+		txtProduct.setMessage("Product Search");
+		GridData gridData = new GridData(SWT.RIGHT,SWT.FILL,true,false);
+		gridData.minimumWidth = 250;
+		txtProduct.setLayoutData(gridData);
 	}
 	
 	public void setSubTotal(String value){

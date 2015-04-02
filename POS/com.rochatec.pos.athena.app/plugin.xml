@@ -42,10 +42,6 @@
                name="appName"
                value="POS Athena">
          </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
       </product>
    </extension>
    <extension
@@ -124,23 +120,13 @@
             name="Sell"
             restorable="true">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:org.eclipse.ui.trim.status">
-         <control
-               class="com.rochatec.pos.athena.contribution.ProductMenuContribution"
-               id="com.rochatec.pos.athena.contribution.ProductMenuContribution">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="com.rochatec.pos.athena.app.sell">
-               </reference>
-            </visibleWhen>
-         </control>
-      </menuContribution>
+      <view
+            allowMultiple="false"
+            class="com.rochatec.pos.athena.views.SumView"
+            id="com.rochatec.pos.athena.views.SumView"
+            name="Sum"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.services">
@@ -165,18 +151,28 @@
       </definition>
    </extension>
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="com.rochatec.pos.athena.preferences.page.WelcomePage"
-            id="com.rochatec.pos.athena.preferences.page.WelcomePage"
-            name="Welcome Page">
-      </page>
-   </extension>
-   <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
             class="com.rochatec.pos.athena.preferences.initializer.AthenaPosInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.rochatec.pos.athena.preferences.page.WelcomePage"
+            id="com.rochatec.pos.athena.preferences.page.WelcomePage"
+            name="Welcome">
+      </page>
+      <page
+            class="com.rochatec.pos.athena.preferences.page.SellPage"
+            id="com.rochatec.pos.athena.preferences.page.SellPage"
+            name="Sell">
+      </page>
+      <page
+            class="com.rochatec.pos.athena.preferences.page.PrinterPage"
+            id="com.rochatec.pos.athena.preferences.page.PrinterPage"
+            name="Printer">
+      </page>
    </extension>
 
 </plugin>
