@@ -3,6 +3,10 @@ package com.rochatec.pos.athena.app;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.rochatec.pos.athena.persistence.service.ISaleService;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -14,6 +18,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+	
+	private ApplicationContext springContext;
 	
 	/**
 	 * The constructor
@@ -27,6 +33,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+		springContext = new ClassPathXmlApplicationContext("spring.xml");
 		plugin = this;
 	}
 
@@ -36,6 +43,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
+		springContext = null;
 		super.stop(context);
 	}
 
@@ -57,5 +65,13 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	public ApplicationContext getSpringContext() {
+		return springContext;
+	}	
+	
+	public ISaleService getSaleService(){
+		return (ISaleService)springContext.getBean("salesService");
 	}
 }

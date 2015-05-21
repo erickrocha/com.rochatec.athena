@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import com.rochatec.pos.athena.i18n.Message;
-import com.rochatec.pos.athena.util.GridLayoutBuilder;
+import com.rochatec.pos.athena.tools.GridLayoutBuilder;
 
 public class ProductMenuContribution extends ContributionItem{
 	

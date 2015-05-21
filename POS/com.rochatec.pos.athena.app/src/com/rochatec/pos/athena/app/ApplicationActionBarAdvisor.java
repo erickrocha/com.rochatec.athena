@@ -1,11 +1,9 @@
 package com.rochatec.pos.athena.app;
 
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
-import com.rochatec.pos.athena.contribution.ProductMenuContribution;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
@@ -19,10 +17,4 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     protected void fillMenuBar(IMenuManager menuBar) {
     }
     
-    
-    @Override
-    protected void fillStatusLine(IStatusLineManager statusLine) {
-    	statusLine.add(new ProductMenuContribution());
-    	
-    }
 }
