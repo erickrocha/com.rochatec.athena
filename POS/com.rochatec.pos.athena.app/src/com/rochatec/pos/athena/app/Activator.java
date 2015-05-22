@@ -72,6 +72,6 @@ public class Activator extends AbstractUIPlugin {
 	}	
 	
 	public ISaleService getSaleService(){
-		return (ISaleService)springContext.getBean("salesService");
+		return (ISaleService)springContext.getBean("salesServiceImpl");
 	}
 }

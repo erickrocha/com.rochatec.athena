@@ -14,8 +14,6 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.ViewPart;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.util.Colors;
@@ -29,13 +27,10 @@ import com.rochatec.pos.athena.persistence.service.ISaleService;
 import com.rochatec.pos.athena.tools.Formatter;
 import com.rochatec.pos.athena.tools.GridLayoutBuilder;
 
-@Component
+
 public class SellView extends ViewPart{
 	
 	public static final String ID = "com.rochatec.pos.athena.views.SellView";
-	
-	@Autowired
-	private ISaleService saleService;
 	
 	private FormToolkit toolkit;
 	private ScrolledForm form;
@@ -213,12 +208,11 @@ public class SellView extends ViewPart{
 		}		
 	}
 	
-	class SearchProduct extends KeyAdapter{
-		
+	class SearchProduct extends KeyAdapter{		
 		@Override
-		public void keyPressed(KeyEvent e) {
-			ISaleService saleService = Activator.getDefault().getSaleService();
+		public void keyPressed(KeyEvent e) {			
 			if (e.keyCode == IKeyPadConstants.KEY_ENTER || e.keyCode == IKeyPadConstants.KEY_ENTER_NUMERICO){
+				ISaleService saleService = Activator.getDefault().getSaleService();
 				String productCode = ((Text)e.widget).getText();
 				Product product = saleService.findProductByBarcode(productCode);
 				fillValues(product);

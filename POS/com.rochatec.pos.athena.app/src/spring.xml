@@ -8,9 +8,7 @@
                            
 	<context:annotation-config />
 
-	<context:component-scan base-package="com.rochatec.pos.athena.persistence.model" />
-	<context:component-scan base-package="com.rochatec.pos.athena.persistence.repository" />
-	<context:component-scan base-package="com.rochatec.pos.athena.persistence.service" />
+	<context:component-scan base-package="com.rochatec.pos.athena" />
 
 	<beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
 
