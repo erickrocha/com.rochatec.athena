@@ -17,116 +17,62 @@
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<version>6.0</version>
+			<version>${jee.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.athena</groupId>
 			<artifactId>business</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.athena</groupId>
 			<artifactId>eao</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.athena</groupId>
 			<artifactId>model</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 			<type>jar</type>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-ear-plugin</artifactId>
-					<configuration>
-						<modules>
-							<ejbModule>
-								<groupId>com.athena</groupId>
-								<artifactId>business</artifactId>
-							</ejbModule>
-							<ejbModule>
-								<groupId>com.athena</groupId>
-								<artifactId>eao</artifactId>
-							</ejbModule>
-							<jarModule>
-								<groupId>com.athena</groupId>
-								<artifactId>model</artifactId>
-								<bundleDir>lib</bundleDir>
-							</jarModule>
-						</modules>
-						<archive>
-							<manifest>
-								<addClasspath>false</addClasspath>
-							</manifest>
-						</archive>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.jboss.as.plugins</groupId>
-					<artifactId>jboss-as-maven-plugin</artifactId>
-					<version>7.6.Final</version>
-					<executions>
-						<execution>
-							<id>undeploy</id>
-							<phase>clean</phase>
-							<goals>
-								<goal>undeploy</goal>
-							</goals>
-							<configuration>
-								<ignoreMissingDeployment>true</ignoreMissingDeployment>
-							</configuration>
-						</execution>
-						<!-- Deploy the application on install -->
-						<execution>
-							<id>deploy</id>
-							<phase>install</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-
-				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-ear-plugin
-										</artifactId>
-										<versionRange>[2.4.2,)</versionRange>
-										<goals>
-											<goal>
-												generate-application-xml
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.6.Final</version>
+                <configuration>
+                    <hostname>localhost</hostname>
+                    <port>9999</port>
+                    <name>useradmin123</name>
+                    <password>password123</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>undeploy</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>undeploy</goal>
+                        </goals>
+                        <configuration>
+                            <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                        </configuration>
+                    </execution>
+                    <!-- Deploy the application on install -->
+                    <execution>
+                        <id>deploy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
 	</build>
 </project>
