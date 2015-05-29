@@ -12,6 +12,8 @@
         <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
         <jdk.version>1.7</jdk.version>
         <jee.version>7.0</jee.version>
+        <version.jboss.maven.plugin>7.7.Final</version.jboss.maven.plugin>
+        <jboss-as.home>/home/epr/java/server/jboss-as-7.1.1.Final</jboss-as.home>
     </properties>
 
     <modules>
@@ -67,53 +69,12 @@
             </testResource>
         </testResources>
         <plugins>
-
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>ISO-8859-1</encoding>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.0</ejbVersion>
-                    <archive>
-                        <manifestEntries>
-                            <Dependencies>org.infinispan export</Dependencies>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.7</version>
                 <configuration>
                     <encoding>iso=8859-1</encoding>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                    <!--<warSourceExcludes>/WEB-INF/classes/db/**</warSourceExcludes>-->
-                    <!--<warSourceExcludes>node_modules/**</warSourceExcludes>-->
-                    <warSourceIncludes>resources/assets/**,pages/**</warSourceIncludes>
-                    <!--<warSourceIncludes>resources/index.html</warSourceIncludes>-->
-                    <!--<warSourceIncludes>/WEB-INF/classes/profiles/config-${build.profile.id}.properties</warSourceIncludes>-->
-                    <archive>
-                        <manifestEntries>
-                            <Dependencies>org.infinispan export</Dependencies>
-                        </manifestEntries>
-                    </archive>
                 </configuration>
             </plugin>
             <plugin>
@@ -124,45 +85,9 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-ear-plugin</artifactId>
-                <configuration>
-                    <modules>
-                        <ejbModule>
-                            <groupId>com.athena</groupId>
-                            <artifactId>business</artifactId>
-                        </ejbModule>
-                        <ejbModule>
-                            <groupId>com.athena</groupId>
-                            <artifactId>eao</artifactId>
-                        </ejbModule>
-                        <jarModule>
-                            <groupId>com.athena</groupId>
-                            <artifactId>model</artifactId>
-                            <bundleDir>lib</bundleDir>
-                        </jarModule>
-                    </modules>
-                    <archive>
-                        <manifest>
-                            <addClasspath>false</addClasspath>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.5</version>
-                <executions>
-                    <execution>
-                        <id>auto-clean</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>2.6.1</version>
             </plugin>
         </plugins>
     </build>

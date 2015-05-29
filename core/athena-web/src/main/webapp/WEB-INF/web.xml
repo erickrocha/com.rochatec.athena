@@ -4,23 +4,23 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-    <display-name>Athena</display-name>
+    <display-name>athena-web</display-name>
 
     <servlet>
         <servlet-name>Resteasy</servlet-name>
-        <servlet-class>
-            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-        </servlet-class>
-        <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.webservice.RESTService</param-value>
-        </init-param>
-
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Resteasy</servlet-name>
-        <url-pattern>/athena/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
+    <context-param>
+        <param-name>javax.ws.rs.Application</param-name>
+        <param-value>com.athena.application.AthenaApplication</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
 </web-app>
