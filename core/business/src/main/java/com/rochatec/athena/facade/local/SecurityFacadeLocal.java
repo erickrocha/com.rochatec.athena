@@ -39,5 +39,9 @@ public interface SecurityFacadeLocal {
 	public Profile persist(Profile profile);
 	
 	public void remove(Profile profile);
-	
+
+    public List<User> findAll();
+
+    public User findUserByEmail(String email);
+    
 }

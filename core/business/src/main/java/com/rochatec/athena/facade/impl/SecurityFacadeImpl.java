@@ -122,4 +122,13 @@ public class SecurityFacadeImpl implements SecurityFacadeLocal,
 		profileEaoLocal.remove(profile);
 	}
 
+    @Override
+    public List<User> findAll() {
+        return userEaoLocal.findAll();
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userEaoLocal.findByEmail(email);
+    }
 }

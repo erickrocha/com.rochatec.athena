@@ -23,16 +23,22 @@ public class UserEaoImpl extends GenericEao<User, Serializable> implements
 	}
 
 	public User findByLogin(String username) {
-		Query query = getEntityManager()
-				.createNamedQuery("User.findByUsername");
+		Query query = getEntityManager().createQuery("SELECT u FROM User u WHERE u.username = :username");
 		query.setParameter("username", username);
 		User user = (User) query.getSingleResult();
 		return user;
 	}
 
+    public User findByEmail(String username) {
+        Query query = getEntityManager().createQuery("SELECT u FROM User u WHERE u.email = :email");
+        query.setParameter("email", username);
+        User user = (User) query.getSingleResult();
+        return user;
+    }
+
 	@SuppressWarnings("unchecked")
 	public List<User> findByName(String name) {
-		Query query = getEntityManager().createNamedQuery("User.findByName");
+		Query query = getEntityManager().createQuery("SELECT u FROM User u WHERE u.name = :name");
 		query.setParameter("name", name);
 		Set<User> temp = new HashSet<User>(query.getResultList());
 		List<User> users = new ArrayList<User>(temp);
@@ -46,4 +52,10 @@ public class UserEaoImpl extends GenericEao<User, Serializable> implements
 		return false;
 	}
 
+    @Override
+    public List<User> findAll() {
+        Query query = getEntityManager().createQuery("SELECT u FROM User u");
+        List<User> users = (List<User>)query.getResultList();
+        return users;
+    }
 }

@@ -20,5 +20,9 @@ public interface UserEaoLocal {
 	public void remove(User user);
 	
 	public boolean isExists(String userName);
+
+    public List<User> findAll();
+
+    public User findByEmail(String email);
 	
 }
