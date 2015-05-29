@@ -8,10 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "ROLE")
-@NamedQueries({ @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r") })
+@XmlRootElement
 public class Role implements Serializable {
 
 	private static final long serialVersionUID = -5186616697168139116L;

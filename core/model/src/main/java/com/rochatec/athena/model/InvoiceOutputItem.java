@@ -9,10 +9,16 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value = "OUTPUT")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceOutputItem extends AbstractInvoiceItem{
 
 	/**
@@ -22,6 +28,7 @@ public class InvoiceOutputItem extends AbstractInvoiceItem{
 	
 	@ManyToOne
 	@JoinColumn(name = "INVOICE", nullable = false, updatable = false)
+    @XmlElement
 	private InvoiceOutput invoice;	
 
 	public InvoiceOutput getInvoice() {

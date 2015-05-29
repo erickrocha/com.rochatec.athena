@@ -1,10 +1,16 @@
 package com.rochatec.athena.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Menu implements Comparator<Menu>,Serializable {
 
 	/**
@@ -20,6 +26,7 @@ public class Menu implements Comparator<Menu>,Serializable {
 
 	private Menu parent;
 
+    @XmlElement
 	private List<SubMenu> subMenus;
 
 	public Menu() {

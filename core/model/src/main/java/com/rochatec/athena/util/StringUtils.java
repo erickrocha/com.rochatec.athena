@@ -1,4 +1,4 @@
-package com.rochatec.metallurgical.util;
+package com.rochatec.athena.util;
 
 public class StringUtils {
 

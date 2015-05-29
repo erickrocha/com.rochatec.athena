@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="PROVINCE")
-@NamedQueries({@NamedQuery(name="Province.findAll",query="SELECT p FROM Province p")})
+@XmlRootElement
 public class Province implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -17,7 +17,7 @@ import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.Employee;
 import com.rochatec.athena.model.Status;
 import com.rochatec.athena.model.Supplier;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class SupplierEaoImpl extends GenericEao<Supplier,Serializable> implements SupplierEaoLocal{

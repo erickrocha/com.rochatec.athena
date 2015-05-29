@@ -11,10 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "BARCODE")
 @SequenceGenerator(name="SEQ_BARCODE",sequenceName="SEQ_BARCODE",initialValue=1,allocationSize=1)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BarCode implements Serializable {
 
 	/**
@@ -28,7 +34,8 @@ public class BarCode implements Serializable {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="PRODUCT", nullable=false)	
+	@JoinColumn(name="PRODUCT", nullable=false)
+    @XmlElement
 	private Product product;
 
 	@Column(name="BARCODE",nullable=false)

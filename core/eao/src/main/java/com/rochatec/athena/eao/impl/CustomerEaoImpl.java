@@ -16,7 +16,7 @@ import com.rochatec.athena.eao.local.CustomerEaoLocal;
 import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.Customer;
 import com.rochatec.athena.model.Status;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class CustomerEaoImpl extends GenericEao<Customer,Serializable> implements CustomerEaoLocal{

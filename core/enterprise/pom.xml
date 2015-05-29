@@ -85,17 +85,17 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jboss.as.plugins</groupId>
-                <artifactId>jboss-as-maven-plugin</artifactId>
-                <version>${version.jboss.maven.plugin}</version>
-                <configuration>
-                    <hostname>localhost</hostname>
-                    <name>admin</name>
-                    <password>brutal</password>
-                    <jbossHome>${jboss-as.home}</jbossHome>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.jboss.as.plugins</groupId>-->
+                <!--<artifactId>jboss-as-maven-plugin</artifactId>-->
+                <!--<version>${version.jboss.maven.plugin}</version>-->
+                <!--<configuration>-->
+                    <!--<hostname>localhost</hostname>-->
+                    <!--<name>admin</name>-->
+                    <!--<password>brutal</password>-->
+                    <!--<jbossHome>${jboss-as.home}</jbossHome>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

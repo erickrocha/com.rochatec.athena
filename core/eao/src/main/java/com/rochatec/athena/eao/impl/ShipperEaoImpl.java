@@ -16,7 +16,7 @@ import com.rochatec.athena.eao.local.ShipperEaoLocal;
 import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.Shipper;
 import com.rochatec.athena.model.Status;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class ShipperEaoImpl extends GenericEao<Shipper, Serializable> implements ShipperEaoLocal {

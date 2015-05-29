@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -16,10 +19,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="NCM")
-@NamedQueries({
-	@NamedQuery(name="Ncm.findByDescription",query="SELECT n FROM Ncm n WHERE n.description like :description"),
-	@NamedQuery(name="Ncm.findAll",query="SELECT n FROM Ncm n ")
-})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Ncm implements Serializable {
 	private static final long serialVersionUID = 1L;
 

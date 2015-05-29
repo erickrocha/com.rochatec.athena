@@ -6,13 +6,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value="PRODUCT")
-@NamedQueries({
-	@NamedQuery(name="Product.findByName",query="SELECT p FROM Product p WHERE p.name like :name")
-})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Product extends AbstractProduct{
 
 	/**

@@ -11,22 +11,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.CalendarUtil;
-import com.rochatec.metallurgical.util.StringUtils;
+import com.rochatec.athena.util.CalendarUtil;
+import com.rochatec.athena.util.StringUtils;
 
 @Entity
 @Table(name = "CUSTOMER")
-@NamedQueries({
-	@NamedQuery(name="Customer.findByName",query="SELECT c FROM Customer c WHERE c.name like :name"),
-	@NamedQuery(name="Customer.findBySocialSecurity",query="SELECT c FROM Customer c WHERE c.socialSecurity = :socialSecurity")
-})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer implements Serializable {
 
 	/**
@@ -53,7 +53,8 @@ public class Customer implements Serializable {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ADDRESS", nullable=false)
-	private Address address;
+	@XmlElement
+    private Address address;
 	
 	@Column(name="ADDRESS_NUMBER",length=10)
 	private String addressNumber;

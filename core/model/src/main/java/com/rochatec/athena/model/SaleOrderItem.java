@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 
 @Entity
 @Table(name="SALE_ORDER_ITEM")
@@ -31,10 +32,12 @@ public class SaleOrderItem implements Serializable,IProductItem {
 	
 	@ManyToOne
 	@JoinColumn(name = "SALE_ORDER", nullable = false, updatable = false)
+    @XmlElement
 	private SaleOrder saleOrder;
 
 	@OneToOne
 	@JoinColumn(name = "PRODUCT", nullable = false)
+    @XmlElement
 	private AbstractProduct product;
 	
 	@Column(name = "QUANTITY", nullable = false, precision = 10, scale = 3)

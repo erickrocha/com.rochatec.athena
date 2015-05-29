@@ -27,11 +27,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Entity
 @Table(name = "SALE_ORDER")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SaleOrder implements Serializable {
 
 	/**
@@ -66,12 +72,14 @@ public class SaleOrder implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "EMPLOYEE", referencedColumnName = "ID")
+    @XmlElement
 	private Employee employee;
 
 	@Column(name = "OBSERVATION", length = 600)
 	private String observation;
 
 	@OneToMany(mappedBy = "saleOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval=true)
+    @XmlElement
 	private Set<SaleOrderItem> items;
 	
 	@Temporal(TemporalType.TIMESTAMP)

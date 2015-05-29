@@ -1,7 +1,13 @@
 package com.rochatec.athena.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SubMenu implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -10,6 +16,7 @@ public class SubMenu implements Serializable {
 	private Role role;
 	private String name;
 	private String label;
+    @XmlElement
 	private Menu parent;
 	private Object action;
 	private boolean separator;

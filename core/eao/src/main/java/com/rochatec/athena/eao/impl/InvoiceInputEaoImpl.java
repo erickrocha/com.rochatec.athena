@@ -16,7 +16,7 @@ import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.InvoiceInput;
 import com.rochatec.athena.model.InvoiceStatus;
 import com.rochatec.athena.model.Supplier;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class InvoiceInputEaoImpl extends GenericEao<InvoiceInput, Serializable> implements InvoiceInputEaoLocal{

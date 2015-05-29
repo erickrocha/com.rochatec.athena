@@ -1,4 +1,4 @@
-package com.rochatec.metallurgical.util;
+package com.rochatec.athena.util;
 
 import java.util.Calendar;
 import java.util.Date;

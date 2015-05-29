@@ -13,6 +13,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The persistent class for the JOB database table.
@@ -20,9 +24,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "JOB")
-@NamedQueries({
-		@NamedQuery(name = "Job.findByName", query = "SELECT j FROM Job j WHERE j.name like :name ORDER BY j.name"),
-		@NamedQuery(name = "Job.findAll", query = "SELECT j FROM Job j ORDER BY j.name") })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Job implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +40,7 @@ public class Job implements Serializable {
 
 	// bi-directional many-to-one association to Employee
 	@OneToMany(mappedBy = "job")
+    @XmlElement
 	private List<Employee> employees;
 
 	public Job() {

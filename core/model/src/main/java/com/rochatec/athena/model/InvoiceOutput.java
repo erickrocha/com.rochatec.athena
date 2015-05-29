@@ -19,12 +19,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value = "OUTPUT")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceOutput extends AbstractInvoice {
 
 	/**
@@ -37,6 +43,7 @@ public class InvoiceOutput extends AbstractInvoice {
 	 */
 	@OneToOne
 	@JoinColumn(name = "ISSUER", referencedColumnName = "ID")
+    @XmlElement
 	private Company issuer;
 
 	/**
@@ -44,6 +51,7 @@ public class InvoiceOutput extends AbstractInvoice {
 	 */
 	@OneToOne
 	@JoinColumn(name = "RECEIVER", referencedColumnName = "ID")
+    @XmlElement
 	private Customer receiver;
 
 	/**

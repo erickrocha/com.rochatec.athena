@@ -15,17 +15,17 @@ import java.util.Set;
 public class AthenaApplication extends Application {
 
     private Set<Object> singletons = new HashSet<Object>();
-    private Set<Class<?>> empty = new HashSet<Class<?>>();
+    private Set<Class<?>> classes = new HashSet<Class<?>>();
 
 
 
     public AthenaApplication() {
-        singletons.add(new SecurityResource());
+        classes.add(SecurityResource.class);
     }
 
     @Override
     public Set<Class<?>> getClasses() {
-        return empty;
+        return classes;
     }
 
     @Override

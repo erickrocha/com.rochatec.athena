@@ -17,7 +17,7 @@ import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.ProductSet;
 import com.rochatec.athena.model.ProductSetItem;
 import com.rochatec.athena.model.Status;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class ProductSetEaoImpl extends GenericEao<ProductSet,Serializable> implements ProductSetEaoLocal{

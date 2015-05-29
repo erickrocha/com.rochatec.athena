@@ -9,10 +9,16 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value = "PRODUCT")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ProductSetItem extends AbstractItem implements Serializable, IProductItem {
 
 	/**
@@ -22,10 +28,12 @@ public class ProductSetItem extends AbstractItem implements Serializable, IProdu
 
 	@OneToOne
 	@JoinColumn(name = "PARENT", nullable = false, updatable = false)
+    @XmlElement
 	private AbstractProduct parent;
 
 	@OneToOne
 	@JoinColumn(name = "PRODUCT", nullable = false, updatable = false)
+    @XmlElement
 	private AbstractProduct product;
 
 	public AbstractProduct getProduct() {

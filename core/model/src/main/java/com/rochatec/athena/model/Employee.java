@@ -14,14 +14,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.StringUtils;
+import com.rochatec.athena.util.StringUtils;
 
 /**
  * The persistent class for the EMPLOYEE database table.
@@ -29,9 +31,8 @@ import com.rochatec.metallurgical.util.StringUtils;
  */
 @Entity
 @Table(name = "EMPLOYEE")
-@NamedQueries({
-		@NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.name like :name"),
-		@NamedQuery(name = "Employee.findBySocialSecurity", query = "SELECT e FROM Employee e WHERE e.socialSecurity = :socialSecurity") })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +44,7 @@ public class Employee implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
+    @XmlElement
 	private Status status;
 
 	@Column(name = "ADDRESS_NUMBER", length = 10)
@@ -79,11 +81,13 @@ public class Employee implements Serializable {
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS", nullable = false)
+    @XmlElement
 	private Address address;
 
 	// bi-directional many-to-one association to Job
 	@ManyToOne
 	@JoinColumn(name = "JOB", nullable = false)
+    @XmlElement
 	private Job job;
 
 	public Employee() {

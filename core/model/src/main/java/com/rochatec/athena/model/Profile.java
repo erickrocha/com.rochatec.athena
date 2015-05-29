@@ -17,12 +17,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "PROFILE")
-@NamedQueries({
-		@NamedQuery(name = "Profile.findByName", query = "SELECT p FROM Profile p WHERE p.label like :name ORDER BY p.name"),
-		@NamedQuery(name = "Profile.findAll", query = "SELECT p FROM Profile p ORDER BY p.name") })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Profile implements Serializable {
 
 	private static final long serialVersionUID = 3408937870202393757L;
@@ -47,6 +50,7 @@ public class Profile implements Serializable {
 					}
 			, inverseJoinColumns = { 
 					@JoinColumn(name = "ROLE", nullable = false) })
+    @XmlElement
 	protected Set<Role> roles;
 
 	public Profile() {

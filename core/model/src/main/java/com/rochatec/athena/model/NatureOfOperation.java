@@ -13,6 +13,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -21,9 +25,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="NATURE_OF_OPERATION")
-@NamedQueries({ 
-	@NamedQuery(name = "NatureOfOperation.findAll", query = "SELECT np FROM NatureOfOperation np")
-})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class NatureOfOperation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +41,8 @@ public class NatureOfOperation implements Serializable {
 	private String label;
 	
 	@ManyToOne
-	@JoinColumn(name = "parent") 
+	@JoinColumn(name = "parent")
+    @XmlElement
 	private NatureOfOperation parent;
 
 	@OneToMany(mappedBy = "parent",fetch=FetchType.EAGER)

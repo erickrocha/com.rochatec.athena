@@ -2,6 +2,10 @@ package com.rochatec.athena.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 
@@ -11,9 +15,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="CATEGORY")
-@NamedQueries({
-	@NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name like :name ORDER BY c.name"),
-	@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c ORDER BY c.name") })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,6 +31,7 @@ public class Category implements Serializable {
 
 	//bi-directional many-to-one association to Product
 	@OneToMany(mappedBy="category",fetch=FetchType.LAZY)
+    @XmlElement
 	private List<AbstractProduct> products;
 
     public Category() {

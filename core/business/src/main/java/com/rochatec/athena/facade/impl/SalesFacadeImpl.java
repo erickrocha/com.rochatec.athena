@@ -12,7 +12,7 @@ import com.rochatec.athena.facade.local.SalesFacadeLocal;
 import com.rochatec.athena.facade.remote.SalesFacadeRemote;
 import com.rochatec.athena.model.SaleOrder;
 import com.rochatec.athena.model.SaleOrderStatus;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 @Stateless
 public class SalesFacadeImpl implements SalesFacadeLocal,SalesFacadeRemote{

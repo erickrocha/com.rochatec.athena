@@ -23,13 +23,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="USERS")
-@NamedQueries({
-	@NamedQuery(name="User.findByName",query="SELECT u FROM User u,Employee e WHERE e.name like :name "),
-	@NamedQuery(name="User.findByUsername",query="SELECT u FROM User u WHERE u.username = :username")
-})
+@XmlRootElement
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -2531256429170657120L;
@@ -48,14 +47,17 @@ public class User implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name="EMPLOYEE",referencedColumnName="ID")
+    @XmlElement
 	protected Employee employee;
 
 	@OneToOne
 	@JoinColumn(name="PROFILE",referencedColumnName="ID")
+    @XmlElement
 	protected Profile profile;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS",insertable=true,updatable=true,nullable=false,unique=false)
+    @XmlElement
 	protected Status status;
 
 	@Column(name="BLOCKED",insertable=true,updatable=true,nullable=false,unique=false)
@@ -71,6 +73,7 @@ public class User implements Serializable {
 			@JoinColumn(name="ROLE", nullable=false)
 			}
 		)
+    @XmlElement
 	protected List<Role> roles;
 	
 	public User() {

@@ -14,6 +14,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -22,12 +26,8 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name="ADDRESS")
-@NamedQueries({
-	@NamedQuery(name="Address.findByStreet",query="SELECT a FROM Address a WHERE a.street like :street"),
-	@NamedQuery(name="Address.findByNeighborhood",query="SELECT a FROM Address a WHERE a.neighborhood like :neighborhood"),
-	@NamedQuery(name="Address.findByCity",query="SELECT a FROM Address a WHERE a.city like :city"),
-	@NamedQuery(name="Address.findAddress",query="SELECT a FROM Address a WHERE a.province = :province AND a.city = :city and a.neighborhood = :neighborhood"),
-})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -58,6 +58,7 @@ public class Address implements Serializable {
 	//bi-directional many-to-one association to Province
     @ManyToOne
 	@JoinColumn(name="PROVINCE")
+    @XmlElement
 	private Province province;
 
     public Address() {

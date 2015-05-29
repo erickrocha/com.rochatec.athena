@@ -17,9 +17,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "COMPANY")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Company implements Serializable {
 
 	/**
@@ -55,6 +61,7 @@ public class Company implements Serializable {
 	// bi-directional many-to-one association to Address
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS", nullable = false)
+    @XmlElement
 	private Address address;
 
 	@Column(name = "ADDRESS_NUMBER", length = 10)

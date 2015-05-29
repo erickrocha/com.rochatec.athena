@@ -16,14 +16,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.StringUtils;
+import com.rochatec.athena.util.StringUtils;
 
 /**
  * The persistent class for the SHIPPERS database table.
@@ -31,8 +32,8 @@ import com.rochatec.metallurgical.util.StringUtils;
  */
 @Entity
 @Table(name = "SHIPPER")
-@NamedQueries({
-		@NamedQuery(name = "Shipper.findBySocialSecurity", query = "SELECT s FROm Shipper s WHERE s.socialSecurity = :socialSecurity") })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Shipper implements Serializable {
 	private static final long serialVersionUID = 1L;
 

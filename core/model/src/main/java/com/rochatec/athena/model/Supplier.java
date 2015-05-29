@@ -13,14 +13,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.rochatec.metallurgical.util.StringUtils;
+import com.rochatec.athena.util.StringUtils;
 
 
 /**
@@ -29,9 +31,8 @@ import com.rochatec.metallurgical.util.StringUtils;
  */
 @Entity
 @Table(name="SUPPLIER")
-@NamedQueries({
-	@NamedQuery(name = "Supplier.findBySocialSecurity", query = "SELECT s FROM Supplier s WHERE s.socialSecurity = :socialSecurity"),
-	@NamedQuery(name = "Supplier.findByIdOrSocialSecurity", query = "SELECT s FROM Supplier s WHERE s.id = :id OR s.socialSecurity = :socialSecurity")})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Supplier implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -82,6 +83,7 @@ public class Supplier implements Serializable {
 	//bi-directional many-to-one association to Address
     @ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ADDRESS", nullable=false)
+    @XmlElement
 	private Address address;
 
     public Supplier() {

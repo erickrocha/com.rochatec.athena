@@ -18,7 +18,7 @@ import com.rochatec.athena.eao.util.GenericEao;
 import com.rochatec.athena.model.SaleOrder;
 import com.rochatec.athena.model.SaleOrderItem;
 import com.rochatec.athena.model.SaleOrderStatus;
-import com.rochatec.metallurgical.util.CalendarUtil;
+import com.rochatec.athena.util.CalendarUtil;
 
 /**
  * @author erick.rocha

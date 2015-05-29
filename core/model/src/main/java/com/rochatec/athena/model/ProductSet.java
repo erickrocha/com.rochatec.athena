@@ -12,10 +12,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue(value = "SET")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ProductSet extends AbstractProduct {
 
 	/**
@@ -25,6 +31,7 @@ public class ProductSet extends AbstractProduct {
 	
 	
 	@OneToMany(mappedBy = "parent",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @XmlElement
 	private Set<ProductSetItem> children;
 	
 	public Set<ProductSetItem> getChildren() {
