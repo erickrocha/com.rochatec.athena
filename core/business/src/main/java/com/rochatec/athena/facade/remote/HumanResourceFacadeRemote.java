@@ -1,6 +1,7 @@
 package com.rochatec.athena.facade.remote;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -19,6 +20,8 @@ public interface HumanResourceFacadeRemote {
 	public Employee findEmployeeById(Long id);
 	
 	public List<Employee> findEmployeesByName(String name, Calendar begin, Calendar end, Status status);
+
+    public List<Employee> findEmployeesByName(String name, Date begin, Date end, Status status);
 	
 	public List<Employee> findEmployeesByJob(Job job, Calendar begin, Calendar end, Status status);
 	

@@ -2,9 +2,12 @@ package com.rochatec.pos.athena.persistence.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="ITEM_SALE")
@@ -27,6 +32,10 @@ public class ItemSale implements Serializable{
 	@JoinColumn(name="SALE", nullable=false)
 	private Sale sale;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="DATE_REGISTER")
+	private Date dateRegister;
+	
 	@OneToOne
 	@JoinColumn(name = "PRODUCT", referencedColumnName = "ID")
 	private Product product;
@@ -34,8 +43,12 @@ public class ItemSale implements Serializable{
 	@Column(name="QUANTITY",precision=20,scale=3)
 	private BigDecimal quantity = BigDecimal.ZERO;
 	
-	@Column(name="CANCELED")
-	private Boolean canceled;
+	@Column(name="SELL_PRICE",precision=20,scale=2)
+	private BigDecimal sellPrice;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="status")
+	private ItemStatus status;
 
 	public Long getId() {
 		return id;
@@ -73,12 +86,28 @@ public class ItemSale implements Serializable{
 		return this.quantity.multiply(this.product.getSellPrice());
 	}
 	
-	public Boolean isCanceled() {
-		return canceled;
+	public ItemStatus getStatus() {
+		return status;
 	}
 
-	public void setCanceled(Boolean canceled) {
-		this.canceled = canceled;
+	public void setStatus(ItemStatus status) {
+		this.status = status;
+	}
+	
+	public Date getDateRegister() {
+		return dateRegister;
+	}
+
+	public void setDateRegister(Date dateRegister) {
+		this.dateRegister = dateRegister;
+	}
+
+	public BigDecimal getSellPrice() {
+		return sellPrice;
+	}
+
+	public void setSellPrice(BigDecimal sellPrice) {
+		this.sellPrice = sellPrice;
 	}
 
 	@Override

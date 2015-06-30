@@ -6,10 +6,11 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ROCHATEC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.rochatec.framework.bind,
+ com.rochatec.framework.context,
  com.rochatec.framework.converter,
  com.rochatec.framework.exception,
  com.rochatec.framework.formater,
- com.rochatec.framework.formater.impl, 
+ com.rochatec.framework.formater.impl,
  com.rochatec.framework.math,
  com.rochatec.framework.model,
  com.rochatec.framework.util

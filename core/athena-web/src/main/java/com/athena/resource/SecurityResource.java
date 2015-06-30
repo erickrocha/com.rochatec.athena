@@ -8,10 +8,7 @@ import com.rochatec.athena.model.User;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -59,9 +56,9 @@ public class SecurityResource {
     }
 
     @GET
-    @Path("/users/{email}")
+    @Path("/users/email")
     @Produces("application/json")
-    public Response getUser(@PathParam("email") String email){
+    public Response getUserByEmail(@QueryParam("email") String email){
         User user = securityFacadeLocal.findUserByEmail(email);
         return  Response.status(200).entity(user).build();
     }

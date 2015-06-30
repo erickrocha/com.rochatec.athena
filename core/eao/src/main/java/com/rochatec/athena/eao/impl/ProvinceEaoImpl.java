@@ -15,7 +15,7 @@ public class ProvinceEaoImpl extends GenericEao<Province,Serializable> implement
 
 	@SuppressWarnings("unchecked")
 	public List<Province> findAll() {
-		Query query = getEntityManager().createNamedQuery("Province.findAll");
+		Query query = getEntityManager().createQuery("SELECT p FROM Province p",Province.class);
 		List<Province> provinces = query.getResultList();
 		return provinces;
 	}

@@ -7,8 +7,9 @@ import java.util.Set;
 
 import com.rochatec.athena.model.Role;
 import com.rochatec.athena.model.User;
+import com.rochatec.framework.context.ISecurityPolicy;
 
-public class SecurityPolicy {
+public class SecurityPolicy implements ISecurityPolicy{
 	
 	private User userLogged;
 	private Map<String,Role> mergedRoles = new HashMap<String, Role>();

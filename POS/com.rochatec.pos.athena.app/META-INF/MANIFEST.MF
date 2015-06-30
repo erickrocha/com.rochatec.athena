@@ -10,7 +10,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.forms,
  com.rochatec.framework,
  com.rochatec.graphics,
- org.eclipse.core.expressions
+ org.eclipse.core.expressions,
+ org.eclipse.swt,
+ org.eclipse.jface,
+ org.eclipse.ui.workbench
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/aopalliance-1.0.jar,

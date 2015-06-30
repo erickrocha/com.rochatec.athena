@@ -23,6 +23,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.ws.rs.Consumes;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -44,6 +45,9 @@ public class User implements Serializable {
 
 	@Column(name="PASSWORD",insertable=true,updatable=true,nullable=false,unique=false,length=50)
 	protected String password;
+
+    @Column(name = "EMAIL",insertable = true,updatable = true,nullable = false,unique = true)
+    protected String email;
 
 	@OneToOne
 	@JoinColumn(name="EMPLOYEE",referencedColumnName="ID")
@@ -146,10 +150,6 @@ public class User implements Serializable {
 	public boolean isActive() {
 		return status.equals(Status.ACTIVE) ? true : false;
 	}
-	
-	public Status getActive(){
-		return status;
-	}
 
 	public void setActive(Status status) {
 		this.status = status;
@@ -163,20 +163,15 @@ public class User implements Serializable {
 		return this.blocked == 1 ? true : false;
 	}
 
-	public int getBlocked() {
-		return blocked;
-	}
-
-	public void setBlocked(int blocked) {
-		this.blocked = blocked;
-	}
-	
 	public void setBlocked(boolean blocked){
 		this.blocked = blocked ? 1 : 0;
 	}
 	
 	public List<Role> getRoles() {
-		return roles;
+        Set<Role> allRoles = new HashSet<Role>();
+        allRoles.addAll(roles);
+        allRoles.addAll(profile.roles);
+        return new ArrayList<Role>(allRoles);
 	}
 
 	public void setRoles(List<Role> roles) {
@@ -191,14 +186,15 @@ public class User implements Serializable {
 		this.roles = new ArrayList<Role>(roles);
 	}
 	
-	public Set<Role> getMergedRoles(){
-		Set<Role> allRoles = new HashSet<Role>();
-		allRoles.addAll(roles);
-		allRoles.addAll(profile.roles);
-		return allRoles;
-	}
-	
-	@Override
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

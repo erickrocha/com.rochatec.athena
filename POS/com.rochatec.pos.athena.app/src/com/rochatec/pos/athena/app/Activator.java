@@ -6,7 +6,9 @@ import org.osgi.framework.BundleContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.rochatec.pos.athena.context.IContext;
 import com.rochatec.pos.athena.persistence.service.ISaleService;
+import com.rochatec.pos.athena.tools.ContextBuilder;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -21,6 +23,8 @@ public class Activator extends AbstractUIPlugin {
 	
 	private ApplicationContext springContext;
 	
+	private IContext posContext;
+	
 	/**
 	 * The constructor
 	 */
@@ -34,6 +38,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		springContext = new ClassPathXmlApplicationContext("spring.xml");
+		this.posContext = ContextBuilder.create().buildContext(this.getPreferenceStore());
 		plugin = this;
 	}
 
@@ -44,7 +49,12 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		springContext = null;
+		this.posContext = null;
 		super.stop(context);
+	}
+	
+	public IContext getAppContext(){
+		return posContext;
 	}
 
 	/**

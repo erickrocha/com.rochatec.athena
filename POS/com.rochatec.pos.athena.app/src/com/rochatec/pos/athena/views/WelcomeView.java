@@ -32,7 +32,8 @@ public class WelcomeView extends ViewPart{
 		Form header = new Form(form.getBody(),SWT.NONE);
 		header.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		header.setFont(FontToolkit.getInstance().getTahoma(50,SWT.BOLD));
-		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();		
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		
 		header.setText(preferenceStore.getString("welcome.text"));
 		toolkit.decorateFormHeading(header);
 	}

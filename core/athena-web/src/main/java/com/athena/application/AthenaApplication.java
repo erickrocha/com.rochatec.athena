@@ -1,5 +1,8 @@
 package com.athena.application;
 
+import com.athena.resource.CRMResource;
+import com.athena.resource.HumanResourcesResource;
+import com.athena.resource.ResourcesResource;
 import com.athena.resource.SecurityResource;
 
 import javax.ws.rs.ApplicationPath;
@@ -21,6 +24,9 @@ public class AthenaApplication extends Application {
 
     public AthenaApplication() {
         classes.add(SecurityResource.class);
+        classes.add(CRMResource.class);
+        classes.add(HumanResourcesResource.class);
+        classes.add(ResourcesResource.class);
     }
 
     @Override

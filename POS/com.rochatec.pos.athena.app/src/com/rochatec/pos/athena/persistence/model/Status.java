@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Status {
-	ALL,ACTIVE,INACTIVE;
-	
+	ACTIVE,INACTIVE;
 	
 	public static List<Status>  getAll(){
 		List<Status> allStatus = new ArrayList<Status>();

@@ -14,6 +14,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.services.ISourceProviderService;
 
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.util.Colors;
@@ -24,6 +25,7 @@ import com.rochatec.pos.athena.app.Activator;
 import com.rochatec.pos.athena.i18n.Message;
 import com.rochatec.pos.athena.persistence.model.Product;
 import com.rochatec.pos.athena.persistence.service.ISaleService;
+import com.rochatec.pos.athena.provider.SellSourceProvider;
 import com.rochatec.pos.athena.tools.Formatter;
 import com.rochatec.pos.athena.tools.GridLayoutBuilder;
 
@@ -41,6 +43,7 @@ public class SellView extends ViewPart{
 	private Text txtItemLabel;
 	private StringBuilder builder = new StringBuilder();
 	private Text txtProduct;
+	private CLabel lblStatus;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -52,6 +55,7 @@ public class SellView extends ViewPart{
 		createPanels(form.getBody());		
 		WidgetUtils.backgroundEquals(form.getBody());
 		createFooter(form.getBody());
+		fill();
 	}
 
 	private void createHeader(Composite parent){
@@ -164,7 +168,19 @@ public class SellView extends ViewPart{
 	}
 	
 	private void createFooter(Composite parent){
-		Composite composite = new Composite(parent,SWT.BORDER);
+		Composite grandBox = new Composite(parent,SWT.NONE);
+		grandBox.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		grandBox.setLayout(GridLayoutBuilder.getInstance().build(0,0,2));
+		
+		Composite stateBox = new Composite(grandBox, SWT.BORDER);
+		stateBox.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
+		stateBox.setLayout(GridLayoutBuilder.getInstance().build(0,0,1));
+		lblStatus = new CLabel(stateBox, SWT.BORDER);
+		GridData lblStateGridData = new GridData(SWT.RIGHT,SWT.FILL,true,false);
+		lblStateGridData.minimumWidth = 250;
+		lblStatus.setLayoutData(lblStateGridData);
+		
+		Composite composite = new Composite(grandBox,SWT.BORDER);
 		composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
 		composite.setLayout(GridLayoutBuilder.getInstance().build(0,0,3));
 		txtProduct = new Text(composite,  SWT.SEARCH | SWT.ICON_SEARCH | SWT.CANCEL| SWT.BORDER);
@@ -195,6 +211,11 @@ public class SellView extends ViewPart{
 	public void setFocus() {
 		
 		
+	}
+	
+	private void fill(){
+		ISourceProviderService service = (ISourceProviderService)this.getSite().getService(ISourceProviderService.class);
+		SellSourceProvider sellSourceProvider = (SellSourceProvider) service.getSourceProvider(SellSourceProvider.SELL_INSTANCE);
 	}
 	
 	private void fillValues(Product product){

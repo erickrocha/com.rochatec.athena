@@ -68,7 +68,7 @@ public class HumanResourcesResource {
     @GET
     @Path("/employee/find")
     @Produces("application/json")
-    public Response getByName(@QueryParam("name") String name,@QueryParam("begin") Calendar begin,@QueryParam("end") Calendar end){
+    public Response getByName(@QueryParam("name") String name,@QueryParam("begin") Date begin,@QueryParam("end") Date end){
         List<Employee> employees = humanResourceFacadeLocal.findEmployeesByName(name,begin,end, Status.ACTIVE);
         return Response.ok(employees).build();
     }

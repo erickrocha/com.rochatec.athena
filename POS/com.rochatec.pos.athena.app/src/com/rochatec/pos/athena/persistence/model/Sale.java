@@ -7,11 +7,15 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +34,21 @@ public class Sale implements Serializable{
 	@Column(name="DATE_REGISTER")
 	private Date dateRegister;
 	
-	@OneToMany(mappedBy="items",fetch=FetchType.LAZY)	
+	@Column(name="OPERADOR")
+	private String operador;
+	
+	@OneToOne
+	@JoinColumn(name = "CUSTOMER", referencedColumnName = "ID")
+	private Customer customer;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS")
+	private Status status; 
+	
+	@Column(name="TOTAL",scale=20,precision=2)
+	private BigDecimal total = BigDecimal.ZERO;
+	
+	@OneToMany(mappedBy="sale",fetch=FetchType.LAZY)	
 	private Set<ItemSale> items;
 
 	public Long getId() {
@@ -65,6 +83,30 @@ public class Sale implements Serializable{
 		return subTotal;
 	}
 	
+	public String getOperador() {
+		return operador;
+	}
+
+	public void setOperador(String operador) {
+		this.operador = operador;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -27,10 +27,14 @@ public class Product implements Serializable {
 	@Id
 	@Column(name="ID",unique=true)
 	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="CATEGORY", nullable=false)
+	private Category category;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
-	private Status status = Status.ACTIVE;
+	private Status status;
 	
 	@Column(name="NAME")
 	private String name;

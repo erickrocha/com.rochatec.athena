@@ -1,0 +1,32 @@
+create table CATEGORY
+(
+ ID bigint not null  auto_increment,
+ constraint PK_CATEGORY primary key (ID),
+ CATEGORY bigint, 
+ NAME varchar(200) not null
+);
+
+CREATE TABLE `ICMS` (
+  `ID` int(11) NOT NULL DEFAULT '0',
+  `DESCRIPTION` varchar(50) NOT NULL,
+  `PERCENTAGE` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `PRODUCT` (
+  `ID` bigint(20) NOT NULL,
+  `STATUS` varchar(20) NOT NULL,
+  `DATE_REGISTER` datetime NOT NULL,
+  `ICMS` int(11) NOT NULL,
+  `SELL_PRICE` decimal(15,2) NOT NULL,
+  `NAME` varchar(300) NOT NULL,
+  `SHORT_NAME` varchar(300) NOT NULL,
+  `CATEGORY` bigint not null,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PRODUCT_ICMS` (`ICMS`),
+  CONSTRAINT `FK_PRODUCT_ICMS` FOREIGN KEY (`ICMS`) REFERENCES `ICMS` (`ID`),
+  CONSTRAINT `FK_PRODUCT_CATEGORY` FOREIGN KEY (`CATEGORY`) REFERENCES `CATEGORY` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+

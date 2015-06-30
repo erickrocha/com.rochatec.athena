@@ -1,6 +1,8 @@
 package com.rochatec.athena.facade.impl;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -80,6 +82,18 @@ public class HumanResourceFacadeImpl implements HumanResourceFacadeLocal,HumanRe
 		List<Employee> employees = employeeEaoLocal.findByName(name, begin, end, status);
 		return employees;
 	}
+
+    @Override
+    public List<Employee> findEmployeesByName(String name, Date pBegin,
+                                              Date pEnd, Status status) {
+        Calendar begin = GregorianCalendar.getInstance();
+        begin.setTime(pBegin);
+        Calendar end = GregorianCalendar.getInstance();
+        end.setTime(pEnd);
+        List<Employee> employees = employeeEaoLocal.findByName(name, begin, end, status);
+        return employees;
+    }
+
 
 	@Override
 	public List<Employee> findEmployeesByHireDate(Calendar begin, Calendar end,

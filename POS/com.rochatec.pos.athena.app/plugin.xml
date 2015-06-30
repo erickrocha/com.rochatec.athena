@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="splashExtension" name="Splash Extensions" schema="schema/splashExtension.exsd"/>
 
    <extension
          id="application"
@@ -41,6 +42,10 @@
          <property
                name="windowImages"
                value="icons/alt_window_16.gif,icons/alt_window_32.gif">
+         </property>
+         <property
+               name="appName"
+               value="Hello RCP">
          </property>
       </product>
    </extension>
@@ -167,6 +172,45 @@
             id="com.rochatec.pos.athena.preferences.page.PrinterPage"
             name="Printer">
       </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="com.rochatec.pos.athena.app.splashHandlers.ExtensibleSplashHandler"
+            id="com.rochatec.pos.athena.app.splashHandlers.extensible">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="com.rochatec.pos.athena.app.product"
+            splashId="com.rochatec.pos.athena.app.splashHandlers.extensible">
+      </splashHandlerProductBinding>
+   </extension>
+   <extension
+         point="com.rochatec.pos.athena.app.splashExtension">
+      <splashExtension
+            icon="icons/af.png"
+            id="af"
+            tooltip="Application Framework">
+      </splashExtension>
+      <splashExtension
+            icon="icons/embedded.png"
+            id="embedded"
+            tooltip="Embedded">
+      </splashExtension>
+      <splashExtension
+            icon="icons/enterprise.png"
+            id="enterprise"
+            tooltip="Enterprise">
+      </splashExtension>
+      <splashExtension
+            icon="icons/languages.png"
+            id="languages"
+            tooltip="Languages">
+      </splashExtension>
+      <splashExtension
+            icon="icons/rcp.png"
+            id="rcp"
+            tooltip="RCP">
+      </splashExtension>
    </extension>
 
 </plugin>

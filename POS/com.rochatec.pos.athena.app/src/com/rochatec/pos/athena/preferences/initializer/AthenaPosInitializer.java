@@ -10,7 +10,13 @@ public class AthenaPosInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-	    store.setDefault("welcome.text","Disponivel");		
+	    store.setDefault("welcome.text","FECHADO");
+	    store.setDefault("server.protocol","HTTP");
+	    store.setDefault("server.hostname","localhost");
+	    store.setDefault("server.port",8080);
+	    store.setDefault("server.context","athena-web");
+	    store.setDefault("box.status","CLOSED");
+	    store.setDefault("box.user.id","");
 	}
 
 }
