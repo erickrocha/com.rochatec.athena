@@ -67,6 +67,10 @@
             id="com.rochatec.pos.athena.app.command.openConfig"
             name="Open Config">
       </command>
+      <command
+            id="com.rochatec.pos.athena.app.command.execute"
+            name="Execute">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -85,6 +89,10 @@
       <handler
             class="com.rochatec.pos.athena.handler.OpenConfigHandler"
             commandId="com.rochatec.pos.athena.app.command.openConfig">
+      </handler>
+      <handler
+            class="com.rochatec.pos.athena.handler.ExecuteHandler"
+            commandId="com.rochatec.pos.athena.app.command.execute">
       </handler>
    </extension>
    <extension
@@ -107,6 +115,11 @@
             commandId="com.rochatec.pos.athena.app.command.openConfig"
             schemeId="com.rochatec.pos.athena.app.scheme.pos"
             sequence="F1">
+      </key>
+      <key
+            commandId="com.rochatec.pos.athena.app.command.execute"
+            schemeId="com.rochatec.pos.athena.app.scheme.pos"
+            sequence="F4">
       </key>
    </extension>
    <extension
@@ -211,6 +224,12 @@
             id="rcp"
             tooltip="RCP">
       </splashExtension>
+   </extension>
+   <extension
+         point="org.eclipse.equinox.preferences.preferences">
+      <initializer
+            class="com.rochatec.pos.athena.preferences.initializer.AthenaPosInitializer">
+      </initializer>
    </extension>
 
 </plugin>

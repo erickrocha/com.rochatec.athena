@@ -14,7 +14,6 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.services.ISourceProviderService;
 
 import com.rochatec.framework.exception.BadFormatException;
 import com.rochatec.graphics.util.Colors;
@@ -25,7 +24,6 @@ import com.rochatec.pos.athena.app.Activator;
 import com.rochatec.pos.athena.i18n.Message;
 import com.rochatec.pos.athena.persistence.model.Product;
 import com.rochatec.pos.athena.persistence.service.ISaleService;
-import com.rochatec.pos.athena.provider.SellSourceProvider;
 import com.rochatec.pos.athena.tools.Formatter;
 import com.rochatec.pos.athena.tools.GridLayoutBuilder;
 
@@ -54,8 +52,7 @@ public class SellView extends ViewPart{
 		createHeader(form.getBody());
 		createPanels(form.getBody());		
 		WidgetUtils.backgroundEquals(form.getBody());
-		createFooter(form.getBody());
-		fill();
+		createFooter(form.getBody());		
 	}
 
 	private void createHeader(Composite parent){
@@ -212,12 +209,7 @@ public class SellView extends ViewPart{
 		
 		
 	}
-	
-	private void fill(){
-		ISourceProviderService service = (ISourceProviderService)this.getSite().getService(ISourceProviderService.class);
-		SellSourceProvider sellSourceProvider = (SellSourceProvider) service.getSourceProvider(SellSourceProvider.SELL_INSTANCE);
-	}
-	
+		
 	private void fillValues(Product product){
 		if (product != null){
 			try{
@@ -233,7 +225,7 @@ public class SellView extends ViewPart{
 		@Override
 		public void keyPressed(KeyEvent e) {			
 			if (e.keyCode == IKeyPadConstants.KEY_ENTER || e.keyCode == IKeyPadConstants.KEY_ENTER_NUMERICO){
-				ISaleService saleService = Activator.getDefault().getSaleService();
+				ISaleService saleService = Activator.getDefault().getController().getSaleService();
 				String productCode = ((Text)e.widget).getText();
 				Product product = saleService.findProductByBarcode(productCode);
 				fillValues(product);

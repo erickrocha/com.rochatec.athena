@@ -1,3 +1,32 @@
+create table BOX
+(
+  ID bigint not null auto_increment,
+  constraint PK_BOX primary key (ID),
+  OPEN_DATE datetime,
+  PRINTER_SERIAL_NUMBER varchar(30) not null,
+  ECF_NUMBER varchar(10) not null,
+  OPERATOR varchar(10) not null,
+  constraint FK_BOX_OPERATOR foreign key (OPERATOR) references OPERATOR(`KEY`),
+  INITIAL_COUNTER varchar(30),
+  FINISH_COUNT varchar(30),
+  FINISH_DATE datetime,
+  AUTORIZED_BY VARCHAR(10) not null,
+  `STATUS` varchar(20) not null
+);
+
+create table OPERATOR
+(
+  `KEY` varchar(10) not null,
+  CONSTRAINT PK_OPERATOR primary key (`KEY`),
+  `PASSWORD` varchar(50) not null,
+  `NAME` varchar(300) not null,
+  `STATUS` varchar(20) not null,
+  `HIERARCHY` varchar(50) not null
+);
+
+
+
+
 create table CATEGORY
 (
  ID bigint not null  auto_increment,

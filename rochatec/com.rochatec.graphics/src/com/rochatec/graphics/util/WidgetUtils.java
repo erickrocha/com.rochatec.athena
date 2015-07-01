@@ -125,7 +125,7 @@ public class WidgetUtils {
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Object getAdapter(Object sourceObject, Class adapterType) {
     	Assert.isNotNull(adapterType);
         if (sourceObject == null) {

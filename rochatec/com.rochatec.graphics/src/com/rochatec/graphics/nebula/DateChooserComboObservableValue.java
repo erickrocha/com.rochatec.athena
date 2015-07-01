@@ -15,6 +15,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+@SuppressWarnings("deprecation")
 public class DateChooserComboObservableValue extends AbstractObservableValue {
 	/**
 	 * {@link DateChooserCombo} widget that this is being observed.

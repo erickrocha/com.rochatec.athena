@@ -6,82 +6,44 @@ import org.osgi.framework.BundleContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.rochatec.pos.athena.context.IContext;
-import com.rochatec.pos.athena.persistence.service.ISaleService;
-import com.rochatec.pos.athena.tools.ContextBuilder;
-
-/**
- * The activator class controls the plug-in life cycle
- */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
 	public static final String PLUGIN_ID = "com.rochatec.pos.athena.app"; //$NON-NLS-1$
 
-	// The shared instance
 	private static Activator plugin;
 	
 	private ApplicationContext springContext;
 	
-	private IContext posContext;
+	private ApplicationController controller;
 	
-	/**
-	 * The constructor
-	 */
 	public Activator() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		springContext = new ClassPathXmlApplicationContext("spring.xml");
-		this.posContext = ContextBuilder.create().buildContext(this.getPreferenceStore());
+		controller = new ApplicationController(springContext,this.getPreferenceStore());
 		plugin = this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		springContext = null;
-		this.posContext = null;
+		controller = null;
 		super.stop(context);
 	}
-	
-	public IContext getAppContext(){
-		return posContext;
-	}
 
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
+
 	public static Activator getDefault() {
 		return plugin;
 	}
 
-	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path
-	 *
-	 * @param path the path
-	 * @return the image descriptor
-	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	public ApplicationContext getSpringContext() {
-		return springContext;
-	}	
-	
-	public ISaleService getSaleService(){
-		return (ISaleService)springContext.getBean("salesServiceImpl");
+	public ApplicationController getController() {
+		return controller;
 	}
+	
 }

@@ -12,9 +12,13 @@ public interface POSATHENA {
 	public long PATTERN_NONE = 0x123129;
 	public long PATTERN_WEIGHT = 0x123130;
 		
-	public long DAY_CLOSED = 0x123131;
-	public long DAY_CLOSED_PARTIALLY = 0x123132;
-	public long DAY_OPEN = 0x123133;
-
-	public String DAY_STATUS = "DAY_STATUS";
+	public String BOX_STATUS = "box.status";
+	public String BOX_USER_ID = "box.user.id";
+	public String CURRENT_OPERATOR = "current.operator";
+	
+	public String SERVER_PROTOCOL = "server.protocol";
+	public String SERVER_HOSTNAME = "server.hostname";
+	public String SERVER_PORT = "server.port";
+	public String SERVER_CONTEXT = "server.context";
+	
 }

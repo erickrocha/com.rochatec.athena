@@ -9,6 +9,8 @@
 		<class>com.rochatec.pos.athena.persistence.model.ItemSale</class>
 		<class>com.rochatec.pos.athena.persistence.model.Customer</class>
 		<class>com.rochatec.pos.athena.persistence.model.Category</class>
+		<class>com.rochatec.pos.athena.persistence.model.Operator</class>
+		<class>com.rochatec.pos.athena.persistence.model.Box</class>
 	</persistence-unit>
 </persistence>
 

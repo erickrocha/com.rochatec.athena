@@ -39,4 +39,5 @@ Bundle-ClassPath: lib/aopalliance-1.0.jar,
  lib/javassist-3.15.0-GA.jar,
  lib/mysql-connector-java-5.1.25.jar,
  lib/antlr-2.7.7.jar,
- .
+ .,
+ lib/jta-1.1.jar
