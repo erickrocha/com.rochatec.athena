@@ -47,6 +47,10 @@
             <id>JBoss Repo</id>
             <url>http://repository.jboss.com/maven2</url>
         </repository>
+        <repository>
+            <id>swt-repo</id>
+            <url>https://raw.githubusercontent.com/maven-eclipse/swt-repo/master/</url>
+        </repository>
     </repositories>
 
     <build>

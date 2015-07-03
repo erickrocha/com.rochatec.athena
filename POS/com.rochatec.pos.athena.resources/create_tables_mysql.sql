@@ -1,3 +1,10 @@
+create table `FUNCTION`
+(
+  ID bigint not null,
+  `NAME` varchar(100) not null,
+  `HIERARCHY` varchar(50) not null
+);
+
 create table BOX
 (
   ID bigint not null auto_increment,
