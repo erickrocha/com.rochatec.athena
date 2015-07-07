@@ -1,5 +1,6 @@
 package com.rochatec.pos.athena.app.composite;
 
+import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.utils.Colors;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -12,9 +13,11 @@ import org.eclipse.swt.widgets.Composite;
 public class SellComposite extends Composite{
 
     public static final String ID = "com.rochatec.pos.athena.app.composite.SellComposite";
+    private ApplicationController controller;
 
-    public SellComposite(Composite parent,int style) {
+    public SellComposite(Composite parent,int style,ApplicationController controller) {
         super(parent,style);
+        this.controller = controller;
         createContents();
     }
 

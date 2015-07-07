@@ -87,7 +87,8 @@ public class LoginDialog extends TitleAreaDialog {
     @Override
     protected void okPressed() {
         saveInput();
-        super.okPressed();
+        setReturnCode(SWT.OK);
+        close();
     }
 
     public String getUsername() {

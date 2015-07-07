@@ -1,10 +1,13 @@
 package com.rochatec.pos.athena.app.dialogs;
 
 import com.rochatec.pos.athena.utils.Messages;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -51,8 +54,11 @@ public class ExecuteDialog extends TitleAreaDialog {
 
         txtInput = new Text(container, SWT.BORDER);
         txtInput.setLayoutData(dataInput);
+        txtInput.addKeyListener(new EnterKeyAdapterImpl());
         return area;
     }
+
+
 
     @Override
     protected boolean isResizable() {
@@ -68,6 +74,16 @@ public class ExecuteDialog extends TitleAreaDialog {
         } catch (NumberFormatException ex) {
             MessageDialog.openError(getShell(), Messages.getMessage("app.execute.error.title"),
                     Messages.getMessage("app.execute.error.code"));
+        }
+    }
+
+    class EnterKeyAdapterImpl extends KeyAdapter{
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if (e.character == SWT.CR){
+                okPressed();
+            }
         }
     }
 

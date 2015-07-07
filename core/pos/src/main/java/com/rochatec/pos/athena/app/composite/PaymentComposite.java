@@ -1,5 +1,6 @@
 package com.rochatec.pos.athena.app.composite;
 
+import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
 import org.eclipse.swt.SWT;
@@ -14,9 +15,11 @@ import org.eclipse.swt.widgets.Composite;
 public class PaymentComposite extends Composite {
 
     public static final String ID = "com.rochatec.pos.athena.app.composite.PaymentComposite";
+    private ApplicationController controller;
 
-    public PaymentComposite(Composite parent, int style) {
+    public PaymentComposite(Composite parent, int style,ApplicationController controller) {
         super(parent, style);
+        this.controller = controller;
         createContents();
     }
 
