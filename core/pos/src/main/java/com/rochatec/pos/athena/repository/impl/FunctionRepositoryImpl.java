@@ -1,6 +1,6 @@
 package com.rochatec.pos.athena.repository.impl;
 
-import com.rochatec.pos.athena.exception.FunctionNotExistException;
+import com.rochatec.pos.athena.exception.FunctionNotExistNException;
 import com.rochatec.pos.athena.model.Function;
 import com.rochatec.pos.athena.repository.IFunctionRepository;
 import org.springframework.stereotype.Repository;
@@ -17,11 +17,11 @@ import java.util.List;
 public class FunctionRepositoryImpl extends GenericRepository<Function,Serializable> implements IFunctionRepository{
 
     @Override
-    public Function findById(Integer id) throws FunctionNotExistException{
+    public Function findById(Integer id) throws FunctionNotExistNException {
         try{
             return super.findById(id);
         }catch (NoResultException ex){
-            throw  new FunctionNotExistException();
+            throw  new FunctionNotExistNException();
         }
     }
 

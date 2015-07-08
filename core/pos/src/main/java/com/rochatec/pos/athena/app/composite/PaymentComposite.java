@@ -3,6 +3,7 @@ package com.rochatec.pos.athena.app.composite;
 import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
+import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
@@ -31,7 +32,7 @@ public class PaymentComposite extends Composite {
         body.setLayout(new GridLayout(1, false));
         body.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-
+        WidgetUtils.backgroundEquals(body);
         Composite footer = new Composite(this,SWT.NONE);
         footer.setLayout(new GridLayout(1, false));
         GridData footerData = new GridData(SWT.FILL, SWT.FILL,true,false);

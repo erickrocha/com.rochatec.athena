@@ -7,6 +7,7 @@ import com.rochatec.pos.athena.model.BoxStatus;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
 import com.rochatec.pos.athena.utils.Messages;
+import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
@@ -45,6 +46,7 @@ public class WelcomeComposite extends Composite {
         txtMessage.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
         txtMessage.setAlignment(SWT.CENTER);
         txtMessage.setFont(FontToolkit.getInstance().getTahomaHeader());
+        WidgetUtils.backgroundEquals(body);
 
         Composite footer = new Composite(this, SWT.NONE);
         footer.setLayout(new GridLayout(1, false));

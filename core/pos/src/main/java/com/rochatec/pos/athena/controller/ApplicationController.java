@@ -40,7 +40,7 @@ public class ApplicationController {
     }
 
     public ISaleService getSaleService(){
-        return context.getBean(SalesServiceImpl.class);
+        return (ISaleService)context.getBean("salesServiceImpl");
     }
 
     public IResourceService getResourceService(){
@@ -52,7 +52,7 @@ public class ApplicationController {
     }
 
     public IExecuteService getExecuteService(){
-        return context.getBean(ExecuteServiceImpl.class);
+        return (IExecuteService)context.getBean("executeServiceImpl");
     }
 
     public ApplicationManager getManager(){

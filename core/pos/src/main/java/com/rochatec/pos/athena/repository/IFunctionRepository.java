@@ -1,6 +1,6 @@
 package com.rochatec.pos.athena.repository;
 
-import com.rochatec.pos.athena.exception.FunctionNotExistException;
+import com.rochatec.pos.athena.exception.FunctionNotExistNException;
 import com.rochatec.pos.athena.model.Function;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public interface IFunctionRepository {
 
     public void remove(Function function);
 
-    public Function findById(Integer id)throws FunctionNotExistException;
+    public Function findById(Integer id)throws FunctionNotExistNException;
 
     public List<Function> findAll();
 }

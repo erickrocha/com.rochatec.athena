@@ -46,7 +46,7 @@ public class Box implements Serializable {
 	@Column(name = "INITIAL_COUNTER", length = 30)
 	private String initialCounter;
 
-	@Column(name = "FINISH_COUNTER", length = 30)
+	@Column(name = "FINISH_COUNT", length = 30)
 	private String finishCounter;
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -1,6 +1,6 @@
 package com.rochatec.pos.athena.service.impl;
 
-import com.rochatec.pos.athena.exception.UserException;
+import com.rochatec.pos.athena.exception.UserNException;
 import com.rochatec.pos.athena.model.Operator;
 import com.rochatec.pos.athena.repository.IOperatorRepository;
 import com.rochatec.pos.athena.service.ISecurityService;
@@ -39,7 +39,7 @@ public class SecurityServiceImpl implements ISecurityService{
 	}
 
 	@Override
-	public Operator login(String username, String password)throws UserException {
+	public Operator login(String username, String password)throws UserNException {
 		return operatorRepository.login(username,password);
 	}
 }

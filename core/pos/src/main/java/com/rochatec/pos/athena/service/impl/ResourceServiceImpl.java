@@ -1,6 +1,6 @@
 package com.rochatec.pos.athena.service.impl;
 
-import com.rochatec.pos.athena.exception.FunctionNotExistException;
+import com.rochatec.pos.athena.exception.FunctionNotExistNException;
 import com.rochatec.pos.athena.model.Function;
 import com.rochatec.pos.athena.repository.IFunctionRepository;
 import com.rochatec.pos.athena.service.IResourceService;
@@ -29,7 +29,7 @@ public class ResourceServiceImpl implements IResourceService {
     }
 
     @Override
-    public Function findFunctionById(Integer id) throws FunctionNotExistException {
+    public Function findFunctionById(Integer id) throws FunctionNotExistNException {
         Function function = functionRepository.findById(id);
         return function;
     }

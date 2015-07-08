@@ -1,21 +1,21 @@
 package com.rochatec.pos.athena.exception;
 
-public class IncorrectPasswordException extends UserException{
+public class IncorrectPasswordNException extends UserNException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5674344868656107435L;
 	
-	public IncorrectPasswordException() {
+	public IncorrectPasswordNException() {
 		super("user.login.incorrect.exception");
 	}
 	
-	public IncorrectPasswordException(String message) {
+	public IncorrectPasswordNException(String message) {
 		super(message);
 	}
 	
-	public IncorrectPasswordException(String message,Throwable throwable) {
+	public IncorrectPasswordNException(String message, Throwable throwable) {
 		super(message,throwable);
 	}
 

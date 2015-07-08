@@ -1,19 +1,19 @@
 package com.rochatec.pos.athena.exception;
 
-public class UserException extends I18Exception{
+public class UserNException extends I18nException {
 
 	private static final long serialVersionUID = 1L;
 	
 	
-	public UserException() {
+	public UserNException() {
 		super("user.exception");
 	}
 	
-	public UserException(String message) {
+	public UserNException(String message) {
 		super(message);
 	}
 	
-	public UserException(String message,Throwable throwable) {
+	public UserNException(String message, Throwable throwable) {
 		super(message,throwable);
 	}
 	

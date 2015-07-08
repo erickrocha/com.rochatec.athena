@@ -1,5 +1,8 @@
 package com.rochatec.pos.athena.app.dialogs;
 
+import com.rochatec.pos.athena.controller.ApplicationController;
+import com.rochatec.pos.athena.exception.UserNException;
+import com.rochatec.pos.athena.model.Operator;
 import com.rochatec.pos.athena.utils.Messages;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -21,11 +24,12 @@ public class LoginDialog extends TitleAreaDialog {
     private Text txtUsername;
     private Text txtPassword;
 
-    private String username;
-    private String password;
+    private ApplicationController controller;
+    private Operator operator;
 
-    public LoginDialog(Shell owner) {
+    public LoginDialog(Shell owner,ApplicationController controller) {
         super(owner);
+        this.controller = controller;
     }
 
     @Override
@@ -76,26 +80,19 @@ public class LoginDialog extends TitleAreaDialog {
         txtPassword.setLayoutData(dataPassword);
     }
 
-    // save content of the Text fields because they get disposed
-    // as soon as the Dialog closes
-    private void saveInput() {
-        username = txtUsername.getText();
-        password = txtPassword.getText();
-
+    public Operator show(){
+        open();
+        return operator;
     }
 
     @Override
     protected void okPressed() {
-        saveInput();
-        setReturnCode(SWT.OK);
-        close();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+        try{
+           operator = controller.getSecurityService().login(txtUsername.getText().trim(),txtPassword.getText().trim());
+            setReturnCode(SWT.OK);
+            close();
+        }catch (UserNException ex){
+            setMessage(ex.getMessage(),IMessageProvider.ERROR);
+        }
     }
 }

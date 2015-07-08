@@ -7,11 +7,14 @@ import com.rochatec.pos.athena.app.listeners.ApplicationKeyListenerImpl;
 import com.rochatec.pos.athena.app.service.GUIService;
 import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.main.Activator;
+import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.Messages;
+import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 
 import java.util.HashMap;
@@ -22,6 +25,7 @@ import java.util.Map;
  */
 public class AthenaApplicationWindow extends ApplicationWindow {
 
+    private Composite composite;
     private Map<String,Composite> compositeMap = new HashMap<>();
     private StackLayout stackLayout;
     private ApplicationController controller;
@@ -35,15 +39,12 @@ public class AthenaApplicationWindow extends ApplicationWindow {
 
     @Override
     protected void setShellStyle(int newShellStyle) {
-        super.setShellStyle(SWT.SYSTEM_MODAL | SWT.CLOSE);
+        super.setShellStyle(SWT.SHELL_TRIM |SWT.MAX| SWT.CLOSE);
     }
 
     @Override
     protected void configureShell(final Shell shell) {
         super.configureShell(shell);
-        shell.setMinimized(false);
-        shell.setMaximized(true);
-        shell.setFullScreen(true);
         shell.setText(Messages.getMessage("application.title"));
     }
 
@@ -59,13 +60,18 @@ public class AthenaApplicationWindow extends ApplicationWindow {
 
     @Override
     protected Control createContents(Composite parent) {
+        composite = new Composite(parent,SWT.NONE);
         stackLayout = new StackLayout();
-        parent.setLayout(stackLayout);
-        compositeMap.put(WelcomeComposite.ID, new WelcomeComposite(parent, SWT.BORDER,controller));
-        compositeMap.put(SellComposite.ID,new SellComposite(parent, SWT.BORDER,controller));
-        compositeMap.put(PaymentComposite.ID,new PaymentComposite(parent, SWT.BORDER,controller));
+        composite.setLayout(stackLayout);
+        composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+
+
+        compositeMap.put(WelcomeComposite.ID, new WelcomeComposite(composite, SWT.BORDER, controller));
+        compositeMap.put(SellComposite.ID,new SellComposite(composite, SWT.BORDER,controller));
+        compositeMap.put(PaymentComposite.ID,new PaymentComposite(composite, SWT.BORDER,controller));
         stackLayout.topControl = compositeMap.get(WelcomeComposite.ID);
         getShell().addKeyListener(new ApplicationKeyListenerImpl(guiService));
+
         return parent;
     }
 
@@ -75,7 +81,21 @@ public class AthenaApplicationWindow extends ApplicationWindow {
 
     public void updateScreen(String ID){
         stackLayout.topControl = compositeMap.get(ID);
-        getShell().layout(true);
+        composite.layout(true);
+    }
+
+    public void setPriceConsult(){
+        Composite composite = compositeMap.get(SellComposite.ID);
+        composite.setBackground(Colors.getInfoBackGround());
+        stackLayout.topControl =composite;
+        composite.layout(true);
+    }
+
+    public void setSell(){
+        Composite composite = compositeMap.get(SellComposite.ID);
+        composite.setBackground(Colors.getColorWhite());
+        stackLayout.topControl =composite;
+        composite.layout(true);
     }
 
     @Override

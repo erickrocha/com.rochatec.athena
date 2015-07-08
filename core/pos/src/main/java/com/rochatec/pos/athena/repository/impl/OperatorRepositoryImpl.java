@@ -1,7 +1,7 @@
 package com.rochatec.pos.athena.repository.impl;
 
-import com.rochatec.pos.athena.exception.UserException;
-import com.rochatec.pos.athena.exception.UserLoginException;
+import com.rochatec.pos.athena.exception.UserNException;
+import com.rochatec.pos.athena.exception.UserLoginNException;
 import com.rochatec.pos.athena.model.Operator;
 import com.rochatec.pos.athena.repository.IOperatorRepository;
 import org.springframework.stereotype.Repository;
@@ -30,7 +30,7 @@ public class OperatorRepositoryImpl extends GenericRepository<Operator,Serializa
 	}
 
 	@Override
-	public Operator login(String username, String password)throws UserException{
+	public Operator login(String username, String password)throws UserNException {
 		try {
             String jpql = "SELECT o FROM Operator o WHERE o.key = :key AND o.password = :password";
             Query query = getEntityManager().createQuery(jpql, Operator.class);
@@ -39,7 +39,7 @@ public class OperatorRepositoryImpl extends GenericRepository<Operator,Serializa
             Operator operator = (Operator) query.getSingleResult();
             return operator;
         }catch (NoResultException ex){
-            throw  new UserLoginException();
+            throw  new UserLoginNException();
         }
 	}
 }

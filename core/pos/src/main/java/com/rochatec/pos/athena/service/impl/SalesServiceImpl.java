@@ -9,6 +9,9 @@ import com.rochatec.pos.athena.repository.IProductRepository;
 import com.rochatec.pos.athena.service.ISaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
@@ -47,12 +50,14 @@ public class SalesServiceImpl implements ISaleService{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
 	public Box persist(Box box) {
 		box = boxRepository.persist(box);
 		return box;
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
 	public void remove(Box box) {
 		boxRepository.remove(box);		
 	}
