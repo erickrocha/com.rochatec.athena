@@ -1,5 +1,6 @@
 package com.rochatec.pos.athena.app.composite;
 
+import com.rochatec.pos.athena.app.AthenaApplicationWindow;
 import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
@@ -16,11 +17,11 @@ import org.eclipse.swt.widgets.Composite;
 public class PaymentComposite extends Composite {
 
     public static final String ID = "com.rochatec.pos.athena.app.composite.PaymentComposite";
-    private ApplicationController controller;
+    private AthenaApplicationWindow window;
 
-    public PaymentComposite(Composite parent, int style,ApplicationController controller) {
+    public PaymentComposite(AthenaApplicationWindow window,Composite parent, int style) {
         super(parent, style);
-        this.controller = controller;
+        this.window = window;
         createContents();
     }
 
@@ -33,12 +34,6 @@ public class PaymentComposite extends Composite {
         body.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         WidgetUtils.backgroundEquals(body);
-        Composite footer = new Composite(this,SWT.NONE);
-        footer.setLayout(new GridLayout(1, false));
-        GridData footerData = new GridData(SWT.FILL, SWT.FILL,true,false);
-        footerData.heightHint = 30;
-        footer.setLayoutData(footerData);
-        footer.setBackground(Colors.getColorBlack());
     }
 
     @Override

@@ -26,19 +26,6 @@ public class WidgetUtils {
 				c.setBackground(parent.getBackground());
 				backgroundEquals((Composite) c);
 			}
-			if (c instanceof Text){
-				c.addFocusListener(new FocusAdapter() {
-					@Override
-					public void focusGained(FocusEvent e) {
-						((Text)e.widget).setBackground(Colors.getColor(SWT.COLOR_INFO_FOREGROUND));
-					}
-					
-					@Override
-					public void focusLost(FocusEvent e) {
-						((Text)e.widget).setBackground(Colors.getColor(SWT.COLOR_WHITE));
-					}
-				});
-			}
 			if (c instanceof CTabFolder){
 				c.setBackground(parent.getBackground());
 				backgroundEquals((Composite) c);

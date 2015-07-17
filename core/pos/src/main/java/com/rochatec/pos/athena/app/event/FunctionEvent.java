@@ -1,5 +1,6 @@
 package com.rochatec.pos.athena.app.event;
 
+import com.rochatec.pos.athena.app.model.SellStatus;
 import org.eclipse.swt.events.TypedEvent;
 import org.eclipse.swt.widgets.Event;
 
@@ -13,4 +14,6 @@ public class FunctionEvent extends TypedEvent {
     }
 
     public Integer function;
+
+    public SellStatus status;
 }

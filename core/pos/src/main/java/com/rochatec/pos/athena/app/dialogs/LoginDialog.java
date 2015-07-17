@@ -3,6 +3,7 @@ package com.rochatec.pos.athena.app.dialogs;
 import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.exception.UserNException;
 import com.rochatec.pos.athena.model.Operator;
+import com.rochatec.pos.athena.service.ISecurityService;
 import com.rochatec.pos.athena.utils.Messages;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -27,7 +28,7 @@ public class LoginDialog extends TitleAreaDialog {
     private ApplicationController controller;
     private Operator operator;
 
-    public LoginDialog(Shell owner,ApplicationController controller) {
+    public LoginDialog(Shell owner, ApplicationController controller) {
         super(owner);
         this.controller = controller;
     }
@@ -76,23 +77,24 @@ public class LoginDialog extends TitleAreaDialog {
         GridData dataPassword = new GridData();
         dataPassword.grabExcessHorizontalSpace = true;
         dataPassword.horizontalAlignment = GridData.FILL;
-        txtPassword = new Text(container, SWT.BORDER|SWT.PASSWORD);
+        txtPassword = new Text(container, SWT.BORDER | SWT.PASSWORD);
         txtPassword.setLayoutData(dataPassword);
     }
 
-    public Operator show(){
+    public Operator show() {
         open();
         return operator;
     }
 
     @Override
     protected void okPressed() {
-        try{
-           operator = controller.getSecurityService().login(txtUsername.getText().trim(),txtPassword.getText().trim());
+        try {
+            ISecurityService securityService = controller.getFactory().getSecurityService();
+            operator = securityService.login(txtUsername.getText().trim(), txtPassword.getText().trim());
             setReturnCode(SWT.OK);
             close();
-        }catch (UserNException ex){
-            setMessage(ex.getMessage(),IMessageProvider.ERROR);
+        } catch (UserNException ex) {
+            setMessage(ex.getMessage(), IMessageProvider.ERROR);
         }
     }
 }

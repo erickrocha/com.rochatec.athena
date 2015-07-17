@@ -1,20 +1,24 @@
 package com.rochatec.pos.athena.app;
 
+import com.rochatec.pos.athena.app.composite.FooterComposite;
 import com.rochatec.pos.athena.app.composite.PaymentComposite;
 import com.rochatec.pos.athena.app.composite.SellComposite;
 import com.rochatec.pos.athena.app.composite.WelcomeComposite;
-import com.rochatec.pos.athena.app.listeners.ApplicationKeyListenerImpl;
-import com.rochatec.pos.athena.app.service.GUIService;
-import com.rochatec.pos.athena.controller.ApplicationController;
-import com.rochatec.pos.athena.main.Activator;
-import com.rochatec.pos.athena.utils.Colors;
+import com.rochatec.pos.athena.app.event.AppEvent;
+import com.rochatec.pos.athena.app.listeners.ApplicationListener;
 import com.rochatec.pos.athena.utils.Messages;
-import com.rochatec.pos.athena.utils.WidgetUtils;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StackLayout;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ShellAdapter;
+import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 import java.util.HashMap;
@@ -27,25 +31,61 @@ public class AthenaApplicationWindow extends ApplicationWindow {
 
     private Composite composite;
     private Map<String,Composite> compositeMap = new HashMap<>();
+    private Map<String,Control> controlMap = new HashMap<>();
     private StackLayout stackLayout;
-    private ApplicationController controller;
-    private GUIService guiService;
+    private ListenerList listeners = new ListenerList();
 
-    public AthenaApplicationWindow(ApplicationController controller) {
+    public AthenaApplicationWindow() {
         super(null);
-        this.controller = controller;
-        this.guiService = new GUIService(controller,this);
+    }
+
+    public void register(String key,Control value){
+        this.controlMap.put(key, value);
+    }
+
+    public Control getControl(String key){
+        return this.controlMap.get(key);
+    }
+
+    public CLabel getCLabel(String key){
+        return (CLabel)this.controlMap.get(key);
+    }
+
+    public Text getText(String key){
+        return (Text)this.controlMap.get(key);
+    }
+
+    public void addApplicationListener(ApplicationListener listener){
+        this.listeners.add(listener);
+    }
+
+    public void removeApplicationListener(ApplicationListener listener){
+        this.listeners.remove(listener);
+    }
+
+    public void fireApplicationExecuteEvent(AppEvent event){
+        for (Object listener :listeners.getListeners()){
+            ((ApplicationListener)listener).execute(event);
+        }
+    }
+
+    public void fireApplicationActivatedEvent(AppEvent event){
+        for (Object listener :listeners.getListeners()){
+            ((ApplicationListener)listener).activated(event);
+        }
     }
 
     @Override
     protected void setShellStyle(int newShellStyle) {
-        super.setShellStyle(SWT.SHELL_TRIM |SWT.MAX| SWT.CLOSE);
+        super.setShellStyle(SWT.SHELL_TRIM | SWT.MAX | SWT.CLOSE);
     }
 
     @Override
     protected void configureShell(final Shell shell) {
         super.configureShell(shell);
         shell.setText(Messages.getMessage("application.title"));
+        shell.addShellListener(new ShellListenerImpl());
+        shell.addKeyListener(new ShellKeyImpl());
     }
 
     @Override
@@ -58,20 +98,24 @@ public class AthenaApplicationWindow extends ApplicationWindow {
         }
     }
 
+
+
     @Override
     protected Control createContents(Composite parent) {
+        parent.setLayout(new GridLayout(1,false));
         composite = new Composite(parent,SWT.NONE);
-        stackLayout = new StackLayout();
-        composite.setLayout(stackLayout);
         composite.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+        stackLayout = new StackLayout();
+        stackLayout.marginHeight = 0;
+        stackLayout.marginWidth = 0;
+        composite.setLayout(stackLayout);
+        composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-
-        compositeMap.put(WelcomeComposite.ID, new WelcomeComposite(composite, SWT.BORDER, controller));
-        compositeMap.put(SellComposite.ID,new SellComposite(composite, SWT.BORDER,controller));
-        compositeMap.put(PaymentComposite.ID,new PaymentComposite(composite, SWT.BORDER,controller));
+        compositeMap.put(WelcomeComposite.ID, new WelcomeComposite(this, composite, SWT.BORDER));
+        compositeMap.put(SellComposite.ID,new SellComposite(this,composite, SWT.BORDER));
+        compositeMap.put(PaymentComposite.ID,new PaymentComposite(this,composite, SWT.BORDER));
         stackLayout.topControl = compositeMap.get(WelcomeComposite.ID);
-        getShell().addKeyListener(new ApplicationKeyListenerImpl(guiService));
-
+        new FooterComposite(this,parent);
         return parent;
     }
 
@@ -81,20 +125,6 @@ public class AthenaApplicationWindow extends ApplicationWindow {
 
     public void updateScreen(String ID){
         stackLayout.topControl = compositeMap.get(ID);
-        composite.layout(true);
-    }
-
-    public void setPriceConsult(){
-        Composite composite = compositeMap.get(SellComposite.ID);
-        composite.setBackground(Colors.getInfoBackGround());
-        stackLayout.topControl =composite;
-        composite.layout(true);
-    }
-
-    public void setSell(){
-        Composite composite = compositeMap.get(SellComposite.ID);
-        composite.setBackground(Colors.getColorWhite());
-        stackLayout.topControl =composite;
         composite.layout(true);
     }
 
@@ -109,4 +139,29 @@ public class AthenaApplicationWindow extends ApplicationWindow {
         Display.getCurrent().dispose();
     }
 
+    class ShellKeyImpl extends KeyAdapter{
+        @Override
+        public void keyReleased(KeyEvent e) {
+            AppEvent event = new AppEvent(e);
+            event.display = e.display;
+            event.shell = e.display.getActiveShell().getShell();
+            event.widget = e.widget;
+            event.character = e.character;
+            event.keyCode = e.keyCode;
+            event.window = AthenaApplicationWindow.this;
+            fireApplicationExecuteEvent(event);
+        }
+    }
+
+    class  ShellListenerImpl extends ShellAdapter{
+        @Override
+        public void shellActivated(ShellEvent e) {
+            AppEvent event = new AppEvent(e);
+            event.display = e.display;
+            event.shell = e.display.getActiveShell().getShell();
+            event.widget = e.widget;
+            event.window = AthenaApplicationWindow.this;
+            fireApplicationActivatedEvent(event);
+        }
+    }
 }
