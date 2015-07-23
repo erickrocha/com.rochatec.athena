@@ -11,6 +11,7 @@ public interface IAppConfig {
 
     int KEY_ENTER_NUMERICO 	= 16777296;
     int KEY_ENTER 			= 13;
+    int BACKSPACE           = 8;
 
     String GUI_WELCOME_MESSAGE = "gui.welcome.message";
     String GUI_FOOTER_OPERATOR = "gui.footer.operator";

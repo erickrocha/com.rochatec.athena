@@ -8,9 +8,9 @@ public enum ItemStatus {
 	OPEN,CANCELED,FINISHED;
 	
 	
-	public static List<Status>  getAll(){
-		List<Status> allStatus = new ArrayList<Status>();
-		for (Status status : Status.values()){
+	public static List<StatusSale>  getAll(){
+		List<StatusSale> allStatus = new ArrayList<StatusSale>();
+		for (StatusSale status : StatusSale.values()){
 			allStatus.add(status);
 		}
 		return allStatus;

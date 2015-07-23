@@ -5,5 +5,5 @@ package com.rochatec.pos.athena.app.model;
  */
 public enum SellStatus {
 
-    SELL_STARTED, WAIT_QUANTITY, WAIT_PRODUCT, PAY_STARTED;
+    SELL_STARTED, WAIT_VALUE, PAY_STARTED;
 }

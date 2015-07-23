@@ -2,10 +2,10 @@ package com.rochatec.pos.athena.controller;
 
 import com.rochatec.pos.athena.app.IAppConfig;
 import com.rochatec.pos.athena.app.service.PreferenceService;
-import com.rochatec.pos.athena.model.Box;
-import com.rochatec.pos.athena.model.BoxStatus;
-import com.rochatec.pos.athena.model.Operator;
+import com.rochatec.pos.athena.model.*;
 import com.rochatec.pos.athena.utils.ServiceFactory;
+
+import java.util.Date;
 
 /**
  * Created by epr on 01/07/15.
@@ -18,6 +18,7 @@ public class ApplicationController {
     private Operator operator;
     private Box box;
     private BoxStatus status;
+    private Sale sale;
 
     public ApplicationController(ServiceFactory factory) {
         this.factory = factory;
@@ -76,5 +77,15 @@ public class ApplicationController {
 
     public void setStatus(BoxStatus status) {
         this.status = status;
+    }
+
+    public void openSale(){
+        Customer customer = getFactory().getSaleService().findCustomer(1L);
+        sale = new Sale();
+        sale.setDateRegister(new Date());
+        sale.setOperador(operator);
+        sale.setCustomer(customer);
+        sale.setStatus(StatusSale.ACTIVE);
+        getFactory().getSaleService().persist(sale);
     }
 }

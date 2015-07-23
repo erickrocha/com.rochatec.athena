@@ -1,31 +1,45 @@
 package com.rochatec.pos.athena.service;
 
-import com.rochatec.pos.athena.model.BarCode;
-import com.rochatec.pos.athena.model.Box;
-import com.rochatec.pos.athena.model.Operator;
-import com.rochatec.pos.athena.model.Product;
+import com.rochatec.pos.athena.model.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-public interface ISaleService {
+ public interface ISaleService {
 
-	public Product findProductById(Long id);
+	 Product findProductById(Long id);
 
-	public Product findProductByBarcode(BarCode barCode);
+	 Product findProductByBarcode(BarCode barCode);
 
-	public Product findProductByBarcode(String barcode);
+	 Product findProductByBarcode(String barcode);
 
-	public Set<Product> findProductsByName(String name);
+	 Set<Product> findProductsByName(String name);
 	
-	public Box persist(Box box);
+	 Box persist(Box box);
 	
-	public void remove(Box box);
+	 void remove(Box box);
 	
-	public Box findBoxById(Long id);
+	 Box findBoxById(Long id);
 	
-	public List<Box> findAllBoxes();
+	 List<Box> findAllBoxes();
 	
-	public Box findBoxByOperatorAndOpen(Operator operator);
+	 Box findBoxByOperatorAndOpen(Operator operator);
+
+     Customer persist(Customer customer);
+
+     void remove(Customer customer);
+
+     Customer findCustomer(Long id);
+
+     Set<Customer> findAllCustomersByName(String name);
+
+     Sale persist(Sale sale);
+
+     void remove(Sale sale);
+
+     Sale findSale(Long id);
+
+     Set<Sale> findAllSalesByDay(Date begin,Date end);
 
 }

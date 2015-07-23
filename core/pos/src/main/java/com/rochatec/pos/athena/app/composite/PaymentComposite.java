@@ -1,12 +1,15 @@
 package com.rochatec.pos.athena.app.composite;
 
 import com.rochatec.pos.athena.app.AthenaApplicationWindow;
+import com.rochatec.pos.athena.app.event.AppEvent;
 import com.rochatec.pos.athena.controller.ApplicationController;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
 import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -34,9 +37,24 @@ public class PaymentComposite extends Composite {
         body.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         WidgetUtils.backgroundEquals(body);
+        this.addKeyListener(new ShellKeyImpl());
     }
 
     @Override
     protected void checkSubclass() {
+    }
+
+    class ShellKeyImpl extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            AppEvent event = new AppEvent(e);
+            event.display = e.display;
+            event.shell = e.display.getActiveShell().getShell();
+            event.widget = e.widget;
+            event.character = e.character;
+            event.keyCode = e.keyCode;
+            event.window = window;
+            window.fireApplicationExecuteEvent(event);
+        }
     }
 }

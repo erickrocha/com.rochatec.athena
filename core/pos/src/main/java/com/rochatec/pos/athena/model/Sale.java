@@ -5,20 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name="SALE")
@@ -33,9 +20,10 @@ public class Sale implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATE_REGISTER")
 	private Date dateRegister;
-	
-	@Column(name="OPERADOR")
-	private String operador;
+
+	@ManyToOne
+	@JoinColumn(name="OPERATOR", nullable=false)
+	private Operator operador;
 	
 	@OneToOne
 	@JoinColumn(name = "CUSTOMER", referencedColumnName = "ID")
@@ -43,7 +31,7 @@ public class Sale implements Serializable{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
-	private Status status; 
+	private StatusSale status;
 	
 	@Column(name="TOTAL",scale=20,precision=2)
 	private BigDecimal total = BigDecimal.ZERO;
@@ -83,19 +71,19 @@ public class Sale implements Serializable{
 		return subTotal;
 	}
 	
-	public String getOperador() {
+	public Operator getOperador() {
 		return operador;
 	}
 
-	public void setOperador(String operador) {
+	public void setOperador(Operator operador) {
 		this.operador = operador;
 	}
 
-	public Status getStatus() {
+	public StatusSale getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(StatusSale status) {
 		this.status = status;
 	}
 
@@ -105,6 +93,14 @@ public class Sale implements Serializable{
 
 	public void setTotal(BigDecimal total) {
 		this.total = total;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override

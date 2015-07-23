@@ -34,7 +34,7 @@ public class Product implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
-	private Status status;
+	private StatusSale status;
 	
 	@Column(name="NAME")
 	private String name;
@@ -64,11 +64,11 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	public Status getStatus() {
+	public StatusSale getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(StatusSale status) {
 		this.status = status;
 	}
 

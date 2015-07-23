@@ -1,11 +1,10 @@
 package com.rochatec.pos.athena.service.impl;
 
-import com.rochatec.pos.athena.model.BarCode;
-import com.rochatec.pos.athena.model.Box;
-import com.rochatec.pos.athena.model.Operator;
-import com.rochatec.pos.athena.model.Product;
+import com.rochatec.pos.athena.model.*;
 import com.rochatec.pos.athena.repository.IBoxRepository;
+import com.rochatec.pos.athena.repository.ICustomerRepository;
 import com.rochatec.pos.athena.repository.IProductRepository;
+import com.rochatec.pos.athena.repository.ISaleRepository;
 import com.rochatec.pos.athena.service.ISaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +12,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -24,6 +24,12 @@ public class SalesServiceImpl implements ISaleService{
 	
 	@Autowired
 	private IBoxRepository boxRepository;
+
+    @Autowired
+    private ICustomerRepository customerRepository;
+
+    @Autowired
+    private ISaleRepository saleRepository;
 	
 	@Override
 	public Product findProductById(Long id) {
@@ -79,5 +85,53 @@ public class SalesServiceImpl implements ISaleService{
 		Box box = boxRepository.findByOperatorAndOpen(operator);
 		return box;
 	}
-	
+
+	@Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
+	public Customer persist(Customer customer) {
+		customer = customerRepository.persist(customer);
+		return customer;
+	}
+
+	@Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
+	public void remove(Customer customer) {
+        customerRepository.remove(customer);
+	}
+
+	@Override
+	public Customer findCustomer(Long id) {
+		return customerRepository.findById(id);
+	}
+
+	@Override
+	public Set<Customer> findAllCustomersByName(String name) {
+        Set<Customer> customers = customerRepository.findAllByName(name);
+		return customers;
+	}
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
+    public Sale persist(Sale sale) {
+        sale = saleRepository.persist(sale);
+        return sale;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,noRollbackFor = Exception.class,readOnly = false)
+    public void remove(Sale sale) {
+        saleRepository.remove(sale);
+    }
+
+    @Override
+    public Sale findSale(Long id) {
+        Sale sale = saleRepository.findById(id);
+        return sale;
+    }
+
+    @Override
+    public Set<Sale> findAllSalesByDay(Date begin, Date end) {
+        Set<Sale> sales = saleRepository.findAllByDay(begin,end);
+        return sales;
+    }
 }

@@ -30,7 +30,7 @@ public class Operator implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS", length = 20)
-	private Status status;
+	private StatusSale status;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "HIERARCHY", length = 50)
@@ -60,11 +60,11 @@ public class Operator implements Serializable {
 		this.name = name;
 	}
 
-	public Status getStatus() {
+	public StatusSale getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(StatusSale status) {
 		this.status = status;
 	}
 

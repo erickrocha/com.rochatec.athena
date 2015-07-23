@@ -11,6 +11,9 @@
 		<class>com.rochatec.pos.athena.model.Category</class>
 		<class>com.rochatec.pos.athena.model.Operator</class>
 		<class>com.rochatec.pos.athena.model.Box</class>
+		<class>com.rochatec.pos.athena.model.Sale</class>
+		<class>com.rochatec.pos.athena.model.Province</class>
+		<class>com.rochatec.pos.athena.model.Customer</class>
 	</persistence-unit>
 </persistence>
 

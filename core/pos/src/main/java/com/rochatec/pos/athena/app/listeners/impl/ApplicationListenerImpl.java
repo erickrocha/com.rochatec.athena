@@ -21,6 +21,7 @@ public class ApplicationListenerImpl extends ApplicationAdapter {
     private ApplicationController controller;
 
     private SellStatus status = SellStatus.SELL_STARTED;
+    private StringBuilder value = new StringBuilder();
 
     public ApplicationListenerImpl(ApplicationController controller) {
         this.controller = controller;
@@ -28,40 +29,53 @@ public class ApplicationListenerImpl extends ApplicationAdapter {
 
     @Override
     public void execute(AppEvent event) {
-
         switch (event.keyCode) {
+            case IAppConfig.KEY_ENTER:
+                if (status.equals(SellStatus.WAIT_VALUE)){
+                    searchProduct(event);
+                }
+                break;
+            case IAppConfig.KEY_ENTER_NUMERICO:
+                if (status.equals(SellStatus.WAIT_VALUE)){
+                    searchProduct(event);
+                }
+                break;
+            case SWT.F4:
+                event.window.getCLabel(IAppConfig.GUI_FOOTER_QUANTITY).setText(value.toString());
+                event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText(value.toString());
+                break;
             case SWT.F10:
                 event.window.updateScreen(SellComposite.ID);
-                event.window.getCLabel(IAppConfig.GUI_FOOTER_LABEL_QUANTITY).setVisible(true);
-                event.window.getText(IAppConfig.GUI_FOOTER_BARCODE).setVisible(true);
-                event.window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setVisible(true);
-                event.window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setFocus();
-                event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText("");
-                status = SellStatus.WAIT_QUANTITY;
+                event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setVisible(true);
+                event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText("1,000");
+                status = SellStatus.WAIT_VALUE;
+                controller.openSale();
+                AthenaWindowHelper.writeTicketHeader(event.window);
                 break;
             case SWT.F11:
                 event.window.updateScreen(PaymentComposite.ID);
+                status = SellStatus.PAY_STARTED;
+                break;
+            case IAppConfig.BACKSPACE:
+                if (value.toString().length() > 0){
+                    String newValue = value.substring(0,value.toString().length()-1);
+                    value = new StringBuilder(newValue);
+                    event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setText(value.toString());
+                }
+                break;
+            default:
+                if (status.equals(SellStatus.WAIT_VALUE)){
+                    value.append(event.character);
+                    event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setText(value.toString());
+                }
                 break;
         }
-        if (status.equals(SellStatus.WAIT_QUANTITY)) {
-            if (event.keyCode == IAppConfig.KEY_ENTER || event.keyCode == IAppConfig.KEY_ENTER_NUMERICO) {
-                status = SellStatus.WAIT_PRODUCT;
-                event.window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setText("");
-                event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText("");
-                Text text = event.window.getText(IAppConfig.GUI_FOOTER_BARCODE);
-                text.setFocus();
-            }
-        }
-        if (status.equals(SellStatus.WAIT_PRODUCT)) {
-            Text text = event.window.getText(IAppConfig.GUI_FOOTER_BARCODE);
-            if (!text.getText().trim().equals("")) {
-                ISaleService saleService = controller.getFactory().getSaleService();
-                Product product = saleService.findProductByBarcode(text.getText().trim());
-                AthenaWindowHelper.showProduct(event.window, product);
-                status = SellStatus.WAIT_QUANTITY;
-                event.window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setFocus();
-            }
-        }
+    }
+
+    private void searchProduct(AppEvent event){
+        ISaleService saleService = controller.getFactory().getSaleService();
+        Product product = saleService.findProductByBarcode(value.toString());
+        AthenaWindowHelper.showProduct(event.window,product);
 
     }
 

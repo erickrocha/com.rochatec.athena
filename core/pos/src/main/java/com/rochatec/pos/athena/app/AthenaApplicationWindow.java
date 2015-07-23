@@ -12,6 +12,7 @@ import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StackLayout;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.ShellAdapter;
@@ -54,6 +55,11 @@ public class AthenaApplicationWindow extends ApplicationWindow {
     public Text getText(String key){
         return (Text)this.controlMap.get(key);
     }
+
+    public StyledText getStyledText(String key){
+        return (StyledText)this.controlMap.get(key);
+    }
+
 
     public void addApplicationListener(ApplicationListener listener){
         this.listeners.add(listener);
@@ -160,6 +166,16 @@ public class AthenaApplicationWindow extends ApplicationWindow {
             event.display = e.display;
             event.shell = e.display.getActiveShell().getShell();
             event.widget = e.widget;
+            event.window = AthenaApplicationWindow.this;
+            fireApplicationActivatedEvent(event);
+        }
+
+        @Override
+        public void shellIconified(ShellEvent shellEvent) {
+            AppEvent event = new AppEvent(shellEvent);
+            event.display = shellEvent.display;
+            event.shell = shellEvent.display.getActiveShell().getShell();
+            event.widget = shellEvent.widget;
             event.window = AthenaApplicationWindow.this;
             fireApplicationActivatedEvent(event);
         }

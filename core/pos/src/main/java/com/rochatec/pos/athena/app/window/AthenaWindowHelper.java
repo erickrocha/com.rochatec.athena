@@ -5,10 +5,12 @@ import com.rochatec.pos.athena.app.IAppConfig;
 import com.rochatec.pos.athena.app.exception.BadFormatException;
 import com.rochatec.pos.athena.app.model.SellStatus;
 import com.rochatec.pos.athena.controller.ApplicationController;
+import com.rochatec.pos.athena.model.ItemSale;
 import com.rochatec.pos.athena.model.Product;
 import com.rochatec.pos.athena.utils.Formatter;
 import com.rochatec.pos.athena.utils.Messages;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Text;
 
 import java.math.BigDecimal;
@@ -36,37 +38,13 @@ public class AthenaWindowHelper {
                 operatorText.setText(controller.getOperator().getName());
                 CLabel ecfText = window.getCLabel(IAppConfig.GUI_FOOTER_ECF);
                 ecfText.setText(controller.getBox().getEcf());
-                if (status.equals(SellStatus.WAIT_QUANTITY) || status.equals(SellStatus.WAIT_PRODUCT)){
-                    window.getCLabel(IAppConfig.GUI_FOOTER_LABEL_QUANTITY).setVisible(true);
-                    window.getText(IAppConfig.GUI_FOOTER_BARCODE).setVisible(true);
-                    window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setVisible(true);
+                if (status.equals(SellStatus.WAIT_VALUE)){
+                    window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setVisible(true);
                 }else{
-                    window.getCLabel(IAppConfig.GUI_FOOTER_LABEL_QUANTITY).setVisible(false);
-                    window.getText(IAppConfig.GUI_FOOTER_BARCODE).setVisible(false);
-                    window.getText(IAppConfig.GUI_FOOTER_QUANTITY).setVisible(false);
+                    window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setVisible(false);
                 }
                 break;
         }
-    }
-
-    public static void refresQuantity(AthenaApplicationWindow window, Character value) {
-        Text text = window.getText(IAppConfig.GUI_SELL_QUANTITY);
-
-        String newValue = String.valueOf(value);
-        String oldValue = text.getText().trim().equals("0")? "":text.getText().trim();
-        String finalValue = "";
-
-        finalValue = oldValue + newValue;
-        text.setText(finalValue);
-    }
-
-    public static void backspaceQuantity(AthenaApplicationWindow window){
-        Text text = window.getText(IAppConfig.GUI_SELL_QUANTITY);
-        Text label = window.getText(IAppConfig.GUI_FOOTER_QUANTITY);
-        if (text.getText().length() > 1){
-            text.setText(text.getText().trim().substring(0, text.getText().trim().length() - 1));
-        }
-        label.setText(text.getText());
     }
 
     public static void showProduct(AthenaApplicationWindow window,Product product){
@@ -74,7 +52,7 @@ public class AthenaWindowHelper {
         Text txtDescription = window.getText(IAppConfig.GUI_SELL_DESCRIPTION);
         Text txtPrice = window.getText(IAppConfig.GUI_SELL_PRICE);
         Text txtSubTotal = window.getText(IAppConfig.GUI_SELL_SUBTOTAL);
-        Text txtBarcode = window.getText(IAppConfig.GUI_FOOTER_BARCODE);
+        CLabel txtBarcode = window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE);
         try {
             txtDescription.setText(product.getShortName());
             txtPrice.setText(Formatter.getCurrency().mask(product.getSellPrice()));
@@ -88,5 +66,28 @@ public class AthenaWindowHelper {
         }
 
     }
+
+    public static void writeTicketHeader(AthenaApplicationWindow window){
+        StringBuilder builder = new StringBuilder();
+        StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
+        builder.append("Item Descrição                            Quant X Preço Total");
+        ticketItem.setText(builder.toString());
+    }
+
+    public static void writeTicket(AthenaApplicationWindow window,ItemSale itemSale){
+        try{
+            StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
+            StringBuilder builder = new StringBuilder();
+            builder.append(itemSale.getProduct().getShortName()+" ");
+            builder.append(Formatter.getWeight().mask(itemSale.getQuantity()));
+            builder.append(" X ");
+            builder.append(Formatter.getCurrency().mask(itemSale.getSellPrice()));
+            builder.append(Formatter.getCurrency().mask(itemSale.getTotalItem()));
+            ticketItem.setText(builder.toString());
+        }catch (BadFormatException ex){
+
+        }
+    }
+
 
 }

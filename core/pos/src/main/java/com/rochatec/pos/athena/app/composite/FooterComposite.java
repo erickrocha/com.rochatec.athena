@@ -57,45 +57,17 @@ public class FooterComposite {
         ecf.setLayoutData(txtEcfGridData);
         window.register(IAppConfig.GUI_FOOTER_OPERATOR, operator);
         window.register(IAppConfig.GUI_FOOTER_ECF, ecf);
-        CLabel lblQuantity = new CLabel(container, SWT.NONE);
-        lblQuantity.setText(Messages.getMessage("label.quantity"));
-        Text txtQuantity = new Text(container,SWT.SEARCH |SWT.CANCEL | SWT.BORDER);
-        GridData txtQuantityGridData = new GridData(SWT.FILL, SWT.FILL_EVEN_ODD, true, false);
-        txtQuantityGridData.minimumWidth = 100;
-        txtQuantity.addVerifyListener(new VerifyListenerImpl(window));
-        txtQuantity.setLayoutData(txtQuantityGridData);
 
-        txtQuantity.setForeground(Colors.getColorWhite());
-        txtQuantity.addKeyListener(new KeyListenerImpl(window));
-
-        Text txtBarcode = new Text(container, SWT.SEARCH | SWT.ICON_SEARCH | SWT.CANCEL | SWT.BORDER);
-        txtBarcode.setMessage(Messages.getMessage("product.search"));
+        CLabel txtBarcode = new CLabel(container,SWT.BORDER);
+        txtBarcode.setForeground(Colors.getColorWhite());
         GridData gridData = new GridData(SWT.FILL, SWT.FILL_EVEN_ODD, true, false);
         gridData.horizontalAlignment = SWT.RIGHT;
         gridData.minimumWidth = 250;
         txtBarcode.setLayoutData(gridData);
         txtBarcode.addKeyListener(new KeyListenerImpl(window));
-        window.register(IAppConfig.GUI_FOOTER_LABEL_QUANTITY, lblQuantity);
-        window.register(IAppConfig.GUI_FOOTER_QUANTITY, txtQuantity);
         window.register(IAppConfig.GUI_FOOTER_BARCODE, txtBarcode);
         container.addKeyListener(new KeyListenerImpl(window));
         WidgetUtils.backgroundEquals(container);
-    }
-
-    class VerifyListenerImpl implements VerifyListener{
-        private char[] characteres = {'0','1','2','3','4','5','6','7','8','9',','};
-
-        private AthenaApplicationWindow window;
-
-        public VerifyListenerImpl(AthenaApplicationWindow window) {
-            this.window = window;
-        }
-
-        @Override
-        public void verifyText(VerifyEvent e) {
-            Text text = window.getText(IAppConfig.GUI_SELL_QUANTITY);
-            text.setText(((Text)e.widget).getText());
-        }
     }
 
     class KeyListenerImpl extends KeyAdapter {

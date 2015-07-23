@@ -2,11 +2,14 @@ package com.rochatec.pos.athena.app.composite;
 
 import com.rochatec.pos.athena.app.AthenaApplicationWindow;
 import com.rochatec.pos.athena.app.IAppConfig;
+import com.rochatec.pos.athena.app.event.AppEvent;
 import com.rochatec.pos.athena.utils.Colors;
 import com.rochatec.pos.athena.utils.FontToolkit;
 import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -46,9 +49,24 @@ public class WelcomeComposite extends Composite {
         WidgetUtils.backgroundEquals(this);
         txtMessage.setBackground(Colors.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
         window.register(IAppConfig.GUI_WELCOME_MESSAGE, txtMessage);
+        this.addKeyListener(new ShellKeyImpl());
     }
 
     @Override
     protected void checkSubclass() {
+    }
+
+    class ShellKeyImpl extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            AppEvent event = new AppEvent(e);
+            event.display = e.display;
+            event.shell = e.display.getActiveShell().getShell();
+            event.widget = e.widget;
+            event.character = e.character;
+            event.keyCode = e.keyCode;
+            event.window = window;
+            window.fireApplicationExecuteEvent(event);
+        }
     }
 }

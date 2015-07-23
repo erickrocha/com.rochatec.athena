@@ -2,10 +2,13 @@ package com.rochatec.pos.athena.app.composite;
 
 import com.rochatec.pos.athena.app.AthenaApplicationWindow;
 import com.rochatec.pos.athena.app.IAppConfig;
+import com.rochatec.pos.athena.app.event.AppEvent;
 import com.rochatec.pos.athena.utils.*;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -34,7 +37,7 @@ public class SellComposite extends Composite{
         body.setLayout(new GridLayout(1, false));
         body.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         createSellPanel(body);
-        WidgetUtils.backgroundEquals(body);
+        this.addKeyListener(new ShellKeyImpl());
     }
 
 
@@ -52,6 +55,7 @@ public class SellComposite extends Composite{
         composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         createProductDescription(composite);
         createItemBox(composite);
+        WidgetUtils.backgroundEquals(composite);
     }
 
     private void createProductDescription(Composite parent){
@@ -120,10 +124,12 @@ public class SellComposite extends Composite{
     }
 
     private void createCupom(Composite parent){
-        StyledText styledText = new StyledText(parent,SWT.BORDER|SWT.V_SCROLL);
+        StyledText styledText = new StyledText(parent,SWT.BORDER|SWT.NO_FOCUS|SWT.V_SCROLL);
         styledText.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
         styledText.setFont(FontToolkit.getInstance().getTahoma(20, SWT.NONE));
-        styledText.setBackground(Colors.getColor(SWT.COLOR_INFO_BACKGROUND));
+        styledText.setBackground(Colors.getColor(SWT.COLOR_YELLOW));
+        styledText.setEditable(false);
+        styledText.addKeyListener(new ShellKeyImpl());
         window.register(IAppConfig.GUI_SELL_CUPOM,styledText);
     }
 
@@ -144,5 +150,18 @@ public class SellComposite extends Composite{
     protected void checkSubclass() {
     }
 
+    class ShellKeyImpl extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            AppEvent event = new AppEvent(e);
+            event.display = e.display;
+            event.shell = e.display.getActiveShell().getShell();
+            event.widget = e.widget;
+            event.character = e.character;
+            event.keyCode = e.keyCode;
+            event.window = window;
+            window.fireApplicationExecuteEvent(event);
+        }
+    }
 
 }
