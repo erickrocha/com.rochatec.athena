@@ -9,7 +9,7 @@
    <launcherArgs>
       <programArgs>-clearPersistedState
       </programArgs>
-      <vmArgs>-Xms1024M -Xmx1024M -XX:MaxPermSize=256M -XX:PermSize=256M
+      <vmArgs>-Xms1024M -Xmx1024M -XX:MaxPermSize=256M -XX:PermSize=256M -nl=pt_BR
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>

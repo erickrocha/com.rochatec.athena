@@ -3,7 +3,12 @@ package com.rochatec.pos.athena.app.composite;
 import com.rochatec.pos.athena.app.AthenaApplicationWindow;
 import com.rochatec.pos.athena.app.IAppConfig;
 import com.rochatec.pos.athena.app.event.AppEvent;
+import com.rochatec.pos.athena.app.provider.content.GenericContentProvider;
+import com.rochatec.pos.athena.model.ItemSale;
 import com.rochatec.pos.athena.utils.*;
+import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StyledText;
@@ -113,8 +118,6 @@ public class SellComposite extends Composite{
         window.register(IAppConfig.GUI_SELL_PRICE,txtPrice);
     }
 
-
-
     private void createRightPanel(Composite parent){
         Composite composite = new Composite(parent, SWT.BORDER);
         composite.setLayout(new GridLayout(1, false));
@@ -124,13 +127,16 @@ public class SellComposite extends Composite{
     }
 
     private void createCupom(Composite parent){
-        StyledText styledText = new StyledText(parent,SWT.BORDER|SWT.NO_FOCUS|SWT.V_SCROLL);
-        styledText.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
-        styledText.setFont(FontToolkit.getInstance().getTahoma(20, SWT.NONE));
-        styledText.setBackground(Colors.getColor(SWT.COLOR_YELLOW));
-        styledText.setEditable(false);
-        styledText.addKeyListener(new ShellKeyImpl());
-        window.register(IAppConfig.GUI_SELL_CUPOM,styledText);
+        ListViewer itemViewer = new ListViewer(parent,SWT.V_SCROLL);
+//        StyledText styledText = new StyledText(parent,SWT.BORDER|SWT.NO_FOCUS|SWT.V_SCROLL);
+        itemViewer.getList().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        itemViewer.getList().setFont(FontToolkit.getInstance().getTahoma(20, SWT.NONE));
+        itemViewer.getList().setBackground(Colors.getColor(SWT.COLOR_INFO_BACKGROUND));
+        itemViewer.getList().setForeground(Colors.getColorWhite());
+        itemViewer.setContentProvider(new GenericContentProvider<ItemSale>());
+
+        itemViewer.getList().addKeyListener(new ShellKeyImpl());
+//        window.register(IAppConfig.GUI_SELL_CUPOM, itemViewer.);
     }
 
     private void createSubTotalComposite(Composite parent){

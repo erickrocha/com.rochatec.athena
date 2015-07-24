@@ -5,6 +5,7 @@ import com.rochatec.pos.athena.app.service.PreferenceService;
 import com.rochatec.pos.athena.model.*;
 import com.rochatec.pos.athena.utils.ServiceFactory;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -86,6 +87,25 @@ public class ApplicationController {
         sale.setOperador(operator);
         sale.setCustomer(customer);
         sale.setStatus(StatusSale.ACTIVE);
+        sale = getFactory().getSaleService().persist(sale);
+        preferenceService.setValue(IAppConfig.CURRENT_SELL_ID,sale.getId());
+    }
+
+    public Integer getCountSellItems(){
+        return sale.getItems().size();
+    }
+
+    public ItemSale addItem(Product product,BigDecimal quantity){
+        ItemSale itemSale = new ItemSale();
+        itemSale.setDateRegister(new Date());
+        itemSale.setProduct(product);
+        itemSale.setQuantity(quantity);
+        itemSale.setSellPrice(product.getSellPrice());
+        itemSale.setSale(sale);
+        itemSale.setStatus(ItemStatus.OK);
+        sale.addItem(itemSale);
+        sale.setTotal(sale.calculateSubtTotal());
         getFactory().getSaleService().persist(sale);
+        return itemSale;
     }
 }

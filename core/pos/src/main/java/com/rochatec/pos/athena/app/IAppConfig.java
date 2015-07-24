@@ -7,7 +7,7 @@ public interface IAppConfig {
 
     String BOX_STATUS = "box.status";
     String BOX_OPERATOR = "box.operator";
-
+    String CURRENT_SELL_ID = "current.sell.id";
 
     int KEY_ENTER_NUMERICO 	= 16777296;
     int KEY_ENTER 			= 13;

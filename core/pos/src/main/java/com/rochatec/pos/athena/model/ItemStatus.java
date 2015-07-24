@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum ItemStatus {
 	
-	OPEN,CANCELED,FINISHED;
+	OK,CANCELED;
 	
 	
 	public static List<StatusSale>  getAll(){

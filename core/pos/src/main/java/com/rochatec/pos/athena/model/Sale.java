@@ -3,6 +3,7 @@ package com.rochatec.pos.athena.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -36,7 +37,7 @@ public class Sale implements Serializable{
 	@Column(name="TOTAL",scale=20,precision=2)
 	private BigDecimal total = BigDecimal.ZERO;
 	
-	@OneToMany(mappedBy="sale",fetch=FetchType.LAZY)	
+	@OneToMany(mappedBy="sale",fetch=FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<ItemSale> items;
 
 	public Long getId() {
@@ -66,7 +67,9 @@ public class Sale implements Serializable{
 	public BigDecimal getSubTotal(){
 		BigDecimal subTotal = BigDecimal.ZERO;
 		for (ItemSale item : items){
-			subTotal = subTotal.add(item.getTotalItem());
+			if (item.getStatus().equals(ItemStatus.OK)){
+				subTotal = subTotal.add(item.getTotalItem());
+			}
 		}
 		return subTotal;
 	}
@@ -102,6 +105,25 @@ public class Sale implements Serializable{
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public void addItem(ItemSale itemSale){
+		if (items == null){
+			items = new HashSet<>();
+		}
+		items.add(itemSale);
+	}
+
+	public BigDecimal calculateSubtTotal(){
+		BigDecimal value = BigDecimal.ZERO;
+		for (ItemSale item : items){
+			if (item.getStatus().equals(ItemStatus.OK)){
+				BigDecimal totalItem = item.getQuantity().multiply(item.getSellPrice());
+				value.add(totalItem);
+			}
+		}
+		return value;
+	}
+
 
 	@Override
 	public int hashCode() {

@@ -20,7 +20,7 @@ import java.math.BigDecimal;
  */
 public class AthenaWindowHelper {
 
-    public static void refresh(AthenaApplicationWindow window, ApplicationController controller,SellStatus status) {
+    public static void refresh(AthenaApplicationWindow window, ApplicationController controller, SellStatus status) {
         CLabel welcomeText = null;
         switch (controller.getStatus()) {
             case CLOSED:
@@ -38,16 +38,16 @@ public class AthenaWindowHelper {
                 operatorText.setText(controller.getOperator().getName());
                 CLabel ecfText = window.getCLabel(IAppConfig.GUI_FOOTER_ECF);
                 ecfText.setText(controller.getBox().getEcf());
-                if (status.equals(SellStatus.WAIT_VALUE)){
+                if (status.equals(SellStatus.WAIT_VALUE)) {
                     window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setVisible(true);
-                }else{
+                } else {
                     window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setVisible(false);
                 }
                 break;
         }
     }
 
-    public static void showProduct(AthenaApplicationWindow window,Product product){
+    public static void showProduct(AthenaApplicationWindow window, Product product) {
         Text txtQuantity = window.getText(IAppConfig.GUI_SELL_QUANTITY);
         Text txtDescription = window.getText(IAppConfig.GUI_SELL_DESCRIPTION);
         Text txtPrice = window.getText(IAppConfig.GUI_SELL_PRICE);
@@ -59,35 +59,73 @@ public class AthenaWindowHelper {
             BigDecimal quantity = Formatter.getWeight().parse(txtQuantity.getText().trim());
             BigDecimal subTotal = quantity.multiply(product.getSellPrice());
             txtSubTotal.setText(Formatter.getCurrency().mask(subTotal));
-        }catch (BadFormatException ex){
+        } catch (BadFormatException ex) {
 
-        }finally {
+        } finally {
             txtBarcode.setText("");
         }
 
     }
 
-    public static void writeTicketHeader(AthenaApplicationWindow window){
+    public static void clear(AthenaApplicationWindow window) {
+        Text txtQuantity = window.getText(IAppConfig.GUI_SELL_QUANTITY);
+        Text txtDescription = window.getText(IAppConfig.GUI_SELL_DESCRIPTION);
+        Text txtPrice = window.getText(IAppConfig.GUI_SELL_PRICE);
+        CLabel txtBarcode = window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE);
+        txtDescription.setText("");
+        txtPrice.setText("");
+        txtBarcode.setText("");
+        txtQuantity.setText("1.000");
+    }
+
+
+    public static void writeTicketHeader(AthenaApplicationWindow window) {
         StringBuilder builder = new StringBuilder();
         StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
-        builder.append("Item Descrição                            Quant X Preço Total");
+        builder.append("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         ticketItem.setText(builder.toString());
     }
 
-    public static void writeTicket(AthenaApplicationWindow window,ItemSale itemSale){
-        try{
+    public static void writeTicket(AthenaApplicationWindow window, Integer count, ItemSale itemSale) {
+        try {
             StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
             StringBuilder builder = new StringBuilder();
-            builder.append(itemSale.getProduct().getShortName()+" ");
+            builder.append(getCountFormated(count));
+            builder.append(" ");
+            builder.append(getDescriptionFormated(itemSale.getProduct().getShortName()));
+            builder.append(" ");
             builder.append(Formatter.getWeight().mask(itemSale.getQuantity()));
             builder.append(" X ");
             builder.append(Formatter.getCurrency().mask(itemSale.getSellPrice()));
+            builder.append(" ");
             builder.append(Formatter.getCurrency().mask(itemSale.getTotalItem()));
             ticketItem.setText(builder.toString());
-        }catch (BadFormatException ex){
+        } catch (BadFormatException ex) {
 
         }
     }
 
+    private static String getCountFormated(Integer count) {
+        if (count >= 1 || count <= 9) {
+            return "00" + count.toString();
+        } else if (count >= 10 || count <= 99) {
+            return "0" + count.toString();
+        } else {
+            return count.toString();
+        }
+    }
+
+    private static String getDescriptionFormated(String name) {
+        if (name.length() > 50) {
+            return name.substring(0, 50);
+        } else if (name.length() < 50) {
+            for (int i = name.length(); i < 50; i++) {
+                name = name + " ";
+            }
+            return name;
+        } else {
+            return name;
+        }
+    }
 
 }
