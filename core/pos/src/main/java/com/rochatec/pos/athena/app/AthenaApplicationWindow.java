@@ -7,16 +7,15 @@ import com.rochatec.pos.athena.app.composite.WelcomeComposite;
 import com.rochatec.pos.athena.app.event.AppEvent;
 import com.rochatec.pos.athena.app.listeners.ApplicationListener;
 import com.rochatec.pos.athena.utils.Messages;
+import com.rochatec.pos.athena.utils.WidgetUtils;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ShellAdapter;
-import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -56,6 +55,10 @@ public class AthenaApplicationWindow extends ApplicationWindow {
         return (Text)this.controlMap.get(key);
     }
 
+    public ScrolledComposite getScrolledComposite(String key){
+        return (ScrolledComposite)this.controlMap.get(key);
+    }
+
     public StyledText getStyledText(String key){
         return (StyledText)this.controlMap.get(key);
     }
@@ -92,6 +95,7 @@ public class AthenaApplicationWindow extends ApplicationWindow {
         shell.setText(Messages.getMessage("application.title"));
         shell.addShellListener(new ShellListenerImpl());
         shell.addKeyListener(new ShellKeyImpl());
+        shell.addFocusListener(new NotFocusLostShellListener(shell));
     }
 
     @Override
@@ -122,6 +126,7 @@ public class AthenaApplicationWindow extends ApplicationWindow {
         compositeMap.put(PaymentComposite.ID,new PaymentComposite(this,composite, SWT.BORDER));
         stackLayout.topControl = compositeMap.get(WelcomeComposite.ID);
         new FooterComposite(this,parent);
+        WidgetUtils.setAllKeyListener(parent.getChildren(),new ShellKeyImpl());
         return parent;
     }
 
@@ -178,6 +183,20 @@ public class AthenaApplicationWindow extends ApplicationWindow {
             event.widget = shellEvent.widget;
             event.window = AthenaApplicationWindow.this;
             fireApplicationActivatedEvent(event);
+        }
+    }
+
+    class NotFocusLostShellListener extends FocusAdapter {
+
+        Shell shell;
+
+        public NotFocusLostShellListener(Shell shell) {
+            this.shell = shell;
+        }
+
+        @Override
+        public void focusLost(FocusEvent focusEvent) {
+            shell.forceFocus();
         }
     }
 }

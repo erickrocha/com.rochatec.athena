@@ -3,6 +3,7 @@ package com.rochatec.pos.athena.controller;
 import com.rochatec.pos.athena.app.IAppConfig;
 import com.rochatec.pos.athena.app.service.PreferenceService;
 import com.rochatec.pos.athena.model.*;
+import com.rochatec.pos.athena.service.ISaleService;
 import com.rochatec.pos.athena.utils.ServiceFactory;
 
 import java.math.BigDecimal;
@@ -107,5 +108,11 @@ public class ApplicationController {
         sale.setTotal(sale.calculateSubtTotal());
         getFactory().getSaleService().persist(sale);
         return itemSale;
+    }
+
+    public Product findProduct(String barcode){
+        ISaleService saleService = getFactory().getSaleService();
+        Product product  = saleService.findProductByBarcode(barcode);
+        return product;
     }
 }

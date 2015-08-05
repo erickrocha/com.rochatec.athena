@@ -11,6 +11,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -43,6 +44,7 @@ public class SellComposite extends Composite{
         body.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         createSellPanel(body);
         this.addKeyListener(new ShellKeyImpl());
+        body.addKeyListener(new ShellKeyImpl());
     }
 
 
@@ -52,6 +54,7 @@ public class SellComposite extends Composite{
         composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         createLeftPanel(composite);
         createRightPanel(composite);
+        composite.addKeyListener(new ShellKeyImpl());
     }
 
     private void createLeftPanel(Composite parent){
@@ -61,6 +64,7 @@ public class SellComposite extends Composite{
         createProductDescription(composite);
         createItemBox(composite);
         WidgetUtils.backgroundEquals(composite);
+        composite.addKeyListener(new ShellKeyImpl());
     }
 
     private void createProductDescription(Composite parent){
@@ -75,7 +79,9 @@ public class SellComposite extends Composite{
         Text txtDescription = new Text(group, SWT.READ_ONLY);
         txtDescription.setFont(FontToolkit.getInstance().getTahoma(35, SWT.BOLD));
         txtDescription.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-        window.register(IAppConfig.GUI_SELL_DESCRIPTION,txtDescription);
+        txtDescription.addKeyListener(new ShellKeyImpl());
+        window.register(IAppConfig.GUI_SELL_DESCRIPTION, txtDescription);
+        group.addKeyListener(new ShellKeyImpl());
     }
 
 
@@ -104,6 +110,7 @@ public class SellComposite extends Composite{
         txtQuantity.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         txtQuantity.setFont(FontToolkit.getInstance().getTahoma(50, SWT.BOLD));
         txtQuantity.setText("0");
+        txtQuantity.addKeyListener(new ShellKeyImpl());
 
         CLabel cLabel =new CLabel(composite, SWT.FLAT|SWT.CENTER);
         cLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
@@ -124,19 +131,14 @@ public class SellComposite extends Composite{
         composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         createCupom(composite);
         createSubTotalComposite(composite);
+        composite.addKeyListener(new ShellKeyImpl());
     }
 
     private void createCupom(Composite parent){
-        ListViewer itemViewer = new ListViewer(parent,SWT.V_SCROLL);
-//        StyledText styledText = new StyledText(parent,SWT.BORDER|SWT.NO_FOCUS|SWT.V_SCROLL);
-        itemViewer.getList().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        itemViewer.getList().setFont(FontToolkit.getInstance().getTahoma(20, SWT.NONE));
-        itemViewer.getList().setBackground(Colors.getColor(SWT.COLOR_INFO_BACKGROUND));
-        itemViewer.getList().setForeground(Colors.getColorWhite());
-        itemViewer.setContentProvider(new GenericContentProvider<ItemSale>());
-
-        itemViewer.getList().addKeyListener(new ShellKeyImpl());
-//        window.register(IAppConfig.GUI_SELL_CUPOM, itemViewer.);
+        ScrolledComposite sc = new ScrolledComposite(parent, SWT.BORDER|SWT.V_SCROLL);
+        sc.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+        window.register(IAppConfig.GUI_SELL_CUPOM, sc);
+        sc.addKeyListener(new ShellKeyImpl());
     }
 
     private void createSubTotalComposite(Composite parent){
@@ -149,6 +151,7 @@ public class SellComposite extends Composite{
         Text txtSubTotal = new Text(group, SWT.FLAT|SWT.RIGHT|SWT.READ_ONLY);
         txtSubTotal.setFont(FontToolkit.getInstance().getTahoma(40, SWT.BOLD));
         txtSubTotal.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        txtSubTotal.addKeyListener(new ShellKeyImpl());
         window.register(IAppConfig.GUI_SELL_SUBTOTAL,txtSubTotal);
     }
 

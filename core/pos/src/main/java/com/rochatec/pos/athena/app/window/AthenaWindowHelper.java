@@ -2,6 +2,7 @@ package com.rochatec.pos.athena.app.window;
 
 import com.rochatec.pos.athena.app.AthenaApplicationWindow;
 import com.rochatec.pos.athena.app.IAppConfig;
+import com.rochatec.pos.athena.app.composite.ProductComposite;
 import com.rochatec.pos.athena.app.exception.BadFormatException;
 import com.rochatec.pos.athena.app.model.SellStatus;
 import com.rochatec.pos.athena.controller.ApplicationController;
@@ -10,6 +11,7 @@ import com.rochatec.pos.athena.model.Product;
 import com.rochatec.pos.athena.utils.Formatter;
 import com.rochatec.pos.athena.utils.Messages;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Text;
 
@@ -78,31 +80,11 @@ public class AthenaWindowHelper {
         txtQuantity.setText("1.000");
     }
 
-
-    public static void writeTicketHeader(AthenaApplicationWindow window) {
-        StringBuilder builder = new StringBuilder();
-        StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
-        builder.append("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        ticketItem.setText(builder.toString());
-    }
-
     public static void writeTicket(AthenaApplicationWindow window, Integer count, ItemSale itemSale) {
-        try {
-            StyledText ticketItem = window.getStyledText(IAppConfig.GUI_SELL_CUPOM);
-            StringBuilder builder = new StringBuilder();
-            builder.append(getCountFormated(count));
-            builder.append(" ");
-            builder.append(getDescriptionFormated(itemSale.getProduct().getShortName()));
-            builder.append(" ");
-            builder.append(Formatter.getWeight().mask(itemSale.getQuantity()));
-            builder.append(" X ");
-            builder.append(Formatter.getCurrency().mask(itemSale.getSellPrice()));
-            builder.append(" ");
-            builder.append(Formatter.getCurrency().mask(itemSale.getTotalItem()));
-            ticketItem.setText(builder.toString());
-        } catch (BadFormatException ex) {
-
-        }
+        ScrolledComposite ticketItem = window.getScrolledComposite(IAppConfig.GUI_SELL_CUPOM);
+        ProductComposite productComposite = new ProductComposite(ticketItem);
+        productComposite.setItemSale(itemSale);
+        ticketItem.layout(true);
     }
 
     private static String getCountFormated(Integer count) {

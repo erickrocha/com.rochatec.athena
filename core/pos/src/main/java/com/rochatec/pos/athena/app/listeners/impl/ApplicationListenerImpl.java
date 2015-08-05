@@ -25,10 +25,11 @@ import java.math.BigDecimal;
 public class ApplicationListenerImpl extends ApplicationAdapter {
 
     private ApplicationController controller;
+    private int count = 0;
 
     private SellStatus status = SellStatus.SELL_STARTED;
     private StringBuilder value = new StringBuilder();
-    private char[] characteres = {'0','1','2','3','4','5','6','7','8','9',',','.'};
+    private char[] characteres = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.'};
 
     public ApplicationListenerImpl(ApplicationController controller) {
         this.controller = controller;
@@ -38,16 +39,10 @@ public class ApplicationListenerImpl extends ApplicationAdapter {
     public void execute(AppEvent event) {
         switch (event.keyCode) {
             case IAppConfig.KEY_ENTER:
-                if (status.equals(SellStatus.WAIT_VALUE)){
-                    sellItem(event);
-                    value = new StringBuilder();
-                }
+                sell(event);
                 break;
             case IAppConfig.KEY_ENTER_NUMERICO:
-                if (status.equals(SellStatus.WAIT_VALUE)){
-                    sellItem(event);
-                    value = new StringBuilder();
-                }
+                sell(event);
                 break;
             case SWT.F4:
                 event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText(value.toString());
@@ -60,46 +55,50 @@ public class ApplicationListenerImpl extends ApplicationAdapter {
                 event.window.getText(IAppConfig.GUI_SELL_QUANTITY).setText("1.000");
                 status = SellStatus.WAIT_VALUE;
                 controller.openSale();
-                AthenaWindowHelper.writeTicketHeader(event.window);
                 break;
             case SWT.F11:
                 event.window.updateScreen(PaymentComposite.ID);
                 status = SellStatus.PAY_STARTED;
                 break;
             case IAppConfig.BACKSPACE:
-                if (value.toString().length() > 0){
-                    String newValue = value.substring(0,value.toString().length()-1);
+                if (value.toString().length() > 0) {
+                    String newValue = value.substring(0, value.toString().length() - 1);
                     value = new StringBuilder(newValue);
                     event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setText(value.toString());
                 }
                 break;
             default:
-                if (status.equals(SellStatus.WAIT_VALUE)){
-                    for (int i = 0; i < characteres.length;i++){
-                        if (event.character == characteres[i]){
-                            value.append(event.character);
-                            event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setText(value.toString());
-                        }
+                for (int i = 0; i < characteres.length; i++) {
+                    if (event.character == characteres[i]) {
+                        value.append(event.character);
+                        event.window.getCLabel(IAppConfig.GUI_FOOTER_BARCODE).setText(value.toString());
                     }
                 }
+
                 break;
         }
     }
 
-    private void sellItem(AppEvent event){
-        try {
-            ISaleService saleService = controller.getFactory().getSaleService();
-            Product product = saleService.findProductByBarcode(value.toString());
+    private void sell(AppEvent event) {
+        Product product = null;
+        if (count == 0){
+            product = controller.findProduct(value.toString());
             AthenaWindowHelper.showProduct(event.window, product);
-            Text lblQuantity = event.window.getText(IAppConfig.GUI_SELL_QUANTITY);
-            BigDecimal quantity = Formatter.getWeight().parse(lblQuantity.getText());
-            ItemSale itemSale = controller.addItem(product, quantity);
-            AthenaWindowHelper.writeTicket(event.window,controller.getCountSellItems(),itemSale);
-            AthenaWindowHelper.clear(event.window);
-        }catch (BadFormatException ex){
+            count++;
+        }
+        if (count == 1){
+            try {
+                String quantityString = event.window.getText(IAppConfig.GUI_SELL_QUANTITY).getText();
+                BigDecimal quantity = Formatter.getWeight().parse(quantityString);
+                ItemSale itemSale =controller.addItem(product, quantity);
+                AthenaWindowHelper.writeTicket(event.window,controller.getCountSellItems(),itemSale);
+                count = 0;
+            }catch (BadFormatException ex){
 
+            }
         }
     }
+
 
     @Override
     public void activated(AppEvent event) {

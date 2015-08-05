@@ -10,13 +10,11 @@ import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.VerifyKeyListener;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.events.VerifyListener;
+import org.eclipse.swt.events.*;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /**
@@ -58,7 +56,7 @@ public class FooterComposite {
         window.register(IAppConfig.GUI_FOOTER_OPERATOR, operator);
         window.register(IAppConfig.GUI_FOOTER_ECF, ecf);
 
-        CLabel txtBarcode = new CLabel(container,SWT.BORDER);
+        CLabel txtBarcode = new CLabel(container, SWT.BORDER);
         txtBarcode.setForeground(Colors.getColorWhite());
         GridData gridData = new GridData(SWT.FILL, SWT.FILL_EVEN_ODD, true, false);
         gridData.horizontalAlignment = SWT.RIGHT;
@@ -91,4 +89,5 @@ public class FooterComposite {
         }
 
     }
+
 }

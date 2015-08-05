@@ -7,10 +7,7 @@ import org.eclipse.core.runtime.PlatformObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.CTabFolder;
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Button;
@@ -34,7 +31,14 @@ public class WidgetUtils {
 		}
 	}
 	
-	
+	public static void setAllKeyListener(Control[] controls,KeyListener keyListener){
+		for (Control c : controls) {
+			c.addKeyListener(keyListener);
+			if (c instanceof Composite) {
+				clearForm(((Composite) c).getChildren());
+			}
+		}
+	}
 
 	public static void clearForm(Control[] controls) {
 		for (Control c : controls) {
