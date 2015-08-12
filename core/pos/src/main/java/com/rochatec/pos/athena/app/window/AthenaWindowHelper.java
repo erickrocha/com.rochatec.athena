@@ -84,6 +84,7 @@ public class AthenaWindowHelper {
         ScrolledComposite ticketItem = window.getScrolledComposite(IAppConfig.GUI_SELL_CUPOM);
         ProductComposite productComposite = new ProductComposite(ticketItem);
         productComposite.setItemSale(itemSale);
+        ticketItem.setContent(productComposite.getComposite());
         ticketItem.layout(true);
     }
 

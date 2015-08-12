@@ -45,6 +45,10 @@ public class ProductComposite  {
         lblTotalItem.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
     }
 
+    public Composite getComposite(){
+        return composite;
+    }
+
     public void setItemSale(ItemSale itemSale){
         try{
             lblDescription.setText(itemSale.getProduct().getName());
