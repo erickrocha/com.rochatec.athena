@@ -13,10 +13,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -135,8 +139,42 @@ public class SellComposite extends Composite{
     }
 
     private void createCupom(Composite parent){
-        ScrolledComposite sc = new ScrolledComposite(parent, SWT.BORDER|SWT.V_SCROLL);
-        sc.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true));
+        final ScrolledComposite sc = new ScrolledComposite(parent, SWT.BORDER|SWT.V_SCROLL);
+        sc.setLayout(new GridLayout(1, false));
+        sc.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+        Composite composite = new Composite(sc, SWT.BORDER);
+        sc.setContent(composite);
+        composite.setLayout(new GridLayout(1, false));
+        composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+
+        Composite header = new Composite(composite,SWT.NONE);
+        header.setLayout(new GridLayout(1, true));
+        header.setLayoutData(new GridData(SWT.FILL, SWT.FILL_EVEN_ODD, true, false));
+        CLabel lblDescription = new CLabel(header,SWT.NONE);
+        lblDescription.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+        lblDescription.setFont(FontToolkit.getInstance().getTahomaLabel());
+        lblDescription.setText("REFRIG PEPSI COLA LT 350ML");
+
+        Composite footer = new Composite(composite,SWT.NONE);
+        footer.setLayout(new GridLayout(4, false));
+        footer.setLayoutData(new GridData(SWT.FILL, SWT.FILL_EVEN_ODD, true, false));
+        CLabel lblQuantity = new CLabel(footer,SWT.NONE|SWT.LEFT);
+        lblQuantity.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+        lblQuantity.setText("5,000");
+        lblQuantity.setFont(FontToolkit.getInstance().getTahomaLabel());
+        new CLabel(footer,SWT.NONE).setText("X");
+        CLabel lblPrice = new CLabel(footer,SWT.NONE|SWT.RIGHT);
+        lblPrice.setFont(FontToolkit.getInstance().getTahomaLabel());
+        lblPrice.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+        lblPrice.setText("199,99");
+        CLabel lblTotalItem = new CLabel(footer,SWT.NONE|SWT.RIGHT);
+        lblTotalItem.setFont(FontToolkit.getInstance().getTahomaLabel());
+        lblTotalItem.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+        lblTotalItem.setText("999,95");
+        sc.setMinHeight(0);
+
+
         window.register(IAppConfig.GUI_SELL_CUPOM, sc);
         sc.addKeyListener(new ShellKeyImpl());
     }

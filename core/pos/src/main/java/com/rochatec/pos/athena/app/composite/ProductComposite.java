@@ -51,10 +51,10 @@ public class ProductComposite  {
 
     public void setItemSale(ItemSale itemSale){
         try{
-            lblDescription.setText(itemSale.getProduct().getName());
-            lblQuantity.setText(Formatter.getWeight().mask(itemSale.getQuantity()));
-            lblPrice.setText(Formatter.getCurrency().mask(itemSale.getSellPrice()));
-            lblTotalItem.setText(Formatter.getCurrency().mask(itemSale.getTotalItem()));
+            lblDescription.setText("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            lblQuantity.setText(Formatter.getWeight().mask(5.000));
+            lblPrice.setText(Formatter.getCurrency().mask(199.99));
+            lblTotalItem.setText(Formatter.getCurrency().mask(999.95));
         }catch (BadFormatException ex){
 
         }
