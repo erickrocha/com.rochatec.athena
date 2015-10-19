@@ -19,7 +19,7 @@ public class CustomerEditorInput implements IEditorInput{
 		this(new Customer());
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		return null;

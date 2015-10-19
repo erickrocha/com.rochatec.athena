@@ -21,7 +21,7 @@ public class SupplierEditorInput implements IEditorInput {
 		this(new Supplier());
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		

@@ -22,7 +22,7 @@ public class CategoryEditorInput implements IEditorInput{
 	}
 	
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
 	public Object getAdapter(Class adapter) {
 		return null;

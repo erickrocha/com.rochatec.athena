@@ -1,18 +1,22 @@
 package com.athena.resource;
 
-import com.rochatec.athena.facade.local.HumanResourceFacadeLocal;
-import com.rochatec.athena.model.Employee;
-import com.rochatec.athena.model.Job;
-import com.rochatec.athena.model.Status;
+import java.util.Date;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+
+import com.rochatec.athena.facade.local.HumanResourceFacadeLocal;
+import com.rochatec.athena.model.Employee;
+import com.rochatec.athena.model.Job;
+import com.rochatec.athena.model.Status;
 
 /**
  * Created by epr on 01/06/15.

@@ -21,7 +21,7 @@ public class ProductEditorInput implements IEditorInput {
 		this.product = product;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
 	public Object getAdapter(Class arg0) {
 		return null;

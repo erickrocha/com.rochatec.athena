@@ -21,7 +21,7 @@ public class EmployeeEditorInput implements IEditorInput{
 		this(new Employee());
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		

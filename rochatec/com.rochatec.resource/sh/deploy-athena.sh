@@ -1,6 +1,6 @@
 #!/bin/sh
 PATH_SOURCE=/home/epr/java/projects/com.rochatec.athena
-JBOSS_HOME=/home/epr/java/server/jboss-as-7.1.1.Final
+JBOSS_HOME=/home/epr/java/server/wildfly-9.0.1.Final
 cd $PATH_SOURCE/core
 mvn clean install
 cd $JBOSS_HOME/standalone/deployments/

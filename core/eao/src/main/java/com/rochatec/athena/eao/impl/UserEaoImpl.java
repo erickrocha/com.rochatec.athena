@@ -55,7 +55,8 @@ public class UserEaoImpl extends GenericEao<User, Serializable> implements
     @Override
     public List<User> findAll() {
         Query query = getEntityManager().createQuery("SELECT u FROM User u");
-        List<User> users = (List<User>)query.getResultList();
+        @SuppressWarnings("unchecked")
+		List<User> users = ((List<User>)query.getResultList());
         return users;
     }
 }

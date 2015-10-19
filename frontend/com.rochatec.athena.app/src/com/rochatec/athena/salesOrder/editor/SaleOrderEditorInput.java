@@ -21,7 +21,7 @@ public class SaleOrderEditorInput implements IEditorInput{
 		this(new SaleOrder());
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		return null;

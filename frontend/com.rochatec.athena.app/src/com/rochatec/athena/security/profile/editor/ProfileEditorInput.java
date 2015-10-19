@@ -21,7 +21,7 @@ public class ProfileEditorInput implements IEditorInput {
 		this(new Profile());
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		return null;

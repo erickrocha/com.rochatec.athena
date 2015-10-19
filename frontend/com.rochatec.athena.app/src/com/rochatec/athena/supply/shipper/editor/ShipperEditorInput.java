@@ -21,7 +21,7 @@ public class ShipperEditorInput implements IEditorInput {
 		this(new Shipper());
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		

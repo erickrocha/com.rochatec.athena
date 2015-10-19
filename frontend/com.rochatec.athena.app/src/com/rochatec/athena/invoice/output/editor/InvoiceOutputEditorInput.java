@@ -21,7 +21,7 @@ public class InvoiceOutputEditorInput implements IEditorInput {
 		this.invoice = invoice;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class adapter) {
 		return null;

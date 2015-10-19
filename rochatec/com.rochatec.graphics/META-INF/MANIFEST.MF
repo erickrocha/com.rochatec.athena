@@ -4,7 +4,7 @@ Bundle-Name: Graphics
 Bundle-SymbolicName: com.rochatec.graphics
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ROCHATEC
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.swt,
  org.eclipse.jface,
  org.eclipse.ui,

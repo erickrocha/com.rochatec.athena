@@ -4,7 +4,7 @@ Bundle-Name: Framework
 Bundle-SymbolicName: com.rochatec.framework
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ROCHATEC
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.rochatec.framework.bind,
  com.rochatec.framework.context,
  com.rochatec.framework.converter,
