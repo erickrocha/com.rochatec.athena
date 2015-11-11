@@ -1,3 +1,15 @@
 .idea/*
 *.*~
 core.iml
+.project
+.settings/*
+athena-web/.classpath
+athena-web/.settings/*
+business/.classpath
+business/.project
+business/.settings/*
+eao/.classpath
+eao/.settings/*
+model/.classpath
+model/.settings/*
+enterprise/.settings/*
