@@ -1,28 +1,13 @@
 package com.rochatec.athena.model;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="USERS")
@@ -151,20 +136,24 @@ public class User implements Serializable {
 	public void setActive(Status status) {
 		this.status = status;
 	}
-	
-	public void setActive(boolean active){
-		this.status = active ? Status.ACTIVE : Status.INACTIVE;
-	}
-	
-	public boolean isBlocked(){
-		return this.blocked == 1 ? true : false;
-	}
+
+    public void setActive(boolean active) {
+        this.status = active ? Status.ACTIVE : Status.INACTIVE;
+    }
+
+    public boolean isBlocked() {
+        return this.blocked == 1 ? true : false;
+    }
 
 	public void setBlocked(boolean blocked){
 		this.blocked = blocked ? 1 : 0;
 	}
-	
-	public List<Role> getRoles() {
+
+    public Status getStatus() {
+        return this.status;
+    }
+
+    public List<Role> getRoles() {
         Set<Role> allRoles = new HashSet<Role>();
         allRoles.addAll(roles);
         allRoles.addAll(profile.roles);
@@ -174,15 +163,15 @@ public class User implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-	public Set<Role> getRoleSet(){
-		return new HashSet<Role>(roles);
-	}
-	
-	public void setRoles(Set<Role> roles){
-		this.roles = new ArrayList<Role>(roles);
-	}
-	
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = new ArrayList<Role>(roles);
+    }
+
+    public Set<Role> getRoleSet() {
+        return new HashSet<Role>(roles);
+    }
+
     public String getEmail() {
         return email;
     }

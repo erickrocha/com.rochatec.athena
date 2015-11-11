@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -10,7 +10,8 @@
 
     <properties>
         <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
-        <jdk.version>1.8</jdk.version>
+        <jdk.source.version>1.8</jdk.source.version>
+        <jdk.target.version>1.7</jdk.target.version>
         <jee.version>7.0</jee.version>
         <version.jboss.maven.plugin>7.7.Final</version.jboss.maven.plugin>
         <jboss-as.home>/home/epr/java/server/jboss-as-7.1.1.Final</jboss-as.home>
@@ -85,8 +86,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <source>${jdk.source.version}</source>
+                    <target>${jdk.target.version}</target>
                 </configuration>
             </plugin>
             <plugin>

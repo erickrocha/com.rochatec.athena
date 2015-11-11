@@ -48,7 +48,7 @@ public class UserLabelProvider extends LabelProvider implements ITableLabelProvi
 				return user.getEmployee().getName();
 			}
 		case 4:
-			return StatusTradutor.getLabel(user.getActive());
+			return StatusTradutor.getLabel(user.getStatus());
 		case 5:
 			return user.isBlocked() ? Messages.getMessage("app.blocked") : Messages.getMessage("app.unblocked");
 		default:

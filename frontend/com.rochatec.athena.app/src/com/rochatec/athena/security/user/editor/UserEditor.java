@@ -172,7 +172,7 @@ public class UserEditor extends AbstractEditor implements Bindable{
 			User user = editorInput.getUser();
 			viewerProfile.setSelection(new SearchSelection<Profile>(user.getProfile()));
 			employee = user.getEmployee();
-			roleTable.setCheckeds(user.getMergedRoles());
+			roleTable.setCheckeds(user.getRoles());
 		}else{
 			viewerProfile.setSelection(new SearchSelection<Profile>(profiles.get(0)));
 			roleTable.setCheckeds(profiles.get(0).getRoles());

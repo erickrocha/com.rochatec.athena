@@ -29,7 +29,7 @@ public class CRMResource {
 
     @Path("/customer/{id}")
     @Produces("application/json")
-    private Response get(@PathParam("id") Long id){
+    public Response get(@PathParam("id") Long id) {
         Customer customer = crmFacadeLocal.findCustomerById(id);
         return Response.ok(customer).build();
     }
@@ -37,7 +37,7 @@ public class CRMResource {
     @Path("/customers")
     @Produces("application/json")
     @Consumes("application/json")
-    private Response get(Map<String,Object> params){
+    public Response get(Map<String, Object> params) {
         String name = params.get("name").toString();
         Calendar begin = (Calendar)params.get("begin");
         Calendar end = (Calendar)params.get("end");
