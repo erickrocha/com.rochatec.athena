@@ -135,7 +135,9 @@ insert into profile (ID,NAME,LABEL) values (1,'Administrador','Administrador do 
 
 insert into PROFILE_ROLE (SELECT 1,key FROM role);
 
-INSERT INTO USERS (ID,USERNAME,PASSWORD,EMPLOYEE,PROFILE,STATUS,BLOCKED) values (1,'ADMIN','brutal',null,1,'ACTIVE',0);
+INSERT INTO USERS (ID,USERNAME,PASSWORD,EMPLOYEE,PROFILE,STATUS,BLOCKED,EMAIL) values (1,'ADMIN','brutal',null,1,'ACTIVE',0,'admin@rochatec.com');
+
+INSERT INTO USERS (ID,USERNAME,PASSWORD,EMPLOYEE,PROFILE,STATUS,BLOCKED,EMAIL) values (2,'EROCHA','brutal',null,1,'ACTIVE',0,'erocha@rochatec.com');
 
 
 insert into ADDRESS (ID,ZIPCODE,STREET,NEIGHBORHOOD,CITY,COMPLEMENT,PROVINCE) values (1,'13091516','Dr João Quirino Nascimento','Jd Boa Esperança','Campinas','AP 11','SP');

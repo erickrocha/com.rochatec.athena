@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
-        <jdk.source.version>1.8</jdk.source.version>
+        <jdk.source.version>1.7</jdk.source.version>
         <jdk.target.version>1.7</jdk.target.version>
         <jee.version>7.0</jee.version>
         <version.jboss.maven.plugin>7.7.Final</version.jboss.maven.plugin>

@@ -1,17 +1,16 @@
 package com.rochatec.athena.eao.impl;
 
+import com.rochatec.athena.eao.local.UserEaoLocal;
+import com.rochatec.athena.eao.util.GenericEao;
+import com.rochatec.athena.model.User;
+
+import javax.ejb.Stateless;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.ejb.Stateless;
-import javax.persistence.Query;
-
-import com.rochatec.athena.eao.local.UserEaoLocal;
-import com.rochatec.athena.eao.util.GenericEao;
-import com.rochatec.athena.model.User;
 
 @Stateless
 public class UserEaoImpl extends GenericEao<User, Serializable> implements
@@ -45,14 +44,12 @@ public class UserEaoImpl extends GenericEao<User, Serializable> implements
 		return users;
 	}
 
-	@Override
 	public boolean isExists(String userName) {
 		if (findByLogin(userName) != null)
 			return true;
 		return false;
 	}
 
-    @Override
     public List<User> findAll() {
         Query query = getEntityManager().createQuery("SELECT u FROM User u");
         @SuppressWarnings("unchecked")
