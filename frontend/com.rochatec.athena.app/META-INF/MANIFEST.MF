@@ -21,5 +21,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.nebula.widgets.formattedtext,
  com.rochatec.framework,
  com.rochatec.graphics
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
